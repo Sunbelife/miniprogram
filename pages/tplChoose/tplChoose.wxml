@@ -1,0 +1,20 @@
+<view class="container">
+<!--
+    <view>选择模板列表</view>
+    1.展示模板列表
+    -->
+
+    <scroll-view scroll-y scroll-top="{{scrollTopPage}}"
+                 style="{{'height:100vh'}}"
+                 bindscrolltolower="loadMore"
+                 bindscroll="pageScroll">
+
+        <view>
+            <view wx:for="{{tpl}}" class="tpl">
+                <image src="https://dummyimage.com/200x300&text=hello"></image>
+            </view>
+
+        </view>
+    </scroll-view>
+
+</view>

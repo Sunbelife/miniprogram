@@ -1,0 +1,5 @@
+<view class="container">
+    <view wx:for="{{mapPage}}" class="item {{item.isOk ? 'ok': '' }}">
+        {{index+1 }}: {{item.page}}
+    </view>
+</view>

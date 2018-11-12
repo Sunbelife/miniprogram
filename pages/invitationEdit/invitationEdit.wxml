@@ -1,0 +1,94 @@
+<view class="container">
+
+    <!--
+        <view>请帖编辑</view>
+
+        <view>
+            模板上换图片  ，（跳到裁剪页）选择图片，裁剪。保存。，
+            模板上换文字。本页。编辑框
+            添加页面。  （跳到添加新页）   单图 ，多图，双图。文字
+            页面排序。 删除页面。长按排序
+            设置。  （跳到设置页面）  基本信息 ，音乐 ，弹幕 ，复制请帖，删除请帖
+            预览  （跳到预览页面）  发送按钮
+            发送 （跳到发送页面），设置封面图
+        </view>
+    -->
+
+    <view class="handle">
+        <view class="handle-item">
+            <view class="iconfont icon-tianjia"></view>
+            <view class="handle-name">添加</view>
+        </view>
+        <view class="handle-item">
+            <view class="iconfont icon-paixu"></view>
+            <view class="handle-name">页面排序</view>
+        </view>
+        <view class="handle-item">
+            <view class="iconfont icon-music"></view>
+            <view class="handle-name">设置</view>
+        </view>
+        <view class="handle-item">
+            <view class="iconfont icon-yulan"></view>
+            <view class="handle-name">预览</view>
+        </view>
+        <view class="handle-send">
+            <view class="iconfont icon-send"></view>
+            发送
+        </view>
+    </view>
+
+    <!--
+        TODO  拖动排序
+    -->
+    <!-- 页面排序 -->
+    <view class="pageSort" hidden="{{true}}">
+        <view class="pageSort-title">
+            长按拖动排序
+        </view>
+
+
+        <scroll-view scroll-x>
+            <view class="pageSort-item-wrap" style="width:{{pageSortWidth}}">
+                <view class="pageSort-item" wx:for="{{tpl}}">
+                    <view class="pageSort-item-drop">
+                        <view class="iconfont icon-sub"></view>
+                    </view>
+                    <view class="pageSort-item-img-wrap active">
+                        <image class="pageSort-item-img" src="https://dummyimage.com/200x300&text=hello"></image>
+                    </view>
+                    <view class="pageSort-item-title">封面</view>
+                </view>
+            </view>
+        </scroll-view>
+
+    </view>
+
+
+    <!-- 音乐logo -->
+    <view class="music-icon play" wx:if="{{false}}">
+        <view class="iconfont icon-yinyue"></view>
+    </view>
+
+    <!-- 文字编辑 -->
+    <view class="editEle-wrap" hidden="{{true}}">
+        <view class="editEle-wrap2">
+            <view class="iconfont icon-wenzibianji"></view>
+        </view>
+    </view>
+    <!-- 图片编辑 -->
+    <view class="editEle-wrap" hidden="{{true}}">
+        <view class="editEle-wrap2">
+            <view class="iconfont icon-tupianbianji"></view>
+        </view>
+    </view>
+
+
+    <!-- 模板上换文字 -->
+    <view class="edit-wrap" hidden="{{true}}">
+        <view class="edit-ele-wrap">
+            <textarea bindblur="bindTextAreaBlur" placeholder="" class="edit-ele"/>
+        </view>
+        <view class="edit-button">确定</view>
+    </view>
+
+</view>

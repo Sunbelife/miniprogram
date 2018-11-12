@@ -1,0 +1,41 @@
+<view class="container">
+    <!--模板音乐选择页面
+
+        <view>全部，华语，日韩，欧美，纯音乐</view>
+
+        <view>保存</view>-->
+
+    <scroll-view scroll-y scroll-top="{{scrollTopPage}}"
+                 style="{{'height:100vh'}}"
+                 bindscrolltolower="loadMore"
+                 bindscroll="pageScroll">
+
+        <view class="type-wrap   {{isNeedFixed?'tab_fixed':''}}">
+            <scroll-view scroll-x>
+                <view wx:for="{{type}}" class="type {{item.number === activeType ? 'active' : '' }}"
+                      bindtap="chooseType"
+                      data-type="{{item.number}}"
+                >{{item.name}}
+                </view>
+            </scroll-view>
+        </view>
+
+
+        <view>
+            <view wx:for="{{music}}" class="music-item {{ item.no === chooseMusic ? 'active' : '' }} ">
+                <view class=" iconfont icon-duihao"></view>
+                <view class="music-item-content"
+                      bindtap="chooseMusic"
+                      data-no="{{item.no}}"
+                >
+                    {{item.name}}
+                </view>
+            </view>
+        </view>
+        <view class="buttonSpace"></view>
+    </scroll-view>
+    <view class="button-fixed">
+        <view class="button">保存</view>
+    </view>
+
+</view>

@@ -1,0 +1,14 @@
+<view class="container">
+    <view>首页-制作页面
+    </view>
+    <view>跳至宾客页面</view>
+
+    <view>已制作请帖为空提示</view>
+
+    <view>制作请帖按钮</view>  授权按钮、
+
+    授权完后 登录，显示已制作的请帖
+
+    再点击制作，跳到选择模板页面
+
+</view>

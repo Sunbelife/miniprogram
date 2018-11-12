@@ -1,0 +1,28 @@
+<view class="container">
+    <!--
+        发送 （跳到发送页面），设置封面图-->
+
+    <view class="spouseTitle">新郎&新娘的婚礼邀请</view>
+
+    <view class="shareWrap">
+        <view class="shareImgWrap">
+            <image src="https://dummyimage.com/200x300&text=hello" class="shareImg"></image>
+            <view class="shareImgUpdate">更换封面</view>
+        </view>
+        <view class="shareTypeWrap">
+            <view class="shareType">
+                <view class="shareTypeImgWrap">
+                    <image src="/images/wx.png" class="shareTypeImg"></image>
+                </view>
+                <view class="shareTypeName">分享到微信好友</view>
+            </view>
+            <view class="shareType">
+                <view class="shareTypeImgWrap">
+                    <image src="/images/moment.png" class="shareTypeImg"></image>
+                </view>
+                <view class="shareTypeName">分享到朋友圈</view>
+            </view>
+        </view>
+    </view>
+
+</view>

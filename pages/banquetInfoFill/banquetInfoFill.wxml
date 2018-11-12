@@ -1,0 +1,38 @@
+<view class="container">
+ <!--
+
+ 赴宴信息填写
+
+ -->
+
+
+    <view>
+        <view>
+            <view>
+                您的姓名
+            </view>
+            <view>
+                请输入您的姓名
+            </view>
+        </view>
+        <view>
+            <view>
+                是否赴宴
+            </view>
+            <view>
+                赴宴 待定 有事
+            </view>
+        </view>
+        <view>
+            <view>
+                赴宴人数
+            </view>
+            <view>
+                - 1 +
+            </view>
+            <view>
+                确定
+            </view>
+        </view>
+    </view>
+</view>

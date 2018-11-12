@@ -1,0 +1,15 @@
+
+.tpl{
+    /*width: 375rpx;*/
+    /*width: 335rpx;*/
+    width: 330rpx;
+    margin: 20rpx;
+    display: inline-block;
+    float: left;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.tpl image{
+    width: 100%;
+}

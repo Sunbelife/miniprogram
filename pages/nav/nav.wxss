@@ -1,0 +1,8 @@
+.item{
+    padding: 10rpx 20rpx;
+}
+
+.ok{
+    background-color: #42805b;
+    color: white;
+}

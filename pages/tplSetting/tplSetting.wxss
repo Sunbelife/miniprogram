@@ -1,0 +1,12 @@
+.container{
+    background-color: #f2f3f7;
+    padding-top: 20rpx;
+}
+
+.del{
+    color: #d75774;
+}
+
+.form-ele-val-switch{
+    margin-top: -10rpx;
+}

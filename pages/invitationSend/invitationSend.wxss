@@ -1,0 +1,66 @@
+.spouseTitle {
+    height: 150rpx;
+    line-height: 150rpx;
+    text-align: center;
+    font-size: 36rpx;
+    border-bottom: 1px solid #ddd;
+}
+
+.shareWrap {
+    padding: 100rpx 100rpx;
+}
+
+.shareImgWrap {
+    position: relative;
+
+}
+
+.shareImg {
+    display: block;
+    margin: 0 auto;
+    width: 500rpx;
+    height: 400rpx;
+}
+
+.shareImgUpdate {
+    position: absolute;
+    bottom: 0;
+    left: 25rpx;
+    background: rgba(1,1,1,.5);
+    color: white;
+    padding: 15rpx 0;
+    text-align: center;
+    width: 500rpx;
+
+
+}
+
+.shareTypeWrap {
+    display: flex;
+    margin-top: 80rpx;
+}
+
+.shareType {
+    flex: 1;
+    text-align: center;
+}
+
+.shareTypeImgWrap{
+    width: 70rpx;
+    height: 70rpx;
+    text-align: center;
+    padding: 10rpx;
+    border: 1px solid #ddd;
+    border-radius: 70rpx;
+    display: inline-block;
+}
+
+.shareTypeImg {
+    width: 50rpx;
+    height: 50rpx;
+    margin-top:10rpx;
+}
+
+.shareTypeName {
+    margin-top: 30rpx;
+}

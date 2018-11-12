@@ -1,0 +1,38 @@
+
+
+.type-wrap{
+    border-bottom: 1rpx solid #ddd;
+}
+
+.type{
+    /*width: 187.5rpx;*/
+    width: 147.5rpx;
+    text-align: center;
+    display: inline-block;
+    padding: 20rpx 0;
+    margin: 0 20rpx;
+}
+
+.type.active{
+    border-bottom: 5rpx solid red;
+}
+
+
+.tpl{
+    /*width: 250rpx;*/
+    width: 210rpx;
+    margin: 20rpx;
+    display: inline-block;
+    float: left;
+}
+
+.tpl image{
+    width: 100%;
+}
+
+.tab_fixed{
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    background-color: white;
+}

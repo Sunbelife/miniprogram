@@ -1,0 +1,34 @@
+{
+  "pages":[
+    "pages/banquetInfoFill/banquetInfoFill",
+
+    "pages/nav/nav",
+
+
+    "pages/guestReply/guestReply",
+    "pages/invitationEdit/invitationEdit",
+    "pages/invitationSend/invitationSend",
+    "pages/tplChoose/tplChoose",
+    "pages/tplImageCut/tplImageCut",
+    "pages/tplMusicChoose/tplMusicChoose",
+    "pages/tplNewPage/tplNewPage",
+    "pages/tplSetting/tplSetting",
+
+
+
+    "pages/startMake/startMake",
+    "pages/shareSuccess/shareSuccess",
+    "pages/invitationInfo/invitationInfo",
+    "pages/tplPreview/tplPreview",
+    "pages/home/home",
+
+    "pages/index/index",
+    "pages/tpl/tpl"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

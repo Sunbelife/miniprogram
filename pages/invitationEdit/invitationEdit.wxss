@@ -1,0 +1,183 @@
+.edit-wrap{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    display: flex;
+    box-sizing: border-box;
+    padding: 20rpx;
+    width: 100%;
+}
+
+.edit-ele-wrap{
+    flex: 1;
+}
+
+.edit-ele{
+    height: 150rpx;
+    background-color: #aaaaaa;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-button{
+    color: #f83146;
+    height: 150rpx;
+    line-height: 150rpx;
+    width: 120rpx;
+    text-align: center;
+}
+
+
+.editEle-wrap{
+    border: 1px solid #f83146;
+    width: 90rpx;
+    height: 90rpx;
+    box-sizing: border-box;
+    border-radius: 90rpx;
+    padding: 3rpx;
+}
+
+.editEle-wrap2{
+    background-color: #f83146;
+    border-radius: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 85rpx;
+    color: white;
+}
+
+.editEle-wrap2 .iconfont{
+    font-size: 38rpx;
+}
+
+.music-icon{
+    width: 60rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: 1px solid #f73e4e;
+    border-radius: 60rpx;
+}
+
+@keyframes rotateAnimate
+{
+    0%   {transform: rotate(0deg)}
+    50% {transform: rotate(180deg)}
+    100% {transform: rotate(360deg)}
+}
+
+.music-icon.play{
+    animation: rotateAnimate 3s linear infinite;
+}
+
+.music-icon .iconfont{
+    font-size: 60rpx;
+}
+
+/*
+    页面排序
+*/
+.pageSort{
+    box-sizing: border-box;
+    padding: 30rpx;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: white;
+}
+.pageSort-title{
+
+}
+.pageSort-item-wrap{
+    margin-top:20rpx;
+    width: 200rpx;
+    box-sizing: border-box;
+    height: 350rpx;
+
+}
+.pageSort-item{
+    box-sizing: border-box;
+    width: 180rpx;
+    height: 300rpx;
+    display: inline-block;
+    margin-right: 20rpx;
+    position: relative;
+}
+
+
+
+.pageSort-item-img-wrap{
+    height: 250rpx;
+}
+
+.pageSort-item-img-wrap.active{
+    border: 1px solid #f83146;
+}
+
+
+.pageSort-item-img{
+    width: 100%;
+    height: 100%;
+}
+.pageSort-item-title{
+    height: 50rpx;
+    padding-top:10rpx;
+
+    box-sizing: border-box;
+
+    text-align: center;
+}
+
+
+.pageSort-item-drop{
+    background-color: #f83146;
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius: 40rpx;
+
+    box-sizing: border-box;
+    position: absolute;
+    top: -15rpx;
+    right: -15rpx;
+    text-align: center;
+    color: white;
+}
+
+.pageSort-item-drop .iconfont{
+    font-size: 30rpx;
+}
+
+/*
+    底部菜单
+*/
+
+.handle{
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+}
+
+.handle-item{
+    flex: 1;
+    text-align: center;
+    padding-top: 10rpx;
+}
+
+.handle-item .iconfont{
+    color: #333333;
+}
+
+.handle-name{
+    font-size: 24rpx;
+}
+.handle-send{
+    text-align: center;
+    width: 250rpx;
+    background-color: #f83146;
+    color: white;
+    height: 100rpx;
+    line-height: 100rpx;
+
+}
