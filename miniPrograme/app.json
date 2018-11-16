@@ -1,11 +1,12 @@
 {
   "pages":[
+    "pages/guestReply/guestReply",
     "pages/banquetInfoFill/banquetInfoFill",
 
     "pages/nav/nav",
 
 
-    "pages/guestReply/guestReply",
+    
     "pages/invitationEdit/invitationEdit",
     "pages/invitationSend/invitationSend",
     "pages/tplChoose/tplChoose",
