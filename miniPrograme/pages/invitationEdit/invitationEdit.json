@@ -1,4 +1,9 @@
 {
   "navigationBarBackgroundColor": "red",
-  "navigationBarTitleText": "请帖编辑"
+  "navigationBarTitleText": "请帖编辑",
+  "usingComponents": {
+    "tpl1": "/components/tpl1/tpl1",
+    "pageSet": "/components/pageSet/pageSet",
+    "pageAdd": "/components/pageAdd/pageAdd"
+  }
 }

@@ -1,5 +1,14 @@
 <view class="container">
 
+    <tpl1 bindpageClick="pageClick"></tpl1>
+
+    <view class="full-page" hidden="{{!isShowPageAdd}}">
+        <pageAdd bindhidePageAdd="hidePageAdd" id="pageAdd"></pageAdd>
+    </view>
+    <view class="full-page" hidden="{{!isShowPageSet}}">
+        <pageSet id="pageSet"  bindhidePage="hidePageSet" ></pageSet>
+    </view>
+
     <!--
         <view>请帖编辑</view>
 
@@ -15,15 +24,15 @@
     -->
 
     <view class="handle">
-        <view class="handle-item">
+        <view class="handle-item" bindtap="showPageAdd">
             <view class="iconfont icon-tianjia"></view>
             <view class="handle-name">添加</view>
         </view>
-        <view class="handle-item">
+        <view class="handle-item" bindtap="showSort">
             <view class="iconfont icon-paixu"></view>
             <view class="handle-name">页面排序</view>
         </view>
-        <view class="handle-item">
+        <view class="handle-item" bindtap="showPageSet">
             <view class="iconfont icon-music"></view>
             <view class="handle-name">设置</view>
         </view>
@@ -31,9 +40,10 @@
             <view class="iconfont icon-yulan"></view>
             <view class="handle-name">预览</view>
         </view>
-        <view class="handle-send">
+        <view class="handle-send" bindtap="send">
             <view class="iconfont icon-send"></view>
             发送
+            <!--保存-->
         </view>
     </view>
 
@@ -41,28 +51,70 @@
         TODO  拖动排序
     -->
     <!-- 页面排序 -->
-    <view class="pageSort" hidden="{{true}}">
+    <view class="pageSort" hidden="{{!isShowSort}}">
         <view class="pageSort-title">
-            长按拖动排序
+            长按拖动排序{{scrollViewLeft}}   <view class="pageSort-title-close" bindtap="closeSort">关闭</view>
         </view>
 
+        <!--
+                             style="height: 400rpx;"  否则  scroll-x  false 会抖动
 
-        <scroll-view scroll-x>
-            <view class="pageSort-item-wrap" style="width:{{pageSortWidth}}">
-                <view class="pageSort-item" wx:for="{{tpl}}">
-                    <view class="pageSort-item-drop">
+        -->
+        <scroll-view scroll-x="{{!touchStartMove}}"
+                     bindscroll="scrollViewScroll"
+                     style="height: 350rpx;"
+        >
+            <view class="pageSort-item-wrap" style="width:{{pageSortWidth}}"
+                  bindtouchstart="movePageStart"
+                  bindtouchend="movePageEnd"
+                  bindtouchmove="movePageMove"
+            >
+                <view class="pageSort-item"
+                      wx:for="{{pages}}"
+                      data-id="{{item.id}}"
+
+                      bindlongpress="movePageLongPressItem"
+                      data-index="{{index}}"
+                >
+                    <view class="pageSort-item-drop"
+                          wx:if="{{item.canRemove}}"
+                          bindtap="removePage"
+                          data-id="{{item.id}}"
+                          hidden="{{touchStartMove && moveItem.id === item.id}}"
+                          data-index="{{index}}"
+                    >
                         <view class="iconfont icon-sub"></view>
                     </view>
-                    <view class="pageSort-item-img-wrap active">
-                        <image class="pageSort-item-img" src="https://dummyimage.com/200x300&text=hello"></image>
+                    <view class="pageSort-item-img-wrap active"
+                          hidden="{{touchStartMove && moveItem.id === item.id}}"
+                    >
+                        <image class="pageSort-item-img"
+                               src="https://dummyimage.com/200x300&text={{item.nameImage}}"></image>
                     </view>
-                    <view class="pageSort-item-title">封面</view>
+                    <view class="pageSort-item-title"
+                          hidden="{{touchStartMove && moveItem.id === item.id}}"
+                    >{{item.name}}</view>
                 </view>
+
+
+
             </view>
         </scroll-view>
 
     </view>
 
+
+    <!-- 这个是复制移动的元素 -->
+    <view class="pageSort-item"
+          wx:if="{{touchStartMove}}"
+          style="position: absolute;top:{{touchStartMoveItem.top}};left:{{touchStartMoveItem.left}}"
+    >
+        <view class="pageSort-item-img-wrap active">
+            <image class="pageSort-item-img"
+                   src="https://dummyimage.com/200x300&text={{moveItem.nameImage}}"></image>
+        </view>
+        <view class="pageSort-item-title">{{moveItem.name}}</view>
+    </view>
 
     <!-- 音乐logo -->
     <view class="music-icon play" wx:if="{{false}}">

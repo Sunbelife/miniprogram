@@ -80,3 +80,29 @@
     padding: 10rpx;
     font-size: 30rpx;
 }
+.bottomBtn{
+    display: flex;
+    justify-content:center;
+    vertical-align: middle;
+}
+.bottomBtn .iconfont{
+    margin-top: 8rpx;
+    display: inline-block;
+}
+.makeBtn{
+    display: inline-block;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    line-height: normal;
+    margin-left: 15rpx;
+    font-size: inherit;
+    color: white;
+
+}
+
+.makeBtn:after {
+    display: none;
+}

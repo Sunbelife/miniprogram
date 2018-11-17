@@ -1,0 +1,79 @@
+
+/* TODO   把整个样式文件引入不太好，先这样处理 */
+.container{
+    position: relative;
+}
+
+
+.container{
+    transition: all .3s;
+    left: 5vw;
+    opacity: 0;
+}
+
+.container.move{
+    opacity: 1;
+    left:0;
+}
+
+.type-wrap{
+    border-bottom: 1rpx solid #ddd;
+}
+
+.type{
+    /*width: 187.5rpx;*/
+    width: 147.5rpx;
+    text-align: center;
+    display: inline-block;
+    padding: 20rpx 0;
+    margin: 0 20rpx;
+}
+
+.type.active{
+    border-bottom: 5rpx solid red;
+}
+
+
+.tpl{
+    /*width: 250rpx;*/
+    width: 210rpx;
+    margin: 20rpx;
+    display: inline-block;
+    float: left;
+}
+
+.tpl image{
+    width: 100%;
+}
+
+.tab_fixed{
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    background-color: white;
+}
+
+
+.topInfo{
+    padding: 0 20rpx;
+    border-bottom: 1px solid #ddd;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 750rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    box-sizing: border-box;
+}
+.topInfoSpace{
+    height: 190rpx;
+}
+
+.topInfo-close{
+    position: absolute;
+    top: 0;
+    right: 20rpx;
+    color: #f83146;
+    font-weight: bold;
+}

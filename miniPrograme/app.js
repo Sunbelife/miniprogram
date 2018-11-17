@@ -34,7 +34,9 @@ App({
       }
     })
   },
+ 
   globalData: {
+    isDev: 1,
     userInfo: null
   }
 });

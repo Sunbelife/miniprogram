@@ -1,0 +1,22 @@
+
+/* TODO   把整个样式文件引入不太好，先这样处理 */
+
+@import "../../css/app.wxss";
+@import "../../css/tpl.wxss";
+.container{
+    background-color: #f2f3f7;
+    padding-top: 20rpx;
+}
+
+.del{
+    color: #d75774;
+}
+
+.form-ele-val-switch{
+    margin-top: -10rpx;
+}
+.topInfo{
+    position: relative;
+    margin-top: -20rpx;
+    margin-bottom: 30rpx;
+}

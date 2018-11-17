@@ -1,0 +1,31 @@
+.tpl-page{
+    height: 100vh;
+}
+
+
+
+.topInfo{
+    padding: 0 20rpx;
+    border-bottom: 1px solid #ddd;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 750rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    box-sizing: border-box;
+}
+.topInfoSpace{
+    height: 190rpx;
+}
+
+.topInfo-close{
+    position: absolute;
+    top: 0;
+    right: 20rpx;
+    color: #f83146;
+    font-weight: bold;
+}
+
+

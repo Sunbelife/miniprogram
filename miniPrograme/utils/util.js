@@ -1,122 +1,244 @@
 const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hour = date.getHours()
+    const minute = date.getMinutes()
+    const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+    return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 };
 
 const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+    n = n.toString()
+    return n[1] ? n : '0' + n
 };
 
 // data key
 function data(obj, key) {
-  return obj.currentTarget.dataset[key];
+    return obj.currentTarget.dataset[key];
 }
 
 // arrToObj
 function arrToObj(arr, key) {
-  if (!key) {
-    console.error('你的key呢');
-  }
-  const obj = {};
-  for (let i = 0; i < arr.length; i++) {
-    obj[arr[i][key]] = arr[i];
-  }
-  return obj;
+    if (!key) {
+        console.error('你的key呢');
+    }
+    const obj = {};
+    for (let i = 0; i < arr.length; i++) {
+        obj[arr[i][key]] = arr[i];
+    }
+    return obj;
+}
+
+// arrToObj
+function arrToObjKV(arr, key, value) {
+    if (!key) {
+        console.error('你的key呢');
+    }
+    const obj = {};
+    for (let i = 0; i < arr.length; i++) {
+        obj[arr[i][key]] = arr[i][value];
+    }
+    return obj;
 }
 function isDev() {
-  return !getApp().isPublish;
+    return !getApp().isPublish;
 }
 
 // objToArr
 function objToArr(obj) {
-  const arr = [];
-  for (let k in obj) {
-    arr.push(obj[k]);
-  }
-  return arr;
+    const arr = [];
+    for (let k in obj) {
+        arr.push(obj[k]);
+    }
+    return arr;
 }
 
 // 通过字面量方式实现的函数each
 function each(object, callback) {
-  var type = (function () {
-    switch (object.constructor) {
-      case Object:
-        return 'Object';
-        break;
-      case Array:
-        return 'Array';
-        break;
-      case NodeList:
-        return 'NodeList';
-        break;
-      default:
-        return 'null';
-        break;
+    var type = (function () {
+        switch (object.constructor) {
+            case Object:
+                return 'Object';
+                break;
+            case Array:
+                return 'Array';
+                break;
+            case NodeList:
+                return 'NodeList';
+                break;
+            default:
+                return 'null';
+                break;
+        }
+    })();
+    // 为数组或类数组时, 返回: index, value
+    if (type === 'Array' || type === 'NodeList') {
+        // 由于存在类数组NodeList, 所以不能直接调用every方法
+        [].every.call(object, function (v, i) {
+            return callback.call(v, i, v) === false ? false : true;
+        });
     }
-  })();
-  // 为数组或类数组时, 返回: index, value
-  if (type === 'Array' || type === 'NodeList') {
-    // 由于存在类数组NodeList, 所以不能直接调用every方法
-    [].every.call(object, function (v, i) {
-      return callback.call(v, i, v) === false ? false : true;
-    });
-  }
-  // 为对象格式时,返回:key, value
-  else if (type === 'Object') {
-    for (var i in object) {
-      if (callback.call(object[i], i, object[i]) === false) {
-        break;
-      }
+    // 为对象格式时,返回:key, value
+    else if (type === 'Object') {
+        for (var i in object) {
+            if (callback.call(object[i], i, object[i]) === false) {
+                break;
+            }
+        }
     }
-  }
 }
 
 const rpx2px = rpx => {
-  return  rpx / 750 * wx.getSystemInfoSync().windowWidth;
+    return rpx / 750 * wx.getSystemInfoSync().windowWidth;
 };
 
-function getCurDate(){
-  
-  return dateFormat(new Date(), 'yyyy-MM-dd');
+function getCurDate() {
+
+    return dateFormat(new Date(), 'yyyy-MM-dd');
 }
 
-var dateFormat = function(date,fmt) {
-  var o = {
-    "M+" : date.getMonth()+1,                 //月份
-    "d+" : date.getDate(),                    //日
-    "h+" : date.getHours(),                   //小时
-    "m+" : date.getMinutes(),                 //分
-    "s+" : date.getSeconds(),                 //秒
-    "q+" : Math.floor((date.getMonth()+3)/3), //季度
-    "S"  : date.getMilliseconds()             //毫秒
-  };
-  if(/(y+)/.test(fmt)) {
-    fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
-  }
-  for(var k in o) {
-    if(new RegExp("("+ k +")").test(fmt)){
-      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+var dateFormat = function (date, fmt) {
+    var o = {
+        "M+": date.getMonth() + 1,                 //月份
+        "d+": date.getDate(),                    //日
+        "h+": date.getHours(),                   //小时
+        "m+": date.getMinutes(),                 //分
+        "s+": date.getSeconds(),                 //秒
+        "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+        "S": date.getMilliseconds()             //毫秒
+    };
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
     }
-  }
-  return fmt;
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        }
+    }
+    return fmt;
+};
+
+var getParamGen = function (param) {
+    let paramStr = "";
+    let paramCount = 0;
+    for (let k in param) {
+        paramCount++;
+        let pre = "?";
+        if (paramCount > 1) {
+            pre = "&";
+        }
+        paramStr += `${pre}${k}=${encodeURIComponent(param[k])}`
+    }
+    return paramStr;
+};
+
+var pages = {
+
+    // 模板设置
+    tplSetting: '../tplSetting/tplSetting',
+    // 新增页面
+    tplNewPage: '../tplNewPage/tplNewPage',
+    // 音乐选择
+    tplMusicChoose: '../tplMusicChoose/tplMusicChoose',
+    // 图片裁剪
+    tplImageCut: '../tplImageCut/tplImageCut',
+    // 模板选择
+    tplChoose: '../tplChoose/tplChoose',
+    // 请帖发送
+    invitationSend: '../invitationSend/invitationSend',
+    // 请帖编辑
+    invitationEdit: '../invitationEdit/invitationEdit',
+    // 宾客回复
+    guestReply: '../guestReply/guestReply',
+    // 赴宴信息填写
+    banquetInfoFill: '../banquetInfoFill/banquetInfoFill',
+    // 请帖信息
+    invitationInfo: '../invitationInfo/invitationInfo',
+    // 模板预览
+    tplPreview: '../tplPreview/tplPreview',
+    // 首页
+    home: '../home/home',
+    // 开始制作
+    startMake: '../startMake/startMake',
+    // 分享发送成功
+    shareSuccess: '../shareSuccess/shareSuccess',
+
+    X: '../X/X'
 };
 
 
+function goPage(e) {
+    let page = "";
+    let id = "";
+    if (e.currentTarget) {
+        page = data(e, "page");
+         id = data(e, "id");
+    } else {
+        // 字符串
+        page = e;
+    }
+    console.log(page);
+
+    let url = pages[page];
+    // 参数放数组，再变成参数
+    const args = [];
+    // id 参数
+    if (id) {
+        args.push({
+            key: "id",
+            value: id
+        });
+    }
+    if (args.length > 0) {
+        url += getParamGen(arrToObjKV(args, "key", "value"));
+    }
+
+
+    console.log(url);
+    wx.navigateTo({
+        url: url
+    })
+}
+
+function randomName() {
+    var arr = ["香蕉", "橘子", "椰子", "桃子", "西瓜"];
+
+    return randomArrOne(arr);
+}
+
+function randomArrOne(arr) {
+    var index = Math.floor((Math.random() * arr.length));
+    return arr[index];
+}
+
+/**
+ * 数组元素交换位置
+ * @param {array} arr 数组
+ * @param {number} index1 添加项目的位置
+ * @param {number} index2 删除项目的位置
+ * index1和index2分别是两个数组的索引值，即是两个要交换元素位置的索引值，如1，5就是数组中下标为1和5的两个元素交换位置
+ */
+function swapArray(arr, index1, index2) {
+    arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+    return arr;
+}
+
 module.exports = {
-  getCurDate,
-  dateFormat,
-  rpx2px,
-  isDev,
-  arrToObj,
-  objToArr,
-  each,
-  data,
-  formatTime: formatTime
+    swapArray,
+    randomName,
+    randomArrOne,
+    getParamGen,
+    getCurDate,
+    dateFormat,
+    goPage,
+    rpx2px,
+    isDev,
+    arrToObjKV,
+    arrToObj,
+    objToArr,
+    each,
+    data,
+    formatTime: formatTime
 };

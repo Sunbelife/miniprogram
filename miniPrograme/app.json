@@ -1,23 +1,22 @@
 {
   "pages":[
-    "pages/nav/nav",
-
-
-    "pages/shareSuccess/shareSuccess",
-    "pages/startMake/startMake",
-    "pages/home/home",
-    "pages/tplPreview/tplPreview",
-    "pages/invitationInfo/invitationInfo",
-    "pages/invitationEdit/invitationEdit",
     "pages/invitationSend/invitationSend",
-    "pages/tplChoose/tplChoose",
-    "pages/tplImageCut/tplImageCut",
-    "pages/tplMusicChoose/tplMusicChoose",
-    "pages/tplNewPage/tplNewPage",
-    "pages/tplSetting/tplSetting",
-    "pages/banquetInfoFill/banquetInfoFill",
+    "pages/invitationEdit/invitationEdit",
+
+    "pages/nav/nav",
     "pages/guestReply/guestReply",
 
+    "pages/banquetInfoFill/banquetInfoFill",
+    "pages/tplSetting/tplSetting",
+    "pages/tplMusicChoose/tplMusicChoose",
+    "pages/tplImageCut/tplImageCut",
+    "pages/invitationInfo/invitationInfo",
+    "pages/tplPreview/tplPreview",
+    "pages/startMake/startMake",
+    "pages/shareSuccess/shareSuccess",
+    "pages/home/home",
+    "pages/tplChoose/tplChoose",
+    "pages/tplNewPage/tplNewPage",
 
 
     "pages/index/index",

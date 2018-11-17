@@ -1,4 +1,7 @@
 {
   "navigationBarBackgroundColor": "red",
-  "navigationBarTitleText": "添加新页"
+  "navigationBarTitleText": "添加新页",
+  "usingComponents": {
+    "pageAdd": "/components/pageAdd/pageAdd"
+  }
 }

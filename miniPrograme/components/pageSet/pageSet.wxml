@@ -1,0 +1,34 @@
+<view class="tpl-page">
+    <view class="container">
+
+        <view class="topInfo">
+            设置
+            <view class="topInfo-close" bindtap="hidePage">关闭</view>
+        </view>
+
+
+        <!--
+         设置。 （跳到设置页面） 基本信息 ，音乐 ，弹幕 ，复制请帖，删除请帖
+        -->
+        <view class="form-ele">
+            基本信息
+            <view class="form-ele-val">修改 <view class=" iconfont icon-right"></view></view>
+        </view>
+        <view class="form-ele">
+            请帖音乐
+            <view class="form-ele-val">love love （音乐名）</view>
+        </view>
+        <view class="form-ele">
+            弹幕
+            <view class="form-ele-val form-ele-val-switch">
+                <switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+            </view>
+        </view>
+
+
+        <view class="form-ele text-center">复制请帖</view>
+        <view class="form-ele text-center del">删除请帖</view>
+
+    </view>
+
+</view>

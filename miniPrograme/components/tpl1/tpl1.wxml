@@ -1,0 +1,14 @@
+<view class="tpl-page" bindtap="pageClick">
+    张三&李四的婚礼
+
+    <image src="https://dummyimage.com/200x300&text=hello"></image>
+
+
+    <view>
+        曾经我们在同一个学校学习，
+        而今我们在同一个城市打拼。
+        我们相互扶持，谱写我们美好的明天！
+        或许你还有些许担心，
+    </view>
+
+</view>

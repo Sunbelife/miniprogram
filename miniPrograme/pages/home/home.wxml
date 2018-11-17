@@ -1,7 +1,6 @@
 <view class="container">
     <!--   <view>首页-制作页面
        </view>
-       <view>跳至宾客页面</view>
 
        <view>已制作请帖为空提示</view>
 
@@ -19,11 +18,13 @@
                  bindscroll="pageScroll">
 
         <view class="topContent">
-            <view class="iconWrap">
-                <view class="iconfont icon-tianjia"></view>
-            </view>
-            <view class="iconTitle">
-                宾客
+            <view bindtap="goPage" data-page="guestReply">
+                <view class="iconWrap">
+                    <view class="iconfont icon-duihua"></view>
+                </view>
+                <view class="iconTitle">
+                    宾客
+                </view>
             </view>
         </view>
         <view class="topContentSpace"></view>
@@ -32,12 +33,12 @@
             <view wx:for="{{tpl}}" class="tpl">
                 <image src="https://dummyimage.com/200x300&text=hello"></image>
             </view>
-
         </view>
+
     </scroll-view>
 
     <view class="bottomBtn">
-        <view class="iconfont icon-tianjia"></view>
-        创建请帖
+        <view class="iconfont icon-jiahao"></view>
+        <button open-type="getUserInfo"  bindgetuserinfo="onGotUserInfo" class="makeBtn">创建请帖</button>
     </view>
 </view>

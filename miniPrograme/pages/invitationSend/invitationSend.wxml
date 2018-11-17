@@ -14,13 +14,13 @@
                 <view class="shareTypeImgWrap">
                     <image src="/images/wx.png" class="shareTypeImg"></image>
                 </view>
-                <view class="shareTypeName">分享到微信好友</view>
+                <button class="shareTypeName" open-type="share">分享到微信好友</button>
             </view>
             <view class="shareType">
                 <view class="shareTypeImgWrap">
                     <image src="/images/moment.png" class="shareTypeImg"></image>
                 </view>
-                <view class="shareTypeName">分享到朋友圈</view>
+                <button class="shareTypeName" open-type="share">分享到朋友圈</button>
             </view>
         </view>
     </view>

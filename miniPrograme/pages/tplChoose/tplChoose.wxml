@@ -10,7 +10,11 @@
                  bindscroll="pageScroll">
 
         <view>
-            <view wx:for="{{tpl}}" class="tpl">
+            <view wx:for="{{tpl}}" class="tpl"
+                  bindtap="goPage"
+                  data-page="invitationEdit"
+                  data-id="{{item.id}}"
+            >
                 <image src="https://dummyimage.com/200x300&text=hello"></image>
             </view>
 
