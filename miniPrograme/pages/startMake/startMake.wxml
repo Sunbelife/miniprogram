@@ -1,3 +1,19 @@
 <view class="container">
-    3.宾客看完后   开始制作页面
+    <!--3.宾客看完后   开始制作页面-->
+
+    <image src="/images/logo.jpeg" class="logo"></image>
+
+
+   <view class="content">
+       <view>
+           使用<view class="name">“原野映像电子请帖”</view>小程序
+       </view>
+       <view>
+           免费制作你的专属请帖
+       </view>
+   </view>
+
+
+    <button class="bottomBtn">开始制作</button>
+
 </view>

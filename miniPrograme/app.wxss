@@ -42,6 +42,35 @@
 }
 
 
+
+.form-item{
+    display: flex;
+    padding: 20rpx;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.form-label{
+    width: 200rpx;
+    text-align: center;
+}
+
+.form-input{
+    flex: 1;
+}
+
+.bottomBtn{
+   position: fixed;
+    bottom:0;
+    width: 750rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: white;
+    background-color: #f83146;
+    border-radius: 0;
+}
+
+
 .iconfont {
     font-family:"iconfont" !important;
     font-size:16px;

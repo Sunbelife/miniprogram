@@ -1,17 +1,4 @@
-.form-item{
-    display: flex;
-    padding: 20rpx;
-    border-bottom: 1px solid #ddd;
-    position: relative;
-}
-.form-label{
-    width: 200rpx;
-    text-align: center;
-}
 
-.form-input{
-    flex: 1;
-}
 
 .addPlusWrap{
     width: 200rpx;

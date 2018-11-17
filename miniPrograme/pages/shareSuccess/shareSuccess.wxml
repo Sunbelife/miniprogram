@@ -1,3 +1,17 @@
 <view class="container">
-    发送成功后  开启通知页面  。关注服务号
+    <!--发送成功后  开启通知页面  。关注服务号-->
+
+
+    <image src="/images/logo.jpeg" class="logo"></image>
+
+
+    <view class="content">
+        <view class="high">
+            第一时间收到宾客回复
+        </view>
+        <view>
+            请关注<view class="name">“原野映像电子请帖”</view>服务号
+        </view>
+
+    </view>
 </view>

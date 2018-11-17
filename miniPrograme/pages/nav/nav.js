@@ -50,22 +50,27 @@ Page({
             },
             {
                 page: "请帖信息",
+                isOk: true,
                 path: "pages/invitationInfo/invitationInfo"
             },
             {
                 page: "模板预览",
+                isOk: true,
                 path: "pages/tplPreview/tplPreview"
             },
             {
                 page: "首页",
+                isOk: true,
                 path: "pages/home/home"
             },
             {
                 page: "开始制作",
+                isOk: true,
                 path: "pages/startMake/startMake"
             },
             {
                 page: "分享发送成功",
+                isOk: true,
                 path: "pages/shareSuccess/shareSuccess"
             }
         ]
