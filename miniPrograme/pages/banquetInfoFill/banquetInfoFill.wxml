@@ -1,36 +1,44 @@
 <view class="container">
- <!--
+    <!--
 
- 赴宴信息填写
+    赴宴信息填写
 
- -->
+    -->
 
 
     <view>
-        <view>
-            <view>
+        <view class="form-item">
+            <view class="form-label">
                 您的姓名
             </view>
-            <view>
-                请输入您的姓名
+            <view class="form-input">
+                <input type="text" placeholder="请输入您的姓名"/>
             </view>
         </view>
-        <view>
-            <view>
+        <view class="form-item">
+            <view class="form-label">
                 是否赴宴
             </view>
-            <view>
-                赴宴 待定 有事
+            <view class="form-input">
+
+                <radio-group class="radio-group" bindchange="radioChange">
+                    <label class="radio" wx:for="{{items}}">
+                        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                    </label>
+                </radio-group>
+
             </view>
         </view>
-        <view>
-            <view>
+        <view class="form-item">
+            <view class="form-label">
                 赴宴人数
             </view>
-            <view>
-                - 1 +
+            <view class=" addPlusWrap">
+                <button class="plus">-</button>
+                <input type="text" placeholder="1" class="addPlusInput"/>
+                <button class="add">+</button>
             </view>
-            <view>
+            <view class="confirmBtn">
                 确定
             </view>
         </view>

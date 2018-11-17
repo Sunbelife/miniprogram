@@ -45,6 +45,7 @@ Page({
             },
             {
                 page: "赴宴信息填写",
+                isOk: true,
                 path: "pages/banquetInfoFill/banquetInfoFill"
             },
             {

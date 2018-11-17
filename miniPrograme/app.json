@@ -1,10 +1,8 @@
 {
   "pages":[
-    "pages/guestReply/guestReply",
-    "pages/banquetInfoFill/banquetInfoFill",
-
     "pages/nav/nav",
-
+    "pages/banquetInfoFill/banquetInfoFill",
+    "pages/guestReply/guestReply",
 
     
     "pages/invitationEdit/invitationEdit",

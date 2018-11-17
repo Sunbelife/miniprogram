@@ -37,7 +37,9 @@
     font-style: normal;
 }
 
-
+.flex{
+    display: flex;
+}
 
 
 .iconfont {
