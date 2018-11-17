@@ -64,3 +64,13 @@
 .shareTypeName {
     margin-top: 30rpx;
 }
+.shareType {
+    background: none;
+    border: 0;
+    height: auto;
+    line-height: normal;
+    font-size: 30rpx;
+}
+.shareType:after {
+   display: none;
+}

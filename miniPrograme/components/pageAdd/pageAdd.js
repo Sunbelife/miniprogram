@@ -38,10 +38,10 @@ Component({
         titleHeight: 90,
         // changeTime: 300,
         // px
-        tabOffsetTop: 90 +90
+        tabOffsetTop: 90 + 90
     },
     onLoad(){
-        
+
 
     },
     methods: {
@@ -54,7 +54,9 @@ Component({
         loadMore(){
 
         },
-       
+        choosePage(){
+         this.hidePageAdd();
+        },
 
         show(){
             this.setData({

@@ -3,6 +3,7 @@
   "navigationBarTitleText": "请帖编辑",
   "usingComponents": {
     "tpl1": "/components/tpl1/tpl1",
+    "pageSort": "/components/pageSort/pageSort",
     "pageSet": "/components/pageSet/pageSet",
     "pageAdd": "/components/pageAdd/pageAdd"
   }

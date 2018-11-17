@@ -10,17 +10,17 @@
             <view class="shareImgUpdate">更换封面</view>
         </view>
         <view class="shareTypeWrap">
-            <view class="shareType">
+            <button class="shareType" open-type="share">
                 <view class="shareTypeImgWrap">
                     <image src="/images/wx.png" class="shareTypeImg"></image>
                 </view>
-                <button class="shareTypeName" open-type="share">分享到微信好友</button>
-            </view>
+                <view class="shareTypeName">分享到微信好友</view>
+            </button>
             <view class="shareType">
                 <view class="shareTypeImgWrap">
                     <image src="/images/moment.png" class="shareTypeImg"></image>
                 </view>
-                <button class="shareTypeName" open-type="share">分享到朋友圈</button>
+                <view class="shareTypeName">分享到朋友圈</view>
             </view>
         </view>
     </view>

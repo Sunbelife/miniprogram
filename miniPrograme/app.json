@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/invitationSend/invitationSend",
     "pages/invitationEdit/invitationEdit",
+    "pages/invitationSend/invitationSend",
 
     "pages/nav/nav",
     "pages/guestReply/guestReply",
