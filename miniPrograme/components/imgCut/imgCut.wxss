@@ -1,0 +1,91 @@
+
+/* TODO   把整个样式文件引入不太好，先这样处理 */
+
+@import "../../css/tpl.wxss";
+@import "../../css/app.wxss";
+
+.container{
+    background-color: #222222;
+    padding: 100rpx;
+    box-sizing: border-box;
+
+}
+
+.button{
+    background-color: #f2f3f7;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    color: #333333;
+    flex: 1;
+}
+
+.button:nth-of-type(2){
+    border-left: 1px solid #ddd;
+}
+
+.button-fixed{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+}
+
+.focusRectangleWrap{
+    height: 100%;
+
+}
+
+.focusRectangle{
+    width: 200rpx;
+    height: 200rpx;
+    /*background-color: yellow;*/
+
+    position: relative;
+    margin: 2rpx;
+
+}
+
+
+.focusRectangle-horn{
+    width: 20rpx;
+    height: 20rpx;
+    /*background-color: red;*/
+    position: absolute;
+    border: 2px solid green;
+}
+
+.focusRectangle-horn-topLeft{
+    top: -2rpx;
+    left: -2rpx;
+    border-right: none;
+    border-bottom: none;
+}
+
+
+.focusRectangle-horn-topRight{
+    top: -2rpx;
+    right: -2rpx;
+    border-left: none;
+    border-bottom: none;
+}
+
+
+.focusRectangle-horn-bottomLeft{
+    bottom: -2rpx;
+    left: -2rpx;
+    border-right: none;
+    border-top: none;
+}
+
+
+.focusRectangle-horn-bottomRight{
+    bottom: -2rpx;
+    right: -2rpx;
+    border-left: none;
+    border-top: none;
+}
+
+
+

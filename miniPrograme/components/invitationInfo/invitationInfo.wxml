@@ -1,0 +1,103 @@
+<view class="container">
+
+    <!--    <view>请帖信息</view>
+
+        <view>请帖表单</view>
+
+        新郎。新娘
+        婚礼日期，时间。地址（去标注）-->
+
+
+    <view class="topInfo">
+        请帖信息
+        <view class="topInfo-close" bindtap="hidePage">关闭</view>
+    </view>
+
+
+    <form bindsubmit="formSubmit">
+        <view class="panel">
+            <view class="form-item">
+                <view class="form-label">
+                    新郎姓名
+                </view>
+                <view class="form-input">
+                    <input type="text" placeholder="请输入新郎姓名" name="nameGentleman"/>
+                </view>
+            </view>
+
+            <view class="form-item">
+                <view class="form-label">
+                    新娘姓名
+                </view>
+                <view class="form-input">
+                    <input type="text" placeholder="请输入新娘姓名" name="nameLady"/>
+                </view>
+            </view>
+        </view>
+
+        <view class="panel">
+
+            <view class="form-item">
+                <view class="form-label">
+                    婚礼日期
+                </view>
+                <view class="form-input">
+                    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01"
+                            bindchange="bindDateChange">
+                        <view class="picker">
+                            {{date}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+
+            <view class="form-item">
+                <view class="form-label">
+                    婚礼时间
+                </view>
+                <view class="form-input">
+                    <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                        <view class="picker">
+                            {{time}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+
+        </view>
+
+        <view class="panel">
+            <view class="form-item">
+                <view class="form-label">
+                    婚礼地址
+                </view>
+                <view class="form-input">
+                    <input type="text" placeholder="请输入婚礼地址"/>
+                </view>
+                <view class="form-icon">
+                    <view class="iconfont icon-zuobiao"></view>
+                </view>
+            </view>
+
+            <map
+                    id="myMap"
+                    style="width: 100%; height: 200px;"
+                    latitude="{{latitude}}"
+                    longitude="{{longitude}}"
+                    markers="{{markers}}"
+                    covers="{{covers}}"
+                    show-location
+            ></map>
+            <!--<view class="btn-area">-->
+            <!--<button bindtap="getCenterLocation" class="page-body-button" type="primary">获取位置</button>-->
+            <!--<button bindtap="moveToLocation" class="page-body-button" type="primary">移动位置</button>-->
+            <!--<button bindtap="translateMarker" class="page-body-button" type="primary">移动标注</button>-->
+            <!--<button bindtap="includePoints" class="page-body-button" type="primary">缩放视野展示所有经纬度</button>-->
+            <!--</view>-->
+
+        </view>
+
+        <button class="bottomBtn" form-type="submit">保存</button>
+    </form>
+
+</view>

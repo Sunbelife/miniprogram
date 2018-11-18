@@ -9,6 +9,9 @@
             <image src="https://dummyimage.com/200x300&text=hello" class="shareImg"></image>
             <view class="shareImgUpdate">更换封面</view>
         </view>
+
+
+
         <view class="shareTypeWrap">
             <button class="shareType" open-type="share">
                 <view class="shareTypeImgWrap">
@@ -16,13 +19,23 @@
                 </view>
                 <view class="shareTypeName">分享到微信好友</view>
             </button>
-            <view class="shareType">
+            <view class="shareType" bindtap="share">
                 <view class="shareTypeImgWrap">
                     <image src="/images/moment.png" class="shareTypeImg"></image>
                 </view>
                 <view class="shareTypeName">分享到朋友圈</view>
             </view>
         </view>
+
+        <view class="content">
+            <view class="high">
+                第一时间收到宾客回复
+            </view>
+            <view>
+                请关注<view class="name">“原野映像电子请帖”</view>服务号
+            </view>
+        </view>
+
     </view>
 
 </view>

@@ -19,6 +19,7 @@
         >
             <view class="pageSort-item"
                   wx:for="{{pages}}"
+                  wx:key="key"
                   data-id="{{item.id}}"
 
                   bindlongpress="movePageLongPressItem"

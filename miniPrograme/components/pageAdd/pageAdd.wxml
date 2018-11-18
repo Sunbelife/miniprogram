@@ -18,7 +18,9 @@
         <!--<view class="type-wrap   {{isNeedFixed?'tab_fixed':''}}" style="top:{{titleHeight+'rpx'}}">-->
         <view class="type-wrap tab_fixed" style="top:{{titleHeight+'rpx'}}">
             <scroll-view scroll-x>
-                <view wx:for="{{type}}" class="type {{item.number === activeType ? 'active' : '' }}"
+                <view wx:for="{{type}}"
+                      wx:key="key"
+                      class="type {{item.number === activeType ? 'active' : '' }}"
                       bindtap="chooseType"
                       data-type="{{item.number}}"
                 >{{item.name}}
@@ -27,7 +29,10 @@
         </view>
 
         <view>
-            <view wx:for="{{tpl}}" class="tpl" bindtap="choosePage">
+            <view wx:for="{{tpl}}"
+                  wx:key="key"
+
+                  class="tpl" bindtap="choosePage">
                 <image src="https://dummyimage.com/200x300&text=hello"></image>
             </view>
 

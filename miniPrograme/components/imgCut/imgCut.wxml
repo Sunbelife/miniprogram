@@ -1,0 +1,32 @@
+<view class="container">
+    <!--
+        模板上换图片  ，（跳到裁剪页）选择图片，裁剪。保存。，
+
+        <view>图片裁剪</view>
+
+        <view>选择图片</view>
+        <view>保存图片</view>
+
+    -->
+    <view class="topInfo">
+        选择图片
+        <view class="topInfo-close" bindtap="hidePage">关闭</view>
+    </view>
+    <view class="focusRectangleWrap">
+
+        <view class="focusRectangle">
+            <view class="focusRectangle-horn focusRectangle-horn-topLeft"></view>
+            <view class="focusRectangle-horn focusRectangle-horn-topRight"></view>
+            <view class="focusRectangle-horn focusRectangle-horn-bottomLeft"></view>
+            <view class="focusRectangle-horn focusRectangle-horn-bottomRight"></view>
+        </view>
+    </view>
+
+
+    <view class="button-fixed">
+        <view class="button">选择图片</view>
+        <view class="button" bindtap="saveImage">保存图片</view>
+    </view>
+
+
+</view>

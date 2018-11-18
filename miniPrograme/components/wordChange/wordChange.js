@@ -16,7 +16,12 @@ Component({
     ready(){
     },
     methods: {
-
+        hidePage(){
+            this.triggerEvent('hidePage');
+        },
+        submit(){
+            this.hidePage();
+        }
     }
 
 });

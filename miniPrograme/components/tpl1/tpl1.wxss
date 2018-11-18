@@ -2,3 +2,27 @@
 /* TODO   把整个样式文件引入不太好，先这样处理 */
 
 @import "../../css/tpl.wxss";
+@import "../../css/app.wxss";
+
+.music-icon{
+    width: 60rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: 1px solid #f73e4e;
+    border-radius: 60rpx;
+}
+
+@keyframes rotateAnimate
+{
+    0%   {transform: rotate(0deg)}
+    50% {transform: rotate(180deg)}
+    100% {transform: rotate(360deg)}
+}
+
+.music-icon.play{
+    animation: rotateAnimate 3s linear infinite;
+}
+
+.music-icon .iconfont{
+    font-size: 60rpx;
+}

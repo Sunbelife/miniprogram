@@ -1,6 +1,7 @@
 const util = require('../../utils/util.js');
 // 写评论
 const api = require('../../utils/api.js');
+const app = getApp();
 /*
  *  self.triggerEvent('writeover');
  * */
@@ -10,71 +11,78 @@ Component({
         item: null // 简化的定义方式
     },
     data: {
+        chooseMusic: '',
         activeType: 1,
         type: [
             {
-                name: "单图",
+                name: "全部",
                 number: 1
             },
             {
-                name: "双图",
+                name: "华语",
                 number: 2
             },
             {
-                name: "多图",
+                name: "日韩",
                 number: 3
             },
             {
-                name: "纯文字",
+                name: "欧美",
                 number: 4
+            },
+            {
+                name: "纯音乐",
+                number: 5
             }
         ],
-        tpl: new Array(10).fill(0),
+        music: [],
         // 需要顶部固定吗？
         scrollTopPage: 0,
         isNeedFixed: false,
-        isMove: false,
-        changeTime: 0,
         titleHeight: 90,
         // changeTime: 300,
         // px
         tabOffsetTop: 90 + 90
     },
-    onLoad(){
-
-
+    ready(){
+        this.genMusic();
     },
     methods: {
+        hidePage(){
+            this.triggerEvent('hidePage');
+        },
         chooseType: function (e) {
             const type = util.data(e, "type");
             this.setData({
                 activeType: type
             });
         },
+        chooseMusic: function (e) {
+            const no = util.data(e, "no");
+            this.setData({
+                chooseMusic: no
+            });
+        },
+        saveSet(){
+            this.hidePage();
+
+        },
+        genMusic(){
+            const music = [];
+            const arr = new Array(20).fill(0);
+            util.each(arr, (k, v)=> {
+                music.push({
+                    no: k,
+                    name: "音乐" + k,
+                    audioUrl: ''
+                });
+            });
+            this.setData({
+                music: music
+            });
+        },
         loadMore(){
 
-        },
-        choosePage(){
-         this.hidePageAdd();
-        },
-
-        show(){
-            this.setData({
-                isMove: false
-            });
-            setTimeout(()=> {
-                this.setData({
-                    isMove: true
-                })
-            }, this.data.changeTime)
-        },
-        hidePageAdd(){
-            this.setData({
-                isMove: false
-            });
-            setTimeout(()=> {
-                this.triggerEvent('hidePage');
-            }, this.data.changeTime);
         },
         // 页面滚动回调
         pageScroll(e) {

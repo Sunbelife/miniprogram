@@ -1,0 +1,77 @@
+
+/* TODO   把整个样式文件引入不太好，先这样处理 */
+
+@import "../../css/tpl.wxss";
+@import "../../css/app.wxss";
+
+.topInfo{
+    z-index: 200;
+}
+.type-wrap{
+    border-bottom: 1rpx solid #ddd;
+}
+
+.type{
+    /*width: 150rpx;*/
+    width: 110rpx;
+    text-align: center;
+    display: inline-block;
+    padding: 20rpx 0;
+    margin: 0 20rpx;
+}
+
+.type.active{
+    border-bottom: 5rpx solid red;
+}
+
+
+
+.tab_fixed{
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    background-color: white;
+}
+
+
+.music-item{
+    padding-left: 80rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    position: relative;
+}
+
+.music-item .iconfont{
+    position: absolute;
+    left: 20rpx;
+    top: 0;
+    color: red;
+    display: none;
+}
+
+.music-item.active  .iconfont{
+    display: block;
+}
+
+.music-item-content{
+    border-bottom: 1px solid #ddd;
+}
+
+.buttonSpace{
+    height: 130rpx;
+}
+
+.button{
+    background-color: #f83146;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    color: white;
+}
+
+.button-fixed{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

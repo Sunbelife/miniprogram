@@ -11,4 +11,9 @@
         或许你还有些许担心，
     </view>
 
+    <!-- 音乐logo -->
+    <view class="music-icon play" wx:if="{{false}}">
+        <view class="iconfont icon-yinyue"></view>
+    </view>
+
 </view>

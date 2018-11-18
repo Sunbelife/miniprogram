@@ -5,6 +5,10 @@
     "tpl1": "/components/tpl1/tpl1",
     "pageSort": "/components/pageSort/pageSort",
     "pageSet": "/components/pageSet/pageSet",
-    "pageAdd": "/components/pageAdd/pageAdd"
+    "pageAdd": "/components/pageAdd/pageAdd",
+    "musicChoose": "/components/musicChoose/musicChoose",
+    "imgCut": "/components/imgCut/imgCut",
+    "wordChange": "/components/wordChange/wordChange",
+    "invitationInfo": "/components/invitationInfo/invitationInfo"
   }
 }

@@ -1,7 +1,9 @@
 <view class="tpl-page">
     <view class="container">
 
-        <view class="topInfo">
+        <view class="topInfo"
+
+        >
             设置
             <view class="topInfo-close" bindtap="hidePage">关闭</view>
         </view>
@@ -12,11 +14,15 @@
         -->
         <view class="form-ele">
             基本信息
-            <view class="form-ele-val">修改 <view class=" iconfont icon-right"></view></view>
+            <view class="form-ele-val"
+                bindtap="showInvitationInfo"
+            >修改 <view class=" iconfont icon-right"></view></view>
         </view>
         <view class="form-ele">
             请帖音乐
-            <view class="form-ele-val">love love （音乐名）</view>
+            <view class="form-ele-val"
+                  bindtap="showMusicChoose"
+            >love love （音乐名）</view>
         </view>
         <view class="form-ele">
             弹幕
@@ -26,9 +32,13 @@
         </view>
 
 
-        <view class="form-ele text-center">复制请帖</view>
-        <view class="form-ele text-center del">删除请帖</view>
+        <view class="form-ele text-center" bindtap="copyTpl">复制请帖</view>
+        <view class="form-ele text-center del" bindtap="deleteTpl">删除请帖</view>
+
+
 
     </view>
+
+
 
 </view>

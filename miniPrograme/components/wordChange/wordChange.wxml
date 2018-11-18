@@ -1,0 +1,7 @@
+<!-- 模板上换文字 -->
+<view class="edit-wrap">
+    <view class="edit-ele-wrap">
+        <textarea bindblur="bindTextAreaBlur" placeholder="" class="edit-ele"/>
+    </view>
+    <view class="edit-button" bindtap="submit">确定</view>
+</view>

@@ -1,33 +1,5 @@
-.edit-wrap{
-    position: fixed;
-    bottom: 0;
-    background-color: white;
-    display: flex;
-    box-sizing: border-box;
-    padding: 20rpx;
-    width: 100%;
-}
 
-.edit-ele-wrap{
-    flex: 1;
-}
-
-.edit-ele{
-    height: 150rpx;
-    background-color: #aaaaaa;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.edit-button{
-    color: #f83146;
-    height: 150rpx;
-    line-height: 150rpx;
-    width: 120rpx;
-    text-align: center;
-}
-
-
+/* 图片和文字 */
 .editEle-wrap{
     border: 1px solid #f83146;
     width: 90rpx;
@@ -50,29 +22,17 @@
     font-size: 38rpx;
 }
 
-.music-icon{
-    width: 60rpx;
-    height: 60rpx;
-    line-height: 60rpx;
-    border: 1px solid #f73e4e;
-    border-radius: 60rpx;
+/* 定位 */
+.editEle-wrap-img{
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-
-@keyframes rotateAnimate
-{
-    0%   {transform: rotate(0deg)}
-    50% {transform: rotate(180deg)}
-    100% {transform: rotate(360deg)}
+.editEle-wrap-word{
+    position: absolute;
+    top: 100rpx;
+    left: 0;
 }
-
-.music-icon.play{
-    animation: rotateAnimate 3s linear infinite;
-}
-
-.music-icon .iconfont{
-    font-size: 60rpx;
-}
-
 
 /*
     底部菜单
@@ -109,12 +69,3 @@
 
 }
 
-.full-page{
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    background: white;
-    z-index: 20;
-}

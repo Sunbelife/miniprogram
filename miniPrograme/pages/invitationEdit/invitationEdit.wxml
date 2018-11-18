@@ -2,29 +2,44 @@
 
     <tpl1 bindpageClick="pageClick"></tpl1>
 
-    <view class="full-page" hidden="{{!isShowPageAdd}}">
-        <pageAdd bindhidePageAdd="hidePageAdd" id="pageAdd"></pageAdd>
+    <!-- 添加新页面 -->
+    <view class="full-page" wx:if="{{isShowPageAdd}}">
+        <pageAdd bindhidePage="hidePageAdd" id="pageAdd"></pageAdd>
     </view>
-    <view class="full-page" hidden="{{!isShowPageSet}}">
-        <pageSet id="pageSet"  bindhidePage="hidePageSet" ></pageSet>
+    <!-- 页面设置 -->
+    <view class="full-page" wx:if="{{isShowPageSet}}">
+        <pageSet id="pageSet"
+                 bindhidePage="hidePageSet"
+                 bindshowInvitationInfo="showInvitationInfo"
+                 bindshowMusicChoose="showMusicChoose"
+        ></pageSet>
     </view>
-    <view hidden="{{!isShowPageSort}}">
+    <!-- 页面排序 -->
+    <view wx:if="{{isShowPageSort}}">
         <pageSort id="pageSort"  pages="{{pages}}"  bindhidePage="hidePageSort" ></pageSort>
     </view>
 
-    <!--
-        <view>请帖编辑</view>
+    <!-- 请帖信息 -->
+    <view class="full-page full-page-over" wx:if="{{isShowInvitationInfo}}">
+        <invitationInfo id="invitationInfo"   bindhidePage="hideInvitationInfo" ></invitationInfo>
+    </view>
 
-        <view>
-            模板上换图片  ，（跳到裁剪页）选择图片，裁剪。保存。，
-            模板上换文字。本页。编辑框
-            添加页面。  （跳到添加新页）   单图 ，多图，双图。文字
-            页面排序。 删除页面。长按排序
-            设置。  （跳到设置页面）  基本信息 ，音乐 ，弹幕 ，复制请帖，删除请帖
-            预览  （跳到预览页面）  发送按钮
-            发送 （跳到发送页面），设置封面图
-        </view>
-    -->
+    <!-- 音乐选择 -->
+    <view class="full-page full-page-over" wx:if="{{isShowMusicChoose}}">
+        <musicChoose id="musicChoose" bindhidePage="hideMusicChoose" ></musicChoose>
+    </view>
+
+    <!-- 图片裁剪 -->
+    <view class="full-page full-page-over" wx:if="{{isShowImgCut}}">
+        <imgCut id="imgCut" bindhidePage="hideImgCut" ></imgCut>
+    </view>
+
+    <!-- 文字编辑 -->
+    <view class="" wx:if="{{isShowWordChange}}">
+        <wordChange id="wordChange" bindhidePage="hideWordChange" ></wordChange>
+    </view>
+
+
 
     <view class="handle">
         <view class="handle-item" bindtap="showPageAdd">
@@ -40,7 +55,7 @@
             <view class="handle-name">设置</view>
         </view>
         <view class="handle-item">
-            <view class="iconfont icon-yulan"></view>
+            <view class="iconfont icon-yulan" bindtap="preview"></view>
             <view class="handle-name">预览</view>
         </view>
         <view class="handle-send" bindtap="send">
@@ -50,100 +65,23 @@
         </view>
     </view>
 
-    <!--
-        TODO  拖动排序
-    -->
-    <!--&lt;!&ndash; 页面排序 &ndash;&gt;-->
-    <!--<view class="pageSort" hidden="{{!isShowSort}}">-->
-        <!--<view class="pageSort-title">-->
-            <!--长按拖动排序{{scrollViewLeft}}   <view class="pageSort-title-close" bindtap="closeSort">关闭</view>-->
-        <!--</view>-->
-
-        <!--&lt;!&ndash;-->
-                             <!--style="height: 400rpx;"  否则  scroll-x  false 会抖动-->
-
-        <!--&ndash;&gt;-->
-        <!--<scroll-view scroll-x="{{!touchStartMove}}"-->
-                     <!--bindscroll="scrollViewScroll"-->
-                     <!--style="height: 350rpx;"-->
-        <!--&gt;-->
-            <!--<view class="pageSort-item-wrap" style="width:{{pageSortWidth}}"-->
-                  <!--bindtouchstart="movePageStart"-->
-                  <!--bindtouchend="movePageEnd"-->
-                  <!--bindtouchmove="movePageMove"-->
-            <!--&gt;-->
-                <!--<view class="pageSort-item"-->
-                      <!--wx:for="{{pages}}"-->
-                      <!--data-id="{{item.id}}"-->
-
-                      <!--bindlongpress="movePageLongPressItem"-->
-                      <!--data-index="{{index}}"-->
-                <!--&gt;-->
-                    <!--<view class="pageSort-item-drop"-->
-                          <!--wx:if="{{item.canRemove}}"-->
-                          <!--bindtap="removePage"-->
-                          <!--data-id="{{item.id}}"-->
-                          <!--hidden="{{touchStartMove && moveItem.id === item.id}}"-->
-                          <!--data-index="{{index}}"-->
-                    <!--&gt;-->
-                        <!--<view class="iconfont icon-sub"></view>-->
-                    <!--</view>-->
-                    <!--<view class="pageSort-item-img-wrap active"-->
-                          <!--hidden="{{touchStartMove && moveItem.id === item.id}}"-->
-                    <!--&gt;-->
-                        <!--<image class="pageSort-item-img"-->
-                               <!--src="https://dummyimage.com/200x300&text={{item.nameImage}}"></image>-->
-                    <!--</view>-->
-                    <!--<view class="pageSort-item-title"-->
-                          <!--hidden="{{touchStartMove && moveItem.id === item.id}}"-->
-                    <!--&gt;{{item.name}}</view>-->
-                <!--</view>-->
 
 
-
-            <!--</view>-->
-        <!--</scroll-view>-->
-
-    <!--</view>-->
-
-
-    <!--&lt;!&ndash; 这个是复制移动的元素 &ndash;&gt;-->
-    <!--<view class="pageSort-item"-->
-          <!--wx:if="{{touchStartMove}}"-->
-          <!--style="position: absolute;top:{{touchStartMoveItem.top}};left:{{touchStartMoveItem.left}}"-->
-    <!--&gt;-->
-        <!--<view class="pageSort-item-img-wrap active">-->
-            <!--<image class="pageSort-item-img"-->
-                   <!--src="https://dummyimage.com/200x300&text={{moveItem.nameImage}}"></image>-->
-        <!--</view>-->
-        <!--<view class="pageSort-item-title">{{moveItem.name}}</view>-->
-    <!--</view>-->
-
-    <!-- 音乐logo -->
-    <view class="music-icon play" wx:if="{{false}}">
-        <view class="iconfont icon-yinyue"></view>
-    </view>
 
     <!-- 文字编辑 -->
-    <view class="editEle-wrap" hidden="{{true}}">
+    <view class="editEle-wrap editEle-wrap-word" hidden="{{false}}" bindtap="showWordChange">
         <view class="editEle-wrap2">
             <view class="iconfont icon-wenzibianji"></view>
         </view>
     </view>
+
     <!-- 图片编辑 -->
-    <view class="editEle-wrap" hidden="{{true}}">
+    <view class="editEle-wrap editEle-wrap-img" hidden="{{false}}" bindtap="showImgCut">
         <view class="editEle-wrap2">
             <view class="iconfont icon-tupianbianji"></view>
         </view>
     </view>
 
 
-    <!-- 模板上换文字 -->
-    <view class="edit-wrap" hidden="{{true}}">
-        <view class="edit-ele-wrap">
-            <textarea bindblur="bindTextAreaBlur" placeholder="" class="edit-ele"/>
-        </view>
-        <view class="edit-button">确定</view>
-    </view>
 
 </view>
