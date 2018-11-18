@@ -1,0 +1,85 @@
+
+/* TODO   把整个样式文件引入不太好，先这样处理 */
+
+@import "../../../css/tpl.wxss";
+@import "../../../css/app.wxss";
+
+
+.title{
+    padding: 20rpx;
+    text-align: center;
+    position: absolute;
+    top: 250rpx;
+    left: 50%;
+    border-radius: 15rpx;
+    margin-left:-175rpx;
+    width: 350rpx;
+    z-index: 1;
+    background: white
+
+}
+
+.image1{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top:0;
+}
+
+.text{
+    position: absolute;
+    bottom: 250rpx;
+    left: 50%;
+    border-radius: 15rpx;
+    margin-left:-275rpx;
+    width: 550rpx;
+    font-size: 26rpx;
+}
+
+
+
+.animate-toBottom{
+    transition: all .3s;
+    top: -50rpx;
+    opacity: 0;
+}
+
+.animate-toBottom.animated{
+    opacity: 1;
+    top: 250rpx;
+}
+
+
+.animate-toLeft{
+    transition: all .3s;
+    left: 5vw;
+    opacity: 0;
+}
+
+.animate-toLeft.animated{
+    opacity: 1;
+    left:0;
+}
+
+
+.animate-toRight{
+    transition: all .3s ;
+    left: -750rpx;
+    opacity: 0;
+}
+
+.animate-toRight.animated{
+    opacity: 1;
+    left:50%;
+}
+
+
+.editSpace1{
+    top: 50vh;
+    left: 375rpx;
+}
+
+.editSpace2{
+    bottom: 250rpx;
+    left: 375rpx;
+}

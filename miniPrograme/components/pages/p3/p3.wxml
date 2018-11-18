@@ -1,0 +1,8 @@
+<image src="https://dummyimage.com/250x350&text=MARRY" class="image1 animate-Bottom  {{animatedStep0 ? 'animated' : '' }}"></image>
+<image src="https://dummyimage.com/250x350&text=MARRY" class="image2 animate-toTop  {{animatedStep1 ? 'animated' : '' }}"></image>
+
+
+
+<!--<view class="editSpace editSpace1"></view>-->
+<!--<view class="editSpace editSpace2"></view>-->
+

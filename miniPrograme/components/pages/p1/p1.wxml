@@ -1,0 +1,15 @@
+<view class="title animate-toBottom {{animatedStep1 ? 'animated' : '' }} ">新郎 & 新娘的婚礼</view>
+
+<image src="https://dummyimage.com/250x350&text=marry" class="image1 animate-toLeft {{animatedStep0 ? 'animated' : '' }}"></image>
+
+
+
+
+<view class="text animate-toRight  {{animatedStep2 ? 'animated' : '' }}">
+    {{text}}
+</view>
+
+
+<!--<view class="editSpace editSpace1"></view>-->
+<!--<view class="editSpace editSpace2"></view>-->
+

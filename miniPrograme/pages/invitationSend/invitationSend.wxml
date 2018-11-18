@@ -5,8 +5,8 @@
     <view class="spouseTitle">新郎&新娘的婚礼邀请</view>
 
     <view class="shareWrap">
-        <view class="shareImgWrap">
-            <image src="https://dummyimage.com/200x300&text=hello" class="shareImg"></image>
+        <view class="shareImgWrap" bindtap="addPic">
+            <image src="{{shareImg}}" class="shareImg"></image>
             <view class="shareImgUpdate">更换封面</view>
         </view>
 

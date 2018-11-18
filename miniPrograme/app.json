@@ -1,6 +1,10 @@
 {
   "pages":[
     "pages/invitationEdit/invitationEdit",
+    "pages/tplDev/tplDev",
+
+    "pages/tplPreview/tplPreview",
+
     "pages/invitationSend/invitationSend",
 
     "pages/nav/nav",
@@ -11,7 +15,6 @@
     "pages/tplMusicChoose/tplMusicChoose",
     "pages/tplImageCut/tplImageCut",
     "pages/invitationInfo/invitationInfo",
-    "pages/tplPreview/tplPreview",
     "pages/startMake/startMake",
     "pages/shareSuccess/shareSuccess",
     "pages/home/home",

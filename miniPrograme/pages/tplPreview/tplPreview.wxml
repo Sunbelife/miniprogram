@@ -3,6 +3,7 @@
         1.滑动播放模板。播放音乐
 
         2.开始制作-->
+    <tpl1></tpl1>
 
     <button class="bottomBtn">发送</button>
 </view>

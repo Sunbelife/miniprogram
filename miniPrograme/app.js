@@ -36,6 +36,7 @@ App({
   },
  
   globalData: {
+    domain: "http://www.baidu.com",
     isDev: 1,
     userInfo: null
   }

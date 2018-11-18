@@ -1,8 +1,57 @@
 .tpl-page{
     height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
+.page-wrap{
+ /*transform: translateY(20px);*/
+    transition: all .3s;
+}
+
+.page-item{
+    position: relative;
+    height: 100vh;
+}
+
+.editSpace{
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    background: green;
+    z-index: 100;
+}
+
+/* 音乐 */
+.music-icon{
+    width: 60rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: 1px solid #f73e4e;
+    border-radius: 60rpx;
+    position: absolute;
+    z-index: 10;
+    top: 30rpx;
+    right: 50rpx;
+}
+
+@keyframes rotateAnimate
+{
+    0%   {transform: rotate(0deg)}
+    50% {transform: rotate(180deg)}
+    100% {transform: rotate(360deg)}
+}
+
+.music-icon.play{
+    animation: rotateAnimate 3s linear infinite;
+}
+
+.music-icon .iconfont{
+    font-size: 60rpx;
+}
+
+
+/*   -------------  */
 
 
 .topInfo{

@@ -1,0 +1,8 @@
+<image src="https://dummyimage.com/250x350&text=lOVE" class="image1 animate-toRight  {{animatedStep0 ? 'animated' : '' }}"></image>
+<image src="https://dummyimage.com/250x350&text=YOU" class="image2 animate-toLeft  {{animatedStep1 ? 'animated' : '' }}"></image>
+
+
+
+<!--<view class="editSpace editSpace1"></view>-->
+<!--<view class="editSpace editSpace2"></view>-->
+

@@ -1,19 +1,24 @@
-<view class="tpl-page" bindtap="pageClick">
-    张三&李四的婚礼
-
-    <image src="https://dummyimage.com/200x300&text=hello"></image>
-
-
-    <view>
-        曾经我们在同一个学校学习，
-        而今我们在同一个城市打拼。
-        我们相互扶持，谱写我们美好的明天！
-        或许你还有些许担心，
-    </view>
+<view class="tpl-page"
+      bindtouchstart="touchStart"
+      bindtouchend="touchEnd"
+      bindtouchmove="touchMove"
+>
 
     <!-- 音乐logo -->
-    <view class="music-icon play" wx:if="{{false}}">
+    <view class="music-icon {{ isPlay ? 'play' : '' }}" bindtap="togglePlay">
         <view class="iconfont icon-yinyue"></view>
     </view>
+
+   <view class="page-wrap" style="transform: translateY({{pageTranslateY}}vh)">
+       <view class="page-item">
+           <p1 id="p0"></p1>
+       </view>
+       <view class="page-item">
+           <p4 id="p1"></p4>
+       </view>
+       <view class="page-item">
+           <p3 id="p2"></p3>
+       </view>
+   </view>
 
 </view>

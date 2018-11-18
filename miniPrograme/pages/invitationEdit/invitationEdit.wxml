@@ -1,6 +1,6 @@
 <view class="container">
 
-    <tpl1 bindpageClick="pageClick"></tpl1>
+    <tpl1 bindpageClick="pageClick" bindpageMove="pageMove"></tpl1>
 
     <!-- 添加新页面 -->
     <view class="full-page" wx:if="{{isShowPageAdd}}">
@@ -66,21 +66,28 @@
     </view>
 
 
+    <view wx:for="{{editEle}}" wx:key="key">
+        <!-- 文字编辑 -->
+        <view class="editEle-wrap editEle-wrap-word"
+              style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}}"
+              hidden="{{!(item.type === 'text')}}" bindtap="showWordChange">
+            <view class="editEle-wrap2">
+                <view class="iconfont icon-wenzibianji"></view>
+            </view>
+        </view>
 
-
-    <!-- 文字编辑 -->
-    <view class="editEle-wrap editEle-wrap-word" hidden="{{false}}" bindtap="showWordChange">
-        <view class="editEle-wrap2">
-            <view class="iconfont icon-wenzibianji"></view>
+        <!-- 图片编辑 -->
+        <view class="editEle-wrap editEle-wrap-img"
+              style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}}"
+              hidden="{{!(item.type === 'image')}}" bindtap="showImgCut">
+            <view class="editEle-wrap2">
+                <view class="iconfont icon-tupianbianji"></view>
+            </view>
         </view>
     </view>
 
-    <!-- 图片编辑 -->
-    <view class="editEle-wrap editEle-wrap-img" hidden="{{false}}" bindtap="showImgCut">
-        <view class="editEle-wrap2">
-            <view class="iconfont icon-tupianbianji"></view>
-        </view>
-    </view>
+
+
 
 
 

@@ -55,6 +55,7 @@ function objToArr(obj) {
     return arr;
 }
 
+//  k,v
 // 通过字面量方式实现的函数each
 function each(object, callback) {
     var type = (function () {
@@ -174,7 +175,7 @@ function goPage(e) {
     let id = "";
     if (e.currentTarget) {
         page = data(e, "page");
-         id = data(e, "id");
+        id = data(e, "id");
     } else {
         // 字符串
         page = e;
@@ -225,7 +226,93 @@ function swapArray(arr, index1, index2) {
     return arr;
 }
 
+
+function wxUpload(config) {
+    wx.showLoading({
+        title: '正在上传图片...'
+    });
+
+    wx.uploadFile({
+        url: config.url,
+        filePath: config.path,
+        name: config.name,//这里根据自己的实际情况改
+        formData: null,//这里是上传图片时一起上传的数据
+        success: (resp) => {
+            if (resp.statusCode === 200) {
+                const myData = JSON.parse(resp.data);
+                config.success(myData);
+            }
+        },
+        fail: (fail) => {
+            console.log("fail:" + fail);
+            config.success(fail);
+            toast("上传图片失败");
+        },
+        complete: () => {
+            wx.hideLoading();
+        }
+    });
+}
+
+function toast(text) {
+    wx.showToast({
+        title: text,
+        icon: 'none',
+        duration: 2000
+    })
+}
+
+function setTimeOutFlag(that, count, cur) {
+    setTimeout(()=> {
+        that.setData({
+            ['animatedStep' + cur]: true
+        });
+        cur++;
+        if (cur <= count) {
+            setTimeOutFlag(that, count, cur);
+        }
+    }, 300)
+}
+function setTimeOutFlagHide(that, count) {
+
+    each(new Array(count).fill("12312"), (k, v)=> {
+        that.setData({
+            ['animatedStep' + k]: false
+        });
+        // console.log(that.data['animatedStep' + k]);
+    });
+
+
+}
+
+function isDev() {
+    return getApp().globalData.isDev;
+}
+function posCssComplete(arr) {
+    // 对象补齐
+    each(arr, (k, v)=> {
+        if (!v.left) {
+            v.left = "auto";
+        }
+        if (!v.right) {
+            v.right = "auto";
+        }
+        if (!v.top) {
+            v.top = "auto";
+        }
+        if (!v.bottom) {
+            v.bottom = "auto";
+        }
+    });
+}
+
 module.exports = {
+    posCssComplete,
+    isDev,
+    setTimeOutFlag,
+    setTimeOutFlagHide,
+    toast,
+    wxUpload,
     swapArray,
     randomName,
     randomArrOne,
@@ -234,7 +321,6 @@ module.exports = {
     dateFormat,
     goPage,
     rpx2px,
-    isDev,
     arrToObjKV,
     arrToObj,
     objToArr,

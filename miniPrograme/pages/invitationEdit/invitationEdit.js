@@ -32,6 +32,8 @@ const util = require('../../utils/util.js');
  * */
 Page({
     data: {
+        // 编辑元素数组
+        editEle: [],
         pages: new Array(10).fill({}),
         isShowSort: false,
         isShowPageAdd: false,
@@ -77,11 +79,21 @@ Page({
                 // this.showMusicChoose();
             }
 
-          
-
         }
 
 
+    },
+    pageMove(e){
+        console.log(e);
+        this.setData({
+            editEle: []
+        });
+       //  延时显示一下编辑
+       setTimeout(()=>{
+           this.setData({
+               editEle:e.detail
+           });
+       },300)
     },
     dataGen(){
         const pages = this.data.pages;
