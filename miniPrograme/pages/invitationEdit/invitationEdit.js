@@ -86,8 +86,8 @@ Page({
     dataGen(){
         const pages = this.data.pages;
         pages.forEach(function (v, k) {
-            v.nameImage = encodeURIComponent(util.randomName());
             v.name = util.randomName();
+            v.nameImage = encodeURIComponent(v.name);
             v.id = k;
             v.canRemove = 1;
         });
