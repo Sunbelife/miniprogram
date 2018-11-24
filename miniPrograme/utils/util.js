@@ -26,7 +26,8 @@ function arrToObj(arr, key) {
     }
     const obj = {};
     for (let i = 0; i < arr.length; i++) {
-        obj[arr[i][key]] = arr[i];
+        obj[arr[i][key]] = {};
+        extend(true, obj[arr[i][key]], arr[i]);
     }
     return obj;
 }
@@ -173,9 +174,11 @@ var pages = {
 function goPage(e) {
     let page = "";
     let id = "";
+    let handle = "";
     if (e.currentTarget) {
         page = data(e, "page");
         id = data(e, "id");
+        handle = data(e, "handle");
     } else {
         // 字符串
         page = e;
@@ -190,6 +193,12 @@ function goPage(e) {
         args.push({
             key: "id",
             value: id
+        });
+    }
+    if (handle) {
+        args.push({
+            key: "handle",
+            value: handle
         });
     }
     if (args.length > 0) {
@@ -254,6 +263,44 @@ function wxUpload(config) {
     });
 }
 
+
+var extend = (function () {
+    var isObjFunc = function (name) {
+        var toString = Object.prototype.toString
+        return function () {
+            return toString.call(arguments[0]) === '[object ' + name + ']'
+        }
+    }
+    var isObject = isObjFunc('Object'), isArray = isObjFunc('Array'), isBoolean = isObjFunc('Boolean')
+    return function extend() {
+        var index = 0, isDeep = false, obj, copy, destination, source, i
+        if (isBoolean(arguments[0])) {
+            index = 1
+            isDeep = arguments[0]
+        }
+        for (i = arguments.length - 1; i > index; i--) {
+            destination = arguments[i - 1]
+            source = arguments[i]
+            if (isObject(source) || isArray(source)) {
+                console.log(source)
+                for (var property in source) {
+                    obj = source[property]
+                    if (isDeep && ( isObject(obj) || isArray(obj) )) {
+                        copy = isObject(obj) ? {} : []
+                        var extended = extend(isDeep, copy, obj)
+                        destination[property] = extended
+                    } else {
+                        destination[property] = source[property]
+                    }
+                }
+            } else {
+                destination = source
+            }
+        }
+        return destination
+    }
+})()
+
 function toast(text) {
     wx.showToast({
         title: text,
@@ -285,9 +332,47 @@ function setTimeOutFlagHide(that, count) {
 
 }
 
+function echoPage() {
+    let arr = [];
+    let arrChild = [];
+    arr = arr.concat([arrChild]);
+    for (let i = 1; i <= 70; i++) {
+        console.log(i);
+        if (arrChild.length < 7) {
+            arrChild.push(i);
+        } else {
+            arrChild = [];
+            arr = arr.concat([arrChild]);
+            arrChild.push(i);
+        }
+    }
+    console.log(arr);
+    console.log(JSON.stringify(arr));
+}
 function isDev() {
     return getApp().globalData.isDev;
 }
+function pageComponent() {
+    const pageComponent = {};
+    for (let i = 1; i <= 70; i++) {
+        pageComponent["p" + i] = `/components/pages/p${i}/p${i}`
+    }
+    console.log(pageComponent);
+}
+
+function conponentRef() {
+    const arr = [];
+    for (let i = 1; i <= 70; i++) {
+        let a = `<p${i} id="{{index}}" wx:if="{{item.id === ${i}}}"></p${i}>`;
+        arr.push(a);
+    }
+    console.log(JSON.stringify(arr));
+}
+conponentRef();
+
+
+
+
 function posCssComplete(arr) {
     // 对象补齐
     each(arr, (k, v)=> {
@@ -309,9 +394,12 @@ function posCssComplete(arr) {
 module.exports = {
     posCssComplete,
     isDev,
+    echoPage,
+    pageComponent,
     setTimeOutFlag,
     setTimeOutFlagHide,
     toast,
+    extend,
     wxUpload,
     swapArray,
     randomName,

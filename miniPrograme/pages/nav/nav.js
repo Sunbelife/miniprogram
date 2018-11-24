@@ -1,4 +1,5 @@
 const app = getApp();
+const util = require('../../utils/util.js');
 
 Page({
     data: {
@@ -77,6 +78,6 @@ Page({
     },
 
     onLoad: function () {
-
+util.echoPage();
     }
 });

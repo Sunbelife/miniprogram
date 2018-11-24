@@ -60,3 +60,17 @@
     bottom: 25vh;
     right: 25vw;
 }
+
+.showBanquetInfoBtn{
+    position: absolute;
+    bottom: 300rpx;
+    left: 50%;
+    margin-left: -125rpx;
+    /*padding: 0 50rpx;*/
+    width: 250rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #f83146;
+    box-sizing: border-box;
+    color: white;
+}

@@ -30,7 +30,7 @@
     /*border: 1px solid #f73e4e;*/
     border-radius: 60rpx;
     position: absolute;
-    z-index: 10;
+    z-index: 5;
     top: 30rpx;
     right: 50rpx;
 }

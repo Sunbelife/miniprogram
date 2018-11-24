@@ -1,0 +1,80 @@
+
+/* TODO   把整个样式文件引入不太好，先这样处理 */
+
+@import "../../css/tpl.wxss";
+@import "../../css/app.wxss";
+
+.container{
+    background: white;
+    width: 750rpx;
+    display: inline-block;
+    /*min-height: auto;*/
+}
+
+.form-label{
+    text-align: left;
+}
+.form-item {
+    height: 100rpx;
+    line-height: 100rpx;
+    vertical-align: middle;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+.form-input,.form-input input{
+    height: 100rpx;
+    line-height: 100rpx;
+}
+.addPlusWrap{
+    /*width: 200rpx;*/
+    height: 100rpx;
+    /*padding-top:16rpx;*/
+    line-height: 100rpx;
+}
+.addPlusWrap .plus,
+.addPlusWrap .add{
+    display: inline-block;
+    height: 50rpx;
+    line-height: 40rpx;
+    padding: 3rpx 0;
+    width: 70rpx;
+}
+.addPlusWrap .plus{
+
+}
+.addPlusWrap .add{
+
+}
+.addPlusInput{
+    display: inline-block;
+    width: 100rpx;
+    text-align: center;
+}
+
+.confirmBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 50rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    background-color: #f83146;
+    box-sizing: border-box;
+    color: white;
+}
+
+
+
+.button{
+    box-sizing: border-box;
+    width: 600rpx;
+    margin-left: 75rpx;
+    margin-top: 100rpx;
+    background-color: #f83146;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    color: white;
+}
+
+

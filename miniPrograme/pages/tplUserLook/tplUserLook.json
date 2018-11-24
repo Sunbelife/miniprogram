@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "预览",
+  "usingComponents": {
+    "tpl1": "/components/tpl1/tpl1",
+    "saySomething": "/components/saySomething/saySomething",
+    "banquetInfoFill": "/components/banquetInfoFill/banquetInfoFill"
+  }
+}

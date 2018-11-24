@@ -23,6 +23,7 @@
                   data-id="{{item.id}}"
 
                   bindlongpress="movePageLongPressItem"
+                  bindtap="movePageTap"
                   data-index="{{index}}"
             >
                 <view class="pageSort-item-drop"
@@ -38,11 +39,11 @@
                       hidden="{{touchStartMove && moveItem.id === item.id}}"
                 >
                     <image class="pageSort-item-img"
-                           src="https://dummyimage.com/200x300&text={{item.nameImage}}"></image>
+                           src="{{item.imgSrc}}"></image>
                 </view>
                 <view class="pageSort-item-title"
                       hidden="{{touchStartMove && moveItem.id === item.id}}"
-                >{{item.name}}</view>
+                >{{item.zh}}</view>
             </view>
 
 
@@ -59,7 +60,7 @@
 >
     <view class="pageSort-item-img-wrap active">
         <image class="pageSort-item-img"
-               src="https://dummyimage.com/200x300&text={{moveItem.nameImage}}"></image>
+               src="{{moveItem.imgSrc}}"></image>
     </view>
-    <view class="pageSort-item-title">{{moveItem.name}}</view>
+    <view class="pageSort-item-title">{{moveItem.zh}}</view>
 </view>

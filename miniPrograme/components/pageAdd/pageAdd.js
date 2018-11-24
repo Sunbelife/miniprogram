@@ -1,4 +1,5 @@
 const util = require('../../utils/util.js');
+const tplConfig = require('../../utils/tplConfig.js');
 // 写评论
 const api = require('../../utils/api.js');
 /*
@@ -29,7 +30,7 @@ Component({
                 number: 4
             }
         ],
-        tpl: new Array(10).fill(0),
+        tpl: tplConfig.pagesArr,
         // 需要顶部固定吗？
         scrollTopPage: 0,
         isNeedFixed: false,
@@ -54,8 +55,9 @@ Component({
         loadMore(){
 
         },
-        choosePage(){
-         this.hidePageAdd();
+        choosePage(e){
+            const id = util.data(e, "id");
+            this.triggerEvent('choosePage',id);
         },
 
         show(){

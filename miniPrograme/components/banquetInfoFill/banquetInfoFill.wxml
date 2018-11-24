@@ -1,0 +1,76 @@
+<view class="container">
+    <!--
+
+    赴宴信息填写
+
+    -->
+
+    <view class="topInfo">
+        填写赴宴信息
+        <view class="topInfo-close" bindtap="hidePage">关闭</view>
+    </view>
+    <view style="height:150rpx;"></view>
+
+    <form bindsubmit="confirmComment">
+        <view>
+            <view class="form-item">
+                <view class="form-label">
+                    您的姓名
+                </view>
+                <view class="form-input">
+                    <input type="text" placeholder="请输入您的姓名" name="name" cursor-spacing='20' value="{{name}}"/>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="form-label">
+                    是否赴宴
+                </view>
+                <view class="form-input">
+                    <radio-group class="radio-group" bindchange="radioChange">
+                        <label class="radio" wx:for="{{items}}">
+                            <radio value="{{item.name}}" checked="{{item.checked}}"/>
+                            {{item.value}}
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="form-label">
+                    交通工具
+                </view>
+                <view class="form-input">
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <view class="picker">
+                            {{array[index]}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="form-label">
+                    联系电话
+                </view>
+                <view class="form-input">
+                    <input type="text" placeholder="请输入您的联系电话"
+                           value="{{tel}}"
+                           name="tel" cursor-spacing='20' maxlength="11"/>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="form-label">
+                    赴宴人数
+                </view>
+                <view class=" addPlusWrap">
+                    <button class="plus" bindtap="userPlus">-</button>
+                    <input type="text" placeholder="赴宴人数" class="addPlusInput" value="{{userCount}}" readonly disabled/>
+                    <button class="add" bindtap="userAdd">+</button>
+                </view>
+                <!--<view class="confirmBtn">-->
+                <!--确定-->
+                <!--</view>-->
+            </view>
+
+            <button class="button" form-type="submit">确定</button>
+        </view>
+    </form>
+</view>

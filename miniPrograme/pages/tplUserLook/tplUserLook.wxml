@@ -1,0 +1,39 @@
+<view class="container">
+    <!--
+
+    用户查看
+
+    -->
+    <tpl1
+            showBanquetInfoBtn="{{true}}"
+            needMake="{{true}}"
+            bindshowBanquetInfo="showBanquetInfoFill"></tpl1>
+
+    <view class="bottomFixed blessing-view">
+        <!--<view class="blessing-mask"></view>-->
+        <view class="blessing-wrap" style="transform: translateY({{blessingScrollH}}px);transition: all {{blessingScrollTransition}}s;">
+
+            <!--<block wx:if="{{blessing.length === 1}}">-->
+                <!--<view class="blessing">{{blessing[0]}}</view>-->
+            <!--</block>-->
+            <!--<block wx:if="{{blessing.length  > 1}}">-->
+                <block wx:for="{{blessing}}">
+                    <view class="blessing">{{item}}</view>
+                </block>
+            <!--</block>-->
+        </view>
+    </view>
+    <view class="bottomFixed">
+        <input type="text" placeholder="说点什么" class="saySomething" bindtap="showSaySomething"/>
+    </view>
+
+
+    <view class="bottomFixed" wx:if="{{isBanquetInfoFill}}">
+        <banquetInfoFill bindhidePage="hideBanquetInfoFill"></banquetInfoFill>
+    </view>
+    <view class="bottomFixed" wx:if="{{isSaySomething}}">
+        <saySomething bindhidePage="hideSaySomething"></saySomething>
+    </view>
+
+
+</view>

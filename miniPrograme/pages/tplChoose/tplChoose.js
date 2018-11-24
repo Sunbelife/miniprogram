@@ -1,15 +1,15 @@
 const app = getApp();
 const util = require('../../utils/util.js');
+const tplConfig = require('../../utils/tplConfig.js');
 
 Page({
     data: {
-        tpl: new Array(10).fill({
-            id: 12
-        })
+        tpl: tplConfig.tpls
     },
 
     onLoad: function () {
         console.log(this.data.tpl);
+        
     },
     goPage: util.goPage,
 

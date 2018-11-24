@@ -8,6 +8,8 @@ const api = require('../../utils/api.js');
 Component({
     behaviors: [],
     properties: {
+        curWordChangeInfo: null, // 简化的定义方式
+        curShowPage: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
@@ -20,7 +22,14 @@ Component({
             this.triggerEvent('hidePage');
         },
         submit(){
-            this.hidePage();
+            console.log(this.properties.cutImageInfo);
+
+            this.triggerEvent('saveWord',{
+                curShowPage:this.properties.curShowPage,
+                curWordChangeInfo:this.properties.curWordChangeInfo,
+                newWord:  Math.floor(Math.random() * 1000)
+            });
+            
         }
     }
 

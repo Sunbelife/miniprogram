@@ -24,6 +24,13 @@ Component({
     onLoad(){
     },
     methods: {
+        
+        movePageTap(e){
+            const index = util.data(e, "index");
+            this.triggerEvent('sortPageClick', {
+                index: index
+            });
+        },
         init(){
             try {
                 const res = wx.getSystemInfoSync()
@@ -62,6 +69,12 @@ Component({
                 pages: pages
             });
             this.fixSortContainerWidth();
+
+            this.triggerEvent('sortFinish', {
+                pages: pages,
+                // 显示删除元素的前一个
+                needShowIndex: index - 1
+            });
         },
 
         // 移动当前页面
@@ -196,7 +209,7 @@ Component({
                 console.log("移动的下标", this.data.moveItem.moveIndex);
 
                 // 目标页面可以删除，才可以交换
-                if(this.properties.pages[moveIndex].canRemove){
+                if (this.properties.pages[moveIndex].canRemove) {
                     const pages = this.properties.pages;
                     console.log("移动前", JSON.stringify(pages));
                     util.swapArray(pages, this.data.moveItem.moveIndex, moveIndex);
@@ -204,7 +217,12 @@ Component({
                         pages: pages
                     });
                     console.log("移动后", JSON.stringify(pages));
-                }else{
+                    this.triggerEvent('sortFinish', {
+                        pages: pages,
+                        // 显示移动后的下标（移动的当前元素）
+                        needShowIndex: moveIndex
+                    });
+                } else {
                     wx.showToast({
                         title: '不能与该页面交换位置',
                         icon: 'none',

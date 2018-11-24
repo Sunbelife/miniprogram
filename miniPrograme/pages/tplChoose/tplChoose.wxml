@@ -11,13 +11,14 @@
 
         <view>
             <view wx:for="{{tpl}}" class="tpl"
+                  wx:key="key"
                   bindtap="goPage"
                   data-page="invitationEdit"
                   data-id="{{item.id}}"
+                  data-handle="new"
             >
-                <image src="https://dummyimage.com/200x300&text=hello"></image>
+                <image src="https://dummyimage.com/200x300/{{item.mainColor}}/ffffff&text={{item.zh}}"></image>
             </view>
-
         </view>
     </scroll-view>
 

@@ -31,9 +31,9 @@
         <view>
             <view wx:for="{{tpl}}"
                   wx:key="key"
-
+                  data-id="{{item.id}}"
                   class="tpl" bindtap="choosePage">
-                <image src="https://dummyimage.com/200x300&text=hello"></image>
+                <image src="{{item.imgSrc}}"></image>
             </view>
 
         </view>

@@ -1,5 +1,7 @@
 const app = getApp();
 const util = require('../../../utils/util.js');
+const tplConfig = require('../../../utils/tplConfig.js');
+
 // 写评论
 const api = require('../../../utils/api.js');
 /*
@@ -8,6 +10,7 @@ const api = require('../../../utils/api.js');
 Component({
     behaviors: [],
     properties: {
+        page: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
@@ -17,7 +20,9 @@ Component({
         animatedStep2: false
     },
     ready(){
-
+        console.log(tplConfig.pagesArrOb);
+        console.log(tplConfig.pagesArrOb["1"]);
+        console.log(this.properties.page);
     },
     methods: {
         show(){
@@ -29,25 +34,33 @@ Component({
             util.setTimeOutFlagHide(this, 3);
         },
         editInfo(){
-            const arr = [];
-            
-            arr.push({
+
+            const editInfo = {
+                image: [],
+                text: []
+            };
+
+
+            editInfo.image.push({
                 type: "image",
+                index: editInfo.image.length,
                 top: "50vh",
                 left: "375rpx"
             });
 
-            arr.push({
+            editInfo.text.push({
                 type: "text",
                 text: this.data.text,
+                index: editInfo.text.length,
                 bottom: "250rpx",
                 left: "375rpx"
             });
 
-            util.posCssComplete(arr);
+            util.posCssComplete(editInfo.image);
+            util.posCssComplete(editInfo.text);
 
-            console.log(arr);
-            return arr;
+            console.log(editInfo);
+            return editInfo;
         }
     }
 

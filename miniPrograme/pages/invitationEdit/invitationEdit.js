@@ -1,5 +1,6 @@
 const app = getApp();
 const util = require('../../utils/util.js');
+const tplConfig = require('../../utils/tplConfig.js');
 
 /* 
  * 长按 取消 列表的滚动。移动复制的副本  
@@ -31,10 +32,13 @@ const util = require('../../utils/util.js');
  发送 （跳到发送页面），设置封面图
  * */
 Page({
+    //  TODO  添加新页  上限  加 10个
     data: {
         // 编辑元素数组
-        editEle: [],
+        editEleImage: [],
+        editEleText: [],
         pages: new Array(10).fill({}),
+        curShowPage: 0,
         isShowSort: false,
         isShowPageAdd: false,
         isShowPageSet: false,
@@ -43,20 +47,56 @@ Page({
         isShowMusicChoose: false,
         isShowImgCut: false,
         isShowWordChange: false,
-        id: 0
+        curCutImageInfo: {},
+        curWordChangeInfo: {},
+        pageReady: false,
+        handle: "",
+        // 背景音乐
+        bgMusic: "",
+        id: 0,
+        maxPageSize: 10,
+        mock: {
+            isAddPage: false
+        }
     },
 
     onLoad: function (options) {
+        console.log("onload");
         if (!options.id) {
-            options.id = "123123";
+            options.id = "1";
+        }
+        if (!options.handle) {
+            options.handle = "new";
         }
         this.setData({
+            handle: options.handle,
             id: options.id
         });
+
+        const pages = [];
+        // 新的模板
+        if (this.data.handle === "new") {
+            util.extend(true, pages, tplConfig.tplsOb[this.data.id].pages);
+
+            console.log(tplConfig.tplsOb[this.data.id].bgMusic);
+            this.setData({
+                pages: pages,
+                bgMusic: tplConfig.tplsOb[this.data.id].bgMusic
+            });
+
+        }
+
+
+        console.log(this.data.id);
+        console.log(this.data.pages);
 
 
         this.dataGen();
         this.pageDelHandle();
+
+        this.setData({
+            pageReady: true
+        });
 
         if (app.globalData.isDev) {
             // 显示排序
@@ -72,11 +112,15 @@ Page({
             // 显示文字编辑
             // this.showWordChange();
 
-            if(this.data.isShowPageSet){
+            if (this.data.isShowPageSet) {
                 // 请帖信息编辑
                 // this.showInvitationInfo();
-                // 音乐选择
-                // this.showMusicChoose();
+
+                // 预留音乐初始化的时间
+                setTimeout(()=> {
+                    // 音乐选择
+                    // this.showMusicChoose();
+                }, 1000)
             }
 
         }
@@ -86,27 +130,128 @@ Page({
     pageMove(e){
         console.log(e);
         this.setData({
-            editEle: []
+            editEleImage: [],
+            editEleText: [],
+            curShowPage: e.detail.index
         });
-       //  延时显示一下编辑
-       setTimeout(()=>{
-           this.setData({
-               editEle:e.detail
-           });
-       },300)
+
+
+        //  延时显示一下编辑
+        setTimeout(()=> {
+            if (e.detail) {
+                this.setData({
+                    editEleImage: e.detail.editInfo.image,
+                    editEleText: e.detail.editInfo.text
+                });
+            }
+        }, 300)
     },
     dataGen(){
+        const that = this;
         const pages = this.data.pages;
         pages.forEach(function (v, k) {
-            v.name = util.randomName();
-            v.nameImage = encodeURIComponent(v.name);
-            v.id = k;
-            v.canRemove = 1;
+            console.log("dataGen", v, k);
+
+
+            v.zh = that.pageName(k);
         });
         console.log(pages);
         this.setData({
             pages: pages
         });
+    },
+    // 排序完成，重新设置页面下标名称.需要排序后的排列 page
+    sortFinish(e){
+        this.resetPageName(e.detail.pages);
+        // TODO 显示当前移动的页
+        this.selectComponent("#tpl1").movePage(e.detail.needShowIndex);
+    },
+    // 排序完成，重新设置页面下标名称.需要排序后的排列 page
+    removePage(e){
+        this.resetPageName(e.detail.pages);
+        // TODO 显示当前移动的页
+        this.selectComponent("#tpl1").movePage(e.detail.needShowIndex);
+    },
+    // 设置音乐
+    setMusic(e){
+        const chooseMusic = e.detail.chooseMusic;
+        this.setData({
+            bgMusic: tplConfig.mp3Ob[chooseMusic]
+        });
+        console.log(this.data.bgMusic);
+        this.hideMusicChoose();
+            this.selectComponent("#tpl1").changMusic();
+    },
+    // 保存图片
+    saveImage(e){
+
+        const curShowPage = e.detail.curShowPage;
+        const cutImageInfo = e.detail.cutImageInfo;
+        const newImageSrc = e.detail.newImageSrc;
+        const pages = this.data.pages;
+
+        // 替换 当前页下的图片 点击下标下的 图片地址
+        pages[curShowPage].imageSrc[cutImageInfo.index] = newImageSrc;
+        this.setData({
+            pages: pages
+        });
+        this.hideImgCut();
+        console.log(pages);
+
+    },
+    sortPageClick(e){
+        console.log(e.detail);
+        const index = e.detail.index;
+        this.selectComponent("#tpl1").movePage(index);
+
+    },
+    saveWord(e){
+        console.log(e.detail);
+        const curShowPage = e.detail.curShowPage;
+        const curWordChangeInfo = e.detail.curWordChangeInfo;
+        const newWord = e.detail.newWord;
+        const pages = this.data.pages;
+
+        // 替换 当前页下的文字 点击下标下的 文字
+        pages[curShowPage].textSrc[curWordChangeInfo.index] = newWord;
+        this.setData({
+            pages: pages
+        });
+        this.hideWordChange();
+        console.log(pages);
+    },
+    // 选择页面完成
+    choosePage(e){
+
+        this.addPage(e.detail);
+        this.hidePageAdd();
+        // 添加的新页也可以删除
+        this.pageDelHandle();
+    },
+    resetPageName(pages){
+        const that = this;
+        pages.forEach(function (v, k) {
+            console.log(v, k);
+            v.zh = that.pageName(k);
+        });
+        console.log(pages);
+        this.setData({
+            pages: pages
+        });
+    },
+    pageName(index){
+        console.log("pageName", pagesLength, index);
+        const pagesLength = this.data.pages.length;
+        const pageName = "一二三四五六七八九十";
+        if (index === 0) {
+            return "封面";
+        }
+        console.log(pagesLength, index);
+        if (index === pagesLength - 1) {
+            return "致宾客页";
+        }
+
+        return "页面" + pageName.split("")[index - 1];
     },
     send(){
         this.goPage("invitationSend");
@@ -116,6 +261,11 @@ Page({
     },
     pageDelHandle() {
         const pages = this.data.pages;
+        pages.forEach(function (v, k) {
+            v.canRemove = 1;
+        });
+        console.log(pages);
+
         pages[0].canRemove = 0;
         pages[pages.length - 1].canRemove = 0;
         this.setData({
@@ -124,10 +274,46 @@ Page({
     },
     // 显示 添加新页
     showPageAdd() {
+        const pages = this.data.pages;
+
+        if (pages.length === this.data.maxPageSize) {
+            util.toast("最多可以有" + this.data.maxPageSize + "个页面");
+            return;
+        }
+        if (util.isDev()) {
+            if (this.data.mock.isAddPage) {
+
+
+                this.addPage("tool1");
+
+                // movePage
+                console.log(this.data.pages);
+                return;
+            }
+        }
+
         this.setData({
             isShowPageAdd: true
         });
         this.selectComponent("#pageAdd").show();
+    },
+    addPage(id){
+        const pages = this.data.pages;
+        let needAddPage = {};
+        util.extend(true, needAddPage, tplConfig.pagesArrOb[id]);
+        // needAddPage.imgSrc = "https://dummyimage.com/200x300&text=" +
+        // encodeURI("random" + Math.floor(Math.random() * 1000));
+
+        pages.splice(pages.length - 1, 0, needAddPage);
+
+        this.resetPageName(pages);
+        this.setData({
+            pages: pages
+        });
+
+        console.log(this.data.pages.length - 1);
+        // todo 移动至新添加的页面
+        this.selectComponent("#tpl1").movePage(this.data.pages.length - 2);
     },
     // 隐藏 添加新页
     hidePageAdd() {
@@ -174,6 +360,9 @@ Page({
     },
 // 显示 音乐选择
     showMusicChoose() {
+        // 显示音乐选择 ，停止播放音乐
+        this.selectComponent("#tpl1").playStop();
+
         this.setData({
             isShowMusicChoose: true
         });
@@ -184,23 +373,35 @@ Page({
             isShowMusicChoose: false
         });
     },
-// 显示 音乐选择
-    showImgCut() {
+// 显示 图片选择
+    showImgCut(e) {
+        const index = util.data(e, "index");
+
+        const curCutImageInfo = this.data.editEleImage[index];
         this.setData({
+            curShowPage: this.data.curShowPage,
+            curCutImageInfo: curCutImageInfo,
             isShowImgCut: true
         });
     },
-// 隐藏 音乐选择
+// 隐藏 图片选择
     hideImgCut() {
         this.setData({
             isShowImgCut: false
         });
     },
 // 显示 音乐选择
-    showWordChange() {
+    showWordChange(e) {
+
+        const index = util.data(e, "index");
+
+        const curWordChangeInfo = this.data.editEleText[index];
         this.setData({
+            curShowPage: this.data.curShowPage,
+            curWordChangeInfo: curWordChangeInfo,
             isShowWordChange: true
         });
+
     },
 // 隐藏 音乐选择
     hideWordChange() {

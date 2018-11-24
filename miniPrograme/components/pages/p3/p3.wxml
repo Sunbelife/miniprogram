@@ -1,6 +1,7 @@
-<image src="https://dummyimage.com/250x350&text=MARRY" class="image1 animate-Bottom  {{animatedStep0 ? 'animated' : '' }}"></image>
-<image src="https://dummyimage.com/250x350&text=MARRY" class="image2 animate-toTop  {{animatedStep1 ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[0]}}" class="image1 animate-Bottom  {{animatedStep0 ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[1]}}" class="image2 animate-toTop  {{animatedStep1 ? 'animated' : '' }}"></image>
 
+<button class="showBanquetInfoBtn" wx:if="{{showBanquetInfoBtn}}" bindtap="showBanquetInfo">宾客回复</button>
 
 
 <!--<view class="editSpace editSpace1"></view>-->

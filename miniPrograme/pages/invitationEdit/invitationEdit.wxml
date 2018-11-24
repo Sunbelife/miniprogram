@@ -1,10 +1,22 @@
 <view class="container">
 
-    <tpl1 bindpageClick="pageClick" bindpageMove="pageMove"></tpl1>
+    <block wx:if="{{pageReady}}">
+        <tpl1 id="tpl1"
+              bindpageClick="pageClick"
+              bindpageMove="pageMove"
+              pages="{{pages}}"
+              bgMusic="{{bgMusic}}"
+        ></tpl1>
+
+    </block>
 
     <!-- 添加新页面 -->
     <view class="full-page" wx:if="{{isShowPageAdd}}">
-        <pageAdd bindhidePage="hidePageAdd" id="pageAdd"></pageAdd>
+        <pageAdd
+                bindhidePage="hidePageAdd"
+                 bindchoosePage="choosePage"
+                 bindremovePage="removePage"
+                id="pageAdd"></pageAdd>
     </view>
     <!-- 页面设置 -->
     <view class="full-page" wx:if="{{isShowPageSet}}">
@@ -16,7 +28,11 @@
     </view>
     <!-- 页面排序 -->
     <view wx:if="{{isShowPageSort}}">
-        <pageSort id="pageSort"  pages="{{pages}}"  bindhidePage="hidePageSort" ></pageSort>
+        <pageSort id="pageSort"  pages="{{pages}}"
+                  bindhidePage="hidePageSort"
+                  bindsortFinish="sortFinish"
+                  bindsortPageClick="sortPageClick"
+        ></pageSort>
     </view>
 
     <!-- 请帖信息 -->
@@ -26,17 +42,30 @@
 
     <!-- 音乐选择 -->
     <view class="full-page full-page-over" wx:if="{{isShowMusicChoose}}">
-        <musicChoose id="musicChoose" bindhidePage="hideMusicChoose" ></musicChoose>
+        <musicChoose id="musicChoose"
+                     bindhidePage="hideMusicChoose"
+                     bindsetMusic="setMusic"
+        ></musicChoose>
     </view>
 
     <!-- 图片裁剪 -->
     <view class="full-page full-page-over" wx:if="{{isShowImgCut}}">
-        <imgCut id="imgCut" bindhidePage="hideImgCut" ></imgCut>
+        <imgCut id="imgCut"
+                cutImageInfo="{{curCutImageInfo}}"
+                curShowPage="{{curShowPage}}"
+                bindhidePage="hideImgCut"
+                bindsaveImage="saveImage"
+        ></imgCut>
     </view>
 
     <!-- 文字编辑 -->
     <view class="" wx:if="{{isShowWordChange}}">
-        <wordChange id="wordChange" bindhidePage="hideWordChange" ></wordChange>
+        <wordChange id="wordChange"
+                    curWordChangeInfo="{{curWordChangeInfo}}"
+                    curShowPage="{{curShowPage}}"
+                    bindhidePage="hideWordChange"
+                    bindsaveWord="saveWord"
+        ></wordChange>
     </view>
 
 
@@ -66,24 +95,37 @@
     </view>
 
 
-    <view wx:for="{{editEle}}" wx:key="key">
-        <!-- 文字编辑 -->
-        <view class="editEle-wrap editEle-wrap-word"
-              style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}}"
-              hidden="{{!(item.type === 'text')}}" bindtap="showWordChange">
-            <view class="editEle-wrap2">
-                <view class="iconfont icon-wenzibianji"></view>
-            </view>
-        </view>
+    <view wx:for="{{editEleImage}}" wx:key="key">
 
         <!-- 图片编辑 -->
         <view class="editEle-wrap editEle-wrap-img"
               style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}}"
-              hidden="{{!(item.type === 'image')}}" bindtap="showImgCut">
+              wx:if="{{(item.type === 'image')}}"
+              bindtap="showImgCut"
+              data-index="{{index}}"
+        >
             <view class="editEle-wrap2">
                 <view class="iconfont icon-tupianbianji"></view>
+                <!--{{index}}{{item.type}}-->
             </view>
         </view>
+    </view>
+
+    <view wx:for="{{editEleText}}" wx:key="key">
+        <!-- 文字编辑 -->
+        <view class="editEle-wrap editEle-wrap-word"
+              style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}}"
+              wx:if="{{(item.type === 'text')}}"
+              data-index="{{index}}"
+              bindtap="showWordChange"
+        >
+            <view class="editEle-wrap2">
+                <view class="iconfont icon-wenzibianji"></view>
+                <!--{{index}}{{item.type}}-->
+            </view>
+        </view>
+
+
     </view>
 
 

@@ -5,7 +5,7 @@
 @import "../../css/app.wxss";
 
 .container{
-    background-color: #222222;
+    /*background-color: #222222;*/
     padding: 100rpx;
     box-sizing: border-box;
 
@@ -42,8 +42,9 @@
     height: 200rpx;
     /*background-color: yellow;*/
 
-    position: relative;
+    position: absolute;
     margin: 2rpx;
+    z-index: 100;
 
 }
 
@@ -53,39 +54,78 @@
     height: 20rpx;
     /*background-color: red;*/
     position: absolute;
-    border: 2px solid green;
+    border: 5px solid green;
 }
 
 .focusRectangle-horn-topLeft{
-    top: -2rpx;
-    left: -2rpx;
+    top: -5rpx;
+    left: -5rpx;
     border-right: none;
     border-bottom: none;
 }
 
 
 .focusRectangle-horn-topRight{
-    top: -2rpx;
-    right: -2rpx;
+    top: -5rpx;
+    right: -5rpx;
     border-left: none;
     border-bottom: none;
 }
 
 
 .focusRectangle-horn-bottomLeft{
-    bottom: -2rpx;
-    left: -2rpx;
+    bottom: -5rpx;
+    left: -5rpx;
     border-right: none;
     border-top: none;
 }
 
 
 .focusRectangle-horn-bottomRight{
-    bottom: -2rpx;
-    right: -2rpx;
+    bottom: -5rpx;
+    right: -5rpx;
     border-left: none;
     border-top: none;
 }
 
 
+
+
+
+movable-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100rpx;
+    width: 100rpx;
+    background: #283fad;
+    color: #fff;
+}
+
+movable-area {
+    height: 400rpx;
+    width: 400rpx;
+    margin-top: 50rpx;
+    background-color: #ccc;
+    /*overflow: hidden;*/
+}
+
+.showImg{
+    display: block;
+}
+
+.max {
+    width: 600rpx;
+    height: 600rpx;
+}
+
+.page-section{
+    width: 100%;
+    margin-bottom: 60rpx;
+    position: relative;
+}
+
+.page-section:last-child{
+    margin-bottom: 0;
+}
 
