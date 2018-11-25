@@ -1,25 +1,32 @@
 <view class="container">
     <!--
-
     用户查看
-
     -->
-    <tpl1
-            showBanquetInfoBtn="{{true}}"
-            needMake="{{true}}"
-            bindshowBanquetInfo="showBanquetInfoFill"></tpl1>
+
+    <block wx:if="isReady">
+        <tpl1
+                showBanquetInfoBtn="{{true}}"
+                needMake="{{true}}"
+
+                pages="{{tplInfo.pages}}"
+                bgMusic="{{tplInfo.bgMusic}}"
+                invitationInfo="{{tplInfo.invitationInfo}}"
+
+                bindshowBanquetInfo="showBanquetInfoFill"></tpl1>
+    </block>
 
     <view class="bottomFixed blessing-view">
         <!--<view class="blessing-mask"></view>-->
-        <view class="blessing-wrap" style="transform: translateY({{blessingScrollH}}px);transition: all {{blessingScrollTransition}}s;">
+        <view class="blessing-wrap"
+              style="transform: translateY({{blessingScrollH}}px);transition: all {{blessingScrollTransition}}s;">
 
             <!--<block wx:if="{{blessing.length === 1}}">-->
-                <!--<view class="blessing">{{blessing[0]}}</view>-->
+            <!--<view class="blessing">{{blessing[0]}}</view>-->
             <!--</block>-->
             <!--<block wx:if="{{blessing.length  > 1}}">-->
-                <block wx:for="{{blessing}}">
-                    <view class="blessing">{{item}}</view>
-                </block>
+            <block wx:for="{{blessing}}" wx:key="key">
+                <view class="blessing">{{item}}</view>
+            </block>
             <!--</block>-->
         </view>
     </view>

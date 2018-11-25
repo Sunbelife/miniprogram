@@ -22,12 +22,12 @@
             请帖音乐
             <view class="form-ele-val"
                   bindtap="showMusicChoose"
-            >love love （音乐名）</view>
+            >{{bgMusic.name}}</view>
         </view>
         <view class="form-ele">
             弹幕
             <view class="form-ele-val form-ele-val-switch">
-                <switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+                <switch checked="{{barrageHas}}" bindchange="switchChange"/>
             </view>
         </view>
 

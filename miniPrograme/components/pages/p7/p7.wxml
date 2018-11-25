@@ -1,2 +1,15 @@
 <image src="{{page.imageSrc[0]}}" class="image1 animate-toRight  {{animatedStep0 ? 'animated' : '' }}"></image>
-<image src="{{page.imageSrc[1]}}" class="image2 animate-toLeft  {{animatedStep1 ? 'animated' : '' }}"></image>
+<!--<image src="{{page.imageSrc[1]}}" class="image2 animate-toLeft  {{animatedStep1 ? 'animated' : '' }}"></image>-->
+
+<map
+        id="myMap"
+        class="myMap"
+        latitude="{{invitationInfo.latitude}}"
+        longitude="{{invitationInfo.longitude}}"
+        markers="{{[{latitude:invitationInfo.latitude,longitude:invitationInfo.longitude}]}}"
+        show-location
+></map>
+
+<button class="showBanquetInfoBtn"
+        id="showBanquetInfoBtn"
+        wx:if="{{showBanquetInfoBtn}}" bindtap="showBanquetInfo">宾客回复</button>

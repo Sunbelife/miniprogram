@@ -1,0 +1,5 @@
+<invitationInfo id="invitationInfo"
+
+                bindhidePage="hideInvitationInfo"
+                bindsubmit="submit"
+                noClose ></invitationInfo>

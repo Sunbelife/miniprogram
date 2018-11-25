@@ -1,5 +1,5 @@
 
-/* TODO   把整个样式文件引入不太好，先这样处理 */
+
 
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";

@@ -9,10 +9,12 @@ const app = getApp();
 Component({
     behaviors: [],
     properties: {
+        barrageHas: null, // 简化的定义方式
+        bgMusic: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
-     
+
     },
     ready(){
 
@@ -20,6 +22,13 @@ Component({
     methods: {
         hidePage(){
             this.triggerEvent('hidePage');
+        },
+        switchChange(e){
+            console.log('switch1 发生 change 事件，携带值为', e.detail.value)
+
+            try {
+                wx.setStorageSync('barrageHas', e.detail.value)
+            } catch (e) { }
         },
         showInvitationInfo(){
             this.triggerEvent('showInvitationInfo');

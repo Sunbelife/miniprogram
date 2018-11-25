@@ -9,6 +9,8 @@ const tplConfig = require('../../../utils/tplConfig.js');
 Component({
     behaviors: [],
     properties: {
+        invitationInfo: null, // 简化的定义方式
+        showBanquetInfoBtn: null, // 简化的定义方式
         page: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
@@ -20,6 +22,9 @@ Component({
 
     },
     methods: {
+        showBanquetInfo(e){
+            this.triggerEvent('showBanquetInfo');
+        },
         show(){
             util.setTimeOutFlag(this, 2, 0);
         },
@@ -37,15 +42,15 @@ Component({
                 type: "image",
                 index: editInfo.image.length,
                 top: "25vh",
-                left: "25vw"
+                left: "50vw"
             });
 
-            editInfo.image.push({
-                type: "image",
-                index: editInfo.image.length,
-                bottom: "25vh",
-                right: "25vw"
-            });
+            // editInfo.image.push({
+            //     type: "image",
+            //     index: editInfo.image.length,
+            //     bottom: "25vh",
+            //     right: "25vw"
+            // });
 
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);

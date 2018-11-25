@@ -7,44 +7,119 @@ const api = require('../../utils/api.js');
 Component({
     behaviors: [],
     properties: {
+        noClose: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
-
+        dateStart: util.dateFormat(new Date(), "yyyy-MM-dd"),
         date: '',
+        address: '',
         time: '12:00',
-        latitude: 23.099994,
-        longitude: 113.324520,
+        latitude: 0,
+        longitude: 0,
+        nameLady: "",
+        nameGentleman: "",
         markers: [{
-            id: 1,
-            latitude: 23.099994,
-            longitude: 113.324520,
-            name: 'T.I.T 创意园'
+            // id: 1,
+            // latitude: 23.099994,
+            // longitude: 113.324520,
+            // name: 'T.I.T 创意园'
         }],
         covers: [{
-            latitude: 23.099994,
-            longitude: 113.344520,
-            iconPath: '/images/location.png'
+            // latitude: 23.099994,
+            // longitude: 113.344520,
+            // iconPath: '/images/location.png'
         }, {
-            latitude: 23.099994,
-            longitude: 113.304520,
-            iconPath: '/images/location.png'
+            // latitude: 23.099994,
+            // longitude: 113.304520,
+            // iconPath: '/images/location.png'
         }]
     },
     mapCtx: {},
     ready(){
-        this.setData({
-            date: util.getCurDate()
-        });
-        this.mapCtx = wx.createMapContext('myMap');
+
+        this.init();
 
     },
     methods: {
+        init(){
+            this.mapCtx = wx.createMapContext('myMap');
+            const that = this;
+            try {
+                var invitationInfo = wx.getStorageSync('invitationInfo');
+
+             
+                console.log(invitationInfo.address);
+                if (invitationInfo) {
+                    this.setData({
+                        address: invitationInfo.address,
+                        date: invitationInfo.date,
+                        time: invitationInfo.time,
+                        latitude: invitationInfo.latitude,
+                        longitude: invitationInfo.longitude,
+                        nameLady: invitationInfo.nameLady,
+                        nameGentleman: invitationInfo.nameGentleman
+                    });
+                }else{
+                    this.setData({
+                        date: util.getCurDate()
+                    });
+                    wx.getLocation({
+                        type: 'wgs84',
+                        success (res) {
+                            that.setLocation(res);
+                        }
+                    })
+                }
+            } catch (e) {
+                // Do something when catch error
+            }
+
+
+
+        },
+        setLocation(res){
+            const that = this;
+            that.setData({
+                latitude: res.latitude,
+                longitude: res.longitude
+
+            });
+            that.setData({
+                markers: [{
+                    id: 1,
+                    latitude: this.data.latitude,
+                    longitude: this.data.longitude
+                    // name: 'T.I.T 创意园'
+                }]
+            });
+        },
         formSubmit(e){
+
             const self = this;
+            const value = e.detail.value;
             console.log(e.detail.value);
             console.log(this.properties);
-           
+            const address = value.address;
+            const nameLady = value.nameLady;
+            const nameGentleman = value.nameGentleman;
+
+            if (!nameGentleman) {
+                util.toast("新郎姓名为空，请输入");
+                return;
+            }
+
+            if (!nameLady) {
+                util.toast("新娘姓名为空，请输入");
+                return;
+            }
+
+            if (!address) {
+                util.toast("地址为空，请输入");
+                return;
+            }
+
+
             if (this.data.isLoading) {
                 return;
             }
@@ -55,18 +130,53 @@ Component({
             wx.showLoading({
                 title: '修改中...'
             });
+
+            const req = {
+                latitude: this.data.latitude,
+                longitude: this.data.longitude,
+                date: this.data.date,
+                time: this.data.time,
+                address: address,
+                nameLady: nameLady,
+                nameGentleman: nameGentleman
+            };
+
+            try {
+                wx.setStorageSync('invitationInfo', req)
+            } catch (e) { }
+
             setTimeout(()=> {
                 this.setData({
                     isLoading: false
                 });
                 wx.hideLoading();
 
-                this.hidePage();
+                this.triggerEvent('submit');
+
             }, 300);
         },
 
         hidePage(){
             this.triggerEvent('hidePage');
+        },
+        chooseLocation(){
+            const that = this;
+            wx.chooseLocation({
+                success(e){
+                    console.log("success", e);
+                    that.setLocation(e);
+                },
+                error(e){
+                    util.toast("选择地址出错");
+                },
+                complete(e){
+                    console.log("complete", e);
+                }
+            });
+        },
+        clickMap(){
+            // util.toast("click map");
+            // console.log("click map");
         },
         bindDateChange: function (e) {
             console.log('picker发送选择改变，携带值为', e.detail.value)

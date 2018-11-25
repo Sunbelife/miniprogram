@@ -1,0 +1,14 @@
+
+try {
+  wx.setStorageSync('key', 'value')
+} catch (e) { }
+
+
+try {
+  var value = wx.getStorageSync('key')
+  if (value) {
+    // Do something with return value
+  }
+} catch (e) {
+  // Do something when catch error
+}

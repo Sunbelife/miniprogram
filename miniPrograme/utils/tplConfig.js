@@ -22,7 +22,7 @@ for (let i = 0; i < mp3AudioUrl.length; i++) {
     let index = i + 1;
     mp3.push({
         no: index,
-        name: "音乐"+index,
+        name: "音乐" + index,
         audioUrl: mp3AudioUrl[i]
     });
 }
@@ -84,7 +84,19 @@ for (let i = 0; i < 10; i++) {
         // 主色调
         mainColor: colors[i],
         imgSrc: "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=模板" + index,
-        pages: pages
+        pages: pages,
+        // 有弹幕吗
+        barrageHas: true,
+        invitationInfo: {
+            address: "婚礼地址",
+            date: util.getCurDate(),
+            time: '12:00',
+            // 默认地址是大望路
+            latitude: 39.90824,
+            longitude: 116.47783,
+            nameLady: "新娘",
+            nameGentleman: "新郎"
+        }
     });
 }
 
@@ -98,10 +110,86 @@ console.log(tplsOb,
     pagesArr,
     pagesArrOb);
 
+
+const mockTpl = {
+    "pages": [{
+        "id": 1,
+        "zh": "封面",
+        "name": "page1",
+        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page1_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page1_2"],
+        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
+        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page1",
+        "canRemove": 0
+    }, {
+        "id": 2,
+        "zh": "页面一",
+        "name": "page2",
+        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page2_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page2_2"],
+        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
+        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page2",
+        "canRemove": 1
+    }, {
+        "id": 3,
+        "zh": "页面二",
+        "name": "page3",
+        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page3_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page3_2"],
+        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
+        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page3",
+        "canRemove": 1
+    }, {
+        "id": 4,
+        "zh": "页面三",
+        "name": "page4",
+        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page4_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page4_2"],
+        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
+        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page4",
+        "canRemove": 1
+    }, {
+        "id": 5,
+        "zh": "页面四",
+        "name": "page5",
+        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page5_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page5_2"],
+        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
+        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page5",
+        "canRemove": 1
+    }, {
+        "id": 6,
+        "zh": "页面五",
+        "name": "page6",
+        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page6_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page6_2"],
+        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
+        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page6",
+        "canRemove": 1
+    }, {
+        "id": 7,
+        "zh": "致宾客页",
+        "name": "page7",
+        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page7_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page7_2"],
+        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
+        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page7",
+        "canRemove": 0
+    }],
+    "bgMusic": {
+        "no": 1,
+        "name": "音乐1",
+        "audioUrl": "http://zhangmenshiting.qianqian.com/data2/music/eee8aee9c2309f7e316bff0e0d35243d/594545500/594545500.mp3?xcode=2a8925a8cca85ccc6a37d80a2c02fc5b"
+    },
+    "invitationInfo": {
+        "address": "婚礼地址",
+        "date": "2018-11-25",
+        "time": "12:00",
+        "latitude": 39.90824,
+        "longitude": 116.47783,
+        "nameLady": "新娘",
+        "nameGentleman": "新郎"
+    }
+};
+
 module.exports = {
     tplsOb,
     tpls,
     mp3,
+    mockTpl,
     mp3Ob,
     pagesArr,
     pagesArrOb

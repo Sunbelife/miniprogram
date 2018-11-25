@@ -1,12 +1,13 @@
-<view class="title animate-toBottom {{animatedStep1 ? 'animated' : '' }} ">新郎 & 新娘的婚礼</view>
+<view class="title animate-toBottom {{animatedStep1 ? 'animated' : '' }} ">
+    {{invitationInfo.nameGentleman}} & {{invitationInfo.nameLady}}的婚礼
+</view>
 
 <image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep0 ? 'animated' : '' }}"></image>
 
 
 
-
-<view class="text animate-toRight  {{animatedStep2 ? 'animated' : '' }}">
-    {{page.textSrc[0]}}
+<view class="text animate-toRight text-center  {{animatedStep2 ? 'animated' : '' }}">
+    {{invitationInfo.date}}  {{invitationInfo.time}}  {{invitationInfo.address}}
 </view>
 
 

@@ -8,7 +8,7 @@
         婚礼日期，时间。地址（去标注）-->
 
 
-    <view class="topInfo">
+    <view class="topInfo" wx:if="{{!noClose}}">
         请帖信息
         <view class="topInfo-close" bindtap="hidePage">关闭</view>
     </view>
@@ -21,7 +21,7 @@
                     新郎姓名
                 </view>
                 <view class="form-input">
-                    <input type="text" placeholder="请输入新郎姓名" name="nameGentleman"/>
+                    <input type="text" placeholder="请输入新郎姓名" name="nameGentleman" value="{{nameGentleman}}"/>
                 </view>
             </view>
 
@@ -30,7 +30,7 @@
                     新娘姓名
                 </view>
                 <view class="form-input">
-                    <input type="text" placeholder="请输入新娘姓名" name="nameLady"/>
+                    <input type="text" placeholder="请输入新娘姓名" name="nameLady" value="{{nameLady}}"/>
                 </view>
             </view>
         </view>
@@ -42,7 +42,7 @@
                     婚礼日期
                 </view>
                 <view class="form-input">
-                    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01"
+                    <picker mode="date" value="{{date}}" start="{{dateStart}}"
                             bindchange="bindDateChange">
                         <view class="picker">
                             {{date}}
@@ -56,7 +56,7 @@
                     婚礼时间
                 </view>
                 <view class="form-input">
-                    <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                    <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
                         <view class="picker">
                             {{time}}
                         </view>
@@ -72,9 +72,9 @@
                     婚礼地址
                 </view>
                 <view class="form-input">
-                    <input type="text" placeholder="请输入婚礼地址"/>
+                    <input type="text" name="address" placeholder="请输入婚礼地址" value="{{address}}"/>
                 </view>
-                <view class="form-icon">
+                <view class="form-icon" bindtap="chooseLocation">
                     <view class="iconfont icon-zuobiao"></view>
                 </view>
             </view>
@@ -82,6 +82,7 @@
             <map
                     id="myMap"
                     style="width: 100%; height: 200px;"
+                    bindtap="clickMap"
                     latitude="{{latitude}}"
                     longitude="{{longitude}}"
                     markers="{{markers}}"
@@ -96,6 +97,7 @@
             <!--</view>-->
 
         </view>
+        <view class="clearfix"></view>
 
         <button class="bottomBtn" form-type="submit">保存</button>
     </form>

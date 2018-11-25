@@ -1,5 +1,5 @@
 
-/* TODO   把整个样式文件引入不太好，先这样处理 */
+
 
 @import "../../css/tpl.wxss";
 @import "../../css/app.wxss";
@@ -25,8 +25,11 @@ picker .picker{
 }
 .form-icon{
     color: #f83146;
-}
 
+}
+.form-icon .iconfont{
+    font-size: 40rpx;
+}
 
 .topInfo{
     position: relative;
@@ -34,8 +37,8 @@ picker .picker{
     z-index: 300;
 }
 .bottomBtn{
-    position: static;
-    margin-top: 100rpx;
+    /*position: static;*/
+    /*margin-top: 100rpx;*/
     /*width: 400rpx;*/
     /*margin-left: 175rpx;*/
 }

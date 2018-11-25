@@ -14,27 +14,35 @@
     >
 
         <!--
-TODO 显示宾客按钮
-                        <p3 id="p2" showBanquetInfoBtn="{{showBanquetInfoBtn}}" bindshowBanquetInfo="showBanquetInfo"></p3>
+                        <p3 id="p2"></p3>
 
         -->
         <!---->
         <!--<block>-->
         <!--<p1 id="p0"></p1>-->
         <!--</block>-->
-        <block wx:for="{{pages}}">
+        <block wx:for="{{pages}}" wx:key="{{key}}">
 
-            <view class="page-item" wx:if="{{!needMake}}">
+            <view class="page-item"
+            >
+
+
+                <pMake id="p{{index}}" wx:if="{{item.id === 'make'}}"></pMake>
+
                 <!--
                     page 要传入，否则 改变上层的 page 对象，不会变下去
                 -->
-                <p1 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 1}}"></p1>
+                <p1 id="p{{index}}" page="{{item}}" invitationInfo="{{invitationInfo}}" wx:if="{{item.id === 1}}"></p1>
                 <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 2}}"></p2>
                 <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 3}}"></p3>
                 <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 4}}"></p4>
                 <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 5}}"></p5>
                 <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 6}}"></p6>
-                <p7 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 7}}"></p7>
+                <p7 id="p{{index}}" page="{{item}}"
+                    invitationInfo="{{invitationInfo}}"
+                    showBanquetInfoBtn="{{showBanquetInfoBtn}}" bindshowBanquetInfo="showBanquetInfo"
+                    wx:if="{{item.id === 7}}"
+                ></p7>
                 <p8 id="p{{index}}" wx:if="{{item.id === 8}}"></p8>
                 <p9 id="p{{index}}" wx:if="{{item.id === 9}}"></p9>
                 <p10 id="p{{index}}" wx:if="{{item.id === 10}}"></p10>
@@ -99,11 +107,6 @@ TODO 显示宾客按钮
                 <p69 id="p{{index}}" wx:if="{{item.id === 69}}"></p69>
                 <p70 id="p{{index}}" wx:if="{{item.id === 70}}"></p70>
                 <pTool1 id="p{{index}}" wx:if="{{item.id === 'tool1'}}"></pTool1>
-            </view>
-
-            <!-- 最后一个 -->
-            <view class="page-item" wx:if="{{needMake && index == pages.length - 1}}">
-                <pMake id="p{{index}}"></pMake>
             </view>
 
 

@@ -10,6 +10,7 @@ const api = require('../../../utils/api.js');
 Component({
     behaviors: [],
     properties: {
+        invitationInfo: null, // 简化的定义方式
         page: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
@@ -48,13 +49,13 @@ Component({
                 left: "375rpx"
             });
 
-            editInfo.text.push({
-                type: "text",
-                text: this.data.text,
-                index: editInfo.text.length,
-                bottom: "250rpx",
-                left: "375rpx"
-            });
+            // editInfo.text.push({
+            //     type: "text",
+            //     text: this.data.text,
+            //     index: editInfo.text.length,
+            //     bottom: "250rpx",
+            //     left: "375rpx"
+            // });
 
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);

@@ -1,1 +1,7 @@
-{}
+{
+  "navigationBarBackgroundColor": "red",
+  "navigationBarTitleText": "请帖信息",
+  "usingComponents": {
+    "invitationInfo": "/components/invitationInfo/invitationInfo"
+  }
+}

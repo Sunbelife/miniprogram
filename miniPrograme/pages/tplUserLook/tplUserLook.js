@@ -1,4 +1,5 @@
 const util = require('../../utils/util.js');
+const tplConfig = require('../../utils/tplConfig.js');
 
 const app = getApp();
 /* 用户查看 */
@@ -11,7 +12,7 @@ Page({
         // blessing:["真好真好真好真好真好真好真好真好"],
         blessing: ["真好", "真好2", "真好3"],
         isBanquetInfoFill: false,
-        blessingConfig:{
+        blessingConfig: {
             duration: 2000,
             transition: 0.6
         },
@@ -19,7 +20,10 @@ Page({
         blessingScrollIndex: 0,
         blessingScrollDuration: 0,
         blessingScrollTransition: 0,
-        isSaySomething: false
+        isSaySomething: false,
+        isReady: false,
+        tplInfo: {}
+
     },
 
     onLoad: function () {
@@ -30,6 +34,33 @@ Page({
 
         this.scrollItemFill();
         this.scroll();
+        this.init();
+    },
+    init(){
+
+
+        try {
+            var tplInfo = wx.getStorageSync('tplInfo');
+            console.log(JSON.stringify(tplInfo));
+            if (tplInfo) {
+                // Do something with return value
+                this.setData({
+                    isReady: true,
+                    tplInfo: tplInfo
+                });
+            } else {
+                if (util.isDev()) {
+                    this.setData({
+                        isReady: true,
+                        tplInfo: tplConfig.mockTpl
+                    });
+                }
+            }
+        } catch (e) {
+            // Do something when catch error
+        }
+
+
     },
 
     scrollItemFill(){
@@ -46,7 +77,7 @@ Page({
             let blessingScrollIndex = this.data.blessingScrollIndex;
             let blessingScrollH = this.data.blessingScrollH;
             let blessing = this.data.blessing;
-            console.log(blessingScrollIndex , blessing.length - 1);
+            // console.log(blessingScrollIndex, blessing.length - 1);
             if (blessingScrollIndex < blessing.length - 1) {
                 blessingScrollIndex++;
                 blessingScrollH = blessingScrollH - util.rpx2px(60);

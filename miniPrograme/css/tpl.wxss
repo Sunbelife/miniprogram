@@ -79,4 +79,34 @@
     font-weight: bold;
 }
 
+.text-center{
+    text-align: center;
+}
 
+
+.myMap{
+    box-sizing: border-box;
+    margin-left: 75rpx;
+    width: 600rpx;
+    height: 300rpx;
+    position: absolute;
+    left: 0;
+    bottom: 50vh;
+}
+
+
+
+.showBanquetInfoBtn{
+    z-index: 20;
+    position: absolute;
+    bottom: 300rpx;
+    left: 50%;
+    margin-left: -125rpx;
+    /*padding: 0 50rpx;*/
+    width: 250rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #f83146;
+    box-sizing: border-box;
+    color: white;
+}

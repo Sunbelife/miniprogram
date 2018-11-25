@@ -11,7 +11,16 @@ Page({
         console.log(this.data.tpl);
         
     },
-    goPage: util.goPage,
+    goPage(e){
+        // 新建就移除上一次存储的，也可以不移除
+        try {
+            wx.removeStorageSync('invitationInfo')
+        } catch (e) {
+            // Do something when catch error
+        }
+        
+        util.goPage(e);
+    },
 
     loadMore(){
 

@@ -1,14 +1,15 @@
 {
   "pages":[
     "pages/invitationEdit/invitationEdit",
-    "pages/tplChoose/tplChoose",
-    "pages/nav/nav",
     "pages/tplUserLook/tplUserLook",
     "pages/tplDev/tplDev",
+    "pages/tplPreview/tplPreview",
+    "pages/tplChoose/tplChoose",
+    "pages/invitationInfo/invitationInfo",
+    "pages/nav/nav",
     "pages/startMake/startMake",
     "pages/banquetInfoFill/banquetInfoFill",
 
-    "pages/tplPreview/tplPreview",
 
     "pages/invitationSend/invitationSend",
 
@@ -17,7 +18,6 @@
     "pages/tplSetting/tplSetting",
     "pages/tplMusicChoose/tplMusicChoose",
     "pages/tplImageCut/tplImageCut",
-    "pages/invitationInfo/invitationInfo",
     "pages/shareSuccess/shareSuccess",
     "pages/home/home",
     "pages/tplNewPage/tplNewPage",

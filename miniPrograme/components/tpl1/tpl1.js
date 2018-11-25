@@ -8,6 +8,7 @@ Component({
         pages: null,
         item: null,
         bgMusic: null,
+        invitationInfo: null,
         showBanquetInfoBtn: null,
         needMake: null,
     },
@@ -21,29 +22,37 @@ Component({
     },
     ready(){
         console.log("ready");
+
+
         // 显示第一个页面
         this.movePage(0);
 
-        // 需要制作，多加一个页面
-        if (this.properties.needMake) {
-            this.properties.pages.push("");
-            // 定位过去
-            this.setData({
-                page: this.properties.pages
-            });
-        }
 
         this.playInit();
-        if(app.globalData.isAutoPlayMusic){
+        if (app.globalData.isAutoPlayMusic) {
             this.playStart();
         }
 
         if (util.isDev()) {
             // 开发指定到页面 0 开始的
-            // this.movePage(1);
+            this.movePage(6);
         }
+
+        this.needMakeHandle();
     },
     methods: {
+        needMakeHandle(){
+            // 需要制作，多加一个页面
+            if (this.properties.needMake) {
+                this.properties.pages.push({
+                    id: "make",
+                });
+                // 定位过去
+                this.setData({
+                    pages: this.properties.pages
+                });
+            }
+        },
         // 切换音乐
         changMusic(){
             this.playInit();
@@ -79,7 +88,8 @@ Component({
 
             // 隐藏
             util.each(this.properties.pages, (k, v)=> {
-                console.log(k);
+                // console.log(this.properties.pages, k);
+                // console.log("#p" + (k), this.selectComponent("#p" + (k)));
                 this.selectComponent("#p" + (k)).hide();
             });
 
@@ -91,17 +101,17 @@ Component({
             const curOb = this.selectComponent("#p" + page);
             // 显示
             curOb.show();
-            console.log("#p" + page);
+            // console.log("#p" + page);
 
             if (curOb.editInfo) {
                 this.triggerEvent('pageMove', {
-                    editInfo:curOb.editInfo(),
-                    index:page
+                    editInfo: curOb.editInfo(),
+                    index: page
                 });
             } else {
-                this.triggerEvent('pageMove',{
-                    editInfo:curOb.editInfo(),
-                        index:page
+                this.triggerEvent('pageMove', {
+                    editInfo: "",
+                    index: page
                 });
             }
 
@@ -109,21 +119,30 @@ Component({
 
         touchStart(e){
             this.setData({
-                touchStart: e.touches[0].pageY
+                touchStart: e.touches[0].clientY
             });
             // console.log(this.data.touchStart);
         },
         touchMove(e){
+            // console.log("touchMove", e.touches);
             this.setData({
-                touchEnd: e.touches[0].pageY
+                // touchEnd: e.touches[0].pageY
+                touchEnd: e.touches[0].clientY
             });
+
+
         },
         touchEnd(e){
             let page = this.data.page;
 
-            console.log("touchEnd",Math.abs(Math.abs(this.data.touchEnd) - Math.abs(this.data.touchStart)));
+            // console.log("touchEnd", Math.abs(Math.abs(this.data.touchEnd) - Math.abs(this.data.touchStart)));
             // 不是有效滑动
-            if (Math.abs(Math.abs(this.data.touchEnd) - Math.abs(this.data.touchStart)) < 15) {
+            if (this.data.touchStart === 0 || this.data.touchEnd === 0) {
+                return;
+            }
+
+            // 不是有效滑动
+            if (Math.abs(Math.abs(this.data.touchEnd) - Math.abs(this.data.touchStart)) < 20) {
                 return;
             }
 
@@ -148,6 +167,12 @@ Component({
 
             // 不等于才移动
             if (oriPage !== page) {
+                // 移动后置空
+                this.setData({
+                    touchStart: 0,
+                    touchEnd: 0
+                });
+
                 this.movePage(page);
             }
 

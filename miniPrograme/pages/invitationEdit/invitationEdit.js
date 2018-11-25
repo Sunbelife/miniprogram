@@ -7,7 +7,6 @@ const tplConfig = require('../../utils/tplConfig.js');
  * 停止移动，根据列表的滑动距离，确定要换的位置 
  * 
  * */
-// todo 有的页面可以删除，有的页面不可以删除
 
 /*
  *
@@ -19,8 +18,7 @@ const tplConfig = require('../../utils/tplConfig.js');
  * 
  * 返回要记得保存
  * 
- * todo  添加新页面，设置，预览，保存  都在改页面
- * 
+ *
  *
  *
  模板上换图片  ，（跳到裁剪页）选择图片，裁剪。保存。，
@@ -32,7 +30,6 @@ const tplConfig = require('../../utils/tplConfig.js');
  发送 （跳到发送页面），设置封面图
  * */
 Page({
-    //  TODO  添加新页  上限  加 10个
     data: {
         // 编辑元素数组
         editEleImage: [],
@@ -53,6 +50,9 @@ Page({
         handle: "",
         // 背景音乐
         bgMusic: "",
+        // 是否有弹幕
+        barrageHas: "",
+        invitationInfo: {},
         id: 0,
         maxPageSize: 10,
         mock: {
@@ -79,9 +79,38 @@ Page({
             util.extend(true, pages, tplConfig.tplsOb[this.data.id].pages);
 
             console.log(tplConfig.tplsOb[this.data.id].bgMusic);
+
+
+            // 从缓存或者 配置默认 
+            this.updateInvitationInfo();
+
+            let invitationInfo = {};
+            if (this.data.invitationInfo.nameGentleman) {
+                invitationInfo = this.data.invitationInfo;
+            } else {
+                invitationInfo = tplConfig.tplsOb[this.data.id].invitationInfo;
+            }
+           
+
+
+            this.updateBarrageHas();
+
+            let barrageHas = "";
+            if (this.data.barrageHas !== '') {
+                barrageHas = this.data.barrageHas;
+            } else {
+                barrageHas = tplConfig.tplsOb[this.data.id].barrageHas;
+            }
+            
+
+
+            console.log(invitationInfo);
             this.setData({
                 pages: pages,
-                bgMusic: tplConfig.tplsOb[this.data.id].bgMusic
+                bgMusic: tplConfig.tplsOb[this.data.id].bgMusic,
+                invitationInfo: invitationInfo,
+                barrageHas: barrageHas
+                
             });
 
         }
@@ -150,26 +179,62 @@ Page({
         const that = this;
         const pages = this.data.pages;
         pages.forEach(function (v, k) {
-            console.log("dataGen", v, k);
-
-
+            // console.log("dataGen", v, k);
             v.zh = that.pageName(k);
         });
-        console.log(pages);
+        // console.log(pages);
         this.setData({
             pages: pages
         });
     },
+    submitInvitationInfo(){
+        this.hideInvitationInfo();
+        this.updateInvitationInfo();
+
+
+    },
+    updateInvitationInfo(){
+        // 更新请帖信息到 page
+        // 新建就移除上一次存储的，也可以不移除
+        try {
+            const invitationInfo = this.data.invitationInfo;
+            var invitationInfoSubmit = wx.getStorageSync('invitationInfo');
+            util.extend(true, invitationInfo, invitationInfoSubmit);
+            this.setData({
+                invitationInfo: invitationInfo
+            });
+        } catch (e) {
+            // Do something when catch error
+        }
+
+
+    },
+    updateBarrageHas(){
+        // 更新请帖信息到 page
+        // 新建就移除上一次存储的，也可以不移除
+        try {
+            var barrageHasStorage = wx.getStorageSync('barrageHas');
+            if(util.isNotUndefined(barrageHasStorage)){
+                this.setData({
+                    barrageHas: barrageHasStorage
+                }); 
+            }
+        } catch (e) {
+            // Do something when catch error
+        }
+
+
+    },
     // 排序完成，重新设置页面下标名称.需要排序后的排列 page
     sortFinish(e){
         this.resetPageName(e.detail.pages);
-        // TODO 显示当前移动的页
+        // 显示当前移动的页
         this.selectComponent("#tpl1").movePage(e.detail.needShowIndex);
     },
     // 排序完成，重新设置页面下标名称.需要排序后的排列 page
     removePage(e){
         this.resetPageName(e.detail.pages);
-        // TODO 显示当前移动的页
+        // 显示当前移动的页
         this.selectComponent("#tpl1").movePage(e.detail.needShowIndex);
     },
     // 设置音乐
@@ -178,9 +243,9 @@ Page({
         this.setData({
             bgMusic: tplConfig.mp3Ob[chooseMusic]
         });
-        console.log(this.data.bgMusic);
+        // console.log(this.data.bgMusic);
         this.hideMusicChoose();
-            this.selectComponent("#tpl1").changMusic();
+        this.selectComponent("#tpl1").changMusic();
     },
     // 保存图片
     saveImage(e){
@@ -196,17 +261,17 @@ Page({
             pages: pages
         });
         this.hideImgCut();
-        console.log(pages);
+        // console.log(pages);
 
     },
     sortPageClick(e){
-        console.log(e.detail);
+        // console.log(e.detail);
         const index = e.detail.index;
         this.selectComponent("#tpl1").movePage(index);
 
     },
     saveWord(e){
-        console.log(e.detail);
+        // console.log(e.detail);
         const curShowPage = e.detail.curShowPage;
         const curWordChangeInfo = e.detail.curWordChangeInfo;
         const newWord = e.detail.newWord;
@@ -218,7 +283,7 @@ Page({
             pages: pages
         });
         this.hideWordChange();
-        console.log(pages);
+        // console.log(pages);
     },
     // 选择页面完成
     choosePage(e){
@@ -231,22 +296,22 @@ Page({
     resetPageName(pages){
         const that = this;
         pages.forEach(function (v, k) {
-            console.log(v, k);
+            // console.log(v, k);
             v.zh = that.pageName(k);
         });
-        console.log(pages);
+        // console.log(pages);
         this.setData({
             pages: pages
         });
     },
     pageName(index){
-        console.log("pageName", pagesLength, index);
+        // console.log("pageName", pagesLength, index);
         const pagesLength = this.data.pages.length;
         const pageName = "一二三四五六七八九十";
         if (index === 0) {
             return "封面";
         }
-        console.log(pagesLength, index);
+        // console.log(pagesLength, index);
         if (index === pagesLength - 1) {
             return "致宾客页";
         }
@@ -257,6 +322,18 @@ Page({
         this.goPage("invitationSend");
     },
     preview(){
+
+
+        try {
+            wx.setStorageSync('tplInfo', {
+                pages:this.data.pages,
+                bgMusic:this.data.bgMusic,
+                barrageHas:this.data.barrageHas,
+                invitationInfo:this.data.invitationInfo
+            })
+
+        } catch (e) { }
+
         this.goPage("tplPreview");
     },
     pageDelHandle() {
@@ -264,7 +341,7 @@ Page({
         pages.forEach(function (v, k) {
             v.canRemove = 1;
         });
-        console.log(pages);
+        // console.log(pages);
 
         pages[0].canRemove = 0;
         pages[pages.length - 1].canRemove = 0;
@@ -287,7 +364,7 @@ Page({
                 this.addPage("tool1");
 
                 // movePage
-                console.log(this.data.pages);
+                // console.log(this.data.pages);
                 return;
             }
         }
@@ -311,8 +388,8 @@ Page({
             pages: pages
         });
 
-        console.log(this.data.pages.length - 1);
-        // todo 移动至新添加的页面
+        // console.log(this.data.pages.length - 1);
+        // 移动至新添加的页面
         this.selectComponent("#tpl1").movePage(this.data.pages.length - 2);
     },
     // 隐藏 添加新页

@@ -1,5 +1,11 @@
 <view class="container">
 
-    <tpl1></tpl1>
+    <block wx:if="isReady">
+        <tpl1
+                pages="{{tplInfo.pages}}"
+                bgMusic="{{tplInfo.bgMusic}}"
+                invitationInfo="{{tplInfo.invitationInfo}}"
+        ></tpl1>
+    </block>
 
 </view>

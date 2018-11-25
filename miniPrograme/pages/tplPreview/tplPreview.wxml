@@ -3,7 +3,13 @@
         1.滑动播放模板。播放音乐
 
         2.开始制作-->
-    <tpl1></tpl1>
 
+    <block wx:if="isReady">
+        <tpl1
+                pages="{{tplInfo.pages}}"
+                bgMusic="{{tplInfo.bgMusic}}"
+                invitationInfo="{{tplInfo.invitationInfo}}"
+        ></tpl1>
+    </block>
     <button class="bottomBtn">发送</button>
 </view>

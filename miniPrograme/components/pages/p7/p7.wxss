@@ -1,5 +1,5 @@
 
-/* TODO   把整个样式文件引入不太好，先这样处理 */
+
 
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
@@ -10,8 +10,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 60vw;
-    height: 60vh;
+    width: 100vw;
+    height: 100vh;
 }
 
 .animate-toRight{

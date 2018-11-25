@@ -1,5 +1,5 @@
 
-/* TODO   把整个样式文件引入不太好，先这样处理 */
+
 
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
@@ -59,18 +59,4 @@
 .editSpace2{
     bottom: 25vh;
     right: 25vw;
-}
-
-.showBanquetInfoBtn{
-    position: absolute;
-    bottom: 300rpx;
-    left: 50%;
-    margin-left: -125rpx;
-    /*padding: 0 50rpx;*/
-    width: 250rpx;
-    height: 80rpx;
-    line-height: 80rpx;
-    background-color: #f83146;
-    box-sizing: border-box;
-    color: white;
 }

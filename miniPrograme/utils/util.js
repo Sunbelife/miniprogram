@@ -282,7 +282,7 @@ var extend = (function () {
             destination = arguments[i - 1]
             source = arguments[i]
             if (isObject(source) || isArray(source)) {
-                console.log(source)
+                // console.log(source)
                 for (var property in source) {
                     obj = source[property]
                     if (isDeep && ( isObject(obj) || isArray(obj) )) {
@@ -366,9 +366,13 @@ function conponentRef() {
         let a = `<p${i} id="{{index}}" wx:if="{{item.id === ${i}}}"></p${i}>`;
         arr.push(a);
     }
-    console.log(JSON.stringify(arr));
+    // console.log(JSON.stringify(arr));
 }
-conponentRef();
+// conponentRef();
+
+function isNotUndefined(val) {
+  return typeof val !== "undefined";
+}
 
 
 
@@ -401,6 +405,7 @@ module.exports = {
     toast,
     extend,
     wxUpload,
+    isNotUndefined,
     swapArray,
     randomName,
     randomArrOne,
