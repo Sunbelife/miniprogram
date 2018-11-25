@@ -76,7 +76,7 @@ for (let i = 0; i < 10; i++) {
     util.extend(true, pages, pagesArr.slice(0, 7));
 
 
-    console.log("GenPages", pages);
+    // console.log("GenPages", pages);
     pages.forEach((v, k)=> {
         v.imgSrc = "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=" + encodeURI("page" + (k + 1));
         v.imageSrc = [

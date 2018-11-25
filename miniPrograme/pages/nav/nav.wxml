@@ -1,5 +1,7 @@
 <view class="container">
-    <view wx:for="{{mapPage}}" class="item {{item.isOk ? 'ok': '' }}">
+    <view wx:for="{{mapPage}}"
+          wx:key="key"
+          class="item {{item.isOk ? 'ok': '' }}">
         {{index+1 }}: {{item.page}}
     </view>
 </view>

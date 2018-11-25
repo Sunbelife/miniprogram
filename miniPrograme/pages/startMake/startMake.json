@@ -1,1 +1,6 @@
-{}
+{
+  "component": true,
+  "usingComponents": {
+    "pMake": "/components/pages/pMake/pMake"
+  }
+}

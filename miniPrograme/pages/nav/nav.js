@@ -78,6 +78,6 @@ Page({
     },
 
     onLoad: function () {
-util.echoPage();
+        // util.echoPage();
     }
 });

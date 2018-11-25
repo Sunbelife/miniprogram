@@ -33,7 +33,11 @@
         <view class="topContentSpace"></view>
 
         <view>
-            <view wx:for="{{tpl}}" class="tpl">
+            <view
+                    wx:for="{{tpl}}"
+                    wx:key="key"
+
+                  class="tpl">
                 <image src="https://dummyimage.com/200x300&text=hello"></image>
             </view>
         </view>

@@ -12,7 +12,11 @@
 
         <view class="type-wrap   {{isNeedFixed?'tab_fixed':''}}">
             <scroll-view scroll-x>
-                <view wx:for="{{type}}" class="type {{item.number === activeType ? 'active' : '' }}"
+                <view
+                        wx:for="{{type}}"
+                        wx:key="key"
+
+                      class="type {{item.number === activeType ? 'active' : '' }}"
                       bindtap="chooseType"
                       data-type="{{item.number}}"
                 >{{item.name}}
