@@ -52,6 +52,8 @@ Page({
         bgMusic: "",
         // 是否有弹幕
         barrageHas: "",
+        // 是否有致宾客页面
+        toGuestsHas: "",
         invitationInfo: {},
         id: 0,
         maxPageSize: 10,
@@ -90,7 +92,6 @@ Page({
             } else {
                 invitationInfo = tplConfig.tplsOb[this.data.id].invitationInfo;
             }
-           
 
 
             this.updateBarrageHas();
@@ -101,7 +102,14 @@ Page({
             } else {
                 barrageHas = tplConfig.tplsOb[this.data.id].barrageHas;
             }
-            
+
+
+            let toGuestsHas = "";
+            if (this.data.toGuestsHas !== '') {
+                toGuestsHas = this.data.toGuestsHas;
+            } else {
+                toGuestsHas = tplConfig.tplsOb[this.data.id].toGuestsHas;
+            }
 
 
             console.log(invitationInfo);
@@ -109,10 +117,10 @@ Page({
                 pages: pages,
                 bgMusic: tplConfig.tplsOb[this.data.id].bgMusic,
                 invitationInfo: invitationInfo,
+                toGuestsHas: toGuestsHas,
                 barrageHas: barrageHas
-                
             });
-
+            this.updateToGuestsHas();
         }
 
 
@@ -180,7 +188,7 @@ Page({
         const pages = this.data.pages;
         pages.forEach(function (v, k) {
             // console.log("dataGen", v, k);
-            v.zh = that.pageName(k);
+            v.zh = that.pageName(k,v);
         });
         // console.log(pages);
         this.setData({
@@ -214,10 +222,44 @@ Page({
         // 新建就移除上一次存储的，也可以不移除
         try {
             var barrageHasStorage = wx.getStorageSync('barrageHas');
-            if(util.isNotUndefined(barrageHasStorage)){
+            if (util.isNotUndefined(barrageHasStorage)) {
                 this.setData({
                     barrageHas: barrageHasStorage
-                }); 
+                });
+            }
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
+    toGuestsHasChange(){
+        this.updateToGuestsHas();
+    },
+    updateToGuestsHas(){
+        // 更新请帖信息到 page
+        // 新建就移除上一次存储的，也可以不移除
+        try {
+            var toGuestsHas = wx.getStorageSync('toGuestsHas');
+            if (util.isNotUndefined(toGuestsHas)) {
+                this.setData({
+                    toGuestsHas: toGuestsHas
+                });
+
+                const pages = this.data.pages;
+                if (toGuestsHas) {
+                    if(pages[pages.length -1].type !== "toGuests"){
+                        pages.push(tplConfig.tplsOb[this.data.id].toGuestsPage);
+                    }
+                }else{
+                    if(pages[pages.length -1].type === "toGuests"){
+                        pages.splice(pages.length -1,1);
+                        // 移除了，去第一个页面
+                        this.selectComponent("#tpl1").movePage(0);
+                    }
+                }
+                this.resetPageName(pages);
+                this.setData({
+                    pages: pages
+                });
             }
         } catch (e) {
             // Do something when catch error
@@ -297,14 +339,14 @@ Page({
         const that = this;
         pages.forEach(function (v, k) {
             // console.log(v, k);
-            v.zh = that.pageName(k);
+            v.zh = that.pageName(k, v);
         });
         // console.log(pages);
         this.setData({
             pages: pages
         });
     },
-    pageName(index){
+    pageName(index, item){
         // console.log("pageName", pagesLength, index);
         const pagesLength = this.data.pages.length;
         const pageName = "一二三四五六七八九十";
@@ -312,7 +354,7 @@ Page({
             return "封面";
         }
         // console.log(pagesLength, index);
-        if (index === pagesLength - 1) {
+        if (item.type === "toGuests") {
             return "致宾客页";
         }
 
@@ -326,13 +368,15 @@ Page({
 
         try {
             wx.setStorageSync('tplInfo', {
-                pages:this.data.pages,
-                bgMusic:this.data.bgMusic,
-                barrageHas:this.data.barrageHas,
-                invitationInfo:this.data.invitationInfo
+                pages: this.data.pages,
+                toGuestsHas: this.data.toGuestsHas,
+                bgMusic: this.data.bgMusic,
+                barrageHas: this.data.barrageHas,
+                invitationInfo: this.data.invitationInfo
             })
 
-        } catch (e) { }
+        } catch (e) {
+        }
 
         this.goPage("tplPreview");
     },

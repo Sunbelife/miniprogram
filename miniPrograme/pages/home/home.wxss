@@ -76,6 +76,18 @@
     border-radius: 80rpx;
     line-height: 80rpx;
 }
+/*.iconCount{*/
+    /*position: absolute;*/
+    /*!*background-color: #f83146;*!*/
+    /*top: 0;*/
+    /*background-color: rgba(247, 229, 248, 1);*/
+    /*color: #f83146;*/
+    /*display: inline-block;*/
+    /*width: 20rpx;*/
+    /*height: 20rpx;*/
+    /*border-radius: 20rpx;*/
+    /*line-height: 20rpx;*/
+/*}*/
 .iconTitle{
     padding: 10rpx;
     font-size: 30rpx;

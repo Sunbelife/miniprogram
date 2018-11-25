@@ -8,6 +8,7 @@ Component({
         pages: null,
         item: null,
         bgMusic: null,
+        toGuestsHas: null,
         invitationInfo: null,
         showBanquetInfoBtn: null,
         needMake: null,
@@ -90,7 +91,7 @@ Component({
             util.each(this.properties.pages, (k, v)=> {
                 // console.log(this.properties.pages, k);
                 // console.log("#p" + (k), this.selectComponent("#p" + (k)));
-                this.selectComponent("#p" + (k)).hide();
+                this.selectComponent("#p" + (k)) && this.selectComponent("#p" + (k)).hide();
             });
 
             // 定位过去

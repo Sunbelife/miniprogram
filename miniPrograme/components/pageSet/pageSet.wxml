@@ -30,6 +30,12 @@
                 <switch checked="{{barrageHas}}" bindchange="switchChange"/>
             </view>
         </view>
+        <view class="form-ele">
+            是否显示致宾客页面
+            <view class="form-ele-val form-ele-val-switch">
+                <switch checked="{{toGuestsHas}}" bindchange="switchChangeToGuestsHas"/>
+            </view>
+        </view>
 
 
         <view class="form-ele text-center" bindtap="copyTpl">复制请帖</view>

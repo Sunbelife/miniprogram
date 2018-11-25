@@ -19,11 +19,14 @@
 
         <view class="topContent">
             <view bindtap="goPage" data-page="guestReply">
+                <!--<view class="iconCount">-->
+                    <!--10-->
+                <!--</view>-->
                 <view class="iconWrap">
                     <view class="iconfont icon-duihua"></view>
                 </view>
                 <view class="iconTitle">
-                    宾客
+                    宾客(10)
                 </view>
             </view>
         </view>

@@ -41,7 +41,7 @@ Component({
             editInfo.image.push({
                 type: "image",
                 index: editInfo.image.length,
-                top: "25vh",
+                top: "5vh",
                 left: "50vw"
             });
 

@@ -171,7 +171,7 @@ var pages = {
 };
 
 
-function goPage(e) {
+function goPage(e,params) {
     let page = "";
     let id = "";
     let handle = "";
@@ -182,6 +182,10 @@ function goPage(e) {
     } else {
         // 字符串
         page = e;
+        if(params){
+            id = params.id;
+            handle = params.handle;
+        }
     }
     console.log(page);
 

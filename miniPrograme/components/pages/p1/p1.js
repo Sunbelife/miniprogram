@@ -43,6 +43,9 @@ Component({
 
 
             editInfo.image.push({
+                width: "300px",
+                height: "300px",
+
                 type: "image",
                 index: editInfo.image.length,
                 top: "50vh",

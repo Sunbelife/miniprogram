@@ -1,10 +1,11 @@
 {
   "pages":[
     "pages/invitationEdit/invitationEdit",
+    "pages/home/home",
+    "pages/tplChoose/tplChoose",
     "pages/tplUserLook/tplUserLook",
     "pages/tplDev/tplDev",
     "pages/tplPreview/tplPreview",
-    "pages/tplChoose/tplChoose",
     "pages/invitationInfo/invitationInfo",
     "pages/nav/nav",
     "pages/startMake/startMake",
@@ -19,7 +20,6 @@
     "pages/tplMusicChoose/tplMusicChoose",
     "pages/tplImageCut/tplImageCut",
     "pages/shareSuccess/shareSuccess",
-    "pages/home/home",
     "pages/tplNewPage/tplNewPage",
 
 

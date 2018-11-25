@@ -9,6 +9,7 @@ const app = getApp();
 Component({
     behaviors: [],
     properties: {
+        toGuestsHas: null, // 简化的定义方式
         barrageHas: null, // 简化的定义方式
         bgMusic: null, // 简化的定义方式
         item: null // 简化的定义方式
@@ -29,6 +30,14 @@ Component({
             try {
                 wx.setStorageSync('barrageHas', e.detail.value)
             } catch (e) { }
+        },
+        switchChangeToGuestsHas(e){
+            console.log('switch1 发生 change 事件，携带值为', e.detail.value)
+
+            try {
+                wx.setStorageSync('toGuestsHas', e.detail.value)
+            } catch (e) { }
+            this.triggerEvent('toGuestsHasChange');
         },
         showInvitationInfo(){
             this.triggerEvent('showInvitationInfo');

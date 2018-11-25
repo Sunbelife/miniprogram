@@ -39,16 +39,26 @@ Component({
     ready(){
 
         this.init();
+        this.mock();
 
     },
     methods: {
+        mock(){
+            if (util.isDev()) {
+                this.setData({
+                    address: "北海公园",
+                    nameLady: "翠花",
+                    nameGentleman: "张三丰"
+                });
+            }
+        },
         init(){
             this.mapCtx = wx.createMapContext('myMap');
             const that = this;
             try {
                 var invitationInfo = wx.getStorageSync('invitationInfo');
 
-             
+
                 console.log(invitationInfo.address);
                 if (invitationInfo) {
                     this.setData({
@@ -60,7 +70,7 @@ Component({
                         nameLady: invitationInfo.nameLady,
                         nameGentleman: invitationInfo.nameGentleman
                     });
-                }else{
+                } else {
                     this.setData({
                         date: util.getCurDate()
                     });
@@ -74,7 +84,6 @@ Component({
             } catch (e) {
                 // Do something when catch error
             }
-
 
 
         },
@@ -143,7 +152,8 @@ Component({
 
             try {
                 wx.setStorageSync('invitationInfo', req)
-            } catch (e) { }
+            } catch (e) {
+            }
 
             setTimeout(()=> {
                 this.setData({

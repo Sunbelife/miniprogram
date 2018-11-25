@@ -68,7 +68,15 @@ const tpls = [];
 
 for (let i = 0; i < 10; i++) {
     let index = i + 1;
-    const pages = pagesArr.slice(7 * i, 7 * (i + 1));
+
+    // TODO  70个模板
+    // const pages = pagesArr.slice(7 * i, 7 * (i + 1));
+    // 把剩下的 9个模板 先替换成第一个模板的页面
+    let pages = [];
+    util.extend(true, pages, pagesArr.slice(0, 7));
+
+
+    console.log("GenPages", pages);
     pages.forEach((v, k)=> {
         v.imgSrc = "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=" + encodeURI("page" + (k + 1));
         v.imageSrc = [
@@ -76,6 +84,15 @@ for (let i = 0; i < 10; i++) {
             "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=" + encodeURI("page" + (k + 1) + "_2")
         ];
     });
+
+    // 致宾客页面单独处理
+    const toGuestsPage = {};
+    util.extend(true, toGuestsPage, pages[pages.length - 1]);
+    toGuestsPage.type = "toGuests";
+    // 致宾客页面单独处理
+    const pagesCommon = [];
+    util.extend(true, pagesCommon, pages.slice(0, 6));
+
     tpls.push({
         id: index,
         bgMusic: mp3[0],
@@ -84,9 +101,12 @@ for (let i = 0; i < 10; i++) {
         // 主色调
         mainColor: colors[i],
         imgSrc: "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=模板" + index,
-        pages: pages,
+        pages: pagesCommon,
         // 有弹幕吗
         barrageHas: true,
+        // 有致宾客页面吗
+        toGuestsHas: true,
+        toGuestsPage: toGuestsPage,
         invitationInfo: {
             address: "婚礼地址",
             date: util.getCurDate(),

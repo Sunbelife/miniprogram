@@ -4,6 +4,7 @@
         <tpl1 id="tpl1"
               bindpageClick="pageClick"
               bindpageMove="pageMove"
+              toGuestsHas="{{toGuestsHas}}"
               pages="{{pages}}"
               bgMusic="{{bgMusic}}"
               invitationInfo="{{invitationInfo}}"
@@ -24,8 +25,10 @@
         <pageSet id="pageSet"
                  bgMusic="{{bgMusic}}"
                  barrageHas="{{barrageHas}}"
+                 toGuestsHas="{{toGuestsHas}}"
                  bindhidePage="hidePageSet"
                  bindshowInvitationInfo="showInvitationInfo"
+                 bindtoGuestsHasChange="toGuestsHasChange"
                  bindshowMusicChoose="showMusicChoose"
         ></pageSet>
     </view>

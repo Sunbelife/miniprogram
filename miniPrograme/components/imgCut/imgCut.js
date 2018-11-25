@@ -21,27 +21,46 @@ Component({
         isLoading: false,
         x: 0,
         y: 0,
-        imgSrc:"/images/logo.jpeg",
+        imgSrc: "/images/logo.jpeg",
         // 默认缩放一半
-        // scale: .5,
-        scale: 1,
+        // 需要的图片大小和用户都要缩放
+        scale: .5
+        // scale: 1,
     },
     ready(){
+
+        const cutImageInfo = this.properties.cutImageInfo;
+
+        console.log(cutImageInfo);
+        if (!cutImageInfo.width) {
+            console.error("未设置编辑图片的大小");
+        } else {
+            this.setData({
+                movableAreaRectangle: {
+                    width: this.cssHandle(cutImageInfo.width, this.data.scale),
+                    height: this.cssHandle(cutImageInfo.height, this.data.scale)
+                }
+            });
+        }
     },
     methods: {
+        cssHandle(css, scale){
+            //     css  300px   300 * scale  + px
+            return (css.replace("px", "") * scale) + "px";
+        },
         hidePage(){
             this.triggerEvent('hidePage');
         },
         saveImage(){
             // this.hidePage();
 
-            console.log(this.data.x,this.data.y,this.data.scale);
-            
+            console.log(this.data.x, this.data.y, this.data.scale);
+
             console.log(this.properties.cutImageInfo);
 
-            this.triggerEvent('saveImage',{
-                curShowPage:this.properties.curShowPage,
-                cutImageInfo:this.properties.cutImageInfo,
+            this.triggerEvent('saveImage', {
+                curShowPage: this.properties.curShowPage,
+                cutImageInfo: this.properties.cutImageInfo,
                 newImageSrc: "https://dummyimage.com/200x300&text=random" + Math.floor(Math.random() * 1000)
             });
 
@@ -57,8 +76,8 @@ Component({
 
                     that.setData({
                         movableViewRectangle: {
-                            width:res.width,
-                            height:res.height
+                            width: res.width,
+                            height: res.height
                         }
                     });
                     that.setData({
@@ -80,16 +99,16 @@ Component({
         onChange(e) {
             console.log(e.detail);
             this.setData({
-                x:e.detail.x,
-                y:e.detail.y
+                x: e.detail.x,
+                y: e.detail.y
             });
         },
         onScale(e) {
             console.log(e.detail);
             this.setData({
-                scale:e.detail.scale,
-                x:e.detail.x,
-                y:e.detail.y
+                scale: e.detail.scale,
+                x: e.detail.x,
+                y: e.detail.y
             });
         }
     }

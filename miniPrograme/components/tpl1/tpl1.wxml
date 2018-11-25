@@ -41,7 +41,7 @@
                 <p7 id="p{{index}}" page="{{item}}"
                     invitationInfo="{{invitationInfo}}"
                     showBanquetInfoBtn="{{showBanquetInfoBtn}}" bindshowBanquetInfo="showBanquetInfo"
-                    wx:if="{{item.id === 7}}"
+                    wx:if="{{item.id === 7 && toGuestsHas}}"
                 ></p7>
                 <p8 id="p{{index}}" wx:if="{{item.id === 8}}"></p8>
                 <p9 id="p{{index}}" wx:if="{{item.id === 9}}"></p9>
