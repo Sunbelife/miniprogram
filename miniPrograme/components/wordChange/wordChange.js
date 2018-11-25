@@ -3,8 +3,8 @@ const util = require('../../utils/util.js');
 // 写评论
 const api = require('../../utils/api.js');
 /*
-*  self.triggerEvent('writeover');
-* */
+ *  self.triggerEvent('writeover');
+ * */
 Component({
     behaviors: [],
     properties: {
@@ -16,20 +16,24 @@ Component({
         isLoading: false,
     },
     ready(){
+        console.log(this.properties.curWordChangeInfo);
     },
     methods: {
         hidePage(){
             this.triggerEvent('hidePage');
         },
-        submit(){
-            console.log(this.properties.cutImageInfo);
+        submit(e){
+            const value = e.detail.value;
+            console.log(value);
+            const desc = value.desc.trim();
+            console.log(desc);
 
-            this.triggerEvent('saveWord',{
-                curShowPage:this.properties.curShowPage,
-                curWordChangeInfo:this.properties.curWordChangeInfo,
-                newWord:  Math.floor(Math.random() * 1000)
+            this.triggerEvent('saveWord', {
+                curShowPage: this.properties.curShowPage,
+                curWordChangeInfo: this.properties.curWordChangeInfo,
+                newWord: desc
             });
-            
+
         }
     }
 

@@ -4,7 +4,9 @@
 
 <image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep0 ? 'animated' : '' }}"></image>
 
-
+<view class="text1 ">
+    {{page.textSrc[0]}}
+</view>
 
 <view class="text animate-toRight text-center  {{animatedStep2 ? 'animated' : '' }}">
     {{invitationInfo.date}}  {{invitationInfo.time}}  {{invitationInfo.address}}

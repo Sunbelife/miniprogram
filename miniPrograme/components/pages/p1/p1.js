@@ -49,13 +49,13 @@ Component({
                 left: "375rpx"
             });
 
-            // editInfo.text.push({
-            //     type: "text",
-            //     text: this.data.text,
-            //     index: editInfo.text.length,
-            //     bottom: "250rpx",
-            //     left: "375rpx"
-            // });
+            editInfo.text.push({
+                type: "text",
+                text: this.data.page.textSrc[0],
+                index: editInfo.text.length,
+                bottom: "350rpx",
+                left: "175rpx"
+            });
 
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);

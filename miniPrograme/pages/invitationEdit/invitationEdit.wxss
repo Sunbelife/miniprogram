@@ -25,17 +25,19 @@
 /* 定位 */
 .editEle-wrap-img{
     position: absolute;
+    z-index: 3;
     top: 0;
     left: 0;
-    margin-left: -45rpx;
-    margin-top: -45rpx;
+    /*margin-left: -45rpx;*/
+    /*margin-top: -45rpx;*/
 }
 .editEle-wrap-word{
     position: absolute;
+    z-index: 3;
     top: 0;
     left: 0;
-    margin-left: -45rpx;
-    margin-top: -45rpx;
+    /*margin-left: -45rpx;*/
+    /*margin-top: -45rpx;*/
 }
 
 /*

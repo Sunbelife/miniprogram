@@ -35,7 +35,7 @@ Component({
 
         if (util.isDev()) {
             // 开发指定到页面 0 开始的
-            this.movePage(6);
+            // this.movePage(6);
         }
 
         this.needMakeHandle();

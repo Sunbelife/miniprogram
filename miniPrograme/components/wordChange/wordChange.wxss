@@ -6,13 +6,13 @@
 
 
 .edit-wrap{
+    width: 750rpx;
     position: fixed;
     bottom: 0;
     background-color: white;
     display: flex;
     box-sizing: border-box;
     padding: 20rpx;
-    width: 100%;
     z-index: 100;
 }
 
@@ -35,4 +35,10 @@
     line-height: 150rpx;
     width: 120rpx;
     text-align: center;
+    padding: 0;
+    border: none;
+
+}
+.edit-button:after{
+    display: none;
 }
