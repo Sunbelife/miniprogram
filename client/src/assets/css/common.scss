@@ -1,0 +1,44 @@
+$color: red;
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.page-content {
+  padding-top: 50px;
+}
+
+.page-form {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+.page-breadcrumb {
+  margin-bottom: 30px;
+  // 这样和 搜索表单的高度保持一致
+  padding-bottom: 37px;
+  border-bottom: 1px solid #ddd;
+}
+
+.page-pagination {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.fr {
+  float: right;
+}
