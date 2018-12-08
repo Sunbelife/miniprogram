@@ -1,5 +1,8 @@
 <?php
 namespace app\index\controller;
+namespace app\index\model\Music;
+
+use app\index\model\Music;
 
 class Index
 {
@@ -11,5 +14,11 @@ class Index
     public function hello($name = 'ThinkPHP5')
     {
         return 'hello,' . $name;
+    }
+
+    public function get_music_list()
+    {
+        $data = 1;
+        return json($data);
     }
 }
