@@ -14,8 +14,7 @@
                   wx:key="key"
                   bindtap="goPage"
                   data-page="invitationInfo"
-                  data-id="{{item.id}}"
-                  data-handle="new"
+                  data-index="{{index}}"
             >
                 <image src="https://dummyimage.com/200x300/{{item.mainColor}}/ffffff&text={{item.zh}}"></image>
             </view>

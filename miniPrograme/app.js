@@ -5,6 +5,7 @@ App({
         // isAutoPlayMusic: true,
         isAutoPlayMusic: false,
         domain: "http://www.baidu.com",
+        domainDev: "http://localhost:3000",
         isDev: 1,
         userInfo: null
     },

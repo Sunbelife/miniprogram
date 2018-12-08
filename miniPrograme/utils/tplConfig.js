@@ -132,6 +132,21 @@ console.log(tplsOb,
 
 
 const mockTpl = {
+    // 有弹幕吗
+    barrageHas: true,
+    id: 1,
+    // 有致宾客页面吗
+    toGuestsHas: true,
+    toGuestsPage: {
+        "id": 7,
+        "zh": "致宾客页",
+        "name": "page7",
+        "type": "toGuests",
+        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page7_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page7_2"],
+        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
+        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page7",
+        "canRemove": 0
+    },
     "pages": [{
         "id": 1,
         "zh": "封面",
@@ -180,14 +195,6 @@ const mockTpl = {
         "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
         "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page6",
         "canRemove": 1
-    }, {
-        "id": 7,
-        "zh": "致宾客页",
-        "name": "page7",
-        "imageSrc": ["https://dummyimage.com/200x300/19CAAD/ffffff&text=page7_1", "https://dummyimage.com/200x300/19CAAD/ffffff&text=page7_2"],
-        "textSrc": ["嘻嘻嘻嘻嘻", "嘻嘻嘻嘻嘻"],
-        "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page7",
-        "canRemove": 0
     }],
     "bgMusic": {
         "no": 1,
@@ -200,8 +207,8 @@ const mockTpl = {
         "time": "12:00",
         "latitude": 39.90824,
         "longitude": 116.47783,
-        "nameLady": "新娘",
-        "nameGentleman": "新郎"
+        "nameLady": "新娘-lily",
+        "nameGentleman": "新郎-bob"
     }
 };
 

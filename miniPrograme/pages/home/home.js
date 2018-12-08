@@ -1,5 +1,7 @@
 const app = getApp();
 const util = require('../../utils/util.js');
+const api = require('../../utils/api.js');
+const tplConfig = require('../../utils/tplConfig.js');
 
 Page({
     data: {
@@ -32,12 +34,37 @@ Page({
 
     onLoad: function () {
 
+        this.getInitData();
     },
-    onGotUserInfo: function(e) {
+    getInitData: function (e) {
+        api.hadEditTpl({
+            method: "POST",
+            data: {
+                a: 123
+            },
+            success: (res) => {
+                console.log(res);
+
+            }
+        })
+    },
+    onGotUserInfo: function (e) {
         // 存在说明授权成功
-        if(e.detail.userInfo){
+        if (e.detail.userInfo) {
             this.goPage("tplChoose");
         }
+    },
+    invitationEdit: function (e) {
+        const index = util.data(e,"index");
+
+        // TODO 需要设置为真实的
+
+        try {
+            wx.setStorageSync('tplInfo', tplConfig.mockTpl)
+        } catch (e) {
+        }
+
+        util.goPage(e);
     },
     goPage: util.goPage,
     chooseType: function (e) {
@@ -46,7 +73,7 @@ Page({
             activeType: type
         });
     },
-    loadMore(){
+    loadMore() {
 
     },
     // 页面滚动回调

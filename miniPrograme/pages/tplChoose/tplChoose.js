@@ -12,13 +12,12 @@ Page({
         
     },
     goPage(e){
-        // 新建就移除上一次存储的，也可以不移除
+        const index = util.data(e,"index");
         try {
-            wx.removeStorageSync('invitationInfo')
+            wx.setStorageSync('tplInfo', this.data.tpl[index])
         } catch (e) {
-            // Do something when catch error
         }
-        
+
         util.goPage(e);
     },
 

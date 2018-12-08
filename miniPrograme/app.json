@@ -1,6 +1,9 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/invitationEdit/invitationEdit",
+
+    "pages/nav/nav",
     "pages/invitationSend/invitationSend",
     "pages/banquetInfoFill/banquetInfoFill",
     "pages/startMake/startMake",
@@ -9,9 +12,7 @@
     "pages/tplUserLook/tplUserLook",
     "pages/tplChoose/tplChoose",
     "pages/guestReply/guestReply",
-    "pages/invitationEdit/invitationEdit",
 
-    "pages/nav/nav",
     "pages/tplDev/tplDev",
     "pages/index/index",
 
