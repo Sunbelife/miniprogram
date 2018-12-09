@@ -10,7 +10,7 @@ let request = axios.create();
 
 let baseURLOb = {
     dev:"/client",
-    prod:"",
+    prod:"/web/manage",
 };
 
 request.defaults.timeout = 2500;

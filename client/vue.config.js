@@ -1,5 +1,5 @@
 module.exports = {
-    // baseUrl: "/td",
+    baseUrl: "/client",
     lintOnSave: false,
     devServer: {
         proxy: {
