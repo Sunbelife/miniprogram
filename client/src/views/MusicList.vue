@@ -28,7 +28,7 @@
 
             <el-table
                     ref="multipleTable"
-                    :data="tableData3"
+                    :data="tableData"
                     tooltip-effect="dark"
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
@@ -38,17 +38,18 @@
                 </el-table-column>
                 <el-table-column
                         align="center"
+                        prop="name"
                         label="音乐名称">
-                    <template slot-scope="scope">{{ scope.row.date }}</template>
+                    <!--<template slot-scope="scope">{{ scope.row.date }}</template>-->
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="name"
+                        prop="time"
                         label="上传时间">
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="address"
+                        prop="type"
                         label="类别"
                         show-overflow-tooltip>
                 </el-table-column>
@@ -109,42 +110,21 @@
 </template>
 <script>
     import Nav from '@/components/Nav.vue'
+    import {
+        request,
+        api
+    } from '@/util/api'
+    import util from '@/util/util'
+    import dataHelper from '@/util/dataHelper'
+
     export default {
         name: 'HelloWorld',
         components: {
             Nav
         },
-        data(){
+        data() {
             return {
-                tableData3: [{
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-07',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }],
+                tableData: [],
                 multipleSelection: [],
                 currentPage4: 4,
                 formInline: {
@@ -166,8 +146,28 @@
                 formLabelWidth: '100px'
             }
         },
+        mounted() {
 
+            this.getList();
+        },
         methods: {
+            getList() {
+                request.get(api.musicList, {}).then((response) => {
+                    console.log(response);
+                    if (response.code === 200) {
+                        this.tableData = dataHelper.musicList(response.data);
+                        console.log(this.tableData);
+                    } else {
+                        this.$message({
+                            message: response.msg,
+                            showClose: true,
+                            type: 'error'
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
             toggleSelection(rows) {
                 const that = this;
                 if (rows) {
@@ -183,6 +183,47 @@
             },
             handleDelClick(item) {
                 console.log(item);
+
+                this.$confirm('删除该音乐, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+
+                    request.get(api.musicDel, {
+                        params:{
+                            music_id: item.id
+                        }
+                    }).then((response) => {
+                        console.log(response);
+                        if (response.code === 200) {
+                            this.$message({
+                                showClose: true,
+                                type: 'success',
+                                message: '删除成功!'
+                            });
+                            // 重获取列表
+                            this.getList();
+                        } else {
+                            this.$message({
+                                message: response.msg,
+                                showClose: true,
+                                type: 'error'
+                            });
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+
+                }).catch(() => {
+                    this.$message({
+                        showClose: true,
+                        duration: 1000,
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+
             },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);

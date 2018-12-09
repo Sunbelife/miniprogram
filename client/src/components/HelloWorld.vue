@@ -32,10 +32,24 @@
 </template>
 
 <script>
+    import {
+        request,
+        api
+    } from '@/api'
+
     export default {
         name: 'HelloWorld',
         props: {
             msg: String
+        },
+        mounted() {
+            request.get(api.login)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     }
 </script>

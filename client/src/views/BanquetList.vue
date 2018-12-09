@@ -28,7 +28,7 @@
 
             <el-table
                     ref="multipleTable"
-                    :data="tableData3"
+                    :data="tableData"
                     tooltip-effect="dark"
                     style="width: 100%">
                 <!--<el-table-column-->
@@ -120,6 +120,14 @@
 </template>
 <script>
     import Nav from '@/components/Nav.vue'
+    import {
+        request,
+        api
+    } from '@/util/api'
+    import util from '@/util/util'
+    import dataHelper from '@/util/dataHelper'
+
+
     export default {
         name: 'HelloWorld',
         components: {
@@ -127,7 +135,7 @@
         },
         data(){
             return {
-                tableData3: [{
+                tableData: [{
                     date: '2016-05-03',
                     name: '王小虎',
                     address: '上海市普陀区'
@@ -177,8 +185,28 @@
                 formLabelWidth: '100px'
             }
         },
+        mounted() {
 
+            this.getList();
+        },
         methods: {
+            getList() {
+                request.get(api.banquetInfo, {}).then((response) => {
+                    console.log(response);
+                    if (response.code === 200) {
+                        this.tableData = dataHelper.banquetInfo(response.data);
+                        console.log(this.tableData);
+                    } else {
+                        this.$message({
+                            message: response.msg,
+                            showClose: true,
+                            type: 'error'
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
 //            toggleSelection(rows) {
 //                const that = this;
 //                if (rows) {
