@@ -34,7 +34,11 @@ Page({
 
     onLoad: function () {
 
-        this.getInitData();
+        util.login(() => {
+            console.log("登录成功啦~~");
+        });
+
+        // this.getInitData();
     },
     getInitData: function (e) {
         api.hadEditTpl({
