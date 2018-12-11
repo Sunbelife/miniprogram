@@ -20,7 +20,7 @@
 
             <el-table
                     ref="multipleTable"
-                    :data="tableData3"
+                    :data="tableData"
                     tooltip-effect="dark"
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
@@ -36,12 +36,13 @@
                 </el-table-column>
                 <el-table-column
                         align="center"
+                        prop="man"
                         label="新郎姓名">
-                    <template slot-scope="scope">{{ scope.row.date }}</template>
+                    <!--<template slot-scope="scope">{{ // scope.row.date }}</template>-->
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="name"
+                        prop="women"
                         label="新娘姓名">
                 </el-table-column>
 
@@ -79,6 +80,14 @@
 </template>
 <script>
     import Nav from '@/components/Nav.vue'
+    import {
+        request,
+        api
+    } from '@/util/api'
+    import util from '@/util/util'
+    import dataHelper from '@/util/dataHelper'
+
+
     export default {
         name: 'HelloWorld',
         components: {
@@ -86,7 +95,7 @@
         },
         data(){
             return {
-                tableData3: [{
+                tableData: [{
                     date: '2016-05-03',
                     name: '王小虎',
                     address: '上海市普陀区金沙江路 1518 弄'
@@ -136,8 +145,28 @@
                 formLabelWidth: '100px'
             }
         },
+        mounted() {
 
+            this.getList();
+        },
         methods: {
+            getList() {
+                request.get(api.marryInfo, {}).then((response) => {
+                    console.log(response);
+                    if (response.code === 200) {
+                        this.tableData = dataHelper.marryInfo(response.data);
+                        console.log(this.tableData);
+                    } else {
+                        this.$message({
+                            message: response.msg,
+                            showClose: true,
+                            type: 'error'
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
             toggleSelection(rows) {
                 const that = this;
                 if (rows) {
@@ -154,7 +183,7 @@
             handleDelClick(item) {
                 console.log(item);
                 let id = item.id;
-                id = 1;
+                // id = 1;
                 console.log("banquetList/" + id);
                 this.goPage("banquetList/" + id);
             },

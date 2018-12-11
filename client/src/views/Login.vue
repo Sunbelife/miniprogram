@@ -14,7 +14,7 @@
                             <el-input v-model="form.name"></el-input>
                         </el-form-item>
                         <el-form-item label="密码">
-                            <el-input v-model="form.name"></el-input>
+                            <el-input v-model="form.pwd"></el-input>
                         </el-form-item>
                         <el-form-item label="" class="text-left">
                             <el-checkbox v-model="form.checked">记住密码</el-checkbox>
@@ -29,27 +29,60 @@
     </div>
 </template>
 <script>
+    import {
+        request,
+        api
+    } from '@/util/api'
+    import util from '@/util/util'
+
     export default {
         name: 'HelloWorld',
-        data(){
+        data() {
             return {
                 form: {
                     name: '',
-                    checked: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
+                    pwd: '',
+                    checked: true,
                 }
             }
         },
+        mounted() {
+
+
+            if (util.isLocal) {
+                this.setVal();
+            }
+        },
         methods: {
+            setVal() {
+                this.form.name = "admin";
+                this.form.pwd = "admin";
+            },
             onSubmit() {
                 console.log('submit!');
-                this.goPage("home");
+
+                request.get(api.login, {
+                    params: {
+                        user_name: this.form.name,
+                        pass_word: this.form.pwd
+                    }
+                }).then((response) => {
+                    console.log(response);
+
+                    if (response.code === 200) {
+                        this.goPage("home");
+                    } else {
+                        this.$message({
+                            message: response.msg,
+                            showClose: true,
+                            type: 'error'
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+
             }
         }
     }
