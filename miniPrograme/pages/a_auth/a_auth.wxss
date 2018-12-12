@@ -1,0 +1,12 @@
+.tip{
+    margin-top:250rpx;
+    text-align: center;
+    color: #9e9e9e;
+}
+
+.authBtn{
+     margin-top:150rpx;
+     width: 300rpx;
+     font-size: 30rpx;
+
+}

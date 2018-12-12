@@ -1,0 +1,29 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/invitationEdit/invitationEdit",
+
+    "pages/nav/nav",
+    "pages/invitationSend/invitationSend",
+    "pages/banquetInfoFill/banquetInfoFill",
+    "pages/startMake/startMake",
+    "pages/invitationInfo/invitationInfo",
+    "pages/tplPreview/tplPreview",
+    "pages/tplUserLook/tplUserLook",
+    "pages/tplChoose/tplChoose",
+    "pages/guestReply/guestReply",
+
+    "pages/tplDev/tplDev",
+    "pages/index/index",
+    "pages/a_auth/a_auth",
+
+    "pages/shareSuccess/shareSuccess",
+    "pages/tpl/tpl"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "原野映像",
+    "navigationBarTextStyle":"black"
+  }
+}
