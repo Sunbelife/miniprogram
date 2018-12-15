@@ -102,6 +102,9 @@ Page({
 
         }
 
+        // TODO 待去掉。
+        this.showImgCut();
+
 
     },
     pageMove(e) {
@@ -129,51 +132,60 @@ Page({
         try {
             tplInfo = wx.getStorageSync('tplInfo');
             console.log(JSON.stringify(tplInfo));
-            if (util.isDev() && !tplInfo) {
+            // TODO 先这样子
+            // if (util.isDev() && !tplInfo) {
+            if (!tplInfo) {
                 tplInfo = tplConfig.mockTpl;
             }
             this.setData({
                 tplInfo: tplInfo
             });
+
+
+            console.log(tplInfo);
+            let pages = [];
+            let invitationInfo = {};
+            let toGuestsPage = {};
+            let bgMusic = {};
+
+            util.extend(true, pages, tplInfo.pages);
+            util.extend(true, invitationInfo, tplInfo.invitationInfo);
+            util.extend(true, toGuestsPage, tplInfo.toGuestsPage);
+            util.extend(true, bgMusic, tplInfo.bgMusic);
+
+            pages.forEach(function (v, k) {
+                v.zh = that.pageName(k, v);
+            });
+            // console.log(pages);
+            this.setData({
+                pages: pages
+            });
+
+            try {
+                wx.setStorageSync('toGuestsHas', this.data.toGuestsHas)
+            } catch (e) {
+            }
+
+
+            this.setData({
+                id: tplInfo.id,
+                pages: pages,
+                bgMusic: bgMusic,
+                invitationInfo: invitationInfo,
+                toGuestsPage: toGuestsPage,
+                toGuestsHas: tplInfo.toGuestsHas,
+                barrageHas: tplInfo.barrageHas
+            });
+            // 处理致宾客页面
+            this.updateToGuestsHasHandle();
+
+
+
         } catch (e) {
             // Do something when catch error
         }
 
-        let pages = [];
-        let invitationInfo = {};
-        let toGuestsPage = {};
-        let bgMusic = {};
 
-        util.extend(true, pages, tplInfo.pages);
-        util.extend(true, invitationInfo, tplInfo.invitationInfo);
-        util.extend(true, toGuestsPage, tplInfo.toGuestsPage);
-        util.extend(true, bgMusic, tplInfo.bgMusic);
-
-        pages.forEach(function (v, k) {
-            v.zh = that.pageName(k, v);
-        });
-        // console.log(pages);
-        this.setData({
-            pages: pages
-        });
-
-        try {
-            wx.setStorageSync('toGuestsHas', this.data.toGuestsHas)
-        } catch (e) {
-        }
-
-
-        this.setData({
-            id: tplInfo.id,
-            pages: pages,
-            bgMusic: bgMusic,
-            invitationInfo: invitationInfo,
-            toGuestsPage: toGuestsPage,
-            toGuestsHas: tplInfo.toGuestsHas,
-            barrageHas: tplInfo.barrageHas
-        });
-        // 处理致宾客页面
-        this.updateToGuestsHasHandle();
 
     },
     submitInvitationInfo() {

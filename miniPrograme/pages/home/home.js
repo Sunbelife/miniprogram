@@ -28,6 +28,7 @@ Page({
         // 需要顶部固定吗？
         scrollTopPage: 0,
         isNeedFixed: false,
+        guestReplyTipNum: 0,
         // px
         tabOffsetTop: 90
     },
@@ -37,7 +38,8 @@ Page({
         util.login(() => {
             // debugger;
             console.log("登录成功啦~~");
-            this.genEwm();
+            // this.genEwm();
+            this.guestReplyTip();
         });
 
         // this.getInitData();
@@ -57,6 +59,27 @@ Page({
             success: (resLogin) => {
                 console.log(resLogin);
 
+            }
+        });
+
+    },
+    guestReplyTip: function () {
+
+        const loginReq = {
+            page: 'page/home/home',
+            // 再说
+            scene:"id"
+            // scene:"id%3D123%26name%3D123"
+        };
+
+        api.guestReplyTip({
+            // method: "POST",
+            data: loginReq,
+            success: (resLogin) => {
+                console.log(resLogin);
+                this.setData({
+                    guestReplyTipNum:resLogin.data.data.is_read_sum
+                })
             }
         });
 

@@ -10,6 +10,7 @@ Component({
         item: null // 简化的定义方式
     },
     data: {
+        chooseImgPath: "",
         movableAreaRectangle: {
             width: "300px",
             height: "300px",
@@ -113,6 +114,60 @@ Component({
                 x: e.detail.x,
                 y: e.detail.y
             };
+        },
+        chooseImg() {
+            const that = this;
+            wx.chooseImage({
+                count: 1, // 默认9
+                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function (res) {
+                    // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+                    var tempFilePaths = res.tempFilePaths;
+                    // wx.showLoading({
+                    //     title: '身份证识别中...',
+                    // });
+
+                    console.log(tempFilePaths);
+
+                    that.setData({
+                        chooseImgPath: tempFilePaths[0]
+                    })
+                }
+            })
+        },
+        uploadImg() {
+
+            // TODO  加载标示
+            // wx.showLoading({
+            //     title: '身份证识别中...',
+            // });
+
+            const that = this;
+
+            console.log(this.data.chooseImgPath,
+                `${api.apiUrl}${api.urls.updateImgCut}`, {
+                    'p_x': that.data.x,
+                    'p_y': that.data.y,
+                    'p_width': 200,
+                    'p_height': 200,
+                    'p_scale': that.scaleRecord.scale
+                });
+            wx.uploadFile({
+                url: `${api.apiUrl}${api.urls.updateImgCut}` , //仅为示例，非真实的接口地址
+                filePath: that.data.chooseImgPath,
+                name: 'image',
+                formData: {
+                    'p_x': that.data.x,
+                    'p_y': that.data.y,
+                    'p_width': 200,
+                    'p_height': 200,
+                    'p_scale': that.scaleRecord.scale
+                },
+                success: function (res) {
+                    console.log(res);
+                }
+            })
         }
     }
 

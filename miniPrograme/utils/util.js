@@ -18,7 +18,7 @@ const formatNumber = n => {
 
 // data key
 function data(obj, key) {
-    if(!obj){
+    if (!obj) {
         return;
     }
     return obj.currentTarget.dataset[key];
@@ -48,6 +48,7 @@ function arrToObjKV(arr, key, value) {
     }
     return obj;
 }
+
 function isDev() {
     return !getApp().isPublish;
 }
@@ -176,7 +177,7 @@ var pages = {
 };
 
 
-function goPage(e,params) {
+function goPage(e, params) {
     let page = "";
     let id = "";
     let handle = "";
@@ -187,7 +188,7 @@ function goPage(e,params) {
     } else {
         // 字符串
         page = e;
-        if(params){
+        if (params) {
             id = params.id;
             handle = params.handle;
         }
@@ -294,7 +295,7 @@ var extend = (function () {
                 // console.log(source)
                 for (var property in source) {
                     obj = source[property]
-                    if (isDeep && ( isObject(obj) || isArray(obj) )) {
+                    if (isDeep && (isObject(obj) || isArray(obj))) {
                         copy = isObject(obj) ? {} : []
                         var extended = extend(isDeep, copy, obj)
                         destination[property] = extended
@@ -319,7 +320,7 @@ function toast(text) {
 }
 
 function setTimeOutFlag(that, count, cur) {
-    setTimeout(()=> {
+    setTimeout(() => {
         that.setData({
             ['animatedStep' + cur]: true
         });
@@ -329,9 +330,10 @@ function setTimeOutFlag(that, count, cur) {
         }
     }, 300)
 }
+
 function setTimeOutFlagHide(that, count) {
 
-    each(new Array(count).fill("12312"), (k, v)=> {
+    each(new Array(count).fill("12312"), (k, v) => {
         that.setData({
             ['animatedStep' + k]: false
         });
@@ -358,9 +360,11 @@ function echoPage() {
     console.log(arr);
     console.log(JSON.stringify(arr));
 }
+
 function isDev() {
     return getApp().globalData.isDev;
 }
+
 function pageComponent() {
     const pageComponent = {};
     for (let i = 1; i <= 70; i++) {
@@ -377,18 +381,17 @@ function conponentRef() {
     }
     // console.log(JSON.stringify(arr));
 }
+
 // conponentRef();
 
 function isNotUndefined(val) {
-  return typeof val !== "undefined";
+    return typeof val !== "undefined";
 }
-
-
 
 
 function posCssComplete(arr) {
     // 对象补齐
-    each(arr, (k, v)=> {
+    each(arr, (k, v) => {
         if (!v.left) {
             v.left = "auto";
         }
@@ -403,7 +406,6 @@ function posCssComplete(arr) {
         }
     });
 }
-
 
 
 function login(callLoginSuccess) {
@@ -423,6 +425,12 @@ function login(callLoginSuccess) {
             console.log('当前时间小于过期时间');
         }
     }
+
+    if (isDev()) {
+        callLoginSuccess();
+        return;
+    }
+
 
     if (WZToken) {
         callLoginSuccess();
@@ -498,8 +506,6 @@ function getUserInfo(resLogin, callLoginSuccess) {
         }
     });
 }
-
-
 
 
 module.exports = {

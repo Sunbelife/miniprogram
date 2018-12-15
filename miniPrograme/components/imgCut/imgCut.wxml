@@ -44,7 +44,7 @@
         >
 
 
-            <movable-view class="max" direction="all"
+            <movable-view wx:if="{{chooseImgPath}}" class="max" direction="all"
                           scale="{{true}}"
                           bindchange="onChange"
                           scale-value="{{scale}}"
@@ -53,7 +53,8 @@
                           bindscale="onScale"
                           style="width:{{movableViewRectangle.width}};height:{{movableViewRectangle.height}};"
             >
-                <image src="/images/logo.jpeg"
+                <!--<image src="/images/logo.jpeg"-->
+                <image  src="{{chooseImgPath}}"
                        class="showImg"
                        style="width:{{movableViewRectangle.width}};height:{{movableViewRectangle.height}};"
                 ></image>
@@ -63,8 +64,9 @@
 
 
     <view class="button-fixed">
-        <view class="button">选择图片</view>
-        <view class="button" bindtap="saveImage">保存图片</view>
+        <view class="button" bindtap="chooseImg">选择图片</view>
+        <!--<view class="button" bindtap="saveImage">保存图片</view>-->
+        <view class="button" bindtap="uploadImg">保存图片</view>
     </view>
 
 

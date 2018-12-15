@@ -26,7 +26,7 @@
                     <view class="iconfont icon-duihua"></view>
                 </view>
                 <view class="iconTitle">
-                    宾客(10)
+                    宾客({{guestReplyTipNum}})
                 </view>
             </view>
         </view>

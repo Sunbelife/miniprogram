@@ -52,8 +52,17 @@ const urlsDev = {
     hadEditTpl: "/hadEditTpl",
     // 已编辑的请帖一个
     hadEditTplOne: "/hadEditTplOne",
+
+
     // 宾客回复提示
     guestReplyTip: "/guestReplyTip",
+    // 宾客回复已读
+    guestReplyRead: "/guestReplyRead",
+    // 回复祝福
+    replyWish: "/replyWish",
+    // 赴宴信息列表
+    banquetInfoList: "/banquetInfoList",
+
 
     // 模板列表
     tplList: "/tplList",
@@ -74,13 +83,14 @@ const urlsDev = {
     // 用户微信分享图片获取
     userShareImgGet: "/userShareImgGet",
     // 获取弹幕列表
-    barrageList:"/barrageList",
+    barrageList: "/barrageList",
 
     // 宾客弹幕保存
-    barrageSave:"/barrageSave",
+    barrageSave: "/barrageSave",
 
     // 赴宴信息填写接口
-    banquetInfoFill:"/banquetInfoFill",
+    banquetInfoFill: "/banquetInfoFill",
+
 
 };
 
@@ -93,8 +103,18 @@ const urlsProd = {
     hadEditTpl: "/xxxxxxx",
     // 已编辑的请帖 一个
     hadEditTplOne: "/xxxxxxx",
+
+
     // 宾客回复提示
     guestReplyTip: "/xxxxxxx",
+    // 宾客回复已读
+    guestReplyRead: "/guestReplyRead",
+    // 回复祝福
+    replyWish: "/replyWish",
+    // 赴宴信息列表
+    banquetInfoList: "/banquetInfoList",
+
+
 
     // 模板列表
     tplList: "/xxxxxxx",
@@ -110,24 +130,24 @@ const urlsProd = {
     tplSave: "/xxxxxxx",
 
     // 修改图片的截取
-    updateImgCut: "/xxxxxxx",
+    updateImgCut: "/chang_pic",
 
     // 用户微信分享图片获取
     userShareImgGet: "/gen_user_card_qr",
     // 获取弹幕列表
-    barrageList:"/get_barrage_msg",
+    barrageList: "/get_barrage_msg",
 
     // 宾客弹幕保存
-    barrageSave:"/send_barrage_msg",
+    barrageSave: "/send_barrage_msg",
 
     // 赴宴信息填写接口
-    banquetInfoFill:"/xxxxxxx",
+    banquetInfoFill: "/xxxxxxx",
 
 };
 
 let urls = urlsProd;
 // 开发环境
-if(getApp().globalData.isDev){
+if (getApp().globalData.isDev) {
     urls = urlsDev;
     apiUrl = apiUrlDev;
 }
@@ -208,6 +228,22 @@ const banquetInfoFill = (params) => {
 };
 
 
+// 赴宴信息填写接口
+const banquetInfoList = (params) => {
+    wxRequest(params, `${apiUrl}${urls.banquetInfoList}`);
+};
+
+// 赴宴信息填写接口
+const guestReplyRead = (params) => {
+    wxRequest(params, `${apiUrl}${urls.guestReplyRead}`);
+};
+
+// 赴宴信息填写接口
+const replyWish = (params) => {
+    wxRequest(params, `${apiUrl}${urls.replyWish}`);
+};
+
+
 function getUrl(name) {
     return `${apiUrl}${urls[name]}`
 }
@@ -215,8 +251,12 @@ function getUrl(name) {
 
 module.exports = {
     login,
-    getUrl,
+    urls,
+    apiUrl,
+    guestReplyRead,
+    replyWish,
     loginEncrypted,
+    banquetInfoList,
     hadEditTpl,
     hadEditTplOne,
     guestReplyTip,

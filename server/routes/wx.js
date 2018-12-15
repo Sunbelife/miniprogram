@@ -166,6 +166,44 @@ router.post('/banquetInfoFill', function (req, res, next) {
         "data": "null"
     });
 });
+// 赴宴信息填写接口
+router.get('/guestReplyTip', function (req, res, next) {
+    res.send({
+        "code": 200,  // 成功 200，失败 250
+        "msg": "获取成功",
+        "data":
+            {
+                is_read_sum: 10
+            }
+    });
+});
+
+
+// 赴宴信息填写接口
+router.get('/banquetInfoList', function (req, res, next) {
+    res.send({
+        "code": 200,  // 成功 200，失败 250
+        "msg": "发送成功",
+        "data": [
+            {
+                attend_name: "战三",
+                attend_transit: "3",
+                phone_num: "13142512524",
+                attend_num: "2",
+                attend_time: "2018-11-12 11:00:00",
+                is_attend: "0"
+            },
+            {
+                attend_name: "战三2",
+                attend_transit: "3",
+                phone_num: "13142512524",
+                attend_num: "2",
+                attend_time: "2018-11-12 11:00:00",
+                is_attend: "0"
+            },
+        ]
+    });
+});
 
 
 module.exports = router;
