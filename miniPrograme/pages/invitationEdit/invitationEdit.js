@@ -85,7 +85,7 @@ Page({
             // 设置页面排序
             // this.showPageSort();
             // 显示图片裁剪
-            // this.showImgCut();
+            this.showImgCut();
             // 显示文字编辑
             // this.showWordChange();
 
@@ -485,12 +485,29 @@ Page({
     showImgCut(e) {
         const index = util.data(e, "index");
 
-        const curCutImageInfo = this.data.editEleImage[index];
-        this.setData({
-            curShowPage: this.data.curShowPage,
-            curCutImageInfo: curCutImageInfo,
-            isShowImgCut: true
-        });
+        if(index){
+            const curCutImageInfo = this.data.editEleImage[index];
+            this.setData({
+                curShowPage: this.data.curShowPage,
+                curCutImageInfo: curCutImageInfo,
+                isShowImgCut: true
+            });
+        }else{
+            this.setData({
+                curShowPage: 1,
+                curCutImageInfo: {
+                    width: "300px",
+                    height: "300px",
+
+                    type: "image",
+                    index: 0,
+                    top: "50vh",
+                    left: "375rpx"
+                },
+                isShowImgCut: true
+            });
+        }
+
     },
 // 隐藏 图片选择
     hideImgCut() {

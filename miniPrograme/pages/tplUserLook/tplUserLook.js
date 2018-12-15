@@ -29,10 +29,10 @@ Page({
     },
 
     onLoad: function () {
-
         if (util.isDev()) {
-            // this.showBanquetInfoFill();
+            this.showBanquetInfoFill();
         }
+
         this.getBlessing();
 
         this.init();
@@ -60,6 +60,16 @@ Page({
         } catch (e) {
             // Do something when catch error
         }
+
+        if (this.data.tplInfo.toGuestsHas) {
+            this.data.tplInfo.pages.push(this.data.tplInfo.toGuestsPage);
+        }
+
+
+        this.setData({
+            tplInfo: this.data.tplInfo
+        });
+        console.log(this.data.tplInfo);
 
 
     },

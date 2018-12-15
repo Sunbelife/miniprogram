@@ -7,6 +7,7 @@
         <tpl1
                 showBanquetInfoBtn="{{true}}"
                 needMake="{{true}}"
+                toGuestsHas="{{tplInfo.toGuestsHas}}"
 
                 pages="{{tplInfo.pages}}"
                 bgMusic="{{tplInfo.bgMusic}}"

@@ -18,6 +18,9 @@ const formatNumber = n => {
 
 // data key
 function data(obj, key) {
+    if(!obj){
+        return;
+    }
     return obj.currentTarget.dataset[key];
 }
 

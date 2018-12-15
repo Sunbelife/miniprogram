@@ -1,9 +1,9 @@
 {
   "pages":[
-    "pages/home/home",
-    "pages/tplUserLook/tplUserLook",
-
     "pages/invitationEdit/invitationEdit",
+    "pages/tplUserLook/tplUserLook",
+    "pages/home/home",
+
 
     "pages/nav/nav",
     "pages/invitationSend/invitationSend",

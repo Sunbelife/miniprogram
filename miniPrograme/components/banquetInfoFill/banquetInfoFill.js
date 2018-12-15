@@ -17,30 +17,35 @@ Component({
             {name: 'anything', value: '有事'}
         ],
         userCount: 1,
-        array: ['飞机', '开车', '公交车', '火车'],
+        array: ['自驾', '公交', '打车', '步行', '其他'],
         objectArray: [
             {
-                id: 0,
-                name: '飞机'
-            },
-            {
                 id: 1,
-                name: '开车'
+                name: '自驾'
             },
             {
                 id: 2,
-                name: '公交车'
+                name: '公交'
             },
             {
                 id: 3,
-                name: '火车'
+                name: '打车'
+            },
+            {
+                id: 4,
+                name: '步行'
+            },
+            {
+                id: 5,
+                name: '其他'
             }
         ],
-        index: 2,
+
+        index: 1,
         name: 2,
         tel: 2,
     },
-    ready(){
+    ready() {
         if (util.isDev()) {
             this.setData({
                 name: "张三",
@@ -49,7 +54,7 @@ Component({
         }
     },
     methods: {
-        hidePage(){
+        hidePage() {
             console.log(" !2312");
 
             this.triggerEvent('hidePage');
@@ -123,12 +128,34 @@ Component({
                 title: '提交中...'
             });
 
-            wx.hideLoading();
+            // TODO 卡片ID
+            const req = {
+                card_id: "1231",
+                user_name: name,
+                transit_type: this.data.objectArray[this.data.index].id,
+                phone_num: tel,
+                attend_num: this.data.userCount
+            };
 
-            self.setData({
-                isLoading: false
+            console.log("请求参数", req);
+
+            api.banquetInfoFill({
+                method: "POST",
+                data: req,
+                success: (resLogin) => {
+                    console.log(resLogin);
+
+                    wx.hideLoading();
+
+                    self.setData({
+                        isLoading: false
+                    });
+
+                    self.hidePage();
+                }
             });
-            self.hidePage();
+
+
 
         }
     }

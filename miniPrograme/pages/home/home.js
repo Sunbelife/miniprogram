@@ -46,7 +46,9 @@ Page({
 
         const loginReq = {
             page: 'page/home/home',
-            scene:"id%3D123%26name%3D123"
+            // 再说
+            scene:"id"
+            // scene:"id%3D123%26name%3D123"
         };
 
         api.userShareImgGet({

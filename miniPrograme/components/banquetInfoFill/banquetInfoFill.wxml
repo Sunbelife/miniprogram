@@ -21,19 +21,19 @@
                     <input type="text" placeholder="请输入您的姓名" name="name" cursor-spacing='20' value="{{name}}"/>
                 </view>
             </view>
-            <view class="form-item">
-                <view class="form-label">
-                    是否赴宴
-                </view>
-                <view class="form-input">
-                    <radio-group class="radio-group" bindchange="radioChange">
-                        <label class="radio" wx:for="{{items}}" wx:key="key">
-                            <radio value="{{item.name}}" checked="{{item.checked}}"/>
-                            {{item.value}}
-                        </label>
-                    </radio-group>
-                </view>
-            </view>
+            <!--<view class="form-item">-->
+                <!--<view class="form-label">-->
+                    <!--是否赴宴-->
+                <!--</view>-->
+                <!--<view class="form-input">-->
+                    <!--<radio-group class="radio-group" bindchange="radioChange">-->
+                        <!--<label class="radio" wx:for="{{items}}" wx:key="key">-->
+                            <!--<radio value="{{item.name}}" checked="{{item.checked}}"/>-->
+                            <!--{{item.value}}-->
+                        <!--</label>-->
+                    <!--</radio-group>-->
+                <!--</view>-->
+            <!--</view>-->
             <view class="form-item">
                 <view class="form-label">
                     交通工具

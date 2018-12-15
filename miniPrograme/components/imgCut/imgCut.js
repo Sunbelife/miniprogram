@@ -27,7 +27,7 @@ Component({
         scale: .5
         // scale: 1,
     },
-    ready(){
+    ready() {
 
         const cutImageInfo = this.properties.cutImageInfo;
 
@@ -44,14 +44,14 @@ Component({
         }
     },
     methods: {
-        cssHandle(css, scale){
+        cssHandle(css, scale) {
             //     css  300px   300 * scale  + px
             return (css.replace("px", "") * scale) + "px";
         },
-        hidePage(){
+        hidePage() {
             this.triggerEvent('hidePage');
         },
-        saveImage(){
+        saveImage() {
             // this.hidePage();
 
             console.log(this.data.x, this.data.y, this.data.scale);
@@ -66,7 +66,7 @@ Component({
 
             // this.hidePage();
         },
-        drawImg(){
+        drawImg() {
             const that = this;
 
             wx.getImageInfo({
@@ -84,7 +84,7 @@ Component({
                         imgPath: res.path
                     });
 
-                    setTimeout(()=> {
+                    setTimeout(() => {
                         that.drawSharePic(res);
                     }, 300)
                 },
@@ -103,13 +103,14 @@ Component({
                 y: e.detail.y
             });
         },
+        scaleRecord: {},
         onScale(e) {
             console.log(e.detail);
-            this.setData({
+            this.scaleRecord = {
                 scale: e.detail.scale,
                 x: e.detail.x,
                 y: e.detail.y
-            });
+            };
         }
     }
 

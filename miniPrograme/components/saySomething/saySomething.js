@@ -37,10 +37,10 @@ Component({
             }
         ],
         index: 2,
-        name: 2,
-        tel: 2,
+        name: '',
+        tel: '',
     },
-    ready(){
+    ready() {
         if (util.isDev()) {
             this.setData({
                 name: "张三",
@@ -49,7 +49,7 @@ Component({
         }
     },
     methods: {
-        hidePage(){
+        hidePage() {
             console.log(" !2312");
 
             this.triggerEvent('hidePage');
@@ -68,21 +68,21 @@ Component({
             const self = this;
             const value = e.detail.value;
             const name = value.name;
-            const tel = value.tel;
-            console.log(name, tel);
+            const msg = value.msg;
+            console.log(name, msg);
 
-            if (!/^1\d{10}$/.test(tel)) {
+            if (name.length > 30) {
                 wx.showToast({
-                    title: '手机号格式不正确',
+                    title: '姓名长度大于30',
                     icon: 'none',
                     duration: 2000
                 });
                 return;
             }
 
-            if (name.length > 30) {
+            if (msg.length > 30) {
                 wx.showToast({
-                    title: '姓名长度大于30',
+                    title: '弹幕长度大于30',
                     icon: 'none',
                     duration: 2000
                 });
@@ -101,6 +101,24 @@ Component({
 
             wx.showLoading({
                 title: '提交中...'
+            });
+
+
+            // TODO 卡片ID
+            const req = {
+                user_name: name,
+                card_id: "1231",
+                // msg_id:"xxx",
+                message: msg
+            };
+
+            api.barrageSave({
+                method: "POST",
+                data: req,
+                success: (resLogin) => {
+                    console.log(resLogin);
+
+                }
             });
 
             wx.hideLoading();

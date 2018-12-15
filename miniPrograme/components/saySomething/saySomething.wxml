@@ -28,8 +28,8 @@
                 </view>
                 <view class="form-input">
                     <input type="text" placeholder="请输入祝福语"
-                           value="{{tel}}"
-                           name="tel" cursor-spacing='20' maxlength="11"/>
+                           value="{{msg}}"
+                           name="msg" cursor-spacing='20' maxlength="11"/>
                 </view>
             </view>
 

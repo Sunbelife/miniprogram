@@ -100,9 +100,9 @@ Component({
                 pageTranslateY: -((page) * 100)
             });
             const curOb = this.selectComponent("#p" + page);
+            console.log("#p" + page);
             // 显示
             curOb.show();
-            // console.log("#p" + page);
 
             if (curOb.editInfo) {
                 this.triggerEvent('pageMove', {

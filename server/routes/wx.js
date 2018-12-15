@@ -158,12 +158,12 @@ router.get('/barrageSave', function (req, res, next) {
     });
 });
 
-
+// 赴宴信息填写接口
 router.post('/banquetInfoFill', function (req, res, next) {
     res.send({
-        code: 100,
-        msg: "赴宴信息填写接口",
-        data: ""
+        "code": 200,  // 成功 200，失败 250
+        "msg": "发送成功",
+        "data": "null"
     });
 });
 
