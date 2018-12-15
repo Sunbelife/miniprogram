@@ -460,11 +460,15 @@ function getUserInfo(resLogin, callLoginSuccess) {
             const userOpenid = wx.getStorageSync('userOpenid');
             console.log(userOpenid);
 
-            const reqGetUserInfo = {
-                openid: resLogin.data.openid,
-                session_key: resLogin.data.session_key,
-                resinfo: JSON.parse(JSON.stringify(res))
-            };
+            // const reqGetUserInfo = {
+            //     open_id: resLogin.data.data.open_id,
+            //     session_key: resLogin.data.session_key,
+            //     resinfo: JSON.parse(JSON.stringify(res))
+            // };
+            const reqGetUserInfo = JSON.parse(JSON.stringify(res));
+            reqGetUserInfo.open_id = resLogin.data.data.open_id;
+
+
             console.log(reqGetUserInfo);
 
 

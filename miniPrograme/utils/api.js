@@ -1,4 +1,4 @@
-let apiUrl = getApp().globalData.domain + '/api';
+let apiUrl = getApp().globalData.domain + '/wx/api';
 const apiUrlDev = getApp().globalData.domainDev + '/wx';
 
 
@@ -86,9 +86,9 @@ const urlsDev = {
 
 const urlsProd = {
     // 登录
-    login: '/WxxcxLoginByCode',
+    login: '/verify_user',
     // 登录解密
-    loginEncrypted: '/xxxxxxx',
+    loginEncrypted: '/get_union_id',
     // 已编辑的请帖列表
     hadEditTpl: "/xxxxxxx",
     // 已编辑的请帖 一个

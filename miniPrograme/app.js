@@ -4,9 +4,9 @@ App({
     globalData: {
         // isAutoPlayMusic: true,
         isAutoPlayMusic: false,
-        domain: "http://www.baidu.com",
+        domain: "https://xcx.lyy99.com",
         domainDev: "http://localhost:3000",
-        isDev: 1,
+        isDev: 0,
         userInfo: null
     },
     onLaunch: function () {
