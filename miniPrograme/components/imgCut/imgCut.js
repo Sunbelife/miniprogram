@@ -43,6 +43,11 @@ Component({
                 }
             });
         }
+
+
+        this.scaleRecord = {
+            scale: 1
+        };
     },
     methods: {
         cssHandle(css, scale) {
@@ -105,7 +110,9 @@ Component({
                 y: e.detail.y
             });
         },
-        scaleRecord: {},
+        scaleRecord: {
+            scale: 1
+        },
         onScale(e) {
             // {scale: 0.6, x: -18.3, y: -18.3}
             // console.log(e.detail);
@@ -117,6 +124,9 @@ Component({
         },
         chooseImg() {
             const that = this;
+            // wx.showLoading({
+            //     title: '选择图片',
+            // });
             wx.chooseImage({
                 count: 1, // 默认9
                 sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -130,42 +140,64 @@ Component({
 
                     console.log(tempFilePaths);
 
-                    that.setData({
-                        chooseImgPath: tempFilePaths[0]
-                    })
+
+                    wx.getImageInfo({
+                        src: tempFilePaths[0],
+                        success: function (res) {
+                            console.log(res);
+
+                            that.setData({
+                                chooseImgPath: tempFilePaths[0],
+                                movableViewRectangle: {
+                                    width: res.width,
+                                    height: res.height
+                                }
+                            });
+                            wx.hideLoading();
+                        },
+                        fail: function (res) {
+                            //失败回调
+                            console.log(res);
+                            wx.hideLoading();
+                        }
+                    });
+                    wx.hideLoading();
                 }
             })
         },
         uploadImg() {
 
             // TODO  加载标示
-            // wx.showLoading({
-            //     title: '身份证识别中...',
-            // });
-
+            wx.showLoading({
+                title: '上传中',
+            });
             const that = this;
 
             console.log(this.data.chooseImgPath,
                 `${api.apiUrl}${api.urls.updateImgCut}`, {
                     'p_x': that.data.x,
                     'p_y': that.data.y,
-                    'p_width': 200,
-                    'p_height': 200,
+                    'p_width': that.data.movableViewRectangle.width,
+                    'p_height': that.data.movableViewRectangle.height,
                     'p_scale': that.scaleRecord.scale
                 });
             wx.uploadFile({
-                url: `${api.apiUrl}${api.urls.updateImgCut}` , //仅为示例，非真实的接口地址
+                url: `${api.apiUrl}${api.urls.updateImgCut}`, //仅为示例，非真实的接口地址
                 filePath: that.data.chooseImgPath,
                 name: 'image',
                 formData: {
                     'p_x': that.data.x,
                     'p_y': that.data.y,
-                    'p_width': 200,
-                    'p_height': 200,
+                    'p_width': that.data.movableViewRectangle.width,
+                    'p_height': that.data.movableViewRectangle.height,
                     'p_scale': that.scaleRecord.scale
                 },
                 success: function (res) {
                     console.log(res);
+                    wx.hideLoading();
+                },
+                complete(){
+                    wx.hideLoading();
                 }
             })
         }

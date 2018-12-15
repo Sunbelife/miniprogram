@@ -37,26 +37,26 @@
         </cover-view>
         <cover-view class="focusRectangle-horn2 focusRectangle-horn-bottomRight">
         </cover-view>
-        <movable-area
-                scale-area
+        <movable-area wx:if="{{chooseImgPath}}"
+                      scale-area
 
                 style="width:{{movableAreaRectangle.width}};height:{{movableAreaRectangle.height}};"
         >
 
 
-            <movable-view wx:if="{{chooseImgPath}}" class="max" direction="all"
+            <movable-view class="max" direction="all"
                           scale="{{true}}"
                           bindchange="onChange"
                           scale-value="{{scale}}"
 
                           scale-min="0.5" scale-max="2"
                           bindscale="onScale"
-                          style="width:{{movableViewRectangle.width}};height:{{movableViewRectangle.height}};"
+                          style="width:{{movableViewRectangle.width}}px;height:{{movableViewRectangle.height}}px;"
             >
                 <!--<image src="/images/logo.jpeg"-->
                 <image  src="{{chooseImgPath}}"
                        class="showImg"
-                       style="width:{{movableViewRectangle.width}};height:{{movableViewRectangle.height}};"
+                       style="width:{{movableViewRectangle.width}}px;height:{{movableViewRectangle.height}}px;"
                 ></image>
             </movable-view>
         </movable-area>
