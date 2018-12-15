@@ -12,11 +12,7 @@ use app\web\model\MarryModel;
 use think\Controller;
 use app\web\model\Barrage;
 use app\web\model\Music;
-<<<<<<< HEAD
 use app\web\model\Admin;
-=======
-use app\web\model\User;
->>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
 
 class Manage extends Controller
 {
@@ -33,11 +29,7 @@ class Manage extends Controller
     # 验证用户
     public function verify_user($user_name, $pass_word)
     {
-<<<<<<< HEAD
         $result = Admin::getByUser_name($user_name);
-=======
-        $result = User::getByUser_name($user_name);
->>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
         if ($result -> pass_word == $pass_word)
         {
             return $this::return_json(200, "验证成功", "null");
@@ -58,9 +50,32 @@ class Manage extends Controller
         return $this::return_json(200, "获取成功", $data);
     }
 
-    public function upload_music()
+    # 音乐上传
+    public function upload_music($music_name = 0, $music_type = 0)
     {
-        return "暂未写完";
+        $upload_dir = '../public/uploads/music';
+        // 获取表单上传文件
+        $file = request()->file('music');
+        // 移动到目录下
+        $info = $file->move($upload_dir);
+        if ($info)
+        {
+            $upload_time = Date("Y-m-d H:i:s",time());
+            $file_url = $_SERVER['HTTP_HOST'].str_replace("../public", '', $upload_dir).'/'.$info->getSaveName();
+            // 成功上传后保存到数据库
+            $new_music = new Music;
+            $new_music->save([
+                'music_name' => $music_name,
+                'music_type' => $music_type,
+                'music_upload_time' => $upload_time,
+                'music_url' => $file_url
+            ]);
+            return $this::return_json(200, "上传成功", $info->getSaveName());
+        } else
+        {
+            // 上传失败获取错误信息
+            return $this::return_json(250, "上传失败".$file->getError(), null);
+        }
     }
 
     public function del_music($music_id)
@@ -80,15 +95,9 @@ class Manage extends Controller
         return $this::return_json(200, "获取成功", $data);
     }
 
-<<<<<<< HEAD
     public function get_attend_info_attend_man($card_id)
     {
         $data = MarryMan::where('card_id', $card_id)->select();
-=======
-    public function get_attend_info_attend_man($marry_id)
-    {
-        $data = MarryMan::getByMarry_id($marry_id);
->>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
         return $this::return_json(200, "获取成功", $data);
     }
 
