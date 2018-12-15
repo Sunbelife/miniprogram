@@ -479,9 +479,9 @@ function getUserInfo(resLogin, callLoginSuccess) {
                 data: reqGetUserInfo,
                 success: (resGetUserInfo) => {
                     console.log(resGetUserInfo);
-                    wx.setStorageSync('WZToken', resGetUserInfo.data.WZToken);
+                    // wx.setStorageSync('WZToken', resGetUserInfo.data.WZToken);
                     // 30分钟过期
-                    wx.setStorageSync('WZTokenLostTime', dateAdd(new Date(), 'n', 30));
+                    // wx.setStorageSync('WZTokenLostTime', dateAdd(new Date(), 'n', 30));
                     callLoginSuccess();
                 }
             });

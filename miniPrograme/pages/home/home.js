@@ -35,10 +35,11 @@ Page({
     onLoad: function () {
 
         util.login(() => {
+            // debugger;
             console.log("登录成功啦~~");
+            this.genEwm();
         });
 
-        this.genEwm();
         // this.getInitData();
     },
     genEwm: function () {
