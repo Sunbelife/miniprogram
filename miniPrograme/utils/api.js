@@ -115,10 +115,10 @@ const urlsProd = {
     // 用户微信分享图片获取
     userShareImgGet: "/xxxxxxx",
     // 获取弹幕列表
-    barrageList:"/xxxxxxx",
+    barrageList:"/get_barrage_msg",
 
     // 宾客弹幕保存
-    barrageSave:"/xxxxxxx",
+    barrageSave:"/send_barrage_msg",
 
     // 赴宴信息填写接口
     banquetInfoFill:"/xxxxxxx",

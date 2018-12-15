@@ -1,4 +1,5 @@
 const util = require('../../utils/util.js');
+const api = require('../../utils/api.js');
 const tplConfig = require('../../utils/tplConfig.js');
 
 const app = getApp();
@@ -10,7 +11,8 @@ const app = getApp();
 Page({
     data: {
         // blessing:["真好真好真好真好真好真好真好真好"],
-        blessing: ["真好", "真好2", "真好3"],
+        blessing: [],
+        // blessing: ["真好", "真好2", "真好3"],
         isBanquetInfoFill: false,
         blessingConfig: {
             duration: 2000,
@@ -31,12 +33,11 @@ Page({
         if (util.isDev()) {
             // this.showBanquetInfoFill();
         }
+        this.getBlessing();
 
-        this.scrollItemFill();
-        this.scroll();
         this.init();
     },
-    init(){
+    init() {
 
 
         try {
@@ -63,7 +64,39 @@ Page({
 
     },
 
-    scrollItemFill(){
+    getBlessing() {
+        const loginReq = {
+            card_id: "123123"
+        };
+
+        api.barrageList({
+            // method: "POST",
+            data: loginReq,
+            success: (res) => {
+                let data = res.data;
+                console.log(res);
+                const blessing = [];
+
+
+                util.each(data.data, (k, v) => {
+                    console.log(k, v);
+                    let blessingItem = {};
+                    blessingItem.msg = v.message;
+                    blessing.push(blessingItem);
+
+                });
+
+                this.setData({
+                    blessing: blessing
+                });
+
+                this.scrollItemFill();
+                this.scroll();
+            }
+        });
+    },
+
+    scrollItemFill() {
         let blessing = this.data.blessing;
 
         blessing.push(blessing[0]);
@@ -72,8 +105,8 @@ Page({
         });
     },
 
-    scroll(){
-        setTimeout(()=> {
+    scroll() {
+        setTimeout(() => {
             let blessingScrollIndex = this.data.blessingScrollIndex;
             let blessingScrollH = this.data.blessingScrollH;
             let blessing = this.data.blessing;

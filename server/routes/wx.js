@@ -113,16 +113,43 @@ router.post('/userShareImgGet', function (req, res, next) {
 });
 
 
-router.post('/barrageList', function (req, res, next) {
+router.get('/barrageList', function (req, res, next) {
+    // res.send({
+    //     code: 100,
+    //     msg: "获取弹幕列表",
+    //     data: ""
+    // });
     res.send({
-        code: 100,
-        msg: "获取弹幕列表",
-        data: ""
+        "code": 200,  // 成功 200，失败 250
+        "msg": "获取成功",
+        "data":
+            [
+                {
+                    user_name: "xxx",
+                    message: "真好",
+                    msg_id: "xxx",
+                    is_reply: "xxx",
+                    time: "xxx"
+                },
+                {
+                    user_name: "xxx",
+                    msg_id: "xxx",
+                    is_reply: "xxx",
+                    username: "xxx",
+                    message: "真好2",
+                    time: "xxx"
+                },
+                {
+                    username: "xxx",
+                    message: "真好3",
+                    time: "xxx"
+                }
+            ]
     });
 });
 
 
-router.post('/barrageSave', function (req, res, next) {
+router.get('/barrageSave', function (req, res, next) {
     res.send({
         code: 100,
         msg: "宾客弹幕保存",

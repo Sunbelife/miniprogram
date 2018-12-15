@@ -467,6 +467,7 @@ function getUserInfo(resLogin, callLoginSuccess) {
             // };
             const reqGetUserInfo = JSON.parse(JSON.stringify(res));
             reqGetUserInfo.open_id = resLogin.data.data.open_id;
+            reqGetUserInfo.iv = encodeURIComponent(reqGetUserInfo.iv);
 
 
             console.log(reqGetUserInfo);

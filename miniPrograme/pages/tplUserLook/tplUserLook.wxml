@@ -25,7 +25,7 @@
             <!--</block>-->
             <!--<block wx:if="{{blessing.length  > 1}}">-->
             <block wx:for="{{blessing}}" wx:key="key">
-                <view class="blessing">{{item}}</view>
+                <view class="blessing">{{item.msg}}</view>
             </block>
             <!--</block>-->
         </view>
