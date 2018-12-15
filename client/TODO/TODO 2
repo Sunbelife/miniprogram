@@ -1,0 +1,23 @@
+
+        音乐，
+            排序
+            搜索
+            删除
+            分页
+
+        有音乐上传吗？
+
+
+
+        首页放图标。显示 有多少音乐，模板。使用情况
+
+
+/home/wwwroot/xcx.lyy99.com
+
+/usr/local/nginx/conf/vhost
+
+http://xcx.lyy99.com/client/#/login
+
+
+1.拷贝到  另一个 git   可以用bash
+2.去服务器  手动  pull

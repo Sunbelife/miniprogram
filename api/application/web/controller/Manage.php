@@ -12,7 +12,11 @@ use app\web\model\MarryModel;
 use think\Controller;
 use app\web\model\Barrage;
 use app\web\model\Music;
+<<<<<<< HEAD
+use app\web\model\Admin;
+=======
 use app\web\model\User;
+>>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
 
 class Manage extends Controller
 {
@@ -29,7 +33,11 @@ class Manage extends Controller
     # 验证用户
     public function verify_user($user_name, $pass_word)
     {
+<<<<<<< HEAD
+        $result = Admin::getByUser_name($user_name);
+=======
         $result = User::getByUser_name($user_name);
+>>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
         if ($result -> pass_word == $pass_word)
         {
             return $this::return_json(200, "验证成功", "null");
@@ -72,9 +80,15 @@ class Manage extends Controller
         return $this::return_json(200, "获取成功", $data);
     }
 
+<<<<<<< HEAD
+    public function get_attend_info_attend_man($card_id)
+    {
+        $data = MarryMan::where('card_id', $card_id)->select();
+=======
     public function get_attend_info_attend_man($marry_id)
     {
         $data = MarryMan::getByMarry_id($marry_id);
+>>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
         return $this::return_json(200, "获取成功", $data);
     }
 
