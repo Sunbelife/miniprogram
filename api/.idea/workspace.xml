@@ -61,14 +61,14 @@
         <counts>
           <entry key="dummy" value="69" />
           <entry key="html" value="64" />
-          <entry key="php" value="15237" />
+          <entry key="php" value="15239" />
           <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="64" />
-          <entry key="PHP" value="15237" />
+          <entry key="PHP" value="15239" />
           <entry key="PLAIN_TEXT" value="74" />
         </counts>
       </usages-collector>
@@ -100,8 +100,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/wx/controller/Api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
+            <state relative-caret-position="399">
+              <caret line="140" column="9" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
               <folding>
                 <element signature="e#6#92#0#PHP" expanded="true" />
                 <element signature="e#124#144#0#PHP" expanded="true" />
@@ -439,12 +439,12 @@
       <workItem from="1544582360203" duration="8252000" />
       <workItem from="1544699953101" duration="26545000" />
       <workItem from="1544837224530" duration="5483000" />
-      <workItem from="1544864533041" duration="1568000" />
+      <workItem from="1544864533041" duration="1770000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103270000" />
+    <option name="totallyTimeSpent" value="103472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-649" y="-1080" width="2560" height="1080" extended-state="0" />
@@ -736,8 +736,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/wx/controller/Api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
+        <state relative-caret-position="399">
+          <caret line="140" column="9" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
           <folding>
             <element signature="e#6#92#0#PHP" expanded="true" />
             <element signature="e#124#144#0#PHP" expanded="true" />

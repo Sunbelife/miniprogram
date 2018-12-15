@@ -138,7 +138,6 @@ Class Api extends Controller
     }
 
     # 照片裁切上传
-    # 差裁切
     public function upload_pic($p_x = 0, $p_y = 0, $p_width, $p_height, $p_scale)
     {
         $upload_dir = '../public/uploads/photo/';
@@ -160,11 +159,11 @@ Class Api extends Controller
                 'photo_url' => $file_url,
                 'upload_time' => $upload_time
             ]);
-            return $this::return_json(200, "上传成功", null);
+            return $this::return_json(200, "上传成功", $file_url);
         } else
         {
             // 上传失败获取错误信息
-            return $this::return_json(250, "上传失败".$file->getError(), null);
+            return $this::return_json(250, "上传失败", null);
         }
     }
 
