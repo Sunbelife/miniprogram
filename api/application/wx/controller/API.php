@@ -196,10 +196,20 @@ Class Api extends Controller
         return $this::return_json(200, "获取成功", $data);
     }
 
-    # 获取未读弹幕数量
-    public function get_barrage_msg_is_read()
+    public function del_barrage_msg($msg_id)
     {
-        $data = Barrage::where('is_read', 0)->count();
+        $data = Barrage::where('msg_id', $msg_id)->select();
+        foreach ($data as $key)
+        {
+            $key->delete();
+        }
+        return $this->return_json(200, "删除成功", null);
+    }
+
+    # 获取未读弹幕数量
+    public function get_barrage_msg_is_read($card_id)
+    {
+        $data = Barrage::where('is_read', 0)->where('card_id', $card_id)->count();
         return $this->return_json(200, "获取成功", array('is_read_sum'=>$data));
     }
 
