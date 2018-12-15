@@ -113,7 +113,7 @@ const urlsProd = {
     updateImgCut: "/xxxxxxx",
 
     // 用户微信分享图片获取
-    userShareImgGet: "/xxxxxxx",
+    userShareImgGet: "/gen_user_card_qr",
     // 获取弹幕列表
     barrageList:"/get_barrage_msg",
 

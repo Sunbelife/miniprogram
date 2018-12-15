@@ -38,7 +38,25 @@ Page({
             console.log("登录成功啦~~");
         });
 
+        this.genEwm();
         // this.getInitData();
+    },
+    genEwm: function () {
+
+        const loginReq = {
+            page: 'page/home/home',
+            scene:"id%3D123%26name%3D123"
+        };
+
+        api.userShareImgGet({
+            // method: "POST",
+            data: loginReq,
+            success: (resLogin) => {
+                console.log(resLogin);
+
+            }
+        });
+
     },
     getInitData: function (e) {
         api.hadEditTpl({
