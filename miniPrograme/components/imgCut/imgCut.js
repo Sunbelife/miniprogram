@@ -97,7 +97,8 @@ Component({
 
 
         onChange(e) {
-            console.log(e.detail);
+            // {x: 0, y: 0, source: "touch"}
+            // console.log(e.detail);
             this.setData({
                 x: e.detail.x,
                 y: e.detail.y
@@ -105,7 +106,8 @@ Component({
         },
         scaleRecord: {},
         onScale(e) {
-            console.log(e.detail);
+            // {scale: 0.6, x: -18.3, y: -18.3}
+            // console.log(e.detail);
             this.scaleRecord = {
                 scale: e.detail.scale,
                 x: e.detail.x,

@@ -20,10 +20,23 @@
     <view class="page-section"
           style="width:{{movableAreaRectangle.width}};height:{{movableAreaRectangle.height}};"
     >
-        <view class="focusRectangle-horn focusRectangle-horn-topLeft"></view>
-        <view class="focusRectangle-horn focusRectangle-horn-topRight"></view>
-        <view class="focusRectangle-horn focusRectangle-horn-bottomLeft"></view>
-        <view class="focusRectangle-horn focusRectangle-horn-bottomRight"></view>
+        <cover-view class="focusRectangle-horn focusRectangle-horn-topLeft">
+        </cover-view>
+        <cover-view class="focusRectangle-horn focusRectangle-horn-topRight">
+        </cover-view>
+        <cover-view class="focusRectangle-horn focusRectangle-horn-bottomLeft">
+        </cover-view>
+        <cover-view class="focusRectangle-horn focusRectangle-horn-bottomRight">
+        </cover-view>
+
+        <cover-view class="focusRectangle-horn2 focusRectangle-horn-topLeft">
+        </cover-view>
+        <cover-view class="focusRectangle-horn2 focusRectangle-horn-topRight">
+        </cover-view>
+        <cover-view class="focusRectangle-horn2 focusRectangle-horn-bottomLeft">
+        </cover-view>
+        <cover-view class="focusRectangle-horn2 focusRectangle-horn-bottomRight">
+        </cover-view>
         <movable-area
                 scale-area
 
@@ -36,7 +49,7 @@
                           bindchange="onChange"
                           scale-value="{{scale}}"
 
-                          scale-min="0.5" scale-max="4"
+                          scale-min="0.5" scale-max="2"
                           bindscale="onScale"
                           style="width:{{movableViewRectangle.width}};height:{{movableViewRectangle.height}};"
             >

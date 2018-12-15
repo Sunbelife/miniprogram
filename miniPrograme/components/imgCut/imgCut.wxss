@@ -50,43 +50,45 @@
 
 
 .focusRectangle-horn{
-    width: 20rpx;
-    height: 20rpx;
+    width: 25rpx;
+    height: 5rpx;
+    display: block;
     /*background-color: red;*/
+    background: green;
     position: absolute;
-    border: 5px solid green;
+    /*border: 5rpx solid green;*/
+    z-index: 200;
+}
+.focusRectangle-horn2{
+    width: 5rpx;
+    height: 25rpx;
+    display: block;
+    /*background-color: red;*/
+    background: green;
+    position: absolute;
+    /*border: 5rpx solid green;*/
+    z-index: 200;
 }
 
 .focusRectangle-horn-topLeft{
     top: -5rpx;
     left: -5rpx;
-    border-right: none;
-    border-bottom: none;
-}
 
+}
 
 .focusRectangle-horn-topRight{
     top: -5rpx;
     right: -5rpx;
-    border-left: none;
-    border-bottom: none;
 }
-
-
 .focusRectangle-horn-bottomLeft{
     bottom: -5rpx;
     left: -5rpx;
-    border-right: none;
-    border-top: none;
 }
-
-
 .focusRectangle-horn-bottomRight{
     bottom: -5rpx;
     right: -5rpx;
-    border-left: none;
-    border-top: none;
 }
+
 
 
 
@@ -123,6 +125,7 @@ movable-area {
     width: 100%;
     margin-bottom: 60rpx;
     position: relative;
+    /*border: 1px solid #333333;*/
 }
 
 .page-section:last-child{
