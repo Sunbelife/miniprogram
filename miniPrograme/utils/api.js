@@ -130,7 +130,7 @@ const urlsProd = {
     tplSave: "/xxxxxxx",
 
     // 修改图片的截取
-    updateImgCut: "/chang_pic",
+    updateImgCut: "/upload_pic",
 
     // 用户微信分享图片获取
     userShareImgGet: "/gen_user_card_qr",
