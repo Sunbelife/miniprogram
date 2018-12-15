@@ -36,14 +36,14 @@ Component({
         }]
     },
     mapCtx: {},
-    ready(){
+    ready() {
 
         this.init();
         this.mock();
 
     },
     methods: {
-        mock(){
+        mock() {
             if (util.isDev()) {
                 this.setData({
                     address: "北海公园",
@@ -52,7 +52,7 @@ Component({
                 });
             }
         },
-        init(){
+        init() {
             this.mapCtx = wx.createMapContext('myMap');
             const that = this;
             try {
@@ -76,7 +76,7 @@ Component({
                     });
                     wx.getLocation({
                         type: 'wgs84',
-                        success (res) {
+                        success(res) {
                             that.setLocation(res);
                         }
                     })
@@ -87,7 +87,7 @@ Component({
 
 
         },
-        setLocation(res){
+        setLocation(res) {
             const that = this;
             that.setData({
                 latitude: res.latitude,
@@ -103,7 +103,7 @@ Component({
                 }]
             });
         },
-        formSubmit(e){
+        formSubmit(e) {
 
             const self = this;
             const value = e.detail.value;
@@ -150,12 +150,24 @@ Component({
                 nameGentleman: nameGentleman
             };
 
+            let tplInfo = {};
             try {
-                wx.setStorageSync('invitationInfo', req)
+                tplInfo = wx.getStorageSync('tplInfo');
+                util.extend(true, tplInfo, {
+                    invitationInfo: req
+                });
+
+                try {
+                    wx.setStorageSync('tplInfo', tplInfo)
+                } catch (e) {
+                }
+
             } catch (e) {
+                // Do something when catch error
             }
 
-            setTimeout(()=> {
+
+            setTimeout(() => {
                 this.setData({
                     isLoading: false
                 });
@@ -166,25 +178,25 @@ Component({
             }, 300);
         },
 
-        hidePage(){
+        hidePage() {
             this.triggerEvent('hidePage');
         },
-        chooseLocation(){
+        chooseLocation() {
             const that = this;
             wx.chooseLocation({
-                success(e){
+                success(e) {
                     console.log("success", e);
                     that.setLocation(e);
                 },
-                error(e){
+                error(e) {
                     util.toast("选择地址出错");
                 },
-                complete(e){
+                complete(e) {
                     console.log("complete", e);
                 }
             });
         },
-        clickMap(){
+        clickMap() {
             // util.toast("click map");
             // console.log("click map");
         },

@@ -7,6 +7,7 @@
  */
 
 namespace app\wx\controller;
+<<<<<<< HEAD
 use app\wx\model\Settings;
 use app\wx\model\UserCard;
 use think\Controller;
@@ -22,6 +23,13 @@ Class Api extends Controller
     static $app_id = "wxca7cf8f75db95d01";
     static $secret = "8a6f49abe8b74560f87b9ecf8002c983";
 
+=======
+use think\Controller;
+use app\wx\model\Barrage;
+
+Class Api extends Controller
+{
+>>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
     public function index()
     {
         return "Hello World!";
@@ -32,6 +40,7 @@ Class Api extends Controller
         return json(array('code' => $code, 'msg' => $msg, 'data' => $data));
     }
 
+<<<<<<< HEAD
     public function return_value($data, $key)
     {
         return isset($data->$key)? $data->$key : null;
@@ -313,5 +322,23 @@ Class Api extends Controller
         } else {
             return $this->return_json($errcode, $errmsg, null);
         }
+=======
+    # Barrage 弹幕部分
+    public function send_barrage_msg($user_name, $message, $card_id, $time)
+    {
+        $data = Barrage::getBybarr_id($card_id);
+        # 尚未完成
+        return 0;
+    }
+
+    # http://localhost/web/manage/get_barrage_msg/card_id/1/2
+    public function get_barrage_msg($card_id = 0)
+    {
+        if ($card_id == 0) {
+            return json(array('code' => 250, 'msg' => "获取失败", 'data' => "null"));
+        }
+        $data = Barrage::getBybarr_id($card_id);
+        return json(array('code' => 200, 'msg' => "获取成功", 'data' => $data));
+>>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
     }
 }

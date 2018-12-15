@@ -1,3 +1,5 @@
+const api = require('./api.js');
+
 const formatTime = date => {
     const year = date.getFullYear()
     const month = date.getMonth() + 1
@@ -399,9 +401,102 @@ function posCssComplete(arr) {
     });
 }
 
+
+
+function login(callLoginSuccess) {
+
+    let WZToken = wx.getStorageSync('WZToken');
+
+    // 根据过期时间去掉token
+    const WZTokenLostTime = wx.getStorageSync('WZTokenLostTime');
+    console.log(WZTokenLostTime, "==========");
+    if (WZTokenLostTime) {
+        //当前时间大于过期时间
+        if (new Date().getTime() >= new Date(WZTokenLostTime).getTime()) {
+            console.log('当前时间大于过期时间', WZTokenLostTime);
+            WZToken = '';
+            wx.clearStorageSync();
+        } else {
+            console.log('当前时间小于过期时间');
+        }
+    }
+
+    if (WZToken) {
+        callLoginSuccess();
+    } else {
+        wx.login({
+            success: (res) => {
+                if (res.code) {
+                    const loginReq = {
+                        code: res.code
+                    };
+
+                    api.login({
+                        // method: "POST",
+                        data: loginReq,
+                        success: (resLogin) => {
+                            console.log(resLogin);
+                            getUserInfo(resLogin, callLoginSuccess);
+                        }
+                    });
+
+
+                } else {
+                    console.log('登录失败！' + res.errMsg)
+                }
+            }
+        });
+    }
+
+
+}
+
+function getUserInfo(resLogin, callLoginSuccess) {
+    console.log(resLogin);
+    wx.getUserInfo({
+        success: (res) => {
+            console.log(res);
+            wx.setStorageSync('userOpenid', resLogin.data.openid);
+            const userOpenid = wx.getStorageSync('userOpenid');
+            console.log(userOpenid);
+
+            const reqGetUserInfo = {
+                openid: resLogin.data.openid,
+                session_key: resLogin.data.session_key,
+                resinfo: JSON.parse(JSON.stringify(res))
+            };
+            console.log(reqGetUserInfo);
+
+
+            api.loginEncrypted({
+                method: "POST",
+                data: reqGetUserInfo,
+                success: (resGetUserInfo) => {
+                    console.log(resGetUserInfo);
+                    wx.setStorageSync('WZToken', resGetUserInfo.data.WZToken);
+                    // 30分钟过期
+                    wx.setStorageSync('WZTokenLostTime', dateAdd(new Date(), 'n', 30));
+                    callLoginSuccess();
+                }
+            });
+
+        },
+        fail: function (e) {
+            console.log(e);
+            wx.navigateTo({
+                url: '../a_auth/a_auth'
+            })
+        }
+    });
+}
+
+
+
+
 module.exports = {
     posCssComplete,
     isDev,
+    login,
     echoPage,
     pageComponent,
     setTimeOutFlag,

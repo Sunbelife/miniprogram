@@ -36,7 +36,11 @@
             <view
                     wx:for="{{tpl}}"
                     wx:key="key"
-
+                    bindtap="invitationEdit"
+                    data-page="invitationEdit"
+                    data-id="{{item.id}}"
+                    data-index="{{index}}"
+                    data-handle="edit"
                   class="tpl">
                 <image src="https://dummyimage.com/200x300&text=hello"></image>
             </view>

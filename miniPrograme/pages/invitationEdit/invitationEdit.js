@@ -57,78 +57,18 @@ Page({
         invitationInfo: {},
         id: 0,
         maxPageSize: 10,
+        // 已编辑过的模板
+        tplInfo: {},
         mock: {
             isAddPage: false
         }
     },
 
     onLoad: function (options) {
-        console.log("onload");
-        if (!options.id) {
-            options.id = "1";
-        }
-        if (!options.handle) {
-            options.handle = "new";
-        }
-        this.setData({
-            handle: options.handle,
-            id: options.id
-        });
-
-        const pages = [];
-        // 新的模板
-        if (this.data.handle === "new") {
-            util.extend(true, pages, tplConfig.tplsOb[this.data.id].pages);
-
-            console.log(tplConfig.tplsOb[this.data.id].bgMusic);
+        console.log("onload", options);
 
 
-            // 从缓存或者 配置默认 
-            this.updateInvitationInfo();
-
-            let invitationInfo = {};
-            if (this.data.invitationInfo.nameGentleman) {
-                invitationInfo = this.data.invitationInfo;
-            } else {
-                invitationInfo = tplConfig.tplsOb[this.data.id].invitationInfo;
-            }
-
-
-            this.updateBarrageHas();
-
-            let barrageHas = "";
-            if (this.data.barrageHas !== '') {
-                barrageHas = this.data.barrageHas;
-            } else {
-                barrageHas = tplConfig.tplsOb[this.data.id].barrageHas;
-            }
-
-
-            let toGuestsHas = "";
-            if (this.data.toGuestsHas !== '') {
-                toGuestsHas = this.data.toGuestsHas;
-            } else {
-                toGuestsHas = tplConfig.tplsOb[this.data.id].toGuestsHas;
-            }
-
-
-            console.log(invitationInfo);
-            this.setData({
-                pages: pages,
-                bgMusic: tplConfig.tplsOb[this.data.id].bgMusic,
-                invitationInfo: invitationInfo,
-                toGuestsHas: toGuestsHas,
-                barrageHas: barrageHas
-            });
-            this.updateToGuestsHas();
-        }
-
-
-        console.log(this.data.id);
-        console.log(this.data.pages);
-
-
-        this.dataGen();
+        this.pageFix();
         this.pageDelHandle();
 
         this.setData({
@@ -154,7 +94,7 @@ Page({
                 // this.showInvitationInfo();
 
                 // 预留音乐初始化的时间
-                setTimeout(()=> {
+                setTimeout(() => {
                     // 音乐选择
                     // this.showMusicChoose();
                 }, 1000)
@@ -164,17 +104,15 @@ Page({
 
 
     },
-    pageMove(e){
+    pageMove(e) {
         console.log(e);
         this.setData({
             editEleImage: [],
             editEleText: [],
             curShowPage: e.detail.index
         });
-
-
         //  延时显示一下编辑
-        setTimeout(()=> {
+        setTimeout(() => {
             if (e.detail) {
                 this.setData({
                     editEleImage: e.detail.editInfo.image,
@@ -183,25 +121,68 @@ Page({
             }
         }, 300)
     },
-    dataGen(){
+    // 添加页面名称
+    pageFix() {
         const that = this;
-        const pages = this.data.pages;
+
+        let tplInfo = {};
+        try {
+            tplInfo = wx.getStorageSync('tplInfo');
+            console.log(JSON.stringify(tplInfo));
+            if (util.isDev() && !tplInfo) {
+                tplInfo = tplConfig.mockTpl;
+            }
+            this.setData({
+                tplInfo: tplInfo
+            });
+        } catch (e) {
+            // Do something when catch error
+        }
+
+        let pages = [];
+        let invitationInfo = {};
+        let toGuestsPage = {};
+        let bgMusic = {};
+
+        util.extend(true, pages, tplInfo.pages);
+        util.extend(true, invitationInfo, tplInfo.invitationInfo);
+        util.extend(true, toGuestsPage, tplInfo.toGuestsPage);
+        util.extend(true, bgMusic, tplInfo.bgMusic);
+
         pages.forEach(function (v, k) {
-            // console.log("dataGen", v, k);
-            v.zh = that.pageName(k,v);
+            v.zh = that.pageName(k, v);
         });
         // console.log(pages);
         this.setData({
             pages: pages
         });
+
+        try {
+            wx.setStorageSync('toGuestsHas', this.data.toGuestsHas)
+        } catch (e) {
+        }
+
+
+        this.setData({
+            id: tplInfo.id,
+            pages: pages,
+            bgMusic: bgMusic,
+            invitationInfo: invitationInfo,
+            toGuestsPage: toGuestsPage,
+            toGuestsHas: tplInfo.toGuestsHas,
+            barrageHas: tplInfo.barrageHas
+        });
+        // 处理致宾客页面
+        this.updateToGuestsHasHandle();
+
     },
-    submitInvitationInfo(){
+    submitInvitationInfo() {
         this.hideInvitationInfo();
         this.updateInvitationInfo();
 
 
     },
-    updateInvitationInfo(){
+    updateInvitationInfo() {
         // 更新请帖信息到 page
         // 新建就移除上一次存储的，也可以不移除
         try {
@@ -217,7 +198,7 @@ Page({
 
 
     },
-    updateBarrageHas(){
+    updateBarrageHas() {
         // 更新请帖信息到 page
         // 新建就移除上一次存储的，也可以不移除
         try {
@@ -231,10 +212,10 @@ Page({
             // Do something when catch error
         }
     },
-    toGuestsHasChange(){
+    toGuestsHasChange() {
         this.updateToGuestsHas();
     },
-    updateToGuestsHas(){
+    updateToGuestsHas() {
         // 更新请帖信息到 page
         // 新建就移除上一次存储的，也可以不移除
         try {
@@ -244,22 +225,7 @@ Page({
                     toGuestsHas: toGuestsHas
                 });
 
-                const pages = this.data.pages;
-                if (toGuestsHas) {
-                    if(pages[pages.length -1].type !== "toGuests"){
-                        pages.push(tplConfig.tplsOb[this.data.id].toGuestsPage);
-                    }
-                }else{
-                    if(pages[pages.length -1].type === "toGuests"){
-                        pages.splice(pages.length -1,1);
-                        // 移除了，去第一个页面
-                        this.selectComponent("#tpl1").movePage(0);
-                    }
-                }
-                this.resetPageName(pages);
-                this.setData({
-                    pages: pages
-                });
+                this.updateToGuestsHasHandle();
             }
         } catch (e) {
             // Do something when catch error
@@ -267,20 +233,40 @@ Page({
 
 
     },
+    updateToGuestsHasHandle() {
+        const pages = this.data.pages;
+        if (this.data.toGuestsHas) {
+            if (pages[pages.length - 1].type !== "toGuests") {
+                pages.push(tplConfig.tplsOb[this.data.id].toGuestsPage);
+            }
+        } else {
+            if (pages[pages.length - 1].type === "toGuests") {
+                pages.splice(pages.length - 1, 1);
+                // 移除了，去第一个页面
+                this.selectComponent("#tpl1").movePage(0);
+            }
+        }
+        this.resetPageName(pages);
+        this.setData({
+            pages: pages
+        });
+
+
+    },
     // 排序完成，重新设置页面下标名称.需要排序后的排列 page
-    sortFinish(e){
+    sortFinish(e) {
         this.resetPageName(e.detail.pages);
         // 显示当前移动的页
         this.selectComponent("#tpl1").movePage(e.detail.needShowIndex);
     },
     // 排序完成，重新设置页面下标名称.需要排序后的排列 page
-    removePage(e){
+    removePage(e) {
         this.resetPageName(e.detail.pages);
         // 显示当前移动的页
         this.selectComponent("#tpl1").movePage(e.detail.needShowIndex);
     },
     // 设置音乐
-    setMusic(e){
+    setMusic(e) {
         const chooseMusic = e.detail.chooseMusic;
         this.setData({
             bgMusic: tplConfig.mp3Ob[chooseMusic]
@@ -290,7 +276,7 @@ Page({
         this.selectComponent("#tpl1").changMusic();
     },
     // 保存图片
-    saveImage(e){
+    saveImage(e) {
 
         const curShowPage = e.detail.curShowPage;
         const cutImageInfo = e.detail.cutImageInfo;
@@ -306,13 +292,13 @@ Page({
         // console.log(pages);
 
     },
-    sortPageClick(e){
+    sortPageClick(e) {
         // console.log(e.detail);
         const index = e.detail.index;
         this.selectComponent("#tpl1").movePage(index);
 
     },
-    saveWord(e){
+    saveWord(e) {
         // console.log(e.detail);
         const curShowPage = e.detail.curShowPage;
         const curWordChangeInfo = e.detail.curWordChangeInfo;
@@ -328,14 +314,14 @@ Page({
         // console.log(pages);
     },
     // 选择页面完成
-    choosePage(e){
+    choosePage(e) {
 
         this.addPage(e.detail);
         this.hidePageAdd();
         // 添加的新页也可以删除
         this.pageDelHandle();
     },
-    resetPageName(pages){
+    resetPageName(pages) {
         const that = this;
         pages.forEach(function (v, k) {
             // console.log(v, k);
@@ -346,7 +332,8 @@ Page({
             pages: pages
         });
     },
-    pageName(index, item){
+    // 设置页面名称
+    pageName(index, item) {
         // console.log("pageName", pagesLength, index);
         const pagesLength = this.data.pages.length;
         const pageName = "一二三四五六七八九十";
@@ -360,10 +347,10 @@ Page({
 
         return "页面" + pageName.split("")[index - 1];
     },
-    send(){
+    send() {
         this.goPage("invitationSend");
     },
-    preview(){
+    preview() {
 
 
         try {
@@ -418,7 +405,7 @@ Page({
         });
         this.selectComponent("#pageAdd").show();
     },
-    addPage(id){
+    addPage(id) {
         const pages = this.data.pages;
         let needAddPage = {};
         util.extend(true, needAddPage, tplConfig.pagesArrOb[id]);

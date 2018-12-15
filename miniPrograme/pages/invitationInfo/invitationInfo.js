@@ -36,10 +36,7 @@ Page({
         } catch (e) {
             // Do something when catch error
         }
-        util.goPage("invitationEdit", {
-            handle: this.data.handle,
-            id: this.data.id
-        });
+        util.goPage("invitationEdit");
 
 
     }
