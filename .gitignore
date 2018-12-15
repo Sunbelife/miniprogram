@@ -8,6 +8,6 @@ client/node_modules
 server/.idea
 server/node_modules
 
-
+**/.idea
 
 .DS_Store
