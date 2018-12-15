@@ -7,10 +7,11 @@
  */
 
 namespace app\wx\controller;
-<<<<<<< HEAD
+
+use myClass\MyImage;
+use think\Controller;
 use app\wx\model\Settings;
 use app\wx\model\UserCard;
-use think\Controller;
 use app\wx\model\Barrage;
 use app\wx\model\User;
 use app\wx\model\Photo;
@@ -23,16 +24,9 @@ Class Api extends Controller
     static $app_id = "wxca7cf8f75db95d01";
     static $secret = "8a6f49abe8b74560f87b9ecf8002c983";
 
-=======
-use think\Controller;
-use app\wx\model\Barrage;
-
-Class Api extends Controller
-{
->>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
     public function index()
     {
-        return "Hello World!";
+        return $this->fetch();
     }
 
     public function return_json($code, $msg, $data)
@@ -40,7 +34,6 @@ Class Api extends Controller
         return json(array('code' => $code, 'msg' => $msg, 'data' => $data));
     }
 
-<<<<<<< HEAD
     public function return_value($data, $key)
     {
         return isset($data->$key)? $data->$key : null;
@@ -65,13 +58,21 @@ Class Api extends Controller
             $session_key = $this::return_value($data, "session_key");
             $open_id = $this::return_value($data, "openid");
             $data = array('open_id' => $open_id);
+            $old_user = User::getByOpenId($open_id);
 
-            # 存数据库
-            $User = new User;
-            $User->open_id = $open_id;
-            $User->session_key = $session_key;
-            $User->time = $login_time;
-            $User->save();
+            if ($old_user)
+            {
+                $old_user -> session_key = $session_key;
+                $old_user->save();
+            } else
+            {
+                # 存数据库
+                $User = new User;
+                $User->open_id = $open_id;
+                $User->session_key = $session_key;
+                $User->time = $login_time;
+                $User->save();
+            }
 
             return $this::return_json(200, "获取成功", $data);
         }
@@ -81,8 +82,9 @@ Class Api extends Controller
     public function get_union_id($open_id, $iv, $encryptedData)
     {
         $app_id = $this::$app_id;
+        $iv = urldecode($iv);
         $sessionKey = User::getByOpenId($open_id)->session_key;
-        $pc = new WXBizDataCrypt($app_id, $sessionKey);
+        $pc = new WxBizDataCrypt($app_id, $sessionKey);
         $errCode = $pc->decryptData($encryptedData, $iv, $data);
         $data = json_decode($data);
         $union_id = $this::return_value($data, "unionId");
@@ -95,6 +97,7 @@ Class Api extends Controller
         }
         return $this::return_json($errCode, "错误码请参考文档", null);
     }
+
 
     # 请帖部分
     # 保存请帖 - 此处生成 card_id
@@ -135,11 +138,33 @@ Class Api extends Controller
     }
 
     # 照片裁切上传
-    public function change_pic($pic_url, $position)
+    public function upload_pic($p_x = 0, $p_y = 0, $p_width, $p_height, $p_scale)
     {
-        # 未完成
-        $pic_url = "xxx";
-        return $this::return_json(200, "上传成功, $pic_url");
+        $upload_dir = '../public/uploads/photo/';
+
+        // 获取表单上传文件
+        $file = request()->file('image');
+        $file_info = $file->getInfo();
+
+        $my_image = MyImage::open($file);
+        $result = $my_image->thumb($p_width * $p_scale, $p_height * $p_scale)->crop($p_width, $p_height, $p_x, $p_y)->save($upload_dir.$file_info['name']);
+
+        if ($result)
+        {
+            $upload_time = Date("Y-m-d H:i:s",time());
+            $file_url = $_SERVER['HTTP_HOST'].str_replace("../public", '', $upload_dir).$file_info['name'];
+            // 成功上传后保存到数据库
+            $new_photo = new Photo;
+            $new_photo->save([
+                'photo_url' => $file_url,
+                'upload_time' => $upload_time
+            ]);
+            return $this::return_json(200, "上传成功", $file_url);
+        } else
+        {
+            // 上传失败获取错误信息
+            return $this::return_json(250, "上传失败", null);
+        }
     }
 
     # Barrage 弹幕部分
@@ -171,10 +196,20 @@ Class Api extends Controller
         return $this::return_json(200, "获取成功", $data);
     }
 
-    # 获取未读弹幕数量
-    public function get_barrage_msg_is_read()
+    public function del_barrage_msg($msg_id)
     {
-        $data = Barrage::where('is_read', 0)->count();
+        $data = Barrage::where('msg_id', $msg_id)->select();
+        foreach ($data as $key)
+        {
+            $key->delete();
+        }
+        return $this->return_json(200, "删除成功", null);
+    }
+
+    # 获取未读弹幕数量
+    public function get_barrage_msg_is_read($card_id)
+    {
+        $data = Barrage::where('is_read', 0)->where('card_id', $card_id)->count();
         return $this->return_json(200, "获取成功", array('is_read_sum'=>$data));
     }
 
@@ -220,20 +255,20 @@ Class Api extends Controller
         }
     }
 
-    # 保存设置
-    public function save_settings($card_id, $is_barrage_on, $music_id)
-    {
-        $settings = new Settings;
-        $settings->card_id = $card_id;
-        $settings->is_barrage_on = $is_barrage_on;
-        $settings->music_id = $music_id;
-        $result = $settings->save();
-        if ($result)
-        {
-            return $this::return_json(200, "保存成功", null);
-        }
-        return $this::return_json(250, "保存失败", null);
-    }
+    # 保存设置 - 暂时弃用
+//    public function save_settings($card_id, $is_barrage_on, $music_id)
+//    {
+//        $settings = new Settings;
+//        $settings->card_id = $card_id;
+//        $settings->is_barrage_on = $is_barrage_on;
+//        $settings->music_id = $music_id;
+//        $result = $settings->save();
+//        if ($result)
+//        {
+//            return $this::return_json(200, "保存成功", null);
+//        }
+//        return $this::return_json(250, "保存失败", null);
+//    }
 
     # 赴宴信息部分
     # 赴宴填写
@@ -300,6 +335,7 @@ Class Api extends Controller
         $scene = "test";
         $page = "test";
         $access_token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this::$app_id."&secret=".$this::$secret;
+        $qr_model_pic = "static/pic/gen_qr_model.png";
         $data =  json_decode(file_get_contents($access_token_url));
         $errcode = $this::return_value($data, "errcode");
         $errmsg = $this::return_value($data, "errmsg");
@@ -318,27 +354,11 @@ Class Api extends Controller
                 'timeout' => 20
             )));
             $data = file_get_contents($qr_api_url, false, $context);
+            $pic_model = imagecreatefrompng($qr_model_pic);
+
             return $data;
         } else {
             return $this->return_json($errcode, $errmsg, null);
         }
-=======
-    # Barrage 弹幕部分
-    public function send_barrage_msg($user_name, $message, $card_id, $time)
-    {
-        $data = Barrage::getBybarr_id($card_id);
-        # 尚未完成
-        return 0;
-    }
-
-    # http://localhost/web/manage/get_barrage_msg/card_id/1/2
-    public function get_barrage_msg($card_id = 0)
-    {
-        if ($card_id == 0) {
-            return json(array('code' => 250, 'msg' => "获取失败", 'data' => "null"));
-        }
-        $data = Barrage::getBybarr_id($card_id);
-        return json(array('code' => 200, 'msg' => "获取成功", 'data' => $data));
->>>>>>> 1d707027150720d07ce9da6f578efd754a828b7d
     }
 }
