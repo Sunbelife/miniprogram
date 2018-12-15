@@ -149,11 +149,12 @@ router.get('/barrageList', function (req, res, next) {
 });
 
 
+// 宾客弹幕保存
 router.get('/barrageSave', function (req, res, next) {
     res.send({
-        code: 100,
-        msg: "宾客弹幕保存",
-        data: ""
+        "code": 200,  // 成功 200，失败 250
+        "msg": "发送成功",
+        "data": "null"
     });
 });
 
