@@ -12,8 +12,8 @@ Component({
     data: {
         chooseImgPath: "",
         movableAreaRectangle: {
-            width: "300px",
-            height: "300px",
+            width: "10",
+            height: "10",
         },
         movableViewRectangle: {
             width: "500",
@@ -28,15 +28,33 @@ Component({
         // TODO  需要的图片大小和用户都要缩放
         // scale: .5
         scale: 1,
+        showImgScale: 1,
     },
     ready() {
 
         const cutImageInfo = this.properties.cutImageInfo;
 
+
         console.log(cutImageInfo);
         if (!cutImageInfo.width) {
             console.error("未设置编辑图片的大小");
         } else {
+            console.log(cutImageInfo.width, getApp().systemInfo.windowWidth * 0.8);
+            console.log(cutImageInfo.height, getApp().systemInfo.windowHeight * 0.8);
+            console.log(cutImageInfo.width > getApp().systemInfo.windowWidth * 0.8);
+            console.log(cutImageInfo.height > getApp().systemInfo.windowHeight * 0.8);
+
+            if (cutImageInfo.width > getApp().systemInfo.windowWidth * 0.7
+                || cutImageInfo.height > getApp().systemInfo.windowHeight * 0.7
+            ) {
+
+                this.setData({
+                    scale: .7,
+                    showImgScale: .7,
+                });
+
+            }
+
             this.setData({
                 movableAreaRectangle: {
                     width: this.cssHandle(cutImageInfo.width, this.data.scale),
@@ -54,7 +72,7 @@ Component({
     methods: {
         cssHandle(css, scale) {
             //     css  300px   300 * scale  + px
-            return (css.replace("px", "") * scale) + "px";
+            return (css * scale);
         },
         hidePage() {
             this.triggerEvent('hidePage');
@@ -178,10 +196,11 @@ Component({
 
             console.log(this.data.chooseImgPath,
                 `${api.apiUrl}${api.urls.updateImgCut}`, {
+                    'showImgScale': that.data.showImgScale,
                     'p_x': that.data.x,
                     'p_y': that.data.y,
-                    'p_width': that.data.movableAreaRectangle.width.replace("px", ''),
-                    'p_height': that.data.movableAreaRectangle.height.replace("px", ''),
+                    'p_width': that.data.movableAreaRectangle.width,
+                    'p_height': that.data.movableAreaRectangle.height,
                     'p_scale': that.scaleRecord.scale
                 });
             wx.uploadFile({
@@ -189,10 +208,11 @@ Component({
                 filePath: that.data.chooseImgPath,
                 name: 'image',
                 formData: {
+                    'showImgScale': that.data.showImgScale,
                     'p_x': that.data.x,
                     'p_y': that.data.y,
-                    'p_width': that.data.movableAreaRectangle.width.replace("px", ''),
-                    'p_height': that.data.movableAreaRectangle.height.replace("px", ''),
+                    'p_width': that.data.movableAreaRectangle.width,
+                    'p_height': that.data.movableAreaRectangle.height,
                     'p_scale': that.scaleRecord.scale
                 },
                 success: function (res) {

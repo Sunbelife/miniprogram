@@ -39,6 +39,9 @@ Component({
             };
 
             editInfo.image.push({
+                width: util.rpx2px(225),
+                height:  util.rpx2px(362),
+
                 type: "image",
                 index: editInfo.image.length,
                 top: "5vh",

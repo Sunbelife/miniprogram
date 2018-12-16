@@ -18,7 +18,7 @@
     movable-view 实际的图片大小
     -->
     <view class="page-section"
-          style="width:{{movableAreaRectangle.width}};height:{{movableAreaRectangle.height}};"
+          style="width:{{movableAreaRectangle.width}}px;height:{{movableAreaRectangle.height}}px;"
     >
         <cover-view class="focusRectangle-horn focusRectangle-horn-topLeft">
         </cover-view>
@@ -40,7 +40,7 @@
         <movable-area wx:if="{{chooseImgPath}}"
                       scale-area
 
-                style="width:{{movableAreaRectangle.width}};height:{{movableAreaRectangle.height}};"
+                style="width:{{movableAreaRectangle.width}}px;height:{{movableAreaRectangle.height}}px;"
         >
 
 

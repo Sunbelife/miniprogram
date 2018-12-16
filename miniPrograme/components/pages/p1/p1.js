@@ -41,10 +41,9 @@ Component({
                 text: []
             };
 
-
             editInfo.image.push({
-                width: "300px",
-                height: "300px",
+                width: getApp().systemInfo.windowWidth,
+                height: getApp().systemInfo.windowHeight,
 
                 type: "image",
                 index: editInfo.image.length,

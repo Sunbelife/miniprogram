@@ -10,7 +10,18 @@ App({
         isDev: 0,
         userInfo: null
     },
+    systemInfo: null,
     onLaunch: function () {
+
+        const self = this;
+        wx.getSystemInfo({
+            success(res) {
+                self.systemInfo = res;
+
+            }
+        });
+
+
         // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())

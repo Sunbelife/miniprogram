@@ -1,4 +1,4 @@
-const  pageName = "2";
+const pageName = "2";
 const app = getApp();
 const util = require('../../../utils/util.js');
 const tplConfig = require('../../../utils/tplConfig.js');
@@ -16,23 +16,28 @@ Component({
     data: {
         isLoading: false,
     },
-    ready(){
+    ready() {
     },
     methods: {
-        show(){
+        show() {
             util.setTimeOutFlag(this, 2, 0);
         },
-        hide(){
+        hide() {
             util.setTimeOutFlagHide(this, 2);
         },
-        editInfo(){
-           
+        editInfo() {
+
             const editInfo = {
                 image: [],
                 text: []
             };
 
             editInfo.image.push({
+
+                width: util.rpx2px(225 * 2),
+                height: util.rpx2px(362 * 2),
+
+
                 type: "image",
                 index: editInfo.image.length,
                 top: "25vh",
@@ -40,6 +45,11 @@ Component({
             });
 
             editInfo.image.push({
+
+                width: util.rpx2px(225),
+                height: util.rpx2px(362),
+
+
                 type: "image",
                 index: editInfo.image.length,
                 bottom: "25vh",

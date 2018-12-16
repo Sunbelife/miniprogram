@@ -68,6 +68,11 @@ Page({
         console.log("onload", options);
 
 
+        console.log( getApp().systemInfo);
+        console.log(util.rpx2px(225));
+
+
+
         this.pageFix();
         this.pageDelHandle();
 
