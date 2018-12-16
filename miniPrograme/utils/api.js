@@ -100,13 +100,13 @@ const urlsProd = {
     // 登录解密
     loginEncrypted: '/get_union_id',
     // 已编辑的请帖列表
-    hadEditTpl: "/xxxxxxx",
+    hadEditTpl: "/get_shared_user_card",
     // 已编辑的请帖 一个
     hadEditTplOne: "/xxxxxxx",
 
 
     // 宾客回复提示
-    guestReplyTip: "/xxxxxxx",
+    guestReplyTip: "/get_barrage_msg_is_read",
     // 宾客回复已读
     guestReplyRead: "/guestReplyRead",
     // 回复祝福
@@ -115,19 +115,18 @@ const urlsProd = {
     banquetInfoList: "/banquetInfoList",
 
 
-
     // 模板列表
     tplList: "/xxxxxxx",
     // 模板拷贝
     tplCopy: "/xxxxxxx",
     // 模板删除
-    tplDelete: "/xxxxxxx",
+    tplDelete: "/del_user_card",
 
     // mp3列表
     mp3List: "/xxxxxxx",
 
     // 模板保存
-    tplSave: "/xxxxxxx",
+    tplSave: "/save_user_card",
 
     // 修改图片的截取
     updateImgCut: "/upload_pic",

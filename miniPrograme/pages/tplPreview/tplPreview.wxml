@@ -9,7 +9,12 @@
                 pages="{{tplInfo.pages}}"
                 bgMusic="{{tplInfo.bgMusic}}"
                 invitationInfo="{{tplInfo.invitationInfo}}"
+                toGuestsHas="{{tplInfo.toGuestsHas}}"
+
+
+
+
         ></tpl1>
     </block>
-    <button class="bottomBtn">发送</button>
+    <button class="bottomBtn" bindtap="send">发送</button>
 </view>

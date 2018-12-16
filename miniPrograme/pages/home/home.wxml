@@ -39,10 +39,10 @@
                     bindtap="invitationEdit"
                     data-page="invitationEdit"
                     data-id="{{item.id}}"
-                    data-index="{{index}}"
+                    data-storage-id="{{item.storageId}}"
                     data-handle="edit"
                   class="tpl">
-                <image src="https://dummyimage.com/200x300&text=hello"></image>
+                <image src="{{item.imgSrc}}"></image>
             </view>
         </view>
 

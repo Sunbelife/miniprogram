@@ -9,19 +9,27 @@ Page({
 
     onLoad: function () {
         console.log(this.data.tpl);
-        
+
     },
-    goPage(e){
-        const index = util.data(e,"index");
+    goPage(e) {
+        const index = util.data(e, "index");
         try {
-            wx.setStorageSync('tplInfo', this.data.tpl[index])
+            let tpl = this.data.tpl[index];
+            wx.setStorageSync('tplInfo', tpl);
+
+            util.tplALL.addOne(tpl, (tpl) => {
+
+                wx.setStorageSync('tplInfo', tpl);
+                util.goPage(e);
+            })
+
+
         } catch (e) {
         }
 
-        util.goPage(e);
     },
 
-    loadMore(){
+    loadMore() {
 
     }
 });

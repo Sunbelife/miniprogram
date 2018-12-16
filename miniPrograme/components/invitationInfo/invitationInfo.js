@@ -158,7 +158,22 @@ Component({
                 });
 
                 try {
-                    wx.setStorageSync('tplInfo', tplInfo)
+                    wx.setStorageSync('tplInfo', tplInfo);
+                    // 修改
+                    util.tplALL.updateOne(tplInfo, () => {
+
+                        setTimeout(() => {
+                            self.setData({
+                                isLoading: false
+                            });
+                            wx.hideLoading();
+
+                            self.triggerEvent('submit');
+
+                        }, 300);
+
+
+                    })
                 } catch (e) {
                 }
 
@@ -167,15 +182,7 @@ Component({
             }
 
 
-            setTimeout(() => {
-                this.setData({
-                    isLoading: false
-                });
-                wx.hideLoading();
 
-                this.triggerEvent('submit');
-
-            }, 300);
         },
 
         hidePage() {

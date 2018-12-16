@@ -463,12 +463,15 @@ function login(callLoginSuccess) {
 }
 
 function getUserInfo(resLogin, callLoginSuccess) {
+    wx.setStorageSync('userOpenid', resLogin.data.data.open_id);
+    const userOpenid = wx.getStorageSync('userOpenid');
+
+
     console.log(resLogin);
     wx.getUserInfo({
         success: (res) => {
             console.log(res);
-            wx.setStorageSync('userOpenid', resLogin.data.openid);
-            const userOpenid = wx.getStorageSync('userOpenid');
+
             console.log(userOpenid);
 
             // const reqGetUserInfo = {
@@ -508,10 +511,109 @@ function getUserInfo(resLogin, callLoginSuccess) {
 }
 
 
+let tplALL = {
+    fixToGuestsHas(tplInfo) {
+        if (tplInfo.toGuestsHas) {
+            tplInfo.pages.push(tplInfo.toGuestsPage);
+        }
+        console.log(tplInfo);
+    },
+    removeFirst(call) {
+        try {
+            var tplInfo_all = wx.getStorageSync('tplInfo_all');
+            console.log(JSON.stringify(tplInfo_all));
+            if (tplInfo_all) {
+                tplInfo_all.splice(0, 1);
+                wx.setStorageSync('tplInfo_all', tplInfo_all);
+                call();
+            }
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
+    readyLength(call) {
+        try {
+            var tplInfo_all = wx.getStorageSync('tplInfo_all');
+            return tplInfo_all.length;
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
+    updateOne(one, call) {
+        try {
+            var tplInfo_all = wx.getStorageSync('tplInfo_all');
+            console.log(JSON.stringify(tplInfo_all));
+            if (tplInfo_all) {
+
+                let tplInfo_allObj = arrToObj(tplInfo_all, 'storageId');
+
+                tplInfo_allObj[one.storageId] = one;
+
+                tplInfo_all = objToArr(tplInfo_allObj);
+
+                console.log("模板修改", one, tplInfo_all);
+                wx.setStorageSync('tplInfo_all', tplInfo_all);
+                call();
+            }
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
+    addOne(one, call) {
+        try {
+            var tplInfo_all = wx.getStorageSync('tplInfo_all');
+            console.log(JSON.stringify(tplInfo_all));
+            if (tplInfo_all === '') {
+                tplInfo_all = [];
+            }
+            // 拷贝并且重新设置ID
+            one.storageId = 'storageId_' + new Date().getTime();
+            tplInfo_all.push(one);
+            wx.setStorageSync('tplInfo_all', tplInfo_all);
+            console.log("模板修改:新增", tplInfo_all);
+            call(one);
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
+    deleteOne(one) {
+        try {
+            var tplInfo_all = wx.getStorageSync('tplInfo_all');
+
+            let tplInfo_allObj = arrToObj(tplInfo_all, 'storageId');
+
+            delete tplInfo_allObj[one.storageId];
+
+            tplInfo_all = objToArr(tplInfo_allObj);
+
+
+            console.log("模板修改:删除", tplInfo_all);
+
+            wx.setStorageSync('tplInfo_all', tplInfo_all);
+
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
+    getOne(id, call) {
+        try {
+            var tplInfo_all = wx.getStorageSync('tplInfo_all');
+
+            let tplInfo_allObj = arrToObj(tplInfo_all, 'storageId');
+
+            call(tplInfo_allObj[id]);
+        } catch (e) {
+            // Do something when catch error
+        }
+    }
+};
+
+
 module.exports = {
     posCssComplete,
     isDev,
     login,
+    tplALL,
     echoPage,
     pageComponent,
     setTimeOutFlag,

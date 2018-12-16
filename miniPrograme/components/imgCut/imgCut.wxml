@@ -21,6 +21,8 @@
     <view class="page-section"
           style="width:{{movableAreaRectangle.width}}px;height:{{movableAreaRectangle.height}}px;"
     >
+
+        <!-- TODO 周围需要加遮罩 -->
         <!--<cover-view class="leftCover"
                     style="height:{{movableAreaRectangle.height+ jiaoWidth*2+1}}px;"
         >

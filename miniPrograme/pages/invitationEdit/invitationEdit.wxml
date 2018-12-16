@@ -1,5 +1,11 @@
 <view class="container">
 
+    <!--
+
+      // 保存到模板里面
+        this.saveTplInfo();
+    -->
+
     <block wx:if="{{pageReady}}">
         <tpl1 id="tpl1"
               bindpageClick="pageClick"
@@ -90,8 +96,8 @@
             <view class="iconfont icon-music"></view>
             <view class="handle-name">设置</view>
         </view>
-        <view class="handle-item">
-            <view class="iconfont icon-yulan" bindtap="preview"></view>
+        <view class="handle-item" bindtap="preview">
+            <view class="iconfont icon-yulan"></view>
             <view class="handle-name">预览</view>
         </view>
         <view class="handle-send" bindtap="send">

@@ -31,6 +31,37 @@ Page({
             activeType: type
         });
     },
+    replay: function (e) {
+        const id = util.data(e, "id");
+
+        wx.showActionSheet({
+            itemList: ['回复', '删除'],
+            success(res) {
+                let handleIndex  = res.tapIndex;
+
+                if(handleIndex === 0){
+                    console.log("回复");
+
+                    // TODO 显示 回复祝福组件
+                    // replayWish
+                }
+                if(handleIndex === 1){
+
+
+                    // TODO 显示 删除确认
+
+                    console.log("删除");
+
+                }
+
+            },
+            fail(res) {
+                console.log(res.errMsg)
+            }
+        })
+
+
+    },
     getBlessing() {
         const loginReq = {
             card_id: "123123"
@@ -77,7 +108,7 @@ Page({
                 util.each(data.data, (k, v) => {
                     console.log(k, v);
                     let banquetInfoItem = {};
-                    banquetInfoItem.msg = v.message;
+                    banquetInfoItem.name = v.attend_name;
                     banquetInfo.push(banquetInfoItem);
 
                 });

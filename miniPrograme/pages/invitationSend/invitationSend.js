@@ -3,10 +3,65 @@ const util = require('../../utils/util.js');
 
 Page({
     data: {
+        tplInfo:{},
         shareImg: 'https://dummyimage.com/200x300&text=hello',
     },
 
     onLoad: function () {
+
+        this.loadTpl();
+        this.save();
+    },
+    loadTpl(){
+        try {
+            var tplInfo = wx.getStorageSync('tplInfo');
+            console.log(JSON.stringify(tplInfo));
+            if (tplInfo) {
+                util.tplALL.fixToGuestsHas(tplInfo);
+
+                // Do something with return value
+                this.setData({
+                    isReady: true,
+                    tplInfo: tplInfo
+                });
+            } else {
+                if (util.isDev()) {
+                    this.setData({
+                        isReady: true,
+                        tplInfo: tplConfig.mockTpl
+                    });
+                }
+            }
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
+
+    save(){
+        wx.showLoading({
+            title: '正在保存',
+        });
+
+        const userOpenid = wx.getStorageSync('userOpenid');
+
+        const loginReq = {
+            open_id: userOpenid
+        };
+
+        const card_id = this.data.tplInfo.card_id;
+        if(card_id){
+            loginReq.card_id = card_id;
+        }
+
+        api.tplSave({
+            // method: "POST",
+            data: loginReq,
+            success: (resLogin) => {
+                console.log(resLogin);
+
+            //     TODO card_id 要保存在本地记录中
+            }
+        });
 
     },
     share: function () {

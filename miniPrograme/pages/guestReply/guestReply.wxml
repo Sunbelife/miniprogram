@@ -26,16 +26,20 @@
 
 
         <view wx:if="{{activeType === 1}}">
-            <view wx:for="{{blessing}}">
+            <view wx:for="{{blessing}}" wx:key="key"
+            >
                 <view>
                     {{item.msg}}
+
+                    <button bindtap="replay" data-id="{{item.id}}">回复</button>
                 </view>
             </view>
         </view>
         <view wx:if="{{activeType === 2}}">
-            <view wx:for="{{banquetInfo}}">
+            <view wx:for="{{banquetInfo}}" wx:key="key"
+            >
                 <view>
-                    {{item.msg}}
+                    {{item.name}}
                 </view>
             </view>
         </view>

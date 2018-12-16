@@ -6,19 +6,24 @@ Page({
         tplInfo: {},
         isReady: false
     },
-
+    send() {
+        this.goPage("invitationSend");
+    },
+    goPage: util.goPage,
     onLoad: function () {
         try {
             var tplInfo = wx.getStorageSync('tplInfo');
             console.log(JSON.stringify(tplInfo));
             if (tplInfo) {
+                util.tplALL.fixToGuestsHas(tplInfo);
+
                 // Do something with return value
                 this.setData({
                     isReady: true,
                     tplInfo: tplInfo
                 });
-            }else{
-                if(util.isDev()){
+            } else {
+                if (util.isDev()) {
                     this.setData({
                         isReady: true,
                         tplInfo: tplConfig.mockTpl
@@ -29,4 +34,5 @@ Page({
             // Do something when catch error
         }
     }
-});
+})
+;

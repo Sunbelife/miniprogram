@@ -68,9 +68,8 @@ Page({
         console.log("onload", options);
 
 
-        console.log( getApp().systemInfo);
+        console.log(getApp().systemInfo);
         console.log(util.rpx2px(225));
-
 
 
         this.pageFix();
@@ -129,6 +128,38 @@ Page({
             }
         }, 300)
     },
+
+    // 保存到缓存里面去
+    saveTplInfo(call) {
+        try {
+
+            let tplInfo = wx.getStorageSync('tplInfo');
+
+            util.extend(true, tplInfo.pages, this.data.pages);
+            util.extend(true, tplInfo.invitationInfo, this.data.invitationInfo);
+            util.extend(true, tplInfo.toGuestsPage, this.data.toGuestsPage);
+            util.extend(true, tplInfo.bgMusic, this.data.bgMusic);
+
+
+            tplInfo.barrageHas = this.data.barrageHas;
+            tplInfo.toGuestsHas = this.data.toGuestsHas;
+
+            if (tplInfo.toGuestsHas) {
+                tplInfo.pages = tplInfo.pages.slice(0, tplInfo.pages.length - 1)
+            }
+
+
+            wx.setStorageSync('tplInfo', tplInfo);
+
+            util.tplALL.updateOne(tplInfo, () => {
+                call && call();
+            });
+
+
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
     // 添加页面名称
     pageFix() {
         const that = this;
@@ -174,6 +205,7 @@ Page({
 
             this.setData({
                 id: tplInfo.id,
+                storageId: tplInfo.storageId,
                 pages: pages,
                 bgMusic: bgMusic,
                 invitationInfo: invitationInfo,
@@ -195,17 +227,19 @@ Page({
         this.hideInvitationInfo();
         this.updateInvitationInfo();
 
+        // 保存到模板里面
+        this.saveTplInfo();
 
     },
     updateInvitationInfo() {
         // 更新请帖信息到 page
         // 新建就移除上一次存储的，也可以不移除
         try {
-            const invitationInfo = this.data.invitationInfo;
-            var invitationInfoSubmit = wx.getStorageSync('invitationInfo');
-            util.extend(true, invitationInfo, invitationInfoSubmit);
+            var tplInfo = wx.getStorageSync('tplInfo');
+
+            console.log("请帖信息", tplInfo.invitationInfo);
             this.setData({
-                invitationInfo: invitationInfo
+                invitationInfo: tplInfo.invitationInfo
             });
         } catch (e) {
             // Do something when catch error
@@ -229,6 +263,10 @@ Page({
     },
     toGuestsHasChange() {
         this.updateToGuestsHas();
+
+        // 保存到模板里面
+        this.saveTplInfo();
+
     },
     updateToGuestsHas() {
         // 更新请帖信息到 page
@@ -273,6 +311,10 @@ Page({
         this.resetPageName(e.detail.pages);
         // 显示当前移动的页
         this.selectComponent("#tpl1").movePage(e.detail.needShowIndex);
+
+        // 保存到模板里面
+        this.saveTplInfo();
+
     },
     // 排序完成，重新设置页面下标名称.需要排序后的排列 page
     removePage(e) {
@@ -289,6 +331,12 @@ Page({
         // console.log(this.data.bgMusic);
         this.hideMusicChoose();
         this.selectComponent("#tpl1").changMusic();
+
+
+        // 保存到模板里面
+        this.saveTplInfo();
+
+
     },
     // 保存图片
     saveImage(e) {
@@ -308,6 +356,12 @@ Page({
         });
         this.hideImgCut();
         console.log(pages);
+
+
+
+        // 保存到模板里面
+        this.saveTplInfo();
+
 
     },
     sortPageClick(e) {
@@ -330,6 +384,11 @@ Page({
         });
         this.hideWordChange();
         // console.log(pages);
+
+        // 保存到模板里面
+        this.saveTplInfo();
+
+
     },
     // 选择页面完成
     choosePage(e) {
@@ -338,6 +397,9 @@ Page({
         this.hidePageAdd();
         // 添加的新页也可以删除
         this.pageDelHandle();
+
+        // 保存到模板里面
+        this.saveTplInfo();
     },
     resetPageName(pages) {
         const that = this;
@@ -370,20 +432,11 @@ Page({
     },
     preview() {
 
+        // 保存到模板里面
+        this.saveTplInfo(() => {
+            this.goPage("tplPreview");
+        });
 
-        try {
-            wx.setStorageSync('tplInfo', {
-                pages: this.data.pages,
-                toGuestsHas: this.data.toGuestsHas,
-                bgMusic: this.data.bgMusic,
-                barrageHas: this.data.barrageHas,
-                invitationInfo: this.data.invitationInfo
-            })
-
-        } catch (e) {
-        }
-
-        this.goPage("tplPreview");
     },
     pageDelHandle() {
         const pages = this.data.pages;
@@ -437,6 +490,7 @@ Page({
             pages: pages
         });
 
+
         // console.log(this.data.pages.length - 1);
         // 移动至新添加的页面
         this.selectComponent("#tpl1").movePage(this.data.pages.length - 2);
@@ -471,12 +525,20 @@ Page({
         this.setData({
             isShowPageSet: false
         });
+
+
     },
     // 显示 编辑页面
     showInvitationInfo() {
         this.setData({
             isShowInvitationInfo: true
         });
+
+
+        // 保存到模板里面
+        this.saveTplInfo();
+
+
     },
 // 隐藏 编辑页面
     hideInvitationInfo() {
