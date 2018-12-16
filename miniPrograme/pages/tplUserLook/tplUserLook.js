@@ -25,6 +25,7 @@ Page({
         isSaySomething: false,
         isReady: false,
         tplInfo: {},
+        card_id: '',
         id: ''
 
     },
@@ -34,6 +35,7 @@ Page({
 
         // TODO 删除
         // id = "10c0e5f98d0c77216a7bd840941eaab7";
+        id = "a8702e7442c7015fcf03ff6940751c18";
 
 
         this.setData({
@@ -45,7 +47,9 @@ Page({
 
     },
     getTplInfo: function () {
-
+        wx.showLoading({
+            title: '加载中...'
+        });
         const loginReq = {
             card_id: this.data.id,
         };
@@ -56,14 +60,14 @@ Page({
             success: (resLogin) => {
                 console.log(resLogin);
                 this.setData({
-                    open_id: resLogin.data.data.open_id
+                    open_id: resLogin.data.data.open_id,
+                    card_id: resLogin.data.data.card_id
                 });
                 console.log(this.data.open_id);
 
 
                 this.init(JSON.parse(resLogin.data.data.changed_log));
-
-
+                wx.hideLoading();
             }
         });
 
@@ -125,7 +129,7 @@ Page({
         const loginReq = {
             open_id: this.data.open_id
         };
-console.log(loginReq);
+        console.log(loginReq);
         api.barrageList({
             // method: "POST",
             data: loginReq,
@@ -162,9 +166,13 @@ console.log(loginReq);
             blessing: blessing
         });
     },
-
+    scrollTimer: {},
     scroll() {
-        setTimeout(() => {
+        // 防止累加
+        if (this.scrollTimer) {
+            clearTimeout(this.scrollTimer);
+        }
+        this.scrollTimer = setTimeout(() => {
             let blessingScrollIndex = this.data.blessingScrollIndex;
             let blessingScrollH = this.data.blessingScrollH;
             let blessing = this.data.blessing;
@@ -196,6 +204,7 @@ console.log(loginReq);
 
     // 显示 填写宾客信息
     showBanquetInfoFill() {
+        console.log("showBanquetInfoFill at");
         this.setData({
             isBanquetInfoFill: true
         });
@@ -205,6 +214,10 @@ console.log(loginReq);
         this.setData({
             isBanquetInfoFill: false
         });
+        setTimeout(() => {
+            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideBanquetInfo2();
+
+        }, 10)
     },
     // 显示 说些什么
     showSaySomething() {

@@ -9,6 +9,7 @@ const tplConfig = require('../../../utils/tplConfig.js');
 Component({
     behaviors: [],
     properties: {
+        isShowMap: null,
         invitationInfo: null, // 简化的定义方式
         showBanquetInfoBtn: null, // 简化的定义方式
         page: null, // 简化的定义方式
@@ -18,20 +19,31 @@ Component({
         animatedStep0: false,
         animatedStep1: false,
     },
-    ready(){
+    ready() {
 
     },
     methods: {
-        showBanquetInfo(e){
+        showBanquetInfo(e) {
+            console.log("showBanquetInfo trigger");
             this.triggerEvent('showBanquetInfo');
+
         },
-        show(){
+        hideBanquetInfo3() {
+            setTimeout(()=>{
+                this.setData({
+                    isShowMap: true,
+                });
+                console.log(this.data.isShowMap);
+            },10)
+
+        },
+        show() {
             util.setTimeOutFlag(this, 2, 0);
         },
-        hide(){
+        hide() {
             util.setTimeOutFlagHide(this, 2);
         },
-        editInfo(){
+        editInfo() {
 
             const editInfo = {
                 image: [],
@@ -40,7 +52,7 @@ Component({
 
             editInfo.image.push({
                 width: util.rpx2px(225),
-                height:  util.rpx2px(362),
+                height: util.rpx2px(362),
 
                 type: "image",
                 index: editInfo.image.length,

@@ -8,7 +8,7 @@
                 showBanquetInfoBtn="{{true}}"
                 needMake="{{true}}"
                 toGuestsHas="{{tplInfo.toGuestsHas}}"
-
+                id="tpl1"
                 pages="{{tplInfo.pages}}"
                 bgMusic="{{tplInfo.bgMusic}}"
                 invitationInfo="{{tplInfo.invitationInfo}}"
@@ -31,16 +31,18 @@
             <!--</block>-->
         </view>
     </view>
-    <view class="bottomFixed">
-        <input type="text" placeholder="说点什么" class="saySomething" bindtap="showSaySomething"/>
+    <view class="bottomFixed" style="z-index: 1000">
+        <view class="saySomething" bindtap="showSaySomething" >
+            说点什么
+        </view>
+        <!--<div type="text" placeholder="说点什么" class="saySomething" bindtap="showSaySomething" readonly/>-->
     </view>
-
 
     <view class="bottomFixed" wx:if="{{isBanquetInfoFill}}">
-        <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{tplInfo.card_id}}"></banquetInfoFill>
+        <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{card_id}}"></banquetInfoFill>
     </view>
     <view class="bottomFixed" wx:if="{{isSaySomething}}">
-        <saySomething bindhidePage="hideSaySomething" card_id="{{tplInfo.card_id}}"></saySomething>
+        <saySomething bindhidePage="hideSaySomething" card_id="{{card_id}}"></saySomething>
     </view>
 
 

@@ -65,6 +65,8 @@ function objToArr(obj) {
 //  k,v
 // 通过字面量方式实现的函数each
 function each(object, callback) {
+    console.log(object);
+    // console.trace();
     var type = (function () {
         switch (object.constructor) {
             case Object:

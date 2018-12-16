@@ -51,6 +51,8 @@ Page({
             cover_pic_url: '',
         };
 
+        // 存在才传  把 card_id 传上去，就是更新
+        // 不传 就是新建
         const card_id = this.data.tplInfo.card_id;
         if (card_id) {
             loginReq.card_id = card_id;

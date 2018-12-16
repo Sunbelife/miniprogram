@@ -113,7 +113,7 @@ Component({
         deleteDo(){
             let tplInfo = wx.getStorageSync('tplInfo');
             util.tplALL.deleteOne(tplInfo);
-            that.goPage('home')
+            this.goPage('home')
         },
         deleteTpl(){
             const that = this;

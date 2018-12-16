@@ -39,6 +39,7 @@
                 <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 5}}"></p5>
                 <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 6}}"></p6>
                 <p7 id="p{{index}}" page="{{item}}"
+                    isShowMap="{{isShowMap}}"
                     invitationInfo="{{invitationInfo}}"
                     showBanquetInfoBtn="{{showBanquetInfoBtn}}" bindshowBanquetInfo="showBanquetInfo"
                     wx:if="{{item.id === 7 && toGuestsHas}}"

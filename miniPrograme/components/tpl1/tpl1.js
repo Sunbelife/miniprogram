@@ -17,32 +17,39 @@ Component({
         touchStart: 0,
         touchEnd: 0,
         isPlay: false,
+        isShowMap: true,
         playRef: {},
         page: 0,
         pageTranslateY: 0
     },
-    ready(){
+    ready() {
         console.log("ready");
 
 
         // 显示第一个页面
         this.movePage(0);
 
+        console.log(this.data.pages);
 
         this.playInit();
         if (app.globalData.isAutoPlayMusic) {
             this.playStart();
         }
 
+        // TODO 删除
+        setTimeout(() => {
+            // this.movePage(6);
+        }, 300)
         if (util.isDev()) {
             // 开发指定到页面 0 开始的
-            // this.movePage(6);
+            this.movePage(6);
         }
 
         this.needMakeHandle();
+        console.log(this.data.pages);
     },
     methods: {
-        needMakeHandle(){
+        needMakeHandle() {
             // 需要制作，多加一个页面
             if (this.properties.needMake) {
                 this.properties.pages.push({
@@ -55,11 +62,11 @@ Component({
             }
         },
         // 切换音乐
-        changMusic(){
+        changMusic() {
             this.playInit();
             this.playStart();
         },
-        playInit(){
+        playInit() {
 
             const innerAudioContext = wx.createInnerAudioContext();
             innerAudioContext.src = this.properties.bgMusic["audioUrl"];
@@ -81,14 +88,36 @@ Component({
             });
 
         },
-        showBanquetInfo(){
+        showBanquetInfo() {
+            console.log("showBanquetInfo trigger");
             this.triggerEvent('showBanquetInfo');
+            this.setData({
+                isShowMap:false
+            })
+        },
+        // 调用致宾客页面
+        hideBanquetInfo2() {
+            console.log("隐藏地图", this.properties);
+            if (this.properties.toGuestsHas) {
+                // 最后一个 是make 页面
+                let id = this.properties.pages[this.properties.pages.length - 2].id;
+                console.log("隐藏地图", id);
+
+                setTimeout(()=>{
+                    this.setData({
+                        isShowMap:true
+                    })
+                    // this.selectComponent("#p" + (id)) && this.selectComponent("#p" + (id)).hideBanquetInfo3();
+                },10)
+
+
+            }
 
         },
-        movePage(page){
+        movePage(page) {
 
             // 隐藏
-            util.each(this.properties.pages, (k, v)=> {
+            util.each(this.properties.pages, (k, v) => {
                 // console.log(this.properties.pages, k);
                 // console.log("#p" + (k), this.selectComponent("#p" + (k)));
                 this.selectComponent("#p" + (k)) && this.selectComponent("#p" + (k)).hide();
@@ -118,13 +147,14 @@ Component({
 
         },
 
-        touchStart(e){
+        touchStart(e) {
             this.setData({
                 touchStart: e.touches[0].clientY
             });
             // console.log(this.data.touchStart);
         },
-        touchMove(e){
+        touchMove(e) {
+
             // console.log("touchMove", e.touches);
             this.setData({
                 // touchEnd: e.touches[0].pageY
@@ -133,7 +163,7 @@ Component({
 
 
         },
-        touchEnd(e){
+        touchEnd(e) {
             let page = this.data.page;
 
             // console.log("touchEnd", Math.abs(Math.abs(this.data.touchEnd) - Math.abs(this.data.touchStart)));
@@ -179,27 +209,27 @@ Component({
 
         },
 
-        togglePlay(){
+        togglePlay() {
             if (!this.data.isPlay) {
                 this.playStart();
             } else {
                 this.playStop();
             }
         },
-        playStop(){
+        playStop() {
             this.data.playRef && this.data.playRef.pause();
             this.setData({
                 isPlay: false
             });
         },
-        playStart(){
+        playStart() {
             console.log(this.properties.bgMusic);
             this.data.playRef && this.data.playRef.play();
             this.setData({
                 isPlay: true
             });
         },
-        pageClick(){
+        pageClick() {
             this.triggerEvent('pageClick');
         }
     }

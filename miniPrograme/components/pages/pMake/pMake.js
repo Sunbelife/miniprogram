@@ -20,6 +20,9 @@ Component({
         },
         hide(){
         },
+        startMake(){
+            util.goPage('home');
+        },
     }
 
 });
