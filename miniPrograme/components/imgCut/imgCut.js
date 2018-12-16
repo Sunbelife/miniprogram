@@ -31,6 +31,8 @@ Component({
         scaleMin:1,
         scale: 1,
         imgScale: 1,
+        rightCover: {},
+        jiaoWidth: util.rpx2px(5),
         showImgScale: 1,
     },
     ready() {
@@ -63,6 +65,12 @@ Component({
                     width: this.cssHandle(cutImageInfo.width, this.data.scale),
                     height: this.cssHandle(cutImageInfo.height, this.data.scale)
                 }
+            })
+            console.log(this.data.movableAreaRectangle);
+            this.setData({
+                rightCover: {
+                    left: this.data.movableAreaRectangle.width + util.rpx2px(5)
+                }
             });
         }
 
@@ -71,6 +79,9 @@ Component({
         this.scaleRecord = {
             scale: 1
         };
+
+        // TODO 先去掉
+        // this.chooseImg();
     },
     methods: {
         cssHandle(css, scale) {

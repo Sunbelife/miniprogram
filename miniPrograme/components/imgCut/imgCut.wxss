@@ -31,6 +31,7 @@
     left: 0;
     right: 0;
     display: flex;
+    z-index: 50;
 }
 
 .focusRectangleWrap{
@@ -70,6 +71,8 @@
     /*border: 5rpx solid green;*/
     z-index: 200;
 }
+
+
 
 .focusRectangle-horn-topLeft{
     top: -5rpx;
@@ -129,9 +132,62 @@ movable-area {
     margin-top: 150rpx;
     position: relative;
     /*border: 1px solid #333333;*/
+    box-sizing: border-box;
 }
 
 .page-section:last-child{
     margin-bottom: 0;
 }
 
+.leftCover{
+    width: 60rpx;
+    left: -65rpx;
+    top: -5rpx;
+    display: block;
+    /*background-color: red;*/
+    background: rgba(255,255,255,.5);
+
+    position: absolute;
+    /*border: 5rpx solid green;*/
+    z-index: 200;
+}
+.rightCover{
+    width: 260rpx;
+    top: -5rpx;
+
+    display: block;
+    /*background-color: red;*/
+    background: rgba(255,255,255,.5);
+
+    position: absolute;
+    /*border: 5rpx solid green;*/
+    z-index: 200;
+}
+.topCover{
+    width: 800rpx;
+    height: 260rpx;
+    top: -265rpx;
+    left: -60rpx;
+
+    display: block;
+    /*background-color: red;*/
+    background: rgba(255,255,255,.5);
+
+    position: absolute;
+    /*border: 5rpx solid green;*/
+    z-index: 1;
+}
+.bottomCover{
+    width:800rpx;
+    bottom: -265rpx;
+    height: 260rpx;
+    left: -60rpx;
+
+    display: block;
+    /*background-color: red;*/
+    background: rgba(255,255,255,.5);
+
+    position: absolute;
+    /*border: 5rpx solid green;*/
+    z-index: 1;
+}
