@@ -21,7 +21,7 @@
     <view class="page-section"
           style="width:{{movableAreaRectangle.width}}px;height:{{movableAreaRectangle.height}}px;"
     >
-        <cover-view class="leftCover"
+        <!--<cover-view class="leftCover"
                     style="height:{{movableAreaRectangle.height+ jiaoWidth*2+1}}px;"
         >
         </cover-view>
@@ -31,13 +31,11 @@
         >
         </cover-view>
         <cover-view class="topCover"
-
         >
         </cover-view>
         <cover-view class="bottomCover"
-
         >
-        </cover-view>
+        </cover-view>-->
 
         <cover-view class="focusRectangle-horn focusRectangle-horn-topLeft">
         </cover-view>

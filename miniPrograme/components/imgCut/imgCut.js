@@ -81,7 +81,7 @@ Component({
         };
 
         // TODO 先去掉
-        // this.chooseImg();
+        this.chooseImg();
     },
     methods: {
         cssHandle(css, scale) {
