@@ -1,5 +1,6 @@
 const app = getApp();
 const util = require('../../utils/util.js');
+const api = require('../../utils/api.js');
 
 Page({
     data: {
@@ -44,8 +45,11 @@ Page({
 
         const userOpenid = wx.getStorageSync('userOpenid');
 
+        // TODO 保存的时候，后台要记录这个 card_id
         const loginReq = {
-            open_id: userOpenid
+            open_id: userOpenid,
+            changed_log: JSON.stringify(this.data.tplInfo),
+            cover_pic_url: '',
         };
 
         const card_id = this.data.tplInfo.card_id;
@@ -54,7 +58,7 @@ Page({
         }
 
         api.tplSave({
-            // method: "POST",
+            method: "POST",
             data: loginReq,
             success: (resLogin) => {
                 console.log(resLogin);
