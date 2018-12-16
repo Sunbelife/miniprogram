@@ -8,6 +8,7 @@
     /*background-color: #222222;*/
     padding: 10rpx;
     box-sizing: border-box;
+    background: #101023;
 
 }
 
