@@ -90,7 +90,7 @@ Page({
             // 设置页面排序
             // this.showPageSort();
             // 显示图片裁剪
-            this.showImgCut();
+            // this.showImgCut();
             // 显示文字编辑
             // this.showWordChange();
 

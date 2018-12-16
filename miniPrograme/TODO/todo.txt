@@ -62,7 +62,7 @@ send_attend_info - 赴宴信息填写：
 把 card_id 传上去，就是更新
 不传 就是新建
 
-
+https://shimo.im/docs/VfFPHxXtRyI0T71j/
 
 TODO 上滑的箭头
 TODO 滑动卡顿。
@@ -73,7 +73,10 @@ TODO  音乐列表  管理端 接口
 TODO  模板列表 删除
 
 
-TODO  宾客祝福和赴宴的  渲染
+TODO  宾客祝福和赴宴的  渲染  TODO
+TODO  智能缩放一样，， 初始化 最小缩放比例和一边占满。。
+
+
 
 
 

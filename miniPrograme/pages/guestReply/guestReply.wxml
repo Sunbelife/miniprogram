@@ -1,10 +1,10 @@
 <view class="container">
 
-<!--    宾客回复页面。。
+    <!--    宾客回复页面。。
 
-    宾客祝福和宾客赴宴信息
+        宾客祝福和宾客赴宴信息
 
-    -->
+        -->
     <scroll-view scroll-y scroll-top="{{scrollTopPage}}"
                  style="{{'height:100vh'}}"
                  bindscrolltolower="loadMore"
@@ -16,17 +16,28 @@
                         wx:for="{{type}}"
                         wx:key="key"
 
-                      class="type {{item.number === activeType ? 'active' : '' }}"
-                      bindtap="chooseType"
-                      data-type="{{item.number}}"
+                        class="type {{item.number === activeType ? 'active' : '' }}"
+                        bindtap="chooseType"
+                        data-type="{{item.number}}"
                 >{{item.name}}
                 </view>
             </scroll-view>
         </view>
 
 
-        <view>
-
+        <view wx:if="{{activeType === 1}}">
+            <view wx:for="{{blessing}}">
+                <view>
+                    {{item.msg}}
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{activeType === 2}}">
+            <view wx:for="{{banquetInfo}}">
+                <view>
+                    {{item.msg}}
+                </view>
+            </view>
         </view>
 
 

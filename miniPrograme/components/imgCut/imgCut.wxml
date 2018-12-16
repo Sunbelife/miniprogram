@@ -13,6 +13,7 @@
         <view class="topInfo-close" bindtap="hidePage">关闭</view>
     </view>
 
+
     <!--
     movable-area 需要的图片大小
     movable-view 实际的图片大小
@@ -40,7 +41,7 @@
         <movable-area wx:if="{{chooseImgPath}}"
                       scale-area
 
-                style="width:{{movableAreaRectangle.width}}px;height:{{movableAreaRectangle.height}}px;"
+                      style="width:{{movableAreaRectangle.width}}px;height:{{movableAreaRectangle.height}}px;"
         >
 
 
@@ -49,12 +50,12 @@
                           bindchange="onChange"
                           scale-value="{{scale}}"
 
-                          scale-min="0.5" scale-max="2"
+                          scale-min="{{scaleMin}}" scale-max="{{scaleMin * 2}}"
                           bindscale="onScale"
                           style="width:{{movableViewRectangle.width}}px;height:{{movableViewRectangle.height}}px;"
             >
                 <!--<image src="/images/logo.jpeg"-->
-                <image  src="{{chooseImgPath}}"
+                <image src="{{chooseImgPath}}"
                        class="showImg"
                        style="width:{{movableViewRectangle.width}}px;height:{{movableViewRectangle.height}}px;"
                 ></image>

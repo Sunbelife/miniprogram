@@ -6,8 +6,8 @@ App({
         isAutoPlayMusic: false,
         domain: "https://xcx.lyy99.com",
         domainDev: "http://localhost:3000",
-        // isDev: 1,
-        isDev: 0,
+        isDev: 1,
+        // isDev: 0,
         userInfo: null
     },
     systemInfo: null,

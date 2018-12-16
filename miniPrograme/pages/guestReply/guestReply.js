@@ -5,6 +5,8 @@ const api = require('../../utils/api.js');
 Page({
     data: {
         activeType: 1,
+        banquetInfo: [],
+        blessing: [],
         type: [
             {
                 name: "宾客祝福(0)",
@@ -55,8 +57,6 @@ Page({
                     blessing: blessing
                 });
 
-                this.scrollItemFill();
-                this.scroll();
             }
         });
     },
@@ -71,23 +71,21 @@ Page({
             success: (res) => {
                 let data = res.data;
                 console.log(res);
-                const blessing = [];
+                const banquetInfo = [];
 
 
                 util.each(data.data, (k, v) => {
                     console.log(k, v);
-                    let blessingItem = {};
-                    blessingItem.msg = v.message;
-                    blessing.push(blessingItem);
+                    let banquetInfoItem = {};
+                    banquetInfoItem.msg = v.message;
+                    banquetInfo.push(banquetInfoItem);
 
                 });
 
                 this.setData({
-                    blessing: blessing
+                    banquetInfo: banquetInfo
                 });
 
-                this.scrollItemFill();
-                this.scroll();
             }
         });
     },

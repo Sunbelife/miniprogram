@@ -27,6 +27,7 @@ Component({
         // 默认缩放一半
         // TODO  需要的图片大小和用户都要缩放
         // scale: .5
+        scaleMin: 0.01,
         scale: 1,
         showImgScale: 1,
     },
@@ -159,6 +160,12 @@ Component({
                     //     title: '身份证识别中...',
                     // });
 
+
+                    that.setData({
+                        chooseImgPath: ""
+                    });
+
+
                     console.log(tempFilePaths);
 
 
@@ -167,14 +174,42 @@ Component({
                         success: function (res) {
                             console.log(res);
 
+
+                            // 原图比需要的大的情况。原图比大图小的情况。改变 scale ，改变最小scale
+                            console.log("最小缩放", that.data.movableAreaRectangle, res);
+
+                            let widthBili = res.width / that.data.movableAreaRectangle.width;
+                            let heightBili = res.height / that.data.movableAreaRectangle.height;
+
+                            let scaleMin = 1;
+
+                            if (widthBili > 1 || heightBili > 1) {
+                                scaleMin = 1 / Math.min(widthBili, heightBili);
+                            } else {
+                                scaleMin = 1 / Math.min(widthBili, heightBili);
+                            }
+
+                            console.log("最小缩放", widthBili, heightBili);
+                            console.log("最小缩放", scaleMin);
+
                             that.setData({
-                                chooseImgPath: tempFilePaths[0],
+                                scaleMin: scaleMin,
+                                scale: scaleMin,
                                 movableViewRectangle: {
                                     width: res.width,
                                     height: res.height
                                 }
                             });
+                           setTimeout(()=>{
+                               that.setData({
+                                   chooseImgPath: tempFilePaths[0]
+                               });
+                           },300);
+
                             wx.hideLoading();
+
+                            console.log("最小缩放", that.data.movableViewRectangle,that.data.movableAreaRectangle);
+
                         },
                         fail: function (res) {
                             //失败回调
