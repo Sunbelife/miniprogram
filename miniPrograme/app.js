@@ -2,8 +2,8 @@
 App({
     isPublish: false,
     globalData: {
-        // isAutoPlayMusic: true,
-        isAutoPlayMusic: false,
+        isAutoPlayMusic: true,
+        // isAutoPlayMusic: false,
         domain: "https://xcx.lyy99.com",
         domainDev: "http://localhost:3000",
         // isDev: 1,

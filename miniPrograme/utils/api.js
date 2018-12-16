@@ -1,5 +1,6 @@
 let apiUrl = getApp().globalData.domain + '/wx/api';
 const apiUrlDev = getApp().globalData.domainDev + '/wx';
+const url4Mp3 = getApp().globalData.domain + '/web/manage/get_music_list';
 
 
 const wxRequest = (params, url) => {
@@ -92,6 +93,8 @@ const urlsDev = {
     banquetInfoFill: "/banquetInfoFill",
     // 模板获取
     tplGet: "/tplGet",
+    // 全部已读
+    allRead: "/allRead",
 
 
 };
@@ -114,7 +117,7 @@ const urlsProd = {
     // 回复祝福
     replyWish: "/replyWish",
     // 赴宴信息列表
-    banquetInfoList: "/banquetInfoList",
+    banquetInfoList: "/get_attend_info",
 
 
     // 模板列表
@@ -125,7 +128,7 @@ const urlsProd = {
     tplDelete: "/del_user_card",
 
     // mp3列表
-    mp3List: "/xxxxxxx",
+    mp3List: "/web/manage/get_music_list",
 
     // 模板保存
     tplSave: "/save_user_card",
@@ -147,6 +150,8 @@ const urlsProd = {
     // 赴宴信息填写接口
     banquetInfoFill: "/send_attend_info",
 
+    // 全部已读
+    allRead: "/set_barrage_msg_is_read",
 };
 
 let urls = urlsProd;
@@ -181,6 +186,11 @@ const guestReplyTip = (params) => {
     wxRequest(params, `${apiUrl}${urls.guestReplyTip}`);
 };
 
+// 全部已读
+const allRead = (params) => {
+    wxRequest(params, `${apiUrl}${urls.allRead}`);
+};
+
 // 模板列表
 const tplList = (params) => {
     wxRequest(params, `${apiUrl}${urls.tplList}`);
@@ -198,7 +208,8 @@ const tplDelete = (params) => {
 
 // mp3列表
 const mp3List = (params) => {
-    wxRequest(params, `${apiUrl}${urls.mp3List}`);
+    // wxRequest(params, `${apiUrl}${urls.mp3List}`);
+    wxRequest(params, `${url4Mp3}`);
 };
 
 // 模板保存
@@ -264,6 +275,7 @@ module.exports = {
     apiUrl,
     guestReplyRead,
     tplGet,
+    allRead,
     replyWish,
     loginEncrypted,
     banquetInfoList,

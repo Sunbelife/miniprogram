@@ -51,9 +51,15 @@ Component({
         console.log("musicChoose",tplConfig.mp3);
         // this.genMusic();
 
-        this.setData({
-            music: tplConfig.mp3
-        });
+        this.mp3List();
+
+
+        if(util.isDev()){
+            this.setData({
+                music: tplConfig.mp3
+            });
+        }
+
     },
     methods: {
         hidePage(){
@@ -72,10 +78,52 @@ Component({
                 this.data.mp3Ref.destroy();
             }
         },
+        mp3List: function () {
+
+            const loginReq = {
+
+                // scene:"id%3D123%26name%3D123"
+            };
+
+            api.mp3List({
+                // method: "POST",
+                data: loginReq,
+                success: (resLogin) => {
+                    console.log(resLogin);
+
+                    const music = [];
+
+                    util.each(resLogin.data.data, (k, v) => {
+                        console.log(k, v);
+                        let item = {};
+                        item.name = v.music_name;
+
+                        if (! v.music_url.startsWith("http")) {
+                            v.music_url = 'https://' +  v.music_url;
+                        }
+
+
+                        item.audioUrl = v.music_url;
+                        item.no = k;
+
+                        music.push(item);
+                    });
+
+
+                    this.setData({
+                        music: music
+                    });
+
+
+                }
+            });
+
+        },
         chooseMusic: function (e) {
             const no = util.data(e, "no");
             const audioUrl = util.data(e, "audioUrl");
             this.destroyMusic();
+            console.log(no,audioUrl)
 
             const innerAudioContext = wx.createInnerAudioContext();
             // 需要加载中吗？
@@ -85,10 +133,14 @@ Component({
 
             innerAudioContext.src = audioUrl;
             innerAudioContext.onPlay(() => {
+                wx.showLoading({
+                    title: '加载中'
+                });
                 console.log('开始播放')
             });
             innerAudioContext.onCanplay(() => {
-                // wx.hideLoading();
+                console.log('可以播放')
+                wx.hideLoading();
             });
             innerAudioContext.onError((res) => {
                 console.log('播放错误')
@@ -99,10 +151,11 @@ Component({
 
             this.setData({
                 mp3Ref:innerAudioContext,
-                chooseMusic: no,
+                chooseMusic: this.data.music[no],
             });
         },
         saveSet(){
+            wx.hideLoading();
             this.triggerEvent('setMusic',{
                 chooseMusic:this.data.chooseMusic
             });

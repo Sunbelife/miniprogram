@@ -3,3 +3,24 @@
 
 @import "../../css/tpl.wxss";
 @import "../../css/app.wxss";
+
+.icon-bottom{
+    position: absolute;
+    bottom: 150rpx;
+    z-index: 100;
+    font-size: 60rpx;
+    left:50%;
+    margin-left: -15rpx;
+    text-align: center;
+}
+
+@keyframes rotateAnimate2
+{
+    0%   {transform: translateY(50rpx) rotate(180deg)}
+    100% {transform:  translateY(0rpx) rotate(180deg)}
+}
+
+.icon-bottom.play{
+    animation: rotateAnimate2 1.4s linear infinite;
+}
+

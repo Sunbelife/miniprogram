@@ -79,13 +79,15 @@ Page({
             pageReady: true
         });
 
+        // TODO 待去掉。
         if (app.globalData.isDev) {
+        // if (true) {
             // 显示排序
             // this.showSort();
             // 显示新增页面
             // this.showPageAdd();
             // 设置页面设置
-            // this.showPageSet();
+            this.showPageSet();
             // 设置页面排序
             // this.showPageSort();
             // 显示图片裁剪
@@ -100,7 +102,7 @@ Page({
                 // 预留音乐初始化的时间
                 setTimeout(() => {
                     // 音乐选择
-                    // this.showMusicChoose();
+                    this.showMusicChoose();
                 }, 1000)
             }
 
@@ -326,7 +328,8 @@ Page({
     setMusic(e) {
         const chooseMusic = e.detail.chooseMusic;
         this.setData({
-            bgMusic: tplConfig.mp3Ob[chooseMusic]
+            bgMusic: chooseMusic
+            // bgMusic: tplConfig.mp3Ob[chooseMusic]
         });
         // console.log(this.data.bgMusic);
         this.hideMusicChoose();
@@ -525,6 +528,7 @@ Page({
         this.setData({
             isShowPageSet: false
         });
+        this.selectComponent("#tpl1").changMusic();
 
 
     },

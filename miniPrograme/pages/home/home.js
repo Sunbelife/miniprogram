@@ -80,6 +80,7 @@ Page({
         });
 
     },
+
     guestReplyTip: function () {
         const userOpenid = wx.getStorageSync('userOpenid');
 

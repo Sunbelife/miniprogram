@@ -28,19 +28,25 @@
         <view wx:if="{{activeType === 1}}">
             <view wx:for="{{blessing}}" wx:key="key"
             >
-                <view>
-                    {{item.msg}}
-
-                    <button bindtap="replay" data-id="{{item.id}}">回复</button>
+                <view class="blessing-item">
+                    <view class="blessing-content"> {{item.name}}：{{item.msg}}</view>
+                    <view class="blessing-time"> {{item.time}}</view>
+                    <!--<button bindtap="replay" data-id="{{item.id}}">回复</button>-->
                 </view>
             </view>
         </view>
         <view wx:if="{{activeType === 2}}">
             <view wx:for="{{banquetInfo}}" wx:key="key"
             >
-                <view>
-                    {{item.name}}
+                <view class="blessing-item">
+                    <view class="blessing-content"> 姓名：{{item.name}}</view>
+                    <view class="blessing-content"> 交通工具：{{item.transit_type}}</view>
+                    <view class="blessing-content"> 联系电话：{{item.tel}}</view>
+                    <view class="blessing-content"> 赴宴人数：{{item.attend_num}}</view>
+                    <view class="blessing-time"> </view>
+                    <!--<button bindtap="replay" data-id="{{item.id}}">回复</button>-->
                 </view>
+
             </view>
         </view>
 

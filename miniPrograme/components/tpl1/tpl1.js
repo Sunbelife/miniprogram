@@ -25,28 +25,32 @@ Component({
     ready() {
         console.log("ready");
 
-
-        // 显示第一个页面
-        this.movePage(0);
-
-        console.log(this.data.pages);
-
-        this.playInit();
-        if (app.globalData.isAutoPlayMusic) {
-            this.playStart();
-        }
-
-        // TODO 删除
+        // 必须要延时
         setTimeout(() => {
-            // this.movePage(6);
-        }, 300)
-        if (util.isDev()) {
-            // 开发指定到页面 0 开始的
-            this.movePage(6);
-        }
+            console.log(this.properties);
+            console.log(this.properties.pages);
 
-        this.needMakeHandle();
-        console.log(this.data.pages);
+            // 显示第一个页面
+            this.movePage(0);
+
+
+            this.playInit();
+            if (app.globalData.isAutoPlayMusic) {
+                this.playStart();
+            }
+
+            // TODO 删除
+            setTimeout(() => {
+                // this.movePage(6);
+            }, 300)
+            if (util.isDev()) {
+                // 开发指定到页面 0 开始的
+                // this.movePage(6);
+            }
+
+            this.needMakeHandle();
+            console.log(this.data.pages);
+        }, 300)
     },
     methods: {
         needMakeHandle() {
@@ -66,9 +70,18 @@ Component({
             this.playInit();
             this.playStart();
         },
+        // 切换音乐
+        destroyMusic() {
+            if (this.data.playRef) {
+                this.data.playRef && this.data.playRef.destroy && this.data.playRef.destroy()
+            }
+        },
         playInit() {
 
+            this.destroyMusic();
+
             const innerAudioContext = wx.createInnerAudioContext();
+            console.log(this.properties.bgMusic);
             innerAudioContext.src = this.properties.bgMusic["audioUrl"];
             // 循环播放
             innerAudioContext.loop = true;
@@ -92,7 +105,7 @@ Component({
             console.log("showBanquetInfo trigger");
             this.triggerEvent('showBanquetInfo');
             this.setData({
-                isShowMap:false
+                isShowMap: false
             })
         },
         // 调用致宾客页面
@@ -103,12 +116,12 @@ Component({
                 let id = this.properties.pages[this.properties.pages.length - 2].id;
                 console.log("隐藏地图", id);
 
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.setData({
-                        isShowMap:true
+                        isShowMap: true
                     })
                     // this.selectComponent("#p" + (id)) && this.selectComponent("#p" + (id)).hideBanquetInfo3();
-                },10)
+                }, 10)
 
 
             }
@@ -217,14 +230,14 @@ Component({
             }
         },
         playStop() {
-            this.data.playRef && this.data.playRef.pause();
+            this.data.playRef && this.data.playRef.pause && this.data.playRef.pause();
             this.setData({
                 isPlay: false
             });
         },
         playStart() {
             console.log(this.properties.bgMusic);
-            this.data.playRef && this.data.playRef.play();
+            this.data.playRef && this.data.playRef.play && this.data.playRef.play();
             this.setData({
                 isPlay: true
             });

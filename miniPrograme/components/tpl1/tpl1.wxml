@@ -10,7 +10,7 @@
     <view class="page-wrap" style="transform: translateY({{pageTranslateY}}vh)"
           bindtouchstart="touchStart"
           bindtouchend="touchEnd"
-          bindtouchmove="touchMove"
+          catchtouchmove="touchMove"
     >
 
         <!--
@@ -25,6 +25,7 @@
 
             <view class="page-item"
             >
+                <view class="iconfont icon-xiala1 icon-bottom play"></view>
 
 
                 <pMake id="p{{index}}" wx:if="{{item.id === 'make'}}"></pMake>

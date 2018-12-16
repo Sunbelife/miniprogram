@@ -39,7 +39,7 @@
     </view>
 
     <view class="bottomFixed" wx:if="{{isBanquetInfoFill}}">
-        <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{card_id}}"></banquetInfoFill>
+        <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{card_id}}" open_id="{{open_id}}"></banquetInfoFill>
     </view>
     <view class="bottomFixed" wx:if="{{isSaySomething}}">
         <saySomething bindhidePage="hideSaySomething" card_id="{{card_id}}"></saySomething>

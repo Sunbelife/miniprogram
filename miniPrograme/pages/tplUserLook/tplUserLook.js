@@ -35,7 +35,7 @@ Page({
 
         // TODO 删除
         // id = "10c0e5f98d0c77216a7bd840941eaab7";
-        id = "a8702e7442c7015fcf03ff6940751c18";
+        // id = "a8702e7442c7015fcf03ff6940751c18";
 
 
         this.setData({
@@ -59,15 +59,25 @@ Page({
             data: loginReq,
             success: (resLogin) => {
                 console.log(resLogin);
-                this.setData({
-                    open_id: resLogin.data.data.open_id,
-                    card_id: resLogin.data.data.card_id
-                });
-                console.log(this.data.open_id);
+
+                if(resLogin.data.code === 200){
+                    this.setData({
+                        open_id: resLogin.data.data.open_id,
+                        card_id: resLogin.data.data.card_id
+                    });
+                    console.log(this.data.open_id);
 
 
-                this.init(JSON.parse(resLogin.data.data.changed_log));
-                wx.hideLoading();
+                    this.init(JSON.parse(resLogin.data.data.changed_log));
+                    wx.hideLoading();
+                }else{
+                    wx.showToast({
+                        title: '请帖已被删除',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
+
             }
         });
 
@@ -78,13 +88,11 @@ Page({
             if (tplInfo) {
                 // Do something with return value
                 this.setData({
-                    isReady: true,
                     tplInfo: tplInfo
                 });
             } else {
                 if (util.isDev()) {
                     this.setData({
-                        isReady: true,
                         tplInfo: tplConfig.mockTpl
                     });
                 }
@@ -122,7 +130,9 @@ Page({
 
         console.log(this.data.tplInfo);
 
-
+        this.setData({
+            isReady: true
+        });
     },
 
     getBlessing() {

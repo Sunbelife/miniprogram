@@ -9,6 +9,7 @@ Component({
     behaviors: [],
     properties: {
         card_id: null, // 简化的定义方式
+        open_id: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
@@ -132,6 +133,7 @@ Component({
             // TODO 卡片ID
             const req = {
                 card_id: this.properties.card_id,
+                open_id: this.properties.open_id,
                 user_name: name,
                 transit_type: this.data.objectArray[this.data.index].id,
                 phone_num: tel,
