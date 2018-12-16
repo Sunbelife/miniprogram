@@ -4,7 +4,7 @@ const api = require('../../utils/api.js');
 
 Page({
     data: {
-        tplInfo:{},
+        tplInfo: {},
         shareImg: 'https://dummyimage.com/200x300&text=hello',
     },
 
@@ -13,7 +13,7 @@ Page({
         this.loadTpl();
         this.save();
     },
-    loadTpl(){
+    loadTpl() {
         try {
             var tplInfo = wx.getStorageSync('tplInfo');
             console.log(JSON.stringify(tplInfo));
@@ -38,14 +38,13 @@ Page({
         }
     },
 
-    save(){
+    save() {
         wx.showLoading({
             title: '正在保存',
         });
 
         const userOpenid = wx.getStorageSync('userOpenid');
 
-        // TODO 保存的时候，后台要记录这个 card_id
         const loginReq = {
             open_id: userOpenid,
             changed_log: JSON.stringify(this.data.tplInfo),
@@ -53,7 +52,7 @@ Page({
         };
 
         const card_id = this.data.tplInfo.card_id;
-        if(card_id){
+        if (card_id) {
             loginReq.card_id = card_id;
         }
 
@@ -63,7 +62,12 @@ Page({
             success: (resLogin) => {
                 console.log(resLogin);
 
-            //     TODO card_id 要保存在本地记录中
+                if (!card_id) {
+                    this.data.tplInfo.card_id = resLogin.data.data.card_id;
+                }
+                util.tplALL.updateOne(this.data.tplInfo);
+
+                wx.hideLoading();
             }
         });
 
@@ -71,18 +75,18 @@ Page({
     share: function () {
         wx.showShareMenu({
             withShareTicket: true,
-            success(e){
+            success(e) {
                 console.log(e);
             },
-            fail(e){
+            fail(e) {
                 console.log(e);
             },
-            complete(e){
+            complete(e) {
                 console.log(e);
             }
         })
     },
-    addPic(){
+    addPic() {
         const self = this;
         wx.chooseImage({
             success: function (res) {
@@ -107,7 +111,7 @@ Page({
         })
     },
     // 分享图片生成
-    shareImgGen(shareImgUrl){
+    shareImgGen(shareImgUrl) {
         wx.showLoading({
             title: '正在生成图片...',
             mask: true
@@ -130,7 +134,7 @@ Page({
         });
     },
     // 分享图片保存
-    shareImgGenSave(path){
+    shareImgGenSave(path) {
         wx.saveImageToPhotosAlbum({
             filePath: path,
             success(res) {
@@ -157,9 +161,13 @@ Page({
             // 来自页面内转发按钮
             console.log(res.target)
         }
+        console.log({
+            title: `${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
+            path: '/pages/tplUserLook/tplUserLook?id='+this.data.tplInfo.card_id
+        });
         return {
-            title: '自定义转发标题',
-            path: '/page/user?id=123'
+            title: ` ${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
+            path: '/pages/tplUserLook/tplUserLook?id='+this.data.tplInfo.card_id
         }
     }
 });

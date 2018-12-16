@@ -26,7 +26,7 @@
             <!--</block>-->
             <!--<block wx:if="{{blessing.length  > 1}}">-->
             <block wx:for="{{blessing}}" wx:key="key">
-                <view class="blessing">{{item.msg}}</view>
+                <view class="blessing">{{item.name}}：{{item.msg}}</view>
             </block>
             <!--</block>-->
         </view>
@@ -37,10 +37,10 @@
 
 
     <view class="bottomFixed" wx:if="{{isBanquetInfoFill}}">
-        <banquetInfoFill bindhidePage="hideBanquetInfoFill"></banquetInfoFill>
+        <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{tplInfo.card_id}}"></banquetInfoFill>
     </view>
     <view class="bottomFixed" wx:if="{{isSaySomething}}">
-        <saySomething bindhidePage="hideSaySomething"></saySomething>
+        <saySomething bindhidePage="hideSaySomething" card_id="{{tplInfo.card_id}}"></saySomething>
     </view>
 
 

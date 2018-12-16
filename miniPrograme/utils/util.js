@@ -510,7 +510,7 @@ function getUserInfo(resLogin, callLoginSuccess) {
     });
 }
 
-
+// TODO 存在引用改变吗？？
 let tplALL = {
     fixToGuestsHas(tplInfo) {
         if (tplInfo.toGuestsHas) {

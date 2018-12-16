@@ -90,6 +90,8 @@ const urlsDev = {
 
     // 赴宴信息填写接口
     banquetInfoFill: "/banquetInfoFill",
+    // 模板获取
+    tplGet: "/tplGet",
 
 
 };
@@ -128,6 +130,9 @@ const urlsProd = {
     // 模板保存
     tplSave: "/save_user_card",
 
+    // 模板获取
+    tplGet: "/get_user_card",
+
     // 修改图片的截取
     updateImgCut: "/upload_pic",
 
@@ -140,7 +145,7 @@ const urlsProd = {
     barrageSave: "/send_barrage_msg",
 
     // 赴宴信息填写接口
-    banquetInfoFill: "/xxxxxxx",
+    banquetInfoFill: "/send_attend_info",
 
 };
 
@@ -242,6 +247,11 @@ const replyWish = (params) => {
     wxRequest(params, `${apiUrl}${urls.replyWish}`);
 };
 
+// 模板获取
+const tplGet = (params) => {
+    wxRequest(params, `${apiUrl}${urls.tplGet}`);
+};
+
 
 function getUrl(name) {
     return `${apiUrl}${urls[name]}`
@@ -253,6 +263,7 @@ module.exports = {
     urls,
     apiUrl,
     guestReplyRead,
+    tplGet,
     replyWish,
     loginEncrypted,
     banquetInfoList,

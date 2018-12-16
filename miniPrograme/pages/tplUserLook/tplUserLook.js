@@ -24,25 +24,53 @@ Page({
         blessingScrollTransition: 0,
         isSaySomething: false,
         isReady: false,
-        tplInfo: {}
+        tplInfo: {},
+        id: ''
 
     },
 
-    onLoad: function () {
-        if (util.isDev()) {
-            this.showBanquetInfoFill();
-        }
+    onLoad: function (options) {
+        let id = options.id;
 
-        this.getBlessing();
+        // TODO 删除
+        // id = "10c0e5f98d0c77216a7bd840941eaab7";
 
-        this.init();
+
+        this.setData({
+            id: id
+        });
+
+
+        this.getTplInfo();
+
     },
-    init() {
+    getTplInfo: function () {
 
+        const loginReq = {
+            card_id: this.data.id,
+        };
+
+        api.tplGet({
+            // method: "POST",
+            data: loginReq,
+            success: (resLogin) => {
+                console.log(resLogin);
+                this.setData({
+                    open_id: resLogin.data.data.open_id
+                });
+                console.log(this.data.open_id);
+
+
+                this.init(JSON.parse(resLogin.data.data.changed_log));
+
+
+            }
+        });
+
+    },
+    init(tplInfo) {
 
         try {
-            var tplInfo = wx.getStorageSync('tplInfo');
-            console.log(JSON.stringify(tplInfo));
             if (tplInfo) {
                 // Do something with return value
                 this.setData({
@@ -61,6 +89,14 @@ Page({
             // Do something when catch error
         }
 
+        let title = `${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`;
+
+        wx.setNavigationBarTitle({
+            title: title
+        });
+        this.getBlessing();
+
+
         if (this.data.tplInfo.toGuestsHas) {
             this.data.tplInfo.pages.push(this.data.tplInfo.toGuestsPage);
         }
@@ -69,6 +105,17 @@ Page({
         this.setData({
             tplInfo: this.data.tplInfo
         });
+
+
+        // TODO 删除
+        // this.showBanquetInfoFill();
+
+
+        if (util.isDev()) {
+
+        }
+
+
         console.log(this.data.tplInfo);
 
 
@@ -76,9 +123,9 @@ Page({
 
     getBlessing() {
         const loginReq = {
-            card_id: "123123"
+            open_id: this.data.open_id
         };
-
+console.log(loginReq);
         api.barrageList({
             // method: "POST",
             data: loginReq,
@@ -92,6 +139,7 @@ Page({
                     console.log(k, v);
                     let blessingItem = {};
                     blessingItem.msg = v.message;
+                    blessingItem.name = v.user_name;
                     blessing.push(blessingItem);
 
                 });
@@ -166,6 +214,8 @@ Page({
     },
     // 隐藏 说些什么
     hideSaySomething() {
+        this.getBlessing();
+
         this.setData({
             isSaySomething: false
         });

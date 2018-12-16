@@ -8,6 +8,7 @@ const api = require('../../utils/api.js');
 Component({
     behaviors: [],
     properties: {
+        card_id: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
@@ -107,7 +108,7 @@ Component({
             // TODO 卡片ID
             const req = {
                 user_name: name,
-                card_id: "1231",
+                card_id: this.properties.card_id,
                 // msg_id:"xxx",
                 message: msg
             };

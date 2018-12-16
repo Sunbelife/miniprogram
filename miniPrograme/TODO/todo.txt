@@ -57,14 +57,9 @@ open_id
 分享到朋友圈。
 
 
-
 音乐列表。     http://xcx.lyy99.com/web/manage/get_music_list
-获取已编辑
+获取已编辑  TODO .   本地存在用本地，否则用线上的
 宾客消息 ：1.2 个小时
-保存
-发送出去。
-
-
 
 
 

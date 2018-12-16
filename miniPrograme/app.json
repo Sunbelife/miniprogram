@@ -1,13 +1,13 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/tplUserLook/tplUserLook",
+    "pages/invitationSend/invitationSend",
     "pages/guestReply/guestReply",
     "pages/invitationEdit/invitationEdit",
-    "pages/tplUserLook/tplUserLook",
 
 
     "pages/nav/nav",
-    "pages/invitationSend/invitationSend",
     "pages/banquetInfoFill/banquetInfoFill",
     "pages/startMake/startMake",
     "pages/invitationInfo/invitationInfo",
