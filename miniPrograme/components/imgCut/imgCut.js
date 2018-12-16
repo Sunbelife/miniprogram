@@ -196,7 +196,7 @@ Component({
 
             console.log(this.data.chooseImgPath,
                 `${api.apiUrl}${api.urls.updateImgCut}`, {
-                    'showImgScale': that.data.showImgScale,
+                    'p_show_img_scale': that.data.showImgScale,
                     'p_x': that.data.x,
                     'p_y': that.data.y,
                     'p_width': that.data.movableAreaRectangle.width,
@@ -208,7 +208,7 @@ Component({
                 filePath: that.data.chooseImgPath,
                 name: 'image',
                 formData: {
-                    'showImgScale': that.data.showImgScale,
+                    'p_show_img_scale': that.data.showImgScale,
                     'p_x': that.data.x,
                     'p_y': that.data.y,
                     'p_width': that.data.movableAreaRectangle.width,
