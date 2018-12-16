@@ -27,8 +27,10 @@ Component({
         // 默认缩放一半
         // TODO  需要的图片大小和用户都要缩放
         // scale: .5
-        scaleMin: 0.01,
+        // scale-value	Number	1	定义缩放倍数，取值范围为 0.5 - 10
+        scaleMin:1,
         scale: 1,
+        imgScale: 1,
         showImgScale: 1,
     },
     ready() {
@@ -181,23 +183,16 @@ Component({
                             let widthBili = res.width / that.data.movableAreaRectangle.width;
                             let heightBili = res.height / that.data.movableAreaRectangle.height;
 
-                            let scaleMin = 1;
-
-                            if (widthBili > 1 || heightBili > 1) {
-                                scaleMin = 1 / Math.min(widthBili, heightBili);
-                            } else {
-                                scaleMin = 1 / Math.min(widthBili, heightBili);
-                            }
+                            let  scaleMin = 1 / Math.min(widthBili, heightBili);
 
                             console.log("最小缩放", widthBili, heightBili);
                             console.log("最小缩放", scaleMin);
 
                             that.setData({
-                                scaleMin: scaleMin,
-                                scale: scaleMin,
+                                imgScale: scaleMin,
                                 movableViewRectangle: {
-                                    width: res.width,
-                                    height: res.height
+                                    width: res.width * scaleMin,
+                                    height: res.height * scaleMin
                                 }
                             });
                            setTimeout(()=>{
@@ -244,6 +239,7 @@ Component({
                 name: 'image',
                 formData: {
                     'p_show_img_scale': that.data.showImgScale,
+                    'p_init_scale': that.data.imgScale,
                     'p_x': that.data.x,
                     'p_y': that.data.y,
                     'p_width': that.data.movableAreaRectangle.width,
