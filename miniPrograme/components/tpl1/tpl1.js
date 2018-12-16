@@ -100,7 +100,7 @@ Component({
                 pageTranslateY: -((page) * 100)
             });
             const curOb = this.selectComponent("#p" + page);
-            console.log("#p" + page);
+            // console.log("#p" + page);
             // 显示
             curOb.show();
 
@@ -147,7 +147,7 @@ Component({
                 return;
             }
 
-            console.log(e);
+            // console.log(e);
 
             let oriPage = page;
             // console.log(this.data.touchEnd, this.data.touchStart);

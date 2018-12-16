@@ -103,7 +103,7 @@ Page({
         }
 
         // TODO 待去掉。
-        this.showImgCut();
+        // this.showImgCut();
 
 
     },
@@ -180,11 +180,9 @@ Page({
             this.updateToGuestsHasHandle();
 
 
-
         } catch (e) {
             // Do something when catch error
         }
-
 
 
     },
@@ -290,18 +288,21 @@ Page({
     // 保存图片
     saveImage(e) {
 
+        console.log(e);
+        console.log(e.detail);
         const curShowPage = e.detail.curShowPage;
         const cutImageInfo = e.detail.cutImageInfo;
         const newImageSrc = e.detail.newImageSrc;
         const pages = this.data.pages;
 
+        // TODO 有问题
         // 替换 当前页下的图片 点击下标下的 图片地址
         pages[curShowPage].imageSrc[cutImageInfo.index] = newImageSrc;
         this.setData({
             pages: pages
         });
         this.hideImgCut();
-        // console.log(pages);
+        console.log(pages);
 
     },
     sortPageClick(e) {
@@ -497,14 +498,17 @@ Page({
     showImgCut(e) {
         const index = util.data(e, "index");
 
-        if(index){
+        console.log(e);
+        console.log(index);
+        console.log(this.data.editEleImage);
+        if (util.isNotUndefined(index)) {
             const curCutImageInfo = this.data.editEleImage[index];
             this.setData({
                 curShowPage: this.data.curShowPage,
                 curCutImageInfo: curCutImageInfo,
                 isShowImgCut: true
             });
-        }else{
+        } else {
             this.setData({
                 curShowPage: 1,
                 curCutImageInfo: {

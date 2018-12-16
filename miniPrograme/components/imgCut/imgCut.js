@@ -16,17 +16,18 @@ Component({
             height: "300px",
         },
         movableViewRectangle: {
-            width: "500px",
-            height: "500px",
+            width: "500",
+            height: "500",
         },
         isLoading: false,
         x: 0,
         y: 0,
+        uploadSuccessImg: "",
         imgSrc: "/images/logo.jpeg",
         // 默认缩放一半
-        // 需要的图片大小和用户都要缩放
-        scale: .5
-        // scale: 1,
+        // TODO  需要的图片大小和用户都要缩放
+        // scale: .5
+        scale: 1,
     },
     ready() {
 
@@ -44,6 +45,7 @@ Component({
             });
         }
 
+        console.log("图片设置", this.properties.curShowPage);
 
         this.scaleRecord = {
             scale: 1
@@ -67,7 +69,8 @@ Component({
             this.triggerEvent('saveImage', {
                 curShowPage: this.properties.curShowPage,
                 cutImageInfo: this.properties.cutImageInfo,
-                newImageSrc: "https://dummyimage.com/200x300&text=random" + Math.floor(Math.random() * 1000)
+                newImageSrc: this.data.uploadSuccessImg
+                // newImageSrc: "https://dummyimage.com/200x300&text=random" + Math.floor(Math.random() * 1000)
             });
 
             // this.hidePage();
@@ -177,8 +180,8 @@ Component({
                 `${api.apiUrl}${api.urls.updateImgCut}`, {
                     'p_x': that.data.x,
                     'p_y': that.data.y,
-                    'p_width': that.data.movableViewRectangle.width,
-                    'p_height': that.data.movableViewRectangle.height,
+                    'p_width': that.data.movableAreaRectangle.width.replace("px", ''),
+                    'p_height': that.data.movableAreaRectangle.height.replace("px", ''),
                     'p_scale': that.scaleRecord.scale
                 });
             wx.uploadFile({
@@ -188,15 +191,27 @@ Component({
                 formData: {
                     'p_x': that.data.x,
                     'p_y': that.data.y,
-                    'p_width': that.data.movableViewRectangle.width,
-                    'p_height': that.data.movableViewRectangle.height,
+                    'p_width': that.data.movableAreaRectangle.width.replace("px", ''),
+                    'p_height': that.data.movableAreaRectangle.height.replace("px", ''),
                     'p_scale': that.scaleRecord.scale
                 },
                 success: function (res) {
                     console.log(res);
+                    let data = JSON.parse(res.data);
+                    let imgUrl = data.data;
+
+                    if (!imgUrl.startsWith("http")) {
+                        imgUrl = 'https://' + imgUrl;
+                    }
+
                     wx.hideLoading();
+                    that.setData({
+                        uploadSuccessImg: imgUrl
+                    });
+
+                    that.saveImage();
                 },
-                complete(){
+                complete() {
                     wx.hideLoading();
                 }
             })
