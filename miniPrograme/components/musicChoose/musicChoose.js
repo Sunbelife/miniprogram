@@ -10,34 +10,28 @@ const app = getApp();
 Component({
     behaviors: [],
     properties: {
+        bgMusic: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
         chooseMusic: '',
-        activeType: 1,
+        activeType: 0,
         type: [
             {
                 name: "全部",
+                number: 0
+            },
+            {
+                name: "中文",
                 number: 1
             },
             {
-                name: "华语",
+                name: "外文",
                 number: 2
-            },
-            {
-                name: "日韩",
-                number: 3
-            },
-            {
-                name: "欧美",
-                number: 4
-            },
-            {
-                name: "纯音乐",
-                number: 5
             }
         ],
         music: [],
+        musicOb: {},
         // 需要顶部固定吗？
         scrollTopPage: 0,
         isNeedFixed: false,
@@ -47,23 +41,30 @@ Component({
         // px
         tabOffsetTop: 90 + 90
     },
-    ready(){
-        console.log("musicChoose",tplConfig.mp3);
+    ready() {
+        console.log("musicChoose", tplConfig.mp3);
         // this.genMusic();
 
         this.mp3List();
 
 
-        if(util.isDev()){
+        if (util.isDev()) {
             this.setData({
                 music: tplConfig.mp3
             });
         }
+        
+        console.log(this.properties.bgMusic);
+
+        this.setData({
+            chooseMusic: this.properties.bgMusic
+        });
 
     },
     methods: {
-        hidePage(){
+        hidePage() {
             this.destroyMusic();
+            wx.hideLoading();
             this.triggerEvent('hidePage');
         },
         chooseType: function (e) {
@@ -72,11 +73,12 @@ Component({
                 activeType: type
             });
         },
-        destroyMusic(){
+        destroyMusic() {
             // 销毁上一个
-            if(this.data.mp3Ref){
+            if (this.data.mp3Ref) {
                 this.data.mp3Ref.destroy();
             }
+            wx.hideLoading();
         },
         mp3List: function () {
 
@@ -98,20 +100,22 @@ Component({
                         let item = {};
                         item.name = v.music_name;
 
-                        if (! v.music_url.startsWith("http")) {
-                            v.music_url = 'https://' +  v.music_url;
+                        if (!v.music_url.startsWith("http")) {
+                            v.music_url = 'https://' + v.music_url;
                         }
 
 
                         item.audioUrl = v.music_url;
-                        item.no = k;
+                        item.no =  v.music_id;
+                        item.type =  parseInt(v.music_type);
 
                         music.push(item);
                     });
 
 
                     this.setData({
-                        music: music
+                        music: music,
+                        musicOb:util.arrToObj(music,'no')
                     });
 
 
@@ -123,7 +127,7 @@ Component({
             const no = util.data(e, "no");
             const audioUrl = util.data(e, "audioUrl");
             this.destroyMusic();
-            console.log(no,audioUrl)
+            console.log(no, audioUrl)
 
             const innerAudioContext = wx.createInnerAudioContext();
             // 需要加载中吗？
@@ -150,22 +154,22 @@ Component({
             innerAudioContext.play();
 
             this.setData({
-                mp3Ref:innerAudioContext,
-                chooseMusic: this.data.music[no],
+                mp3Ref: innerAudioContext,
+                chooseMusic: this.data.musicOb[no],
             });
         },
-        saveSet(){
+        saveSet() {
             wx.hideLoading();
-            this.triggerEvent('setMusic',{
-                chooseMusic:this.data.chooseMusic
+            this.triggerEvent('setMusic', {
+                chooseMusic: this.data.chooseMusic
             });
             this.destroyMusic();
 
         },
-        genMusic(){
+        genMusic() {
             const music = [];
             const arr = new Array(20).fill(0);
-            util.each(arr, (k, v)=> {
+            util.each(arr, (k, v) => {
                 music.push({
                     no: k,
                     name: "音乐" + k,
@@ -176,7 +180,7 @@ Component({
                 music: music
             });
         },
-        loadMore(){
+        loadMore() {
 
         },
         // 页面滚动回调

@@ -57,6 +57,7 @@
     <!-- 音乐选择 -->
     <view class="full-page full-page-over" wx:if="{{isShowMusicChoose}}">
         <musicChoose id="musicChoose"
+                     bgMusic="{{bgMusic}}"
                      bindhidePage="hideMusicChoose"
                      bindsetMusic="setMusic"
         ></musicChoose>

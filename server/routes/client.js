@@ -19,23 +19,35 @@ router.get('/musicList', function (req, res, next) {
         "code": 200,
         "msg": "获取成功",
         "data": [{
-            "music_id": 2,
-            "music_name": "西风更破",
+            "music_id": 7,
+            "music_name": "天空 - 王菲",
+            "music_type": "0",
+            "music_upload_time": "2018-12-16",
+            "music_url": "https:\/\/xcx.lyy99.com\/uploads\/music\/20181216\/03971c99b7ea8b7aece7ab35cae0607e.mp3"
+        }, {
+            "music_id": 8,
+            "music_name": "矜持 - 王菲",
+            "music_type": "0",
+            "music_upload_time": "2018-12-16",
+            "music_url": "https:\/\/xcx.lyy99.com\/uploads\/music\/20181216\/cff64b158a26fbb59d66d7ccd28a4ff0.mp3"
+        }, {
+            "music_id": 9,
+            "music_name": "只愿为你守着约 - 王菲",
+            "music_type": "0",
+            "music_upload_time": "2018-12-16",
+            "music_url": "https:\/\/xcx.lyy99.com\/uploads\/music\/20181216\/a195261ae15b4349869c668da8678a90.mp3"
+        }, {
+            "music_id": 10,
+            "music_name": "This Mortal Coil - With Tomorrow",
             "music_type": "1",
-            "music_time": "2018-12-04",
-            "music_url": "https:\/\/www.360.cn"
+            "music_upload_time": "2018-12-16",
+            "music_url": "https:\/\/xcx.lyy99.com\/uploads\/music\/20181216\/8e9e3170f61f0abb6f0bc937ce5c423f.mp3"
         }, {
-            "music_id": 3,
-            "music_name": "Take me to your heart",
-            "music_type": "2",
-            "music_time": "2018-12-08",
-            "music_url": "www.google.com"
-        }, {
-            "music_id": 4,
-            "music_name": "Happy Birthday to you",
-            "music_type": "2",
-            "music_time": "2018-12-08",
-            "music_url": "www.baidu.com"
+            "music_id": 11,
+            "music_name": "追光者",
+            "music_type": "1",
+            "music_upload_time": "2018-12-22",
+            "music_url": "https:\/\/xcx.lyy99.com\/uploads\/music\/20181222\/ecdb4931cd5d112650cb591c14ccdcff.mp3"
         }]
     });
 });
@@ -61,13 +73,23 @@ router.get('/marryInfo', function (req, res, next) {
         "code": 200,
         "msg": "获取成功",
         "data": [{
-            "marry_id": 1,
-            "marry_man": "大刘",
-            "marry_women": "小刘"
+            "id": 1,
+            "card_id": "b61310c77621cbda8a066ef8bfac394c",
+            "boy_name": "小刘",
+            "girl_name": "小花",
+            "marr_time": "2018-10-20 20:30:00",
+            "contact_num": "110",
+            "marr_addr": "地球",
+            "create_time": "2018-12-12 17:05:11"
         }, {
-            "marry_id": 2,
-            "marry_man": "大张",
-            "marry_women": "小张"
+            "id": 1,
+            "card_id": "b61310c77621cbda8a066ef8bfac394c",
+            "boy_name": "小刘",
+            "girl_name": "小花",
+            "marr_time": "2018-10-20 20:30:00",
+            "contact_num": "110",
+            "marr_addr": "地球",
+            "create_time": "2018-12-12 17:05:11"
         }]
     });
 });
@@ -120,9 +142,6 @@ router.get('/tplDel', function (req, res, next) {
         "data": "null"
     });
 });
-
-
-
 
 
 module.exports = router;

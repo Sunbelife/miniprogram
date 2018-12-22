@@ -9,4 +9,16 @@
 5.https://cli.vuejs.org/zh/guide/
 
 
+ vim /usr/local/nginx/conf/vhost/xcx.lyy99.com.conf
 
+文档
+https://shimo.im/docs/VfFPHxXtRyI0T71j/
+
+pull 地址
+/home/wwwroot/xcx.lyy99.com
+
+nginx 配置
+/usr/local/nginx/conf/vhost
+
+客户端地址
+http://xcx.lyy99.com/client/#/login

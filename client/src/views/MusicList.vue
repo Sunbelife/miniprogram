@@ -12,10 +12,10 @@
             <div class="page-form">
                 <el-form :inline="true" :model="formInline" class="demo-form-inline" size="small">
                     <el-form-item label="音乐名称">
-                        <el-input v-model="formInline.user" placeholder="音乐名称"></el-input>
+                        <el-input v-model="formInline.name" placeholder="音乐名称"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmit">查询</el-button>
+                        <el-button type="primary" @click="onSearch">查询</el-button>
                     </el-form-item>
                     <el-form-item class="fr">
                         <el-button type="primary" @click="add">
@@ -25,6 +25,22 @@
                     </el-form-item>
                 </el-form>
             </div>
+            <div style="height: 70px;">
+                <aplayer autoplay
+                         v-if="playHas"
+                         :music="playOption"
+                />
+                <div v-if="!playHas">音乐播放区域</div>
+            </div>
+
+            <!--<aplayer autoplay
+                     :music="{
+                        title: 'secret base~君がくれたもの~',
+                        artist: 'Silent Siren',
+                        src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+                        pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
+                      }"
+            />-->
 
             <el-table
                     ref="multipleTable"
@@ -32,10 +48,10 @@
                     tooltip-effect="dark"
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
-                <el-table-column
-                        type="selection"
-                        width="55">
-                </el-table-column>
+                <!--<el-table-column-->
+                        <!--type="selection"-->
+                        <!--width="55">-->
+                <!--</el-table-column>-->
                 <el-table-column
                         align="center"
                         prop="name"
@@ -55,6 +71,15 @@
                 </el-table-column>
                 <el-table-column
                         align="center"
+                        label="播放">
+                    <template slot-scope="scope">
+                        <el-button @click="playThis(scope.row)" type="text" size="small">
+                            播放
+                        </el-button>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        align="center"
                         fixed="right"
                         label="操作">
                     <template slot-scope="scope">
@@ -69,7 +94,7 @@
             <!--<el-button @click="toggleSelection()">取消选择</el-button>-->
             <!--</div>-->
 
-            <div class="page-pagination">
+            <div class="page-pagination" v-if="false">
                 <el-pagination
                         @size-change="handleSizeChange"
                         @current-change="handleCurrentChange"
@@ -98,7 +123,7 @@
                         <el-upload
                                 class="upload-demo"
                                 ref="upload"
-                                :action="api.musicUpload"
+                                :action="baseURL + api.musicUpload"
                                 :on-preview="handlePreview"
                                 :on-remove="handleRemove"
                                 :accept="'.mp3'"
@@ -107,7 +132,7 @@
                                 :auto-upload="false"
 
                                 :data="uploadData"
-                                :name="'music_file'"
+                                :name="'music'"
                                 multiple
                                 :limit="1"
                                 :on-exceed="handleExceed"
@@ -141,15 +166,18 @@
     import Nav from '@/components/Nav.vue'
     import {
         request,
+        baseURL,
         api
     } from '@/util/api'
     import util from '@/util/util'
     import dataHelper from '@/util/dataHelper'
+    import Aplayer from 'vue-aplayer'
 
     export default {
         name: 'HelloWorld',
         components: {
-            Nav
+            Nav,
+            Aplayer
         },
         data() {
             return {
@@ -168,6 +196,7 @@
                 api: api,
                 multipleSelection: [],
                 currentPage4: 4,
+                baseURL: baseURL,
                 formInline: {
                     user: '',
                     region: 1
@@ -185,6 +214,12 @@
                     ],
                 },
                 uploadFileList: [],
+                playHas: false,
+                playOption: {
+                    artist: "",
+                    title: "",
+                    src: "",
+                },
                 loading: false
 
             }
@@ -194,6 +229,21 @@
             this.getList();
         },
         methods: {
+            onSearch(){
+                this.getList();
+
+            },
+            playThis(item) {
+                this.playHas = false;
+
+                console.log(item);
+                this.playOption.title = item.name;
+                this.playOption.src = item.src;
+
+                setTimeout(() => {
+                    this.playHas = true;
+                }, 300)
+            },
             onSubmit() {
                 console.log(this.fileList);
                 if (this.uploadFileList.length === 0) {
@@ -242,8 +292,11 @@
                 return this.$confirm(`确定移除 ${file.name}？`);
             },
             getList() {
-
-                request.get(api.musicList, {}).then((response) => {
+                request.get(api.musicList, {
+                    params: {
+                        search_music: this.formInline.name
+                    }
+                }).then((response) => {
                     console.log(response);
                     if (response.code === 200) {
                         this.tableData = dataHelper.musicList(response.data);

@@ -9,12 +9,18 @@ if (process.env.NODE_ENV === 'development') {
 let request = axios.create();
 
 let baseURLOb = {
-    dev:"/client",
-    prod:"/web/manage",
+    dev: "/client",
+    prod: "/web/manage",
 };
 
+let baseURL = '';
+
+baseURL = baseURLOb[env];
+
+console.log(env);
+console.log(baseURL);
 request.defaults.timeout = 2500;
-request.defaults.baseURL = baseURLOb[env];
+request.defaults.baseURL = baseURL;
 
 // Add a request interceptor
 request.interceptors.request.use(function (config) {
@@ -75,6 +81,7 @@ let api = {
 };
 
 export {
+    baseURL,
     request,
     api
 };

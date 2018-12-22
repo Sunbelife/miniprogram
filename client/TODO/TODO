@@ -5,31 +5,18 @@
             删除
             分页
 
-        有音乐上传吗？
-
-
-
         首页放图标。显示 有多少音乐，模板。使用情况
-
-
-/home/wwwroot/xcx.lyy99.com
-
-/usr/local/nginx/conf/vhost
-
-http://xcx.lyy99.com/client/#/login
 
 
 1.拷贝到  另一个 git   可以用bash
 2.去服务器  手动  pull
 
-
 搜索~~
 
-TODO    音乐上传   搜索 search_music
-TODO    结婚信息
-TODO    赴宴信息
-TODO    模板列表
-TODO    模板删除
+TODO    音乐  搜索   分页
+TODO    结婚信息  搜索   分页
+TODO    赴宴信息  分页
 
 
-upload_music
+TODO    上传后刷新
+

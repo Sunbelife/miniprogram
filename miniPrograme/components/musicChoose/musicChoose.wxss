@@ -31,6 +31,7 @@
     top: 0;
     z-index: 200;
     background-color: white;
+    width: 100%;
 }
 
 
@@ -51,6 +52,9 @@
 
 .music-item.active  .iconfont{
     display: block;
+}
+.music-item.hidden  {
+    display: none;
 }
 
 .music-item-content{

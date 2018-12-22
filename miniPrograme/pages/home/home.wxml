@@ -48,8 +48,9 @@
 
     </scroll-view>
 
-    <view class="bottomBtn">
+    <view class="bottomBtn" bindtap="make" >
         <view class="iconfont icon-jiahao"></view>
-        <button open-type="getUserInfo"  bindgetuserinfo="onGotUserInfo" class="makeBtn">创建请帖</button>
+        <!--<button open-type="getUserInfo"  bindgetuserinfo="onGotUserInfo" class="makeBtn">创建请帖</button>-->
+        <button  class="makeBtn">创建请帖</button>
     </view>
 </view>

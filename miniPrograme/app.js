@@ -6,8 +6,14 @@ App({
         // isAutoPlayMusic: false,
         domain: "https://xcx.lyy99.com",
         domainDev: "http://localhost:3000",
+        // TODO  改回去
+
         // isDev: 1,
         isDev: 0,
+
+        // TODO  改回去
+        // isMock: 1,
+        isMock: 0,
         userInfo: null
     },
     systemInfo: null,

@@ -116,7 +116,7 @@ Component({
                     }
                 });
             }, 0)
-            console.log(this.data.touchStartMoveItem);
+            // console.log(this.data.touchStartMoveItem);
         },
         // 移动当前页面
         movePageStart(e) {

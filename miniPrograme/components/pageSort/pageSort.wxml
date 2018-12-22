@@ -51,12 +51,15 @@
         </view>
     </scroll-view>
 
+
 </view>
 
+<!-- 这个只能在外面-->
+<!-- 这个定位 z-index:201;  要比 页面的定位高 -->
 <!-- 这个是复制移动的元素 -->
 <view class="pageSort-item"
       wx:if="{{touchStartMove}}"
-      style="position: absolute;z-index:3;top:{{touchStartMoveItem.top}};left:{{touchStartMoveItem.left}}"
+      style="position: absolute;z-index:201;top:{{touchStartMoveItem.top}};left:{{touchStartMoveItem.left}}"
 >
     <view class="pageSort-item-img-wrap active">
         <image class="pageSort-item-img"
@@ -64,3 +67,4 @@
     </view>
     <view class="pageSort-item-title">{{moveItem.zh}}</view>
 </view>
+

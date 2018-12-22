@@ -109,9 +109,10 @@ Page({
         this.getBlessing();
 
 
-        if (this.data.tplInfo.toGuestsHas) {
-            this.data.tplInfo.pages.push(this.data.tplInfo.toGuestsPage);
-        }
+        // 最后提交，pages 已经合一起了
+        // if (this.data.tplInfo.toGuestsHas) {
+            // this.data.tplInfo.pages.push(this.data.tplInfo.toGuestsPage);
+        // }
 
 
         this.setData({

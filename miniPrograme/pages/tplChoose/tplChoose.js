@@ -11,6 +11,10 @@ Page({
         console.log(this.data.tpl);
 
     },
+    bindload: function () {
+      console.log("image load");
+
+    },
     goPage(e) {
         const index = util.data(e, "index");
         try {

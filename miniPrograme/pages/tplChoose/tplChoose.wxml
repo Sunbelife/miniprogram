@@ -16,7 +16,8 @@
                   data-page="invitationInfo"
                   data-index="{{index}}"
             >
-                <image src="https://dummyimage.com/200x300/{{item.mainColor}}/ffffff&text={{item.zh}}"></image>
+                <image src="https://dummyimage.com/200x300/{{item.mainColor}}/ffffff&text={{item.zh}}"
+                       bindload="bindload"></image>
             </view>
         </view>
     </scroll-view>

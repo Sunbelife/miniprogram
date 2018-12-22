@@ -4,7 +4,7 @@
         <Nav :activeIndex="2"></Nav>
 
         <div class="page-content">
-            <div class="page-form">
+            <div class="page-form" v-if="false">
                 <el-form :inline="true" :model="formInline" class="demo-form-inline" size="small">
                     <el-form-item label="新郎姓名">
                         <el-input v-model="formInline.user" placeholder="新郎姓名"></el-input>
@@ -24,16 +24,18 @@
                     tooltip-effect="dark"
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
+                <!--<el-table-column-->
+                        <!--align="center"-->
+                        <!--prop="name"-->
+                        <!--label="请帖编号">-->
+                <!--</el-table-column>-->
                 <el-table-column
                         align="center"
-                        prop="name"
-                        label="请帖编号">
-                </el-table-column>
-                <el-table-column
-                        align="center"
-                        prop="name"
+                        prop="create_time"
+                        width="160"
                         label="创建时间">
                 </el-table-column>
+
                 <el-table-column
                         align="center"
                         prop="man"
@@ -45,6 +47,25 @@
                         prop="women"
                         label="新娘姓名">
                 </el-table-column>
+
+                <el-table-column
+                        align="center"
+                        width="160"
+                        prop="marr_time"
+                        label="结婚时间">
+                </el-table-column>
+                <el-table-column
+                        align="center"
+                        prop="marr_addr"
+                        label="结婚地址">
+                </el-table-column>
+                <el-table-column
+                        align="center"
+                        width="160"
+                        prop="contact_num"
+                        label="联系电话">
+                </el-table-column>
+
 
                 <el-table-column
                         align="center"
@@ -62,7 +83,7 @@
             <!--<el-button @click="toggleSelection()">取消选择</el-button>-->
             <!--</div>-->
 
-            <div class="page-pagination">
+            <div class="page-pagination" v-if="false">
                 <el-pagination
                         @size-change="handleSizeChange"
                         @current-change="handleCurrentChange"
@@ -182,10 +203,10 @@
             },
             handleDelClick(item) {
                 console.log(item);
-                let id = item.id;
+                let card_id = item.card_id;
                 // id = 1;
-                console.log("banquetList/" + id);
-                this.goPage("banquetList/" + id);
+                console.log("banquetList/" + card_id);
+                this.goPage("banquetList/" + card_id);
             },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);

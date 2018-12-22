@@ -80,7 +80,8 @@ Page({
         });
 
         // TODO 待去掉。
-        if (app.globalData.isDev) {
+        // TODO 改回去
+        if (util.isDev() || getApp().globalData.isMock) {
         // if (true) {
             // 显示排序
             // this.showSort();

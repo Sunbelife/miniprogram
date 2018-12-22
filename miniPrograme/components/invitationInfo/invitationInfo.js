@@ -44,7 +44,8 @@ Component({
     },
     methods: {
         mock() {
-            if (util.isDev()) {
+
+            if (util.isDev() || getApp().globalData.isMock) {
                 this.setData({
                     address: "北海公园",
                     nameLady: "翠花",

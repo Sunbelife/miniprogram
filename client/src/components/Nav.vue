@@ -18,10 +18,10 @@
                 <i class="fa fa-address-book"></i>
                 请帖列表
             </el-menu-item>
-            <el-menu-item index="3" :route="{path:'/h5TplList'}">
-                <i class="fa fa-weixin"></i>
-                小程序模板
-            </el-menu-item>
+            <!--<el-menu-item index="3" :route="{path:'/h5TplList'}">-->
+                <!--<i class="fa fa-weixin"></i>-->
+                <!--小程序模板-->
+            <!--</el-menu-item>-->
         </el-menu>
         <div class="nav-other" @click="logout">
             退出
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+    import localstorage from '@/util/localstorage'
     export default {
         name: 'Nav',
         props: {
@@ -40,6 +41,8 @@
         },
         methods: {
             logout(){
+                window.localStorage.removeItem('loginSessionId');
+
                 this.goPage("/");
             }
         }

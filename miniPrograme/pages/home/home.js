@@ -132,6 +132,60 @@ Page({
             }
         })
     },
+
+    getMp3List: function (call) {
+
+        const loginReq = {
+
+            // scene:"id%3D123%26name%3D123"
+        };
+
+        api.mp3List({
+            // method: "POST",
+            data: loginReq,
+            success: (resLogin) => {
+                console.log(resLogin);
+
+                const music = [];
+
+                util.each(resLogin.data.data, (k, v) => {
+                    console.log(k, v);
+                    let item = {};
+                    item.name = v.music_name;
+                    if (! v.music_url.startsWith("http")) {
+                        v.music_url = 'https://' +  v.music_url;
+                    }
+                    item.audioUrl = v.music_url;
+                    item.no = k;
+
+                    music.push(item);
+                });
+                call(music);
+            }
+        });
+
+    },
+    make(){
+        // TODO  tpl  要维护到 4个。再新加就要删除第一个了。要给提示
+        if (this.data.tpl.length >= 4) {
+            wx.showModal({
+                title: '提示',
+                content: '最多可以保存4个模板，新增会把最早的一个删除',
+                success(res) {
+                    if (res.confirm) {
+                        console.log('用户点击确定');
+                        util.tplALL.removeFirst(() => {
+                            this.goPage("tplChoose");
+                        });
+                    } else if (res.cancel) {
+                        console.log('用户点击取消')
+                    }
+                }
+            });
+        } else {
+            this.goPage("tplChoose");
+        }
+    },
     onGotUserInfo: function (e) {
 
         const that = this;

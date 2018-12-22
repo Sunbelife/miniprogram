@@ -7,7 +7,8 @@ function musicList(data) {
         const newOb = {};
         newOb.id = v.music_id;
         newOb.name = v.music_name;
-        newOb.time = v.music_time;
+        newOb.time = v.music_upload_time;
+        newOb.src = v.music_url;
         newOb.type = status.musicType[v.music_type];
         newObArr.push(newOb);
     });
@@ -19,9 +20,14 @@ function marryInfo(data) {
     const newObArr = [];
     util.each(data, function (k, v) {
         const newOb = {};
-        newOb.id = v.marry_id;
-        newOb.man = v.marry_man;
-        newOb.women = v.marry_women;
+        newOb.id = v.id;
+        newOb.man = v.boy_name;
+        newOb.women = v.girl_name;
+        newOb.card_id = v.card_id;
+        newOb.create_time = v.create_time;
+        newOb.marr_time = v.marr_time;
+        newOb.marr_addr = v.marr_addr;
+        newOb.contact_num = v.contact_num;
         newObArr.push(newOb);
     });
 
