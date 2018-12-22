@@ -15,6 +15,7 @@
 
 <script>
     import Nav from '@/components/Nav.vue'
+    import localstorage from '@/util/localstorage'
 
     export default {
         name: 'home',
@@ -26,6 +27,10 @@
                 activeIndex: '1',
                 activeIndex2: '1'
             };
+        },
+        mounted(){
+            let loginSessionId = localstorage.get("loginSessionId");
+            console.log(loginSessionId);
         },
         methods: {
             handleSelect(key, keyPath) {

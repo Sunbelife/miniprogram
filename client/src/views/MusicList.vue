@@ -84,26 +84,55 @@
 
             <!-- Form -->
 
-
+            <!--submit-->
             <el-dialog title="添加音乐" :visible.sync="dialogFormVisible">
-                <el-form :model="form" :label-position="'left'">
-                    <el-form-item label="音乐名称" :label-width="formLabelWidth">
+                <el-form :model="form" :label-position="'left'"
+                         :rules="rules4Add"
+                         ref="form4Add"
+                         :hide-required-asterisk="true"
+                >
+                    <el-form-item label="音乐名称" :label-width="formLabelWidth" prop="name">
                         <el-input v-model="form.name" autocomplete="off"></el-input>
                     </el-form-item>
+                    <el-form-item label="音乐文件" :label-width="formLabelWidth">
+                        <el-upload
+                                class="upload-demo"
+                                ref="upload"
+                                :action="api.musicUpload"
+                                :on-preview="handlePreview"
+                                :on-remove="handleRemove"
+                                :accept="'.mp3'"
+                                :on-change="handleChange"
+                                :before-remove="beforeRemove"
+                                :auto-upload="false"
+
+                                :data="uploadData"
+                                :name="'music_file'"
+                                multiple
+                                :limit="1"
+                                :on-exceed="handleExceed"
+                                :file-list="fileList">
+                            <el-button size="small" type="primary">点击上传</el-button>
+                            <div slot="tip" class="el-upload__tip">只能上传MP3文件</div>
+                        </el-upload>
+                    </el-form-item>
+
                     <el-form-item label="类别" :label-width="formLabelWidth">
-                        <el-select v-model="form.region" placeholder="请选择类别">
-                            <el-option label="欧美" value="shanghai"></el-option>
-                            <el-option label="中文" value="beijing"></el-option>
-                            <el-option label="日韩" value="beijing"></el-option>
+                        <el-select v-model="form.type" placeholder="请选择">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
                         </el-select>
                     </el-form-item>
                 </el-form>
                 <div slot="footer" class="dialog-footer">
                     <el-button @click="dialogFormVisible = false">取 消</el-button>
-                    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+                    <el-button type="primary" @click="onSubmit" :loading="loading">确 定</el-button>
                 </div>
             </el-dialog>
-
 
         </div>
     </div>
@@ -124,26 +153,40 @@
         },
         data() {
             return {
+
+                fileList: [],
+
+                options: [{
+                    value: '1',
+                    label: '中文'
+                }, {
+                    value: '2',
+                    label: '外文'
+                }],
                 tableData: [],
+                uploadData: {},
+                api: api,
                 multipleSelection: [],
                 currentPage4: 4,
                 formInline: {
                     user: '',
-                    region: ''
+                    region: 1
                 },
                 dialogFormVisible: false,
 //                dialogFormVisible: true,
                 form: {
                     name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
+                    type: '1'
                 },
-                formLabelWidth: '100px'
+                formLabelWidth: '100px',
+                rules4Add: {
+                    name: [
+                        {required: true, message: '请输入音乐名', trigger: 'blur'}
+                    ],
+                },
+                uploadFileList: [],
+                loading: false
+
             }
         },
         mounted() {
@@ -151,7 +194,55 @@
             this.getList();
         },
         methods: {
+            onSubmit() {
+                console.log(this.fileList);
+                if (this.uploadFileList.length === 0) {
+                    this.$message({
+                        message: '未上传文件',
+                        type: 'warning'
+                    });
+                    return;
+                }
+                console.log('submit!');
+                this.$refs.form4Add.validate((valid) => {
+                    if (valid) {
+                        this.loading = true;
+
+                        this.uploadData.music_name = this.form.name;
+                        this.uploadData.music_type = this.form.type;
+
+                        this.$refs.upload.submit();
+                        this.dialogFormVisible = false;
+                        this.loading = false;
+
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+
+
+            },
+
+
+            handleChange(file, fileList) {
+                console.log(file, fileList);
+                this.uploadFileList = fileList;
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePreview(file) {
+                console.log(file);
+            },
+            handleExceed(files, fileList) {
+                this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+            },
+            beforeRemove(file, fileList) {
+                return this.$confirm(`确定移除 ${file.name}？`);
+            },
             getList() {
+
                 request.get(api.musicList, {}).then((response) => {
                     console.log(response);
                     if (response.code === 200) {
@@ -191,7 +282,7 @@
                 }).then(() => {
 
                     request.get(api.musicDel, {
-                        params:{
+                        params: {
                             music_id: item.id
                         }
                     }).then((response) => {
@@ -231,11 +322,13 @@
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
             },
-            onSubmit() {
-                console.log('submit!');
-            },
+
             add() {
+                this.form.name = "";
+                this.fileList = [];
+                this.uploadFileList = [];
                 this.dialogFormVisible = true;
+                // this.$refs.form4Add.resetFields();
                 console.log('add');
             }
         }

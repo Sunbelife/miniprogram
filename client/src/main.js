@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui';
+import localstorage from '@/util/localstorage'
+
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
@@ -23,7 +25,16 @@ router.beforeEach((to, from, next) => {
     if (to.meta.title) {
         document.title = to.meta.title;
     }
-    next();
+    const whiteList = ["/login"];
+
+    let loginSessionId = localstorage.get("loginSessionId");
+
+    console.log(loginSessionId);
+    if (whiteList.indexOf(to.fullPath) !== -1 || loginSessionId) {
+        next();
+    } else {
+        next("/login");
+    }
 });
 
 

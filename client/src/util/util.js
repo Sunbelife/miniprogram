@@ -75,8 +75,95 @@ function each(object, callback) {
     }
 }
 
+
+function arrToObj(arr, key) {
+    const retOb = {};
+    each(arr, function (index, item) {
+        const newItem = {};
+        extend(true, newItem, item);
+        retOb[item[key]] = newItem;
+    });
+    return retOb;
+}
+const dateFormat = (dateStr, fmt) => {
+    let date = dateStr;
+
+    if (dateStr instanceof Date) {
+    } else {
+        date = new Date(dateStr);
+    }
+
+    if (isNaN(date.getDate())) {
+        dateStr = dateStr.replace(/-/g, "/");
+        date = new Date(dateStr);
+    }
+
+
+    var o = {
+        "M+": date.getMonth() + 1,                 //月份
+        "d+": date.getDate(),                    //日
+        "h+": date.getHours(),                   //小时
+        "m+": date.getMinutes(),                 //分
+        "s+": date.getSeconds(),                 //秒
+        "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+        "S": date.getMilliseconds()             //毫秒
+    };
+    if (/(y+)/.test(fmt))
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt))
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+
+};
+
+
+/**
+ *js中更改日期
+ * y年， m月， d日， h小时， n分钟，s秒
+ */
+function dateAdd(date, part, value) {
+    value *= 1;
+    if (isNaN(value)) {
+        value = 0;
+    }
+    switch (part) {
+        case 'y':
+            date.setFullYear(date.getFullYear() + value);
+            break;
+        case 'm':
+            date.setMonth(date.getMonth() + value);
+            break;
+        case 'd':
+            date.setDate(date.getDate() + value);
+            break;
+        case 'h':
+            date.setHours(date.getHours() + value);
+            break;
+        case 'n':
+            date.setMinutes(date.getMinutes() + value);
+            break;
+        case 's':
+            date.setSeconds(date.getSeconds() + value);
+            break;
+        default:
+
+    }
+    return date;
+}
+
+function isNotUndefined(item) {
+    return typeof(item) !== "undefined";
+}
+
+
+
 export default {
     isLocal: isLocal(),
+    isNotUndefined,
+    dateAdd,
+    dateFormat,
     extend,
+    arrToObj,
     each
 }
