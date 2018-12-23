@@ -126,14 +126,14 @@ for (let i = 0; i < 10; i++) {
         toGuestsHas: true,
         toGuestsPage: toGuestsPage,
         invitationInfo: {
-            address: "婚礼地址",
+            address: "",
             date: util.getCurDate(),
             time: '12:00',
             // 默认地址是大望路
-            latitude: 39.90824,
-            longitude: 116.47783,
-            nameLady: "新娘",
-            nameGentleman: "新郎"
+            latitude: 0,
+            longitude: 0,
+            nameLady: "",
+            nameGentleman: ""
         }
     });
 }

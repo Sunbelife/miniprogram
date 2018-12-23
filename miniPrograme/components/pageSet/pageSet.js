@@ -103,6 +103,14 @@ Component({
                     data: loginReq,
                     success: (resLogin) => {
                        this.deleteDo();
+                    },
+                    error: (resLogin) => {
+                        console.log(resLogin);
+                       this.deleteDo();
+                    },
+                    complete: (resLogin) => {
+                        console.log(resLogin);
+                        this.deleteDo();
                     }
                 });
             }else{

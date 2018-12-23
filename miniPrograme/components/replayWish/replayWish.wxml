@@ -14,8 +14,9 @@
     <form bindsubmit="confirmComment">
         <view>
             <view class="blessing-wrap">
-                <view class="blessing-content"> {{blessing.name}}：{{blessing.msg}}</view>
-                <view class="blessing-time"> {{blessing.time}}</view>
+                {{blessing.name}}：{{blessing.msg}}
+                <view></view>
+                <view class="blessing-time">{{blessing.time}}</view>
             </view>
 
             <view class="form-item">

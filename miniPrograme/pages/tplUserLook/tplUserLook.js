@@ -35,7 +35,7 @@ Page({
         let id = options.id;
 
         // TODO 删除
-        // id = "5023c301d83d26bed6d6065a56a33fc8";
+        // id = "2b84123fdab0ad66aaa25a2af264d518";
 
 
         this.setData({
