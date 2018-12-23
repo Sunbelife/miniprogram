@@ -56,12 +56,12 @@
                         label="交通工具"
                         show-overflow-tooltip>
                 </el-table-column>
-                <el-table-column
-                        align="center"
-                        prop="attend_time"
-                        label="赴宴时间"
-                        show-overflow-tooltip>
-                </el-table-column>
+                <!--<el-table-column-->
+                        <!--align="center"-->
+                        <!--prop="attend_time"-->
+                        <!--label="赴宴时间"-->
+                        <!--show-overflow-tooltip>-->
+                <!--</el-table-column>-->
                 <!--<el-table-column-->
                 <!--align="center"-->
                 <!--fixed="right"-->

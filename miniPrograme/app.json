@@ -1,15 +1,15 @@
 {
   "pages":[
+    "pages/invitationSend/invitationSend",
     "pages/home/home",
+    "pages/guestReply/guestReply",
     "pages/invitationEdit/invitationEdit",
     "pages/tplUserLook/tplUserLook",
     "pages/tplChoose/tplChoose",
     "pages/a_auth/a_auth",
 
-    "pages/guestReply/guestReply",
 
 
-    "pages/invitationSend/invitationSend",
 
 
     "pages/nav/nav",

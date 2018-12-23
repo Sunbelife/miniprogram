@@ -109,7 +109,7 @@ Component({
 
             if (name.length > 30) {
                 wx.showToast({
-                    title: '姓名长度大于30',
+                    title: '姓名长度不能大于30',
                     icon: 'none',
                     duration: 2000
                 });

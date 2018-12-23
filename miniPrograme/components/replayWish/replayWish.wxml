@@ -13,21 +13,17 @@
 
     <form bindsubmit="confirmComment">
         <view>
-            <view class="form-item">
-                <view class="form-label">
-                    您的姓名
-                </view>
-                <view class="form-input">
-                    <input type="text" placeholder="请输入您的姓名" name="name" cursor-spacing='20' value="{{name}}"/>
-                </view>
+            <view class="blessing-wrap">
+                <view class="blessing-content"> {{blessing.name}}：{{blessing.msg}}</view>
+                <view class="blessing-time"> {{blessing.time}}</view>
             </view>
 
             <view class="form-item">
                 <view class="form-label">
-                    祝福语
+                    回复
                 </view>
                 <view class="form-input">
-                    <input type="text" placeholder="请输入祝福语"
+                    <input type="text" placeholder="请输入回复语"
                            value="{{msg}}"
                            name="msg" cursor-spacing='20' maxlength="11"/>
                 </view>

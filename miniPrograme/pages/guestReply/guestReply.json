@@ -1,6 +1,9 @@
 {
   "navigationBarBackgroundColor": "red",
-  "navigationBarTitleText": "宾客回复"
+  "navigationBarTitleText": "宾客回复",
+  "usingComponents": {
+    "replayWish": "/components/replayWish/replayWish"
+  }
 }
 
 

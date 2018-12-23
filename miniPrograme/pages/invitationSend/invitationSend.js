@@ -5,6 +5,9 @@ const api = require('../../utils/api.js');
 Page({
     data: {
         tplInfo: {},
+        isShowImgCut: false,
+        curCutImageInfo: {},
+        curShowPage: 0,
         shareImg: 'https://dummyimage.com/200x300&text=hello',
     },
 
@@ -89,6 +92,11 @@ Page({
         })
     },
     addPic() {
+        this.setData({
+            isShowImgCut: true
+        });
+
+        return;
         const self = this;
         wx.chooseImage({
             success: function (res) {
@@ -165,11 +173,11 @@ Page({
         }
         console.log({
             title: `${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
-            path: '/pages/tplUserLook/tplUserLook?id='+this.data.tplInfo.card_id
+            path: '/pages/tplUserLook/tplUserLook?id=' + this.data.tplInfo.card_id
         });
         return {
             title: ` ${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
-            path: '/pages/tplUserLook/tplUserLook?id='+this.data.tplInfo.card_id
+            path: '/pages/tplUserLook/tplUserLook?id=' + this.data.tplInfo.card_id
         }
     }
 });

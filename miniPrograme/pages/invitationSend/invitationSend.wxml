@@ -2,6 +2,17 @@
     <!--
         发送 （跳到发送页面），设置封面图-->
 
+    <!-- 图片裁剪 -->
+    <view class="full-page full-page-over" wx:if="{{isShowImgCut}}">
+        <imgCut id="imgCut"
+                cutImageInfo="{{curCutImageInfo}}"
+                curShowPage="{{curShowPage}}"
+                bindhidePage="hideImgCut"
+                bindsaveImage="saveImage"
+        ></imgCut>
+    </view>
+
+
     <view class="spouseTitle">
         {{tplInfo.invitationInfo.nameGentleman}}&{{tplInfo.invitationInfo.nameLady}}的婚礼邀请
     </view>

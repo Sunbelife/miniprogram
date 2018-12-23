@@ -26,12 +26,21 @@
 
 
         <view wx:if="{{activeType === 1}}">
-            <view wx:for="{{blessing}}" wx:key="key"
+            <view class="tip">可以点击回复弹幕或者删除弹幕</view>
+            <view wx:for="{{blessing}}"
+                  wx:key="key"
+                  bindtap="handleBlessing"
+                  data-id="{{item.id}}"
+                  data-index="{{index}}"
             >
                 <view class="blessing-item">
                     <view class="blessing-content"> {{item.name}}：{{item.msg}}</view>
                     <view class="blessing-time"> {{item.time}}</view>
-                    <!--<button bindtap="replay" data-id="{{item.id}}">回复</button>-->
+                   <!--<view class="btns">-->
+                       <!--<button bindtap="deleteMsg" data-id="{{item.id}}" class="btn">删除</button>-->
+                       <!--<button bindtap="replay" data-id="{{item.id}}" class="btn btn-blank">回复</button>-->
+                       <!--<view class="clearfix"></view>-->
+                   <!--</view>-->
                 </view>
             </view>
         </view>
@@ -49,8 +58,14 @@
 
             </view>
         </view>
+        <view class="full-page" wx:if="{{isShowReplayWish}}">
+            <replayWish
+                    blessing="{{blessingNeedReply}}"
+                    bindsubmit="replayWishSubmit"
+                    id="pageAdd"></replayWish>
+        </view>
 
-
+        <view style="height: 100rpx"></view>
     </scroll-view>
 
 </view>

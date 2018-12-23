@@ -39,15 +39,16 @@ Page({
                 name: '其他'
             }
         ],
-        objectArrayObj:{}
+        isShowReplayWish: false,
+        blessingNeedReply: {},
+        objectArrayObj: {}
     },
 
     onLoad: function () {
 
         this.setData({
-            objectArrayObj: util.arrToObj(this.data.objectArray,'id')
+            objectArrayObj: util.arrToObj(this.data.objectArray, 'id')
         });
-
 
 
         this.allRead();
@@ -61,8 +62,63 @@ Page({
             activeType: type
         });
     },
-    replay: function (e) {
+    deleteMsg: function (id) {
+        let that = this;
+        wx.showModal({
+            title: '提示',
+            content: '确定要删除吗？',
+            success(res) {
+                if (res.confirm) {
+                    console.log('用户点击确定');
+
+                    that.deleteMsgDo(id);
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
+            }
+        });
+    },
+    deleteMsgDo: function (id) {
+
+        const loginReq = {
+            msg_id: id
+        };
+
+        api.barrageDel({
+            // method: "POST",
+            data: loginReq,
+            success: (res) => {
+                let data = res.data;
+                console.log(data);
+                if (data.code === 200) {
+                    wx.showToast({
+                        title: '删除成功',
+                        icon: 'none',
+                        duration: 2000
+                    });
+                    this.getBlessing();
+
+                } else {
+                    wx.showToast({
+                        title: '删除失败',
+                        icon: 'none',
+                        duration: 2000
+                    });
+                }
+
+            }
+        });
+    },
+    // 回复祝福提交
+    replayWishSubmit(){
+        this.setData({
+            isShowReplayWish: false,
+        });
+    },
+    handleBlessing: function (e) {
         const id = util.data(e, "id");
+        const index = util.data(e, "index");
+        let that = this;
 
         wx.showActionSheet({
             itemList: ['回复', '删除'],
@@ -74,6 +130,14 @@ Page({
 
                     // TODO 显示 回复祝福组件
                     // replayWish
+
+                    let blessingNeedReply = {};
+                    util.extend(true, blessingNeedReply, that.data.blessing[index]);
+
+                    that.setData({
+                        isShowReplayWish: true,
+                        blessingNeedReply: blessingNeedReply
+                    });
                 }
                 if (handleIndex === 1) {
 
@@ -81,7 +145,7 @@ Page({
                     // TODO 显示 删除确认
 
                     console.log("删除");
-
+                    that.deleteMsg(id);
                 }
 
             },
@@ -112,6 +176,7 @@ Page({
                 util.each(data.data, (k, v) => {
                     console.log(k, v);
                     let blessingItem = {};
+                    blessingItem.id = v.barr_id;
                     blessingItem.msg = v.message;
                     blessingItem.name = v.user_name;
                     blessingItem.time = v.time;

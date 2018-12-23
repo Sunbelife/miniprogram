@@ -88,7 +88,10 @@ const urlsDev = {
 
     // 宾客弹幕保存
     barrageSave: "/barrageSave",
-
+    // 宾客弹幕删除
+    barrageDel: "/barrageDel",
+    // 宾客弹幕回复
+    barrageReply: "/barrageReply",
     // 赴宴信息填写接口
     banquetInfoFill: "/banquetInfoFill",
     // 模板获取
@@ -146,6 +149,10 @@ const urlsProd = {
 
     // 宾客弹幕保存
     barrageSave: "/send_barrage_msg",
+    // 宾客弹幕删除
+    barrageDel: "/del_barrage_msg",
+    // 宾客弹幕回复
+    barrageReply: "/reply_barrage_msg",
 
     // 赴宴信息填写接口
     banquetInfoFill: "/send_attend_info",
@@ -236,6 +243,14 @@ const barrageList = (params) => {
 const barrageSave = (params) => {
     wxRequest(params, `${apiUrl}${urls.barrageSave}`);
 };
+// 宾客弹幕保存
+const barrageDel = (params) => {
+    wxRequest(params, `${apiUrl}${urls.barrageDel}`);
+};
+// 宾客弹幕保存
+const barrageReply = (params) => {
+    wxRequest(params, `${apiUrl}${urls.barrageReply}`);
+};
 
 // 赴宴信息填写接口
 const banquetInfoFill = (params) => {
@@ -291,5 +306,7 @@ module.exports = {
     userShareImgGet,
     barrageList,
     barrageSave,
+    barrageDel,
+    barrageReply,
     banquetInfoFill,
 };

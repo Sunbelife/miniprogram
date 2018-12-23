@@ -78,3 +78,17 @@
 }
 
 
+.blessing-content{
+
+}
+.blessing-time{
+    text-align: right;
+    color: rgba(117, 117, 117, 0.87);
+    font-size: 20rpx;
+}
+
+.blessing-wrap{
+    padding: 10rpx;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 12rpx;
+}

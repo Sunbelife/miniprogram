@@ -8,6 +8,7 @@ const api = require('../../utils/api.js');
 Component({
     behaviors: [],
     properties: {
+        blessing: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
@@ -47,12 +48,13 @@ Component({
                 tel: "13325252545"
             })
         }
+        console.log(this.properties.blessing);
     },
     methods: {
         hidePage() {
             console.log(" !2312");
 
-            this.triggerEvent('hidePage');
+            this.triggerEvent('submit');
         },
         bindPickerChange: function (e) {
             console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -67,22 +69,16 @@ Component({
         confirmComment: function (e) {
             const self = this;
             const value = e.detail.value;
-            const name = value.name;
             const msg = value.msg;
-            console.log(name, msg);
-
-            if (name.length > 30) {
-                wx.showToast({
-                    title: '姓名长度大于30',
-                    icon: 'none',
-                    duration: 2000
-                });
+            console.log( msg);
+            if (!msg) {
+                util.toast("回复不能为空");
                 return;
             }
 
             if (msg.length > 30) {
                 wx.showToast({
-                    title: '弹幕长度大于30',
+                    title: '回复长度不能大于30',
                     icon: 'none',
                     duration: 2000
                 });
@@ -104,29 +100,29 @@ Component({
             });
 
 
-            // TODO 卡片ID
             const req = {
-                user_name: name,
-                card_id: "1231",
-                // msg_id:"xxx",
+                msg_id: this.properties.blessing.id,
                 message: msg
             };
 
-            api.barrageSave({
+            api.barrageReply({
                 method: "POST",
                 data: req,
                 success: (resLogin) => {
                     console.log(resLogin);
 
+                    wx.hideLoading();
+
+                    self.setData({
+                        isLoading: false
+                    });
+                    self.hidePage();
+
+
                 }
             });
 
-            wx.hideLoading();
 
-            self.setData({
-                isLoading: false
-            });
-            self.hidePage();
 
         }
     }

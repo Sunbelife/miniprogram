@@ -1,4 +1,9 @@
 {
   "navigationBarBackgroundColor": "red",
-  "navigationBarTitleText": "发送"
+  "navigationBarTitleText": "发送",
+  "usingComponents": {
+
+    "imgCut": "/components/imgCut/imgCut",
+
+  }
 }
