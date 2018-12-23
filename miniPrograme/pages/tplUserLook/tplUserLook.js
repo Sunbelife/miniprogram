@@ -109,6 +109,7 @@ Page({
 
         // this.data.tplInfo.barrageHas = false;
 
+        console.log(this.data.tplInfo);
         if(this.data.tplInfo.barrageHas){
 
             this.setData({

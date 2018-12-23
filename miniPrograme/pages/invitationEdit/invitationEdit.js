@@ -281,8 +281,7 @@ Page({
     // 是否有致宾客页面改变
     toGuestsHasChange() {
         this.updateToGuestsHas();
-        // 保存到模板里面
-        this.saveTplInfo();
+
     },
     updateToGuestsHas() {
         // 更新请帖信息到 page
@@ -317,6 +316,8 @@ Page({
             pages: pages
         });
 
+        // 保存到模板里面
+        this.saveTplInfo();
 
     },
     // 排序完成，重新设置页面下标名称.需要排序后的排列 page

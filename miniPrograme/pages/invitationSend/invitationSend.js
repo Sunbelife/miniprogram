@@ -59,7 +59,6 @@ Page({
                 });
 
 
-
             } else {
                 if (util.isDev()) {
                     this.setData({
@@ -93,15 +92,23 @@ Page({
             loginReq.card_id = card_id;
         }
 
+        console.log(this.data.tplInfo);
+
         api.tplSave({
             method: "POST",
             data: loginReq,
             success: (resLogin) => {
                 // console.log(resLogin);
 
-                if (!card_id) {
+                // if (!card_id) {
+                if(resLogin.data.data){
                     this.data.tplInfo.card_id = resLogin.data.data.card_id;
+                    this.setData({
+                        tplInfo: this.data.tplInfo
+                    });
                 }
+
+                // }
                 util.tplALL.updateOne(this.data.tplInfo);
 
                 wx.hideLoading();

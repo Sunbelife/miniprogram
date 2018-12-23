@@ -119,15 +119,16 @@ Component({
                 success: (resLogin) => {
                     // console.log(resLogin);
 
+                    wx.hideLoading();
+
+                    self.setData({
+                        isLoading: false
+                    });
+                    self.hidePage();
                 }
             });
 
-            wx.hideLoading();
 
-            self.setData({
-                isLoading: false
-            });
-            self.hidePage();
 
         }
     }
