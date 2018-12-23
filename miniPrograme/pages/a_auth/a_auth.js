@@ -6,7 +6,7 @@ Page({
     },
     
     goHome(){
-        console.log(123);
+        // console.log(123);
         // 需要重新加载
         wx.navigateBack()
     }

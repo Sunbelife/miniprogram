@@ -27,7 +27,7 @@ Component({
             this.triggerEvent('showInvitationInfo');
         },
         showBanquetInfo(e) {
-            console.log("showBanquetInfo trigger");
+            // console.log("showBanquetInfo trigger");
             this.triggerEvent('showBanquetInfo');
 
         },
@@ -36,7 +36,7 @@ Component({
                 this.setData({
                     isShowMap: true,
                 });
-                console.log(this.data.isShowMap);
+                // console.log(this.data.isShowMap);
             },10)
 
         },
@@ -73,7 +73,7 @@ Component({
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);
 
-            console.log(editInfo);
+            // console.log(editInfo);
             return editInfo;
         }
     }

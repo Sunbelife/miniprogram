@@ -48,29 +48,29 @@ Component({
                 tel: "13325252545"
             })
         }
-        console.log(this.properties.blessing);
+        // console.log(this.properties.blessing);
     },
     methods: {
         hidePage() {
-            console.log(" !2312");
+            // console.log(" !2312");
 
             this.triggerEvent('submit');
         },
         bindPickerChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value)
+            // console.log('picker发送选择改变，携带值为', e.detail.value)
             this.setData({
                 index: e.detail.value
             })
         },
         radioChange: function (e) {
-            console.log('radio发生change事件，携带value值为：', e.detail.value)
+            // console.log('radio发生change事件，携带value值为：', e.detail.value)
         },
         //    提交评论
         confirmComment: function (e) {
             const self = this;
             const value = e.detail.value;
             const msg = value.msg;
-            console.log( msg);
+            // console.log( msg);
             if (!msg) {
                 util.toast("回复不能为空");
                 return;
@@ -109,7 +109,7 @@ Component({
                 method: "POST",
                 data: req,
                 success: (resLogin) => {
-                    console.log(resLogin);
+                    // console.log(resLogin);
 
                     wx.hideLoading();
 

@@ -57,18 +57,18 @@ Component({
     },
     methods: {
         hidePage() {
-            console.log(" !2312");
+            // console.log(" !2312");
 
             this.triggerEvent('hidePage');
         },
         bindPickerChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value)
+            // console.log('picker发送选择改变，携带值为', e.detail.value)
             this.setData({
                 index: e.detail.value
             })
         },
         radioChange: function (e) {
-            console.log('radio发生change事件，携带value值为：', e.detail.value)
+            // console.log('radio发生change事件，携带value值为：', e.detail.value)
         },
         userPlus: function (e) {
             let userCount = this.data.userCount;
@@ -96,7 +96,7 @@ Component({
             const value = e.detail.value;
             const name = value.name;
             const tel = value.tel;
-            console.log(name, tel);
+            // console.log(name, tel);
 
             if (!/^1\d{10}$/.test(tel)) {
                 wx.showToast({
@@ -140,13 +140,13 @@ Component({
                 attend_num: this.data.userCount
             };
 
-            console.log("请求参数", req);
+            // console.log("请求参数", req);
 
             api.banquetInfoFill({
                 method: "POST",
                 data: req,
                 success: (resLogin) => {
-                    console.log(resLogin);
+                    // console.log(resLogin);
 
                     wx.hideLoading();
 

@@ -49,7 +49,7 @@ Page({
 
         util.login(() => {
             // debugger;
-            console.log("登录成功啦~~");
+            // console.log("登录成功啦~~");
             // this.genEwm();
             this.guestReplyTip();
 
@@ -71,7 +71,7 @@ Page({
             // method: "POST",
             data: loginReq,
             success: (resLogin) => {
-                console.log(resLogin);
+                // console.log(resLogin);
 
             }
         });
@@ -93,7 +93,7 @@ Page({
             // method: "POST",
             data: loginReq,
             success: (resLogin) => {
-                console.log(resLogin);
+                // console.log(resLogin);
                 this.setData({
                     guestReplyTipNum: resLogin.data.data.is_read_sum
                 })
@@ -110,13 +110,13 @@ Page({
                 open_id: userOpenid
             },
             success: (res) => {
-                console.log(res);
+                // console.log(res);
                 // TODO 。已编辑模板接口   也要添加  storageId~！！
                 // tpl
 
                 try {
                     var tplInfo_all = wx.getStorageSync('tplInfo_all');
-                    console.log(JSON.stringify(tplInfo_all));
+                    // console.log(JSON.stringify(tplInfo_all));
                     if (tplInfo_all) {
                         this.setData({
                             tpl: tplInfo_all
@@ -135,7 +135,7 @@ Page({
                     }
 
                     wx.hideLoading();
-                    console.log("模板数据", this.data.tpl);
+                    // console.log("模板数据", this.data.tpl);
                 } catch (e) {
                     // Do something when catch error
                 }
@@ -155,12 +155,12 @@ Page({
             // method: "POST",
             data: loginReq,
             success: (resLogin) => {
-                console.log(resLogin);
+                // console.log(resLogin);
 
                 const music = [];
 
                 util.each(resLogin.data.data, (k, v) => {
-                    console.log(k, v);
+                    // console.log(k, v);
                     let item = {};
                     item.name = v.music_name;
                     if (!v.music_url.startsWith("http")) {
@@ -185,7 +185,7 @@ Page({
                 content: '最多可以保存4个模板，新增会把最早的一个删除',
                 success(res) {
                     if (res.confirm) {
-                        console.log('用户点击确定');
+                        // console.log('用户点击确定');
                         util.tplALL.removeFirst((firstId) => {
 
                             // 线上也存在，需要删除
@@ -206,7 +206,7 @@ Page({
                             }
                         });
                     } else if (res.cancel) {
-                        console.log('用户点击取消')
+                        // console.log('用户点击取消')
                     }
                 }
             });
@@ -228,12 +228,12 @@ Page({
                     content: '最多可以保存4个模板，新增会把最早的一个删除',
                     success(res) {
                         if (res.confirm) {
-                            console.log('用户点击确定');
+                            // console.log('用户点击确定');
                             util.tplALL.removeFirst(() => {
                                 that.goPage("tplChoose");
                             });
                         } else if (res.cancel) {
-                            console.log('用户点击取消')
+                            // console.log('用户点击取消')
                         }
                     }
                 });
@@ -283,8 +283,8 @@ Page({
             isNeedFixed: isNeedFixed,
         });
 
-        console.log(px);
+        // console.log(px);
         //
-        console.log(e);
+        // console.log(e);
     },
 });

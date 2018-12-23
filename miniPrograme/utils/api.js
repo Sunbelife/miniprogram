@@ -4,13 +4,13 @@ const url4Mp3 = getApp().globalData.domain + '/web/manage/get_music_list';
 
 
 const wxRequest = (params, url) => {
-    console.log(params, url);
+    // console.log(params, url);
     // wx.showLoading({
     //     title: '加载中...'
     // });
 
     const Token = wx.getStorageSync('Token');
-    console.log('Token', Token);
+    // console.log('Token', Token);
     wx.request({
         url,
         method: params.method || 'GET',
@@ -21,19 +21,19 @@ const wxRequest = (params, url) => {
             'Content-Type': 'application/json'
         },
         success(res) {
-            console.log(res);
+            // console.log(res);
             if (params.success) {
                 params.success(res);
             }
         },
         fail(res) {
-            console.log(res);
+            // console.log(res);
             if (params.fail) {
                 params.fail(res);
             }
         },
         complete(res) {
-            console.log(res);
+            // console.log(res);
             // wx.hideLoading();
             if (params.complete) {
                 params.complete(res);

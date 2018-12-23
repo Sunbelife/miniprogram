@@ -321,11 +321,16 @@
 
             },
             getList() {
+                let params = {};
+                if(this.formInline.name){
+                    params.music_name = this.formInline.name;
+                }
+                if(this.formInline.type){
+                    params.music_type = this.formInline.type;
+                }
+
                 request.get(api.musicList, {
-                    params: {
-                        music_name: this.formInline.name,
-                        music_type: this.formInline.type,
-                    }
+                    params: params
                 }).then((response) => {
                     console.log(response);
                     if (response.code === 200) {

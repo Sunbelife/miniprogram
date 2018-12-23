@@ -24,6 +24,7 @@ Page({
         blessingScrollTransition: 0,
         isSaySomething: false,
         isReady: false,
+        isShowBlessing: false,
         tplInfo: {},
         card_id: '',
         id: ''
@@ -34,9 +35,7 @@ Page({
         let id = options.id;
 
         // TODO 删除
-        // id = "10c0e5f98d0c77216a7bd840941eaab7";
-        // id = "a8702e7442c7015fcf03ff6940751c18";
-        // id = "4f755e49a7dc9b2a5db79ae25ad95698";
+        // id = "5023c301d83d26bed6d6065a56a33fc8";
 
 
         this.setData({
@@ -59,14 +58,14 @@ Page({
             // method: "POST",
             data: loginReq,
             success: (resLogin) => {
-                console.log(resLogin);
+                // console.log(resLogin);
 
                 if(resLogin.data.code === 200){
                     this.setData({
                         open_id: resLogin.data.data.open_id,
                         card_id: resLogin.data.data.card_id
                     });
-                    console.log(this.data.open_id);
+                    // console.log(this.data.open_id);
 
 
                     this.init(JSON.parse(resLogin.data.data.changed_log));
@@ -107,7 +106,16 @@ Page({
         wx.setNavigationBarTitle({
             title: title
         });
-        this.getBlessing();
+
+        // this.data.tplInfo.barrageHas = false;
+
+        if(this.data.tplInfo.barrageHas){
+
+            this.setData({
+                isShowBlessing: true
+            });
+            this.getBlessing();
+        }
 
 
         // 最后提交，pages 已经合一起了
@@ -130,7 +138,7 @@ Page({
         }
 
 
-        console.log(this.data.tplInfo);
+        // console.log(this.data.tplInfo);
 
         this.setData({
             isReady: true
@@ -141,18 +149,18 @@ Page({
         const loginReq = {
             open_id: this.data.open_id
         };
-        console.log(loginReq);
+        // console.log(loginReq);
         api.barrageList({
             // method: "POST",
             data: loginReq,
             success: (res) => {
                 let data = res.data;
-                console.log(res);
+                // console.log(res);
                 const blessing = [];
 
 
                 util.each(data.data, (k, v) => {
-                    console.log(k, v);
+                    // console.log(k, v);
                     let blessingItem = {};
                     blessingItem.msg = v.message;
                     blessingItem.name = v.user_name;
@@ -188,7 +196,7 @@ Page({
             let blessingScrollIndex = this.data.blessingScrollIndex;
             let blessingScrollH = this.data.blessingScrollH;
             let blessing = this.data.blessing;
-            // console.log(blessingScrollIndex, blessing.length - 1);
+            // // console.log(blessingScrollIndex, blessing.length - 1);
             if (blessingScrollIndex < blessing.length - 1) {
                 blessingScrollIndex++;
                 blessingScrollH = blessingScrollH - util.rpx2px(60);
@@ -216,7 +224,7 @@ Page({
 
     // 显示 填写宾客信息
     showBanquetInfoFill() {
-        console.log("showBanquetInfoFill at");
+        // console.log("showBanquetInfoFill at");
         this.setData({
             isBanquetInfoFill: true
         });
@@ -254,13 +262,13 @@ Page({
         }, 10)
     },
     onHide(){
-        console.log("hide");
+        // console.log("hide");
         this.selectComponent("#tpl1").playStop();
 
     },
     onUnload(){
         // 返回
-        console.log("onUnload");
+        // console.log("onUnload");
         this.selectComponent("#tpl1").playStop();
 
     },

@@ -40,15 +40,15 @@ Component({
         const cutImageInfo = this.properties.cutImageInfo;
 
 
-        console.log(cutImageInfo);
-        console.log(this.properties);
+        // console.log(cutImageInfo);
+        // console.log(this.properties);
         if (!cutImageInfo.width) {
             console.error("未设置编辑图片的大小");
         } else {
-            console.log(cutImageInfo.width, getApp().systemInfo.windowWidth * 0.8);
-            console.log(cutImageInfo.height, getApp().systemInfo.windowHeight * 0.8);
-            console.log(cutImageInfo.width > getApp().systemInfo.windowWidth * 0.8);
-            console.log(cutImageInfo.height > getApp().systemInfo.windowHeight * 0.8);
+            // console.log(cutImageInfo.width, getApp().systemInfo.windowWidth * 0.8);
+            // console.log(cutImageInfo.height, getApp().systemInfo.windowHeight * 0.8);
+            // console.log(cutImageInfo.width > getApp().systemInfo.windowWidth * 0.8);
+            // console.log(cutImageInfo.height > getApp().systemInfo.windowHeight * 0.8);
 
             if (cutImageInfo.width > getApp().systemInfo.windowWidth * 0.7
                 || cutImageInfo.height > getApp().systemInfo.windowHeight * 0.7
@@ -67,7 +67,7 @@ Component({
                     height: this.cssHandle(cutImageInfo.height, this.data.scale)
                 }
             })
-            console.log(this.data.movableAreaRectangle);
+            // console.log(this.data.movableAreaRectangle);
             this.setData({
                 rightCover: {
                     left: this.data.movableAreaRectangle.width + util.rpx2px(5)
@@ -75,7 +75,7 @@ Component({
             });
         }
 
-        console.log("图片设置", this.properties.curShowPage);
+        // console.log("图片设置", this.properties.curShowPage);
 
         this.scaleRecord = {
             scale: 1
@@ -95,9 +95,9 @@ Component({
         saveImage() {
             // this.hidePage();
 
-            console.log(this.data.x, this.data.y, this.data.scale);
+            // console.log(this.data.x, this.data.y, this.data.scale);
 
-            console.log(this.properties.cutImageInfo);
+            // console.log(this.properties.cutImageInfo);
 
             this.triggerEvent('saveImage', {
                 curShowPage: this.properties.curShowPage,
@@ -114,7 +114,7 @@ Component({
             wx.getImageInfo({
                 src: this.data.imgSrc,
                 success: function (res) {
-                    console.log(res);
+                    // console.log(res);
 
                     that.setData({
                         movableViewRectangle: {
@@ -132,7 +132,7 @@ Component({
                 },
                 fail: function (res) {
                     //失败回调
-                    console.log(res);
+                    // console.log(res);
                 }
             });
         },
@@ -140,7 +140,7 @@ Component({
 
         onChange(e) {
             // {x: 0, y: 0, source: "touch"}
-            // console.log(e.detail);
+            // // console.log(e.detail);
             this.setData({
                 x: e.detail.x,
                 y: e.detail.y
@@ -151,7 +151,7 @@ Component({
         },
         onScale(e) {
             // {scale: 0.6, x: -18.3, y: -18.3}
-            // console.log(e.detail);
+            // // console.log(e.detail);
             this.scaleRecord = {
                 scale: e.detail.scale,
                 x: e.detail.x,
@@ -180,25 +180,25 @@ Component({
                     });
 
 
-                    console.log(tempFilePaths);
+                    // console.log(tempFilePaths);
 
 
                     wx.getImageInfo({
                         src: tempFilePaths[0],
                         success: function (res) {
-                            console.log(res);
+                            // console.log(res);
 
 
                             // 原图比需要的大的情况。原图比大图小的情况。改变 scale ，改变最小scale
-                            console.log("最小缩放", that.data.movableAreaRectangle, res);
+                            // console.log("最小缩放", that.data.movableAreaRectangle, res);
 
                             let widthBili = res.width / that.data.movableAreaRectangle.width;
                             let heightBili = res.height / that.data.movableAreaRectangle.height;
 
                             let  scaleMin = 1 / Math.min(widthBili, heightBili);
 
-                            console.log("最小缩放", widthBili, heightBili);
-                            console.log("最小缩放", scaleMin);
+                            // console.log("最小缩放", widthBili, heightBili);
+                            // console.log("最小缩放", scaleMin);
 
                             that.setData({
                                 imgScale: scaleMin,
@@ -215,12 +215,12 @@ Component({
 
                             wx.hideLoading();
 
-                            console.log("最小缩放", that.data.movableViewRectangle,that.data.movableAreaRectangle);
+                            // console.log("最小缩放", that.data.movableViewRectangle,that.data.movableAreaRectangle);
 
                         },
                         fail: function (res) {
                             //失败回调
-                            console.log(res);
+                            // console.log(res);
                             wx.hideLoading();
                         }
                     });
@@ -236,15 +236,15 @@ Component({
             });
             const that = this;
 
-            console.log(this.data.chooseImgPath,
-                `${api.apiUrl}${api.urls.updateImgCut}`, {
-                    'p_show_img_scale': that.data.showImgScale,
-                    'p_x': that.data.x,
-                    'p_y': that.data.y,
-                    'p_width': that.data.movableAreaRectangle.width,
-                    'p_height': that.data.movableAreaRectangle.height,
-                    'p_scale': that.scaleRecord.scale
-                });
+            // console.log(this.data.chooseImgPath,
+            //     `${api.apiUrl}${api.urls.updateImgCut}`, {
+            //         'p_show_img_scale': that.data.showImgScale,
+            //         'p_x': that.data.x,
+            //         'p_y': that.data.y,
+            //         'p_width': that.data.movableAreaRectangle.width,
+            //         'p_height': that.data.movableAreaRectangle.height,
+            //         'p_scale': that.scaleRecord.scale
+            //     });
             wx.uploadFile({
                 url: `${api.apiUrl}${api.urls.updateImgCut}`, //仅为示例，非真实的接口地址
                 filePath: that.data.chooseImgPath,
@@ -259,7 +259,7 @@ Component({
                     'p_scale': that.scaleRecord.scale
                 },
                 success: function (res) {
-                    console.log(res);
+                    // console.log(res);
                     let data = JSON.parse(res.data);
                     let imgUrl = data.data;
 

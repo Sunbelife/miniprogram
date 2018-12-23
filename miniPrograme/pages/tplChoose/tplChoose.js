@@ -8,11 +8,11 @@ Page({
     },
 
     onLoad: function () {
-        console.log(this.data.tpl);
+        // console.log(this.data.tpl);
 
     },
     bindload: function () {
-      console.log("image load");
+      // console.log("image load");
 
     },
     goPage(e) {

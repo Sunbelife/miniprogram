@@ -13,7 +13,7 @@ Page({
     onLoad: function () {
         try {
             var tplInfo = wx.getStorageSync('tplInfo');
-            console.log(JSON.stringify(tplInfo));
+            // console.log(JSON.stringify(tplInfo));
             if (tplInfo) {
                 util.tplALL.fixToGuestsHas(tplInfo);
 
@@ -35,13 +35,13 @@ Page({
         }
     },
     onHide(){
-        console.log("hide");
+        // console.log("hide");
         this.selectComponent("#tpl1").playStop();
 
     },
     onUnload(){
         // 返回
-        console.log("onUnload");
+        // console.log("onUnload");
         this.selectComponent("#tpl1").playStop();
 
     },

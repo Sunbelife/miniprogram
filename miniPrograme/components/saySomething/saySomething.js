@@ -51,18 +51,18 @@ Component({
     },
     methods: {
         hidePage() {
-            console.log(" !2312");
+            // console.log(" !2312");
 
             this.triggerEvent('hidePage');
         },
         bindPickerChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value)
+            // console.log('picker发送选择改变，携带值为', e.detail.value)
             this.setData({
                 index: e.detail.value
             })
         },
         radioChange: function (e) {
-            console.log('radio发生change事件，携带value值为：', e.detail.value)
+            // console.log('radio发生change事件，携带value值为：', e.detail.value)
         },
         //    提交评论
         confirmComment: function (e) {
@@ -70,7 +70,7 @@ Component({
             const value = e.detail.value;
             const name = value.name;
             const msg = value.msg;
-            console.log(name, msg);
+            // console.log(name, msg);
 
             if (name.length > 30) {
                 wx.showToast({
@@ -117,7 +117,7 @@ Component({
                 method: "POST",
                 data: req,
                 success: (resLogin) => {
-                    console.log(resLogin);
+                    // console.log(resLogin);
 
                 }
             });

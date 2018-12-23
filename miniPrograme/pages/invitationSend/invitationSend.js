@@ -29,8 +29,8 @@ Page({
     // 保存图片
     saveImage(e) {
 
-        console.log(e);
-        console.log(e.detail);
+        // console.log(e);
+        // console.log(e.detail);
         const curShowPage = e.detail.curShowPage;
         const cutImageInfo = e.detail.cutImageInfo;
         const newImageSrc = e.detail.newImageSrc;
@@ -47,7 +47,7 @@ Page({
     loadTpl() {
         try {
             var tplInfo = wx.getStorageSync('tplInfo');
-            console.log(JSON.stringify(tplInfo));
+            // console.log(JSON.stringify(tplInfo));
             if (tplInfo) {
                 util.tplALL.fixToGuestsHas(tplInfo);
 
@@ -97,7 +97,7 @@ Page({
             method: "POST",
             data: loginReq,
             success: (resLogin) => {
-                console.log(resLogin);
+                // console.log(resLogin);
 
                 if (!card_id) {
                     this.data.tplInfo.card_id = resLogin.data.data.card_id;
@@ -113,13 +113,13 @@ Page({
         wx.showShareMenu({
             withShareTicket: true,
             success(e) {
-                console.log(e);
+                // console.log(e);
             },
             fail(e) {
-                console.log(e);
+                // console.log(e);
             },
             complete(e) {
-                console.log(e);
+                // console.log(e);
             }
         })
     },
@@ -163,7 +163,7 @@ Page({
         wx.getImageInfo({
             src: shareImgUrl,
             success: function (res) {
-                console.log(res);
+                // console.log(res);
                 const path = res.path;
 
                 that.shareImgGenSave(path);
@@ -171,7 +171,7 @@ Page({
             fail: function (res) {
                 wx.hideLoading();
                 //失败回调
-                console.log(res);
+                // console.log(res);
             }
         });
     },
@@ -180,12 +180,12 @@ Page({
         wx.saveImageToPhotosAlbum({
             filePath: path,
             success(res) {
-                console.log(res);
+                // console.log(res);
                 util.toast('保存成功');
 
             },
             fail(res) {
-                console.log(res);
+                // console.log(res);
                 util.toast('保存失败');
             },
             complete(res) {
@@ -198,15 +198,15 @@ Page({
     // TODO 分享配置
     onShareAppMessage: function (res) {
 
-        console.log(res);
+        // console.log(res);
         if (res.from === 'button') {
             // 来自页面内转发按钮
-            console.log(res.target)
+            // console.log(res.target)
         }
-        console.log({
-            title: `${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
-            path: '/pages/tplUserLook/tplUserLook?id=' + this.data.tplInfo.card_id
-        });
+        // console.log({
+        //     title: `${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
+        //     path: '/pages/tplUserLook/tplUserLook?id=' + this.data.tplInfo.card_id
+        // });
 
         // shareImg: 'https://dummyimage.com/200x300&text=hello',
 

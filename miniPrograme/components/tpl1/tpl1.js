@@ -23,12 +23,12 @@ Component({
         pageTranslateY: 0
     },
     ready() {
-        console.log("ready");
+        // console.log("ready");
 
         // 必须要延时
         setTimeout(() => {
-            console.log(this.properties);
-            console.log(this.properties.pages);
+            // console.log(this.properties);
+            // console.log(this.properties.pages);
 
             // 显示第一个页面
             this.movePage(0);
@@ -52,7 +52,7 @@ Component({
             }
 
             this.needMakeHandle();
-            console.log(this.data.pages);
+            // console.log(this.data.pages);
         }, 300)
     },
     methods: {
@@ -84,18 +84,18 @@ Component({
             this.destroyMusic();
 
             const innerAudioContext = wx.createInnerAudioContext();
-            console.log(this.properties.bgMusic);
+            // console.log(this.properties.bgMusic);
             innerAudioContext.src = this.properties.bgMusic["audioUrl"];
             // 循环播放
             innerAudioContext.loop = true;
             // innerAudioContext.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
             innerAudioContext.onPlay(() => {
-                console.log('开始播放')
+                // console.log('开始播放')
             });
             innerAudioContext.onError((res) => {
-                console.log('播放错误')
-                console.log(res.errMsg);
-                console.log(res.errCode)
+                // console.log('播放错误')
+                // console.log(res.errMsg);
+                // console.log(res.errCode)
             });
             // innerAudioContext.play();
 
@@ -105,19 +105,19 @@ Component({
 
         },
         hideMap() {
-            console.log("showBanquetInfo trigger");
+            // console.log("showBanquetInfo trigger");
             this.setData({
                 isShowMap: false
             })
         },
         showMap() {
-            console.log("showBanquetInfo trigger");
+            // console.log("showBanquetInfo trigger");
             this.setData({
                 isShowMap: true
             })
         },
         showBanquetInfo() {
-            console.log("showBanquetInfo trigger");
+            // console.log("showBanquetInfo trigger");
             this.triggerEvent('showBanquetInfo');
             this.hideMap();
         },
@@ -129,8 +129,8 @@ Component({
 
             // 隐藏
             util.each(this.properties.pages, (k, v) => {
-                // console.log(this.properties.pages, k);
-                // console.log("#p" + (k), this.selectComponent("#p" + (k)));
+                // // console.log(this.properties.pages, k);
+                // // console.log("#p" + (k), this.selectComponent("#p" + (k)));
                 this.selectComponent("#p" + (k)) && this.selectComponent("#p" + (k)).hide();
             });
 
@@ -140,7 +140,7 @@ Component({
                 pageTranslateY: -((page) * 100)
             });
             const curOb = this.selectComponent("#p" + page);
-            console.log("#p" + page);
+            // console.log("#p" + page);
             // 显示
             curOb.show();
 
@@ -162,11 +162,11 @@ Component({
             this.setData({
                 touchStart: e.touches[0].clientY
             });
-            // console.log(this.data.touchStart);
+            // // console.log(this.data.touchStart);
         },
         touchMove(e) {
 
-            // console.log("touchMove", e.touches);
+            // // console.log("touchMove", e.touches);
             this.setData({
                 // touchEnd: e.touches[0].pageY
                 touchEnd: e.touches[0].clientY
@@ -177,7 +177,7 @@ Component({
         touchEnd(e) {
             let page = this.data.page;
 
-            // console.log("touchEnd", Math.abs(Math.abs(this.data.touchEnd) - Math.abs(this.data.touchStart)));
+            // // console.log("touchEnd", Math.abs(Math.abs(this.data.touchEnd) - Math.abs(this.data.touchStart)));
             // 不是有效滑动
             if (this.data.touchStart === 0 || this.data.touchEnd === 0) {
                 return;
@@ -188,16 +188,16 @@ Component({
                 return;
             }
 
-            // console.log(e);
+            // // console.log(e);
 
             let oriPage = page;
-            // console.log(this.data.touchEnd, this.data.touchStart);
+            // // console.log(this.data.touchEnd, this.data.touchStart);
             if (this.data.touchEnd < this.data.touchStart) {
                 page++;
             } else {
                 page--;
             }
-            // console.log(page);
+            // // console.log(page);
             // 边界处理 是否允许滑动
             if (page < 0) {
                 page = 0;
@@ -234,7 +234,7 @@ Component({
             });
         },
         playStart() {
-            console.log(this.properties.bgMusic);
+            // console.log(this.properties.bgMusic);
             this.data.playRef && this.data.playRef.play && this.data.playRef.play();
             this.setData({
                 isPlay: true

@@ -16,7 +16,7 @@
                 bindshowBanquetInfo="showBanquetInfoFill"></tpl1>
     </block>
 
-    <view class="bottomFixed blessing-view">
+    <view class="bottomFixed blessing-view" wx:if="{{isShowBlessing}}">
         <!--<view class="blessing-mask"></view>-->
         <view class="blessing-wrap"
               style="transform: translateY({{blessingScrollH}}px);transition: all {{blessingScrollTransition}}s;">
@@ -31,7 +31,7 @@
             <!--</block>-->
         </view>
     </view>
-    <view class="bottomFixed" style="z-index: 1000">
+    <view class="bottomFixed" style="z-index: 1000" wx:if="{{isShowBlessing}}">
         <view class="saySomething" bindtap="showSaySomething" >
             说点什么
         </view>

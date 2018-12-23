@@ -57,10 +57,11 @@ Component({
             this.mapCtx = wx.createMapContext('myMap');
             const that = this;
             try {
-                var invitationInfo = wx.getStorageSync('invitationInfo');
+                let tplInfo = wx.getStorageSync('tplInfo');
+                var invitationInfo = tplInfo.invitationInfo;
 
 
-                console.log(invitationInfo.address);
+                // console.log(invitationInfo.address);
                 if (invitationInfo) {
                     this.setData({
                         address: invitationInfo.address,
@@ -108,8 +109,8 @@ Component({
 
             const self = this;
             const value = e.detail.value;
-            console.log(e.detail.value);
-            console.log(this.properties);
+            // console.log(e.detail.value);
+            // console.log(this.properties);
             const address = value.address;
             const nameLady = value.nameLady;
             const nameGentleman = value.nameGentleman;
@@ -183,7 +184,6 @@ Component({
             }
 
 
-
         },
 
         hidePage() {
@@ -193,29 +193,29 @@ Component({
             const that = this;
             wx.chooseLocation({
                 success(e) {
-                    console.log("success", e);
+                    // console.log("success", e);
                     that.setLocation(e);
                 },
                 error(e) {
                     util.toast("选择地址出错");
                 },
                 complete(e) {
-                    console.log("complete", e);
+                    // console.log("complete", e);
                 }
             });
         },
         clickMap() {
             // util.toast("click map");
-            // console.log("click map");
+            // // console.log("click map");
         },
         bindDateChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value)
+            // console.log('picker发送选择改变，携带值为', e.detail.value)
             this.setData({
                 date: e.detail.value
             })
         },
         bindTimeChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value)
+            // console.log('picker发送选择改变，携带值为', e.detail.value)
             this.setData({
                 time: e.detail.value
             })
@@ -223,8 +223,8 @@ Component({
         getCenterLocation: function () {
             this.mapCtx.getCenterLocation({
                 success: function (res) {
-                    console.log(res.longitude)
-                    console.log(res.latitude)
+                    // console.log(res.longitude)
+                    // console.log(res.latitude)
                 }
             })
         },
@@ -241,7 +241,7 @@ Component({
                     longitude: 113.3345211,
                 },
                 animationEnd() {
-                    console.log('animation end')
+                    // console.log('animation end')
                 }
             })
         },

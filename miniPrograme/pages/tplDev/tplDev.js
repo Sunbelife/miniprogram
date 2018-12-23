@@ -16,7 +16,7 @@ Page({
 
     try {
       var tplInfo = wx.getStorageSync('tplInfo');
-      console.log(JSON.stringify(tplInfo));
+      // console.log(JSON.stringify(tplInfo));
       if (tplInfo) {
         // Do something with return value
         this.setData({

@@ -10,7 +10,7 @@ Page({
         handle: ""
     },
     onLoad: function (options) {
-        console.log("onload");
+        // console.log("onload");
         if (!options.id) {
             options.id = "1";
         }
@@ -24,7 +24,7 @@ Page({
 
     },
     submit: function (e) {
-        console.log(e.detail);
+        // console.log(e.detail);
 
 
         util.goPage("invitationEdit");

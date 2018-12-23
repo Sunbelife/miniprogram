@@ -25,14 +25,15 @@ Component({
             this.triggerEvent('hidePage');
         },
         switchChange(e){
-            console.log('switch1 发生 change 事件，携带值为', e.detail.value)
+            // console.log('switch1 发生 change 事件，携带值为', e.detail.value)
 
             try {
                 wx.setStorageSync('barrageHas', e.detail.value)
             } catch (e) { }
+            this.triggerEvent('barrageHasChange');
         },
         switchChangeToGuestsHas(e){
-            console.log('switch1 发生 change 事件，携带值为', e.detail.value)
+            // console.log('switch1 发生 change 事件，携带值为', e.detail.value)
 
             try {
                 wx.setStorageSync('toGuestsHas', e.detail.value)
@@ -53,11 +54,11 @@ Component({
                     content: '最多可以保存4个模板，备份会把最早的一个删除',
                     success(res) {
                         if (res.confirm) {
-                            console.log('用户点击确定');
+                            // console.log('用户点击确定');
                             this.copyDo();
 
                         } else if (res.cancel) {
-                            console.log('用户点击取消')
+                            // console.log('用户点击取消')
                         }
                     }
                 });
@@ -122,11 +123,11 @@ Component({
                 content: '确认要删除吗？',
                 success (res) {
                     if (res.confirm) {
-                        console.log('用户点击确定');
+                        // console.log('用户点击确定');
                         that.deleteDoFirst();
 
                     } else if (res.cancel) {
-                        console.log('用户点击取消')
+                        // console.log('用户点击取消')
                     }
                 }
             })

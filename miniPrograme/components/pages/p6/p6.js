@@ -56,7 +56,7 @@ Component({
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);
 
-            console.log(editInfo);
+            // console.log(editInfo);
             return editInfo;
         }
     }

@@ -65,11 +65,11 @@ Page({
     },
 
     onLoad: function (options) {
-        console.log("onload", options);
+        // console.log("onload", options);
 
 
-        console.log(getApp().systemInfo);
-        console.log(util.rpx2px(225));
+        // console.log(getApp().systemInfo);
+        // console.log(util.rpx2px(225));
 
 
         this.pageFix();
@@ -115,7 +115,7 @@ Page({
 
     },
     pageMove(e) {
-        console.log(e);
+        // console.log(e);
         this.setData({
             editEleImage: [],
             editEleText: [],
@@ -170,7 +170,7 @@ Page({
         let tplInfo = {};
         try {
             tplInfo = wx.getStorageSync('tplInfo');
-            console.log(JSON.stringify(tplInfo));
+            // console.log(JSON.stringify(tplInfo));
             // TODO 先这样子
             // if (util.isDev() && !tplInfo) {
             if (!tplInfo) {
@@ -181,7 +181,7 @@ Page({
             });
 
 
-            console.log(tplInfo);
+            // console.log(tplInfo);
             let pages = [];
             let invitationInfo = {};
             let toGuestsPage = {};
@@ -195,7 +195,7 @@ Page({
             pages.forEach(function (v, k) {
                 v.zh = that.pageName(k, v);
             });
-            // console.log(pages);
+            // // console.log(pages);
             this.setData({
                 pages: pages
             });
@@ -240,7 +240,7 @@ Page({
         try {
             var tplInfo = wx.getStorageSync('tplInfo');
 
-            console.log("请帖信息", tplInfo.invitationInfo);
+            // console.log("请帖信息", tplInfo.invitationInfo);
             this.setData({
                 invitationInfo: tplInfo.invitationInfo
             });
@@ -264,12 +264,25 @@ Page({
             // Do something when catch error
         }
     },
+    // 是否有弹幕改变
+    barrageHasChange() {
+        try {
+            var barrageHas = wx.getStorageSync('barrageHas');
+            this.setData({
+                barrageHas: barrageHas
+            });
+            // 保存到模板里面
+            this.saveTplInfo();
+
+        } catch (e) {
+            // Do something when catch error
+        }
+    },
+    // 是否有致宾客页面改变
     toGuestsHasChange() {
         this.updateToGuestsHas();
-
         // 保存到模板里面
         this.saveTplInfo();
-
     },
     updateToGuestsHas() {
         // 更新请帖信息到 page
@@ -280,14 +293,11 @@ Page({
                 this.setData({
                     toGuestsHas: toGuestsHas
                 });
-
                 this.updateToGuestsHasHandle();
             }
         } catch (e) {
             // Do something when catch error
         }
-
-
     },
     updateToGuestsHasHandle() {
         const pages = this.data.pages;
@@ -332,7 +342,7 @@ Page({
             bgMusic: chooseMusic
             // bgMusic: tplConfig.mp3Ob[chooseMusic]
         });
-        // console.log(this.data.bgMusic);
+        // // console.log(this.data.bgMusic);
         this.hideMusicChoose();
         this.selectComponent("#tpl1").changMusic();
 
@@ -345,8 +355,8 @@ Page({
     // 保存图片
     saveImage(e) {
 
-        console.log(e);
-        console.log(e.detail);
+        // console.log(e);
+        // console.log(e.detail);
         const curShowPage = e.detail.curShowPage;
         const cutImageInfo = e.detail.cutImageInfo;
         const newImageSrc = e.detail.newImageSrc;
@@ -359,7 +369,7 @@ Page({
             pages: pages
         });
         this.hideImgCut();
-        console.log(pages);
+        // console.log(pages);
 
 
         // 保存到模板里面
@@ -368,13 +378,13 @@ Page({
 
     },
     sortPageClick(e) {
-        // console.log(e.detail);
+        // // console.log(e.detail);
         const index = e.detail.index;
         this.selectComponent("#tpl1").movePage(index);
 
     },
     saveWord(e) {
-        // console.log(e.detail);
+        // // console.log(e.detail);
         const curShowPage = e.detail.curShowPage;
         const curWordChangeInfo = e.detail.curWordChangeInfo;
         const newWord = e.detail.newWord;
@@ -386,7 +396,7 @@ Page({
             pages: pages
         });
         this.hideWordChange();
-        // console.log(pages);
+        // // console.log(pages);
 
         // 保存到模板里面
         this.saveTplInfo();
@@ -407,23 +417,23 @@ Page({
     resetPageName(pages) {
         const that = this;
         pages.forEach(function (v, k) {
-            // console.log(v, k);
+            // // console.log(v, k);
             v.zh = that.pageName(k, v);
         });
-        // console.log(pages);
+        // // console.log(pages);
         this.setData({
             pages: pages
         });
     },
     // 设置页面名称
     pageName(index, item) {
-        // console.log("pageName", pagesLength, index);
+        // // console.log("pageName", pagesLength, index);
         const pagesLength = this.data.pages.length;
         const pageName = "一二三四五六七八九十";
         if (index === 0) {
             return "封面";
         }
-        // console.log(pagesLength, index);
+        // // console.log(pagesLength, index);
         if (item.type === "toGuests") {
             return "致宾客页";
         }
@@ -446,7 +456,7 @@ Page({
         pages.forEach(function (v, k) {
             v.canRemove = 1;
         });
-        // console.log(pages);
+        // // console.log(pages);
 
         pages[0].canRemove = 0;
         pages[pages.length - 1].canRemove = 0;
@@ -469,7 +479,7 @@ Page({
                 this.addPage("tool1");
 
                 // movePage
-                // console.log(this.data.pages);
+                // // console.log(this.data.pages);
                 return;
             }
         }
@@ -499,7 +509,7 @@ Page({
         });
 
 
-        // console.log(this.data.pages.length - 1);
+        // // console.log(this.data.pages.length - 1);
         // 移动至新添加的页面
         this.selectComponent("#tpl1").movePage(this.data.pages.length - 2);
 
@@ -587,9 +597,9 @@ Page({
         this.hideMap();
         const index = util.data(e, "index");
 
-        console.log(e);
-        console.log(index);
-        console.log(this.data.editEleImage);
+        // console.log(e);
+        // console.log(index);
+        // console.log(this.data.editEleImage);
         if (util.isNotUndefined(index)) {
             const curCutImageInfo = this.data.editEleImage[index];
             this.setData({
@@ -654,14 +664,14 @@ Page({
             this.selectComponent("#tpl1") && this.selectComponent("#tpl1").showMap();
         }, 10)
     },
-    onHide(){
-        console.log("hide");
+    onHide() {
+        // console.log("hide");
         this.selectComponent("#tpl1").playStop();
 
     },
-    onUnload(){
+    onUnload() {
         // 返回
-        console.log("onUnload");
+        // console.log("onUnload");
         this.selectComponent("#tpl1").playStop();
 
     },

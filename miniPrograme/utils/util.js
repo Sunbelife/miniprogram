@@ -65,7 +65,7 @@ function objToArr(obj) {
 //  k,v
 // 通过字面量方式实现的函数each
 function each(object, callback) {
-    console.log(object);
+    // console.log(object);
     // console.trace();
     var type = (function () {
         switch (object.constructor) {
@@ -195,7 +195,7 @@ function goPage(e, params) {
             handle = params.handle;
         }
     }
-    console.log(page);
+    // console.log(page);
 
     let url = pages[page];
     // 参数放数组，再变成参数
@@ -218,7 +218,7 @@ function goPage(e, params) {
     }
 
 
-    console.log(url);
+    // console.log(url);
     wx.navigateTo({
         url: url
     })
@@ -265,7 +265,7 @@ function wxUpload(config) {
             }
         },
         fail: (fail) => {
-            console.log("fail:" + fail);
+            // console.log("fail:" + fail);
             config.success(fail);
             toast("上传图片失败");
         },
@@ -294,7 +294,7 @@ var extend = (function () {
             destination = arguments[i - 1]
             source = arguments[i]
             if (isObject(source) || isArray(source)) {
-                // console.log(source)
+                // // console.log(source)
                 for (var property in source) {
                     obj = source[property]
                     if (isDeep && (isObject(obj) || isArray(obj))) {
@@ -339,7 +339,7 @@ function setTimeOutFlagHide(that, count) {
         that.setData({
             ['animatedStep' + k]: false
         });
-        // console.log(that.data['animatedStep' + k]);
+        // // console.log(that.data['animatedStep' + k]);
     });
 
 
@@ -350,7 +350,7 @@ function echoPage() {
     let arrChild = [];
     arr = arr.concat([arrChild]);
     for (let i = 1; i <= 70; i++) {
-        console.log(i);
+        // console.log(i);
         if (arrChild.length < 7) {
             arrChild.push(i);
         } else {
@@ -359,8 +359,8 @@ function echoPage() {
             arrChild.push(i);
         }
     }
-    console.log(arr);
-    console.log(JSON.stringify(arr));
+    // console.log(arr);
+    // console.log(JSON.stringify(arr));
 }
 
 function isDev() {
@@ -372,7 +372,7 @@ function pageComponent() {
     for (let i = 1; i <= 70; i++) {
         pageComponent["p" + i] = `/components/pages/p${i}/p${i}`
     }
-    console.log(pageComponent);
+    // console.log(pageComponent);
 }
 
 function conponentRef() {
@@ -381,7 +381,7 @@ function conponentRef() {
         let a = `<p${i} id="{{index}}" wx:if="{{item.id === ${i}}}"></p${i}>`;
         arr.push(a);
     }
-    // console.log(JSON.stringify(arr));
+    // // console.log(JSON.stringify(arr));
 }
 
 // conponentRef();
@@ -436,15 +436,15 @@ function login(callLoginSuccess) {
 
     // 根据过期时间去掉token
     const WZTokenLostTime = wx.getStorageSync('WZTokenLostTime');
-    console.log(WZTokenLostTime, "==========");
+    // console.log(WZTokenLostTime, "==========");
     if (WZTokenLostTime) {
         //当前时间大于过期时间
         if (new Date().getTime() >= new Date(WZTokenLostTime).getTime()) {
-            console.log('当前时间大于过期时间', WZTokenLostTime);
+            // console.log('当前时间大于过期时间', WZTokenLostTime);
             WZToken = '';
             wx.clearStorageSync();
         } else {
-            console.log('当前时间小于过期时间');
+            // console.log('当前时间小于过期时间');
         }
     }
 
@@ -468,14 +468,14 @@ function login(callLoginSuccess) {
                         // method: "POST",
                         data: loginReq,
                         success: (resLogin) => {
-                            console.log(resLogin);
+                            // console.log(resLogin);
                             getUserInfo(resLogin, callLoginSuccess);
                         }
                     });
 
 
                 } else {
-                    console.log('登录失败！' + res.errMsg)
+                    // console.log('登录失败！' + res.errMsg)
                 }
             }
         });
@@ -489,12 +489,12 @@ function getUserInfo(resLogin, callLoginSuccess) {
     const userOpenid = wx.getStorageSync('userOpenid');
 
 
-    console.log(resLogin);
+    // console.log(resLogin);
     wx.getUserInfo({
         success: (res) => {
-            console.log(res);
+            // console.log(res);
 
-            console.log(userOpenid);
+            // console.log(userOpenid);
 
             // const reqGetUserInfo = {
             //     open_id: resLogin.data.data.open_id,
@@ -507,14 +507,14 @@ function getUserInfo(resLogin, callLoginSuccess) {
             reqGetUserInfo.iv = encodeURIComponent(reqGetUserInfo.iv);
 
 
-            console.log(reqGetUserInfo);
+            // console.log(reqGetUserInfo);
 
 
             api.loginEncrypted({
                 method: "POST",
                 data: reqGetUserInfo,
                 success: (resGetUserInfo) => {
-                    console.log(resGetUserInfo);
+                    // console.log(resGetUserInfo);
                     // wx.setStorageSync('WZToken', resGetUserInfo.data.WZToken);
                     // 30分钟过期
                     // wx.setStorageSync('WZTokenLostTime', dateAdd(new Date(), 'n', 30));
@@ -524,7 +524,7 @@ function getUserInfo(resLogin, callLoginSuccess) {
 
         },
         fail: function (e) {
-            console.log(e);
+            // console.log(e);
             wx.navigateTo({
                 url: '../a_auth/a_auth'
             })
@@ -538,12 +538,12 @@ let tplALL = {
         if (tplInfo.toGuestsHas) {
             tplInfo.pages.push(tplInfo.toGuestsPage);
         }
-        console.log(tplInfo);
+        // console.log(tplInfo);
     },
     removeFirst(call) {
         try {
             var tplInfo_all = wx.getStorageSync('tplInfo_all');
-            console.log(JSON.stringify(tplInfo_all));
+            // console.log(JSON.stringify(tplInfo_all));
 
             if (tplInfo_all) {
                 let firstId = tplInfo_all[0].card_id;
@@ -566,7 +566,7 @@ let tplALL = {
     updateOne(one, call) {
         try {
             var tplInfo_all = wx.getStorageSync('tplInfo_all');
-            console.log(JSON.stringify(tplInfo_all));
+            // console.log(JSON.stringify(tplInfo_all));
             if (tplInfo_all) {
 
                 let tplInfo_allObj = arrToObj(tplInfo_all, 'storageId');
@@ -575,7 +575,7 @@ let tplALL = {
 
                 tplInfo_all = objToArr(tplInfo_allObj);
 
-                console.log("模板修改", one, tplInfo_all);
+                // console.log("模板修改", one, tplInfo_all);
                 wx.setStorageSync('tplInfo_all', tplInfo_all);
                 call();
             }
@@ -586,7 +586,7 @@ let tplALL = {
     addOne(one, call) {
         try {
             var tplInfo_all = wx.getStorageSync('tplInfo_all');
-            console.log(JSON.stringify(tplInfo_all));
+            // console.log(JSON.stringify(tplInfo_all));
             if (tplInfo_all === '') {
                 tplInfo_all = [];
             }
@@ -594,7 +594,7 @@ let tplALL = {
             one.storageId = 'storageId_' + new Date().getTime();
             tplInfo_all.push(one);
             wx.setStorageSync('tplInfo_all', tplInfo_all);
-            console.log("模板修改:新增", tplInfo_all);
+            // console.log("模板修改:新增", tplInfo_all);
             call(one);
         } catch (e) {
             // Do something when catch error
@@ -611,7 +611,7 @@ let tplALL = {
             tplInfo_all = objToArr(tplInfo_allObj);
 
 
-            console.log("模板修改:删除", tplInfo_all);
+            // console.log("模板修改:删除", tplInfo_all);
 
             wx.setStorageSync('tplInfo_all', tplInfo_all);
 

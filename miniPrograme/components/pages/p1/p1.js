@@ -21,9 +21,9 @@ Component({
         animatedStep2: false
     },
     ready() {
-        console.log(tplConfig.pagesArrOb);
-        console.log(tplConfig.pagesArrOb["1"]);
-        console.log(this.properties.page);
+        // console.log(tplConfig.pagesArrOb);
+        // console.log(tplConfig.pagesArrOb["1"]);
+        // console.log(this.properties.page);
     },
     methods: {
 
@@ -31,11 +31,11 @@ Component({
             this.triggerEvent('showInvitationInfo');
         },
         show() {
-            console.log("show");
+            // console.log("show");
             util.setTimeOutFlag(this, 3, 0);
         },
         hide() {
-            console.log("hide");
+            // console.log("hide");
             util.setTimeOutFlagHide(this, 3);
         },
         editInfo() {
@@ -66,7 +66,7 @@ Component({
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);
 
-            console.log(editInfo);
+            // console.log(editInfo);
             return editInfo;
         }
     }

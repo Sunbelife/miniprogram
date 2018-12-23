@@ -93,7 +93,7 @@ for (let i = 0; i < 10; i++) {
     util.extend(true, pages, pagesArr.slice(0, 7));
 
 
-    // console.log("GenPages", pages);
+    // // console.log("GenPages", pages);
     pages.forEach((v, k) => {
         v.imgSrc = "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=" + encodeURI("page" + (k + 1));
         v.imageSrc = [
@@ -143,10 +143,7 @@ const tplsOb = util.arrToObj(tpls, "id");
 const pagesArrOb = util.arrToObj(pagesArr, "id");
 const mp3Ob = util.arrToObj(mp3, "no");
 
-console.log(tplsOb,
-    tpls,
-    pagesArr,
-    pagesArrOb);
+// console.log(tplsOb,tpls,pagesArr,pagesArrOb);
 
 
 const mockTpl = {

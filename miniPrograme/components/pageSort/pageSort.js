@@ -19,6 +19,12 @@ Component({
             top: 0,
             left: 0
         },
+        moveItemComputed: {
+            widthHalf: util.rpx2px(300) / 2,
+            heightHalf: util.rpx2px(180) / 2,
+        },
+
+
         activeIndex: 0,
         touchStartMove: false,
     },
@@ -36,7 +42,7 @@ Component({
                 activeIndex: index,
             });
 
-            console.log(index);
+            // console.log(index);
         },
         init() {
             try {
@@ -67,9 +73,27 @@ Component({
         },
         // 排序去掉当前页面
         removePage(e) {
+            const that = this;
+            wx.showModal({
+                title: '提示',
+                content: '确认要删除吗？',
+                success(res) {
+                    if (res.confirm) {
+                        // console.log('用户点击确定');
+                        that.removePageDo(e);
+
+                    } else if (res.cancel) {
+                        // console.log('用户点击取消')
+                    }
+                }
+            });
+
+        },
+        // 执行删除
+        removePageDo(e) {
             const index = util.data(e, "index");
             const id = util.data(e, "id");
-            console.log(index, id);
+            // console.log(index, id);
             const pages = this.properties.pages;
             pages.splice(index, 1);
             this.setData({
@@ -108,69 +132,41 @@ Component({
 
             // 记录要移动的元素下标
             item.moveIndex = index;
-            console.log(index, id);
+            // console.log(index, id);
             this.setData({
                 moveItem: item,
                 activeIndex: index,
                 touchStartMove: true
             });
-            console.log(this.data.touchStartMove);
+            // console.log(this.data.touchStartMove);
 
         },
         setMoveItemPos(touch) {
+
             setTimeout(() => {
                 this.setData({
                     touchStartMoveItem: {
-                        // bottom: (this.data.windowHeight - touch.clientY - util.rpx2px(300) / 2) + "px",
-                        top: (touch.clientY - util.rpx2px(300) / 2) + "px",
-                        left: (touch.clientX - util.rpx2px(180) / 2) + "px"
+                        top: (touch.clientY - this.data.moveItemComputed.widthHalf) + "px",
+                        left: (touch.clientX - this.data.moveItemComputed.heightHalf) + "px"
                     }
                 });
-            }, 0)
-            // console.log(this.data.touchStartMoveItem);
+            }, 10)
         },
         // 移动当前页面
         movePageStart(e) {
-            console.log(e);
-            console.log(e.touches[0]);
-            console.log(e.touches[0].pageX);
+            let touches = e.touches[0];
             this.setData({
-                touchStart: e.touches[0].pageX
+                touchStart: touches.pageX
             });
-
-            this.setMoveItemPos(e.touches[0]);
-
-            // const pages = this.properties.pages;
-            // pages.splice(index, 1);
-            // this.setData({
-            //     pages: pages
-            // });
-            // this.fixSortContainerWidth();
-
-
+            this.setMoveItemPos(touches);
         },
         // 移动当前页面
         movePageMove(e) {
-            // console.log(e);
+            let touches = e.touches[0];
             this.setData({
-                touchEnd: e.touches[0].pageX
+                touchEnd: touches.pageX
             });
-            this.setMoveItemPos(e.touches[0]);
-
-            const index = util.data(e, "index");
-            const id = util.data(e, "id");
-
-
-            // console.log(index, id);
-
-            // const pages = this.properties.pages;
-            // pages.splice(index, 1);
-            // this.setData({
-            //     pages: pages
-            // });
-            // this.fixSortContainerWidth();
-
-
+            this.setMoveItemPos(touches);
         },
 
         scrollViewScroll(e) {
@@ -181,13 +177,10 @@ Component({
         },
         // 移动当前页面
         movePageEnd(e) {
-            // console.log(e);
-            const index = util.data(e, "index");
-            const id = util.data(e, "id");
-            // console.log(this.data.touchStartMove);
+
 
             if (this.data.touchStartMove) {
-                console.log(this.data.touchEnd, this.data.touchStart);
+                // console.log(this.data.touchEnd, this.data.touchStart);
             }
 
             this.setData({
@@ -196,7 +189,7 @@ Component({
 
 
             if (typeof this.data.moveItem.moveIndex !== "undefined") {
-                console.log(this.data.scrollViewScrollPos);
+                // console.log(this.data.scrollViewScrollPos);
 
                 const scrollViewScrollPos = this.data.scrollViewScrollPos;
                 let scrollLeft = 0;
@@ -212,22 +205,22 @@ Component({
                         return;
                     }
                     if (v > scrollLeft + this.data.touchEnd) {
-                        console.log(v, scrollLeft, this.data.touchEnd);
+                        // console.log(v, scrollLeft, this.data.touchEnd);
                         moveIndex = k;
                     }
                 });
-                console.log("要交换的下标", moveIndex);
-                console.log("移动的下标", this.data.moveItem.moveIndex);
+                // console.log("要交换的下标", moveIndex);
+                // console.log("移动的下标", this.data.moveItem.moveIndex);
 
                 // 目标页面可以删除，才可以交换
                 if (this.properties.pages[moveIndex].canRemove) {
                     const pages = this.properties.pages;
-                    console.log("移动前", JSON.stringify(pages));
+                    // console.log("移动前", JSON.stringify(pages));
                     util.swapArray(pages, this.data.moveItem.moveIndex, moveIndex);
                     this.setData({
                         pages: pages
                     });
-                    console.log("移动后", JSON.stringify(pages));
+                    // console.log("移动后", JSON.stringify(pages));
                     this.triggerEvent('sortFinish', {
                         pages: pages,
                         // 显示移动后的下标（移动的当前元素）
@@ -266,8 +259,8 @@ Component({
                 itemRangeRpx.push(rpx);
                 itemRangePx.push(util.rpx2px(rpx));
             });
-            console.log(itemRangeRpx);
-            console.log(itemRangePx);
+            // console.log(itemRangeRpx);
+            // console.log(itemRangePx);
             this.setData({
                 itemRange: itemRangePx
             });

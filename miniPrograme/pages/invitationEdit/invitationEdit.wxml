@@ -35,6 +35,7 @@
                  toGuestsHas="{{toGuestsHas}}"
                  bindhidePage="hidePageSet"
                  bindshowInvitationInfo="showInvitationInfo"
+                 bindbarrageHasChange="barrageHasChange"
                  bindtoGuestsHasChange="toGuestsHasChange"
                  bindshowMusicChoose="showMusicChoose"
         ></pageSet>

@@ -91,9 +91,9 @@ Component({
                 isNeedFixed: isNeedFixed,
             });
 
-            console.log(px);
+            // console.log(px);
             //
-            console.log(e);
+            // console.log(e);
         },
     }
 

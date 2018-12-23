@@ -42,7 +42,7 @@ Component({
         tabOffsetTop: 90 + 90
     },
     ready() {
-        console.log("musicChoose", tplConfig.mp3);
+        // console.log("musicChoose", tplConfig.mp3);
         // this.genMusic();
 
         this.mp3List();
@@ -54,7 +54,7 @@ Component({
             });
         }
         
-        console.log(this.properties.bgMusic);
+        // console.log(this.properties.bgMusic);
 
         this.setData({
             chooseMusic: this.properties.bgMusic
@@ -91,12 +91,12 @@ Component({
                 // method: "POST",
                 data: loginReq,
                 success: (resLogin) => {
-                    console.log(resLogin);
+                    // console.log(resLogin);
 
                     const music = [];
 
                     util.each(resLogin.data.data, (k, v) => {
-                        console.log(k, v);
+                        // console.log(k, v);
                         let item = {};
                         item.name = v.music_name;
 
@@ -129,7 +129,7 @@ Component({
             const no = util.data(e, "no");
             const audioUrl = util.data(e, "audioUrl");
             this.destroyMusic();
-            console.log(no, audioUrl)
+            // console.log(no, audioUrl)
 
             const innerAudioContext = wx.createInnerAudioContext();
             // 需要加载中吗？
@@ -144,17 +144,17 @@ Component({
             innerAudioContext.src = audioUrl;
             innerAudioContext.onPlay(() => {
                 wx.hideLoading();
-                console.log('开始播放')
+                // console.log('开始播放')
             });
             innerAudioContext.onCanplay(() => {
-                console.log('可以播放')
+                // console.log('可以播放')
             });
             innerAudioContext.onError((res) => {
                 wx.hideLoading();
                 util.toast("播放错误");
-                console.log('播放错误');
-                console.log(res.errMsg);
-                console.log(res.errCode)
+                // console.log('播放错误');
+                // console.log(res.errMsg);
+                // console.log(res.errCode)
             });
             innerAudioContext.play();
 
@@ -201,9 +201,9 @@ Component({
                 isNeedFixed: isNeedFixed,
             });
 
-            console.log(px);
+            // console.log(px);
             //
-            console.log(e);
+            // console.log(e);
         },
     }
 

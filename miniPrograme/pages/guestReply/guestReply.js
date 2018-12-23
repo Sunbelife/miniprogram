@@ -69,11 +69,11 @@ Page({
             content: '确定要删除吗？',
             success(res) {
                 if (res.confirm) {
-                    console.log('用户点击确定');
+                    // console.log('用户点击确定');
 
                     that.deleteMsgDo(id);
                 } else if (res.cancel) {
-                    console.log('用户点击取消')
+                    // console.log('用户点击取消')
                 }
             }
         });
@@ -89,7 +89,7 @@ Page({
             data: loginReq,
             success: (res) => {
                 let data = res.data;
-                console.log(data);
+                // console.log(data);
                 if (data.code === 200) {
                     wx.showToast({
                         title: '删除成功',
@@ -126,7 +126,7 @@ Page({
                 let handleIndex = res.tapIndex;
 
                 if (handleIndex === 0) {
-                    console.log("回复");
+                    // console.log("回复");
 
                     // TODO 显示 回复祝福组件
                     // replayWish
@@ -144,13 +144,13 @@ Page({
 
                     // TODO 显示 删除确认
 
-                    console.log("删除");
+                    // console.log("删除");
                     that.deleteMsg(id);
                 }
 
             },
             fail(res) {
-                console.log(res.errMsg)
+                // console.log(res.errMsg)
             }
         })
 
@@ -169,12 +169,12 @@ Page({
             data: loginReq,
             success: (res) => {
                 let data = res.data;
-                console.log(res);
+                // console.log(res);
                 const blessing = [];
 
 
                 util.each(data.data, (k, v) => {
-                    console.log(k, v);
+                    // console.log(k, v);
                     let blessingItem = {};
                     blessingItem.id = v.barr_id;
                     blessingItem.msg = v.message;
@@ -219,12 +219,12 @@ Page({
             data: loginReq,
             success: (res) => {
                 let data = res.data;
-                console.log(res);
+                // console.log(res);
                 const banquetInfo = [];
 
 
                 util.each(data.data, (k, v) => {
-                    console.log(k, v);
+                    // console.log(k, v);
                     let banquetInfoItem = {};
                     banquetInfoItem.name = v.user_name;
                     banquetInfoItem.attend_num = v.attend_num;

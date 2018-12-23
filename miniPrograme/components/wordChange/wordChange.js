@@ -16,7 +16,7 @@ Component({
         isLoading: false,
     },
     ready(){
-        console.log(this.properties.curWordChangeInfo);
+        // console.log(this.properties.curWordChangeInfo);
     },
     methods: {
         hidePage(){
@@ -24,9 +24,9 @@ Component({
         },
         submit(e){
             const value = e.detail.value;
-            console.log(value);
+            // console.log(value);
             const desc = value.desc.trim();
-            console.log(desc);
+            // console.log(desc);
 
             this.triggerEvent('saveWord', {
                 curShowPage: this.properties.curShowPage,
