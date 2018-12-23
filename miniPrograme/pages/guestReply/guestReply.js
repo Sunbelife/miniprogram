@@ -168,7 +168,7 @@ Page({
                 util.each(data.data, (k, v) => {
                     // console.log(k, v);
                     let blessingItem = {};
-                    blessingItem.id = v.barr_id;
+                    blessingItem.id = v.msg_id;
                     blessingItem.msg = v.message;
                     blessingItem.name = v.user_name;
                     blessingItem.time = v.time;
