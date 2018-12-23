@@ -591,7 +591,7 @@ let tplALL = {
                 tplInfo_all = [];
             }
             // 拷贝并且重新设置ID
-            one.storageId = 'storageId_' + new Date().getTime();
+            one.storageId = 'storageId_' + new Date().getTime() + Math.random();
             tplInfo_all.push(one);
             wx.setStorageSync('tplInfo_all', tplInfo_all);
             // console.log("模板修改:新增", tplInfo_all);

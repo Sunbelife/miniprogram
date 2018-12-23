@@ -128,9 +128,6 @@ Page({
                 if (handleIndex === 0) {
                     // console.log("回复");
 
-                    // TODO 显示 回复祝福组件
-                    // replayWish
-
                     let blessingNeedReply = {};
                     util.extend(true, blessingNeedReply, that.data.blessing[index]);
 
@@ -140,11 +137,6 @@ Page({
                     });
                 }
                 if (handleIndex === 1) {
-
-
-                    // TODO 显示 删除确认
-
-                    // console.log("删除");
                     that.deleteMsg(id);
                 }
 

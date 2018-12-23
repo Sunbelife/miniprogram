@@ -101,7 +101,7 @@ Page({
                 // console.log(resLogin);
 
                 // if (!card_id) {
-                if(resLogin.data.data){
+                if (resLogin.data.data) {
                     this.data.tplInfo.card_id = resLogin.data.data.card_id;
                     this.setData({
                         tplInfo: this.data.tplInfo
@@ -154,7 +154,6 @@ Page({
                 req.fail = function () {
 
                 };
-                // TODO 上传照片
                 // wx.wxUpload(req);
             }
         })
@@ -202,7 +201,6 @@ Page({
     },
 
     // 分享配置
-    // TODO 分享配置
     onShareAppMessage: function (res) {
 
         // console.log(res);
@@ -210,10 +208,7 @@ Page({
             // 来自页面内转发按钮
             // console.log(res.target)
         }
-        // console.log({
-        //     title: `${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
-        //     path: '/pages/tplUserLook/tplUserLook?id=' + this.data.tplInfo.card_id
-        // });
+
 
         // shareImg: 'https://dummyimage.com/200x300&text=hello',
 
@@ -231,6 +226,7 @@ Page({
         if (imageUrl) {
             shareObj.imageUrl = imageUrl;
         }
+        // console.log(shareObj);
 
         return shareObj;
     }

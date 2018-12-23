@@ -130,7 +130,6 @@ Component({
                 title: '提交中...'
             });
 
-            // TODO 卡片ID
             const req = {
                 card_id: this.properties.card_id,
                 open_id: this.properties.open_id,

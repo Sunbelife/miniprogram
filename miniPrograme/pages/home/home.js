@@ -4,7 +4,6 @@ const api = require('../../utils/api.js');
 const tplConfig = require('../../utils/tplConfig.js');
 /*
 *
-*   TODO  tpl  要维护到 4个。再新加就要删除第一个了。要给提示
 *
 *   */
 Page({
@@ -111,7 +110,6 @@ Page({
             },
             success: (res) => {
                 // console.log(res);
-                // TODO 。已编辑模板接口   也要添加  storageId~！！
                 // tpl
 
                 try {
@@ -125,6 +123,8 @@ Page({
                         let tpl = [];
                         util.each(res.data.data, (k, v) => {
                             let tplOne = JSON.parse(v.changed_log);
+                            // 已编辑模板接口   也要添加  storageId~！！
+                            tplOne.storageId = 'storageId_' + new Date().getTime() + Math.random();
                             tplOne.card_id = v.card_id;
                             tpl.push(tplOne);
                         });
@@ -178,7 +178,7 @@ Page({
     },
     make() {
         const that = this;
-        // TODO  tpl  要维护到 4个。再新加就要删除第一个了。要给提示
+        // tpl  要维护到 4个。再新加就要删除第一个了。要给提示
         if (this.data.tpl.length >= 4) {
             wx.showModal({
                 title: '提示',
@@ -220,7 +220,6 @@ Page({
         // 存在说明授权成功
         if (e.detail.userInfo) {
 
-            // TODO  tpl  要维护到 4个。再新加就要删除第一个了。要给提示
 
             if (this.data.tpl.length >= 4) {
                 wx.showModal({
@@ -246,19 +245,13 @@ Page({
     },
     invitationEdit: function (e) {
         const storageId = util.data(e, "storageId");
-
-        // TODO 需要设置为真实的
-
         try {
-
             util.tplALL.getOne(storageId, (one) => {
                 wx.setStorageSync('tplInfo', one);
                 util.goPage(e);
             });
-
         } catch (e) {
         }
-
     },
     goPage: util.goPage,
     chooseType: function (e) {

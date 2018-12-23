@@ -105,7 +105,6 @@ Component({
             });
 
 
-            // TODO 卡片ID
             const req = {
                 user_name: name,
                 card_id: this.properties.card_id,

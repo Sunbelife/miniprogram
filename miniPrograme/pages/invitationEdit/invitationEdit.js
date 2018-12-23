@@ -79,8 +79,6 @@ Page({
             pageReady: true
         });
 
-        // TODO 待去掉。
-        // TODO 改回去
         if (util.isDev() || getApp().globalData.isMock) {
             // if (true) {
             // 显示排序
@@ -109,8 +107,6 @@ Page({
 
         }
 
-        // TODO 待去掉。
-        // this.showImgCut();
 
 
     },
@@ -171,7 +167,6 @@ Page({
         try {
             tplInfo = wx.getStorageSync('tplInfo');
             // console.log(JSON.stringify(tplInfo));
-            // TODO 先这样子
             // if (util.isDev() && !tplInfo) {
             if (!tplInfo) {
                 tplInfo = tplConfig.mockTpl;
@@ -363,7 +358,6 @@ Page({
         const newImageSrc = e.detail.newImageSrc;
         const pages = this.data.pages;
 
-        // TODO 有问题
         // 替换 当前页下的图片 点击下标下的 图片地址
         pages[curShowPage].imageSrc[cutImageInfo.index] = newImageSrc;
         this.setData({

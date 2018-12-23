@@ -25,7 +25,7 @@ Component({
         uploadSuccessImg: "",
         imgSrc: "/images/logo.jpeg",
         // 默认缩放一半
-        // TODO  需要的图片大小和用户都要缩放
+        // 需要的图片大小和用户都要缩放
         // scale: .5
         // scale-value	Number	1	定义缩放倍数，取值范围为 0.5 - 10
         scaleMin:1,
@@ -81,7 +81,7 @@ Component({
             scale: 1
         };
 
-        // TODO 先去掉
+        // TODO 开发不唤起  先去掉
         this.chooseImg();
     },
     methods: {
@@ -230,7 +230,6 @@ Component({
         },
         uploadImg() {
 
-            // TODO  加载标示
             wx.showLoading({
                 title: '上传中',
             });
