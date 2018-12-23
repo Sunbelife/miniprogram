@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/invitationSend/invitationSend",
     "pages/home/home",
+    "pages/invitationSend/invitationSend",
     "pages/guestReply/guestReply",
     "pages/invitationEdit/invitationEdit",
     "pages/tplUserLook/tplUserLook",
