@@ -19,7 +19,15 @@
 
     <view class="shareWrap">
         <view class="shareImgWrap" bindtap="addPic">
-            <image src="{{shareImg}}" class="shareImg"></image>
+            <block wx:if="{{shareImg}}">
+                <image src="{{shareImg}}" class="shareImg" ></image>
+            </block>
+            <block wx:if="{{!shareImg}}">
+                <view class="shareImgSpace">
+                    不更换，将会使用默认截图
+                </view>
+            </block>
+
             <view class="shareImgUpdate">更换封面</view>
         </view>
 

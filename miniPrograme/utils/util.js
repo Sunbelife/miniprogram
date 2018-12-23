@@ -544,10 +544,12 @@ let tplALL = {
         try {
             var tplInfo_all = wx.getStorageSync('tplInfo_all');
             console.log(JSON.stringify(tplInfo_all));
+
             if (tplInfo_all) {
+                let firstId = tplInfo_all[0].card_id;
                 tplInfo_all.splice(0, 1);
                 wx.setStorageSync('tplInfo_all', tplInfo_all);
-                call();
+                call(firstId);
             }
         } catch (e) {
             // Do something when catch error

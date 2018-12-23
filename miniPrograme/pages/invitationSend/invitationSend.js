@@ -6,15 +6,43 @@ Page({
     data: {
         tplInfo: {},
         isShowImgCut: false,
-        curCutImageInfo: {},
+        curCutImageInfo: {
+            width: 500 / 2,
+            height: 400 / 2,
+        },
         curShowPage: 0,
-        shareImg: 'https://dummyimage.com/200x300&text=hello',
+        // TODO 默认分享图片
+        // shareImg: 'https://dummyimage.com/200x300&text=hello',
+        shareImg: '',
+        shareImgOri: '备份比较',
     },
 
     onLoad: function () {
+        // 备份比较
+        this.setData({
+            shareImgOri: this.data.shareImg,
+        });
 
         this.loadTpl();
         this.save();
+    },
+    // 保存图片
+    saveImage(e) {
+
+        console.log(e);
+        console.log(e.detail);
+        const curShowPage = e.detail.curShowPage;
+        const cutImageInfo = e.detail.cutImageInfo;
+        const newImageSrc = e.detail.newImageSrc;
+
+        this.data.tplInfo.shareImg = newImageSrc;
+        this.setData({
+            tplInfo: this.data.tplInfo,
+            shareImg: newImageSrc,
+            isShowImgCut: false
+        });
+        this.save();
+
     },
     loadTpl() {
         try {
@@ -26,8 +54,12 @@ Page({
                 // Do something with return value
                 this.setData({
                     isReady: true,
+                    shareImg: tplInfo.shareImg,
                     tplInfo: tplInfo
                 });
+
+
+
             } else {
                 if (util.isDev()) {
                     this.setData({
@@ -175,9 +207,24 @@ Page({
             title: `${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
             path: '/pages/tplUserLook/tplUserLook?id=' + this.data.tplInfo.card_id
         });
-        return {
+
+        // shareImg: 'https://dummyimage.com/200x300&text=hello',
+
+        let imageUrl = '';
+
+        if (this.data.shareImg !== this.data.shareImgOri) {
+            imageUrl = this.data.shareImg;
+        }
+        let shareObj = {
             title: ` ${this.data.tplInfo.invitationInfo.nameGentleman}&${this.data.tplInfo.invitationInfo.nameLady}的婚礼邀请`,
             path: '/pages/tplUserLook/tplUserLook?id=' + this.data.tplInfo.card_id
+        };
+
+
+        if (imageUrl) {
+            shareObj.imageUrl = imageUrl;
         }
+
+        return shareObj;
     }
 });

@@ -41,6 +41,7 @@ Component({
 
 
         console.log(cutImageInfo);
+        console.log(this.properties);
         if (!cutImageInfo.width) {
             console.error("未设置编辑图片的大小");
         } else {

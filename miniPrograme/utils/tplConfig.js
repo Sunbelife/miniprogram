@@ -119,6 +119,7 @@ for (let i = 0; i < 10; i++) {
         mainColor: colors[i],
         imgSrc: "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=模板" + index,
         pages: pagesCommon,
+        shareImg: '',
         // 有弹幕吗
         barrageHas: true,
         // 有致宾客页面吗
@@ -153,6 +154,7 @@ const mockTpl = {
     barrageHas: true,
     id: 1,
     // 有致宾客页面吗
+    shareImg: '',
     toGuestsHas: true,
     toGuestsPage: {
         "id": 7,

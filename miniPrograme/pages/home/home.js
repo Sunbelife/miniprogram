@@ -40,9 +40,12 @@ Page({
     onLoad: function () {
 
 
-
     },
     onShow: function () {
+
+        wx.showLoading({
+            title: '加载中...'
+        });
 
         util.login(() => {
             // debugger;
@@ -52,13 +55,7 @@ Page({
 
             // 显示就要去请求或者看本地
             this.getInitData();
-
-
         });
-
-
-
-
 
     },
     genEwm: function () {
@@ -106,6 +103,7 @@ Page({
     },
     getInitData: function (e) {
         const userOpenid = wx.getStorageSync('userOpenid');
+
         api.hadEditTpl({
             // method: "POST",
             data: {
@@ -123,7 +121,20 @@ Page({
                         this.setData({
                             tpl: tplInfo_all
                         });
+                    } else {
+                        let tpl = [];
+                        util.each(res.data.data, (k, v) => {
+                            let tplOne = JSON.parse(v.changed_log);
+                            tplOne.card_id = v.card_id;
+                            tpl.push(tplOne);
+                        });
+                        wx.setStorageSync('tplInfo_all', tpl);
+                        this.setData({
+                            tpl: tpl
+                        });
                     }
+
+                    wx.hideLoading();
                     console.log("模板数据", this.data.tpl);
                 } catch (e) {
                     // Do something when catch error
@@ -152,8 +163,8 @@ Page({
                     console.log(k, v);
                     let item = {};
                     item.name = v.music_name;
-                    if (! v.music_url.startsWith("http")) {
-                        v.music_url = 'https://' +  v.music_url;
+                    if (!v.music_url.startsWith("http")) {
+                        v.music_url = 'https://' + v.music_url;
                     }
                     item.audioUrl = v.music_url;
                     item.no = k;
@@ -165,7 +176,8 @@ Page({
         });
 
     },
-    make(){
+    make() {
+        const that = this;
         // TODO  tpl  要维护到 4个。再新加就要删除第一个了。要给提示
         if (this.data.tpl.length >= 4) {
             wx.showModal({
@@ -174,8 +186,24 @@ Page({
                 success(res) {
                     if (res.confirm) {
                         console.log('用户点击确定');
-                        util.tplALL.removeFirst(() => {
-                            this.goPage("tplChoose");
+                        util.tplALL.removeFirst((firstId) => {
+
+                            // 线上也存在，需要删除
+                            if (firstId) {
+                                // 存在cardID,才请求
+                                const loginReq = {
+                                    card_id: firstId,
+                                };
+                                api.tplDelete({
+                                    // method: "POST",
+                                    data: loginReq,
+                                    success: (resLogin) => {
+                                        that.goPage("tplChoose");
+                                    }
+                                });
+                            } else {
+                                that.goPage("tplChoose");
+                            }
                         });
                     } else if (res.cancel) {
                         console.log('用户点击取消')

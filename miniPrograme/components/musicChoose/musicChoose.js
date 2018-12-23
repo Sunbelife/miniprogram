@@ -124,6 +124,8 @@ Component({
 
         },
         chooseMusic: function (e) {
+
+
             const no = util.data(e, "no");
             const audioUrl = util.data(e, "audioUrl");
             this.destroyMusic();
@@ -135,19 +137,22 @@ Component({
             //     title: '加载中'
             // });
 
+            wx.showLoading({
+                title: '加载中'
+            });
+
             innerAudioContext.src = audioUrl;
             innerAudioContext.onPlay(() => {
-                wx.showLoading({
-                    title: '加载中'
-                });
+                wx.hideLoading();
                 console.log('开始播放')
             });
             innerAudioContext.onCanplay(() => {
                 console.log('可以播放')
-                wx.hideLoading();
             });
             innerAudioContext.onError((res) => {
-                console.log('播放错误')
+                wx.hideLoading();
+                util.toast("播放错误");
+                console.log('播放错误');
                 console.log(res.errMsg);
                 console.log(res.errCode)
             });

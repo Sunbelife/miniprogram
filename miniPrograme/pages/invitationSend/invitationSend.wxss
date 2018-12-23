@@ -22,6 +22,16 @@
     height: 400rpx;
 }
 
+.shareImgSpace {
+    display: block;
+    margin: 0 auto;
+    width: 500rpx;
+    height: 400rpx;
+    line-height: 400rpx;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
 .shareImgUpdate {
     position: absolute;
     bottom: 0;

@@ -14,9 +14,24 @@
                     <el-form-item label="音乐名称">
                         <el-input v-model="formInline.name" placeholder="音乐名称"></el-input>
                     </el-form-item>
+                    <el-form-item label="音乐类型">
+                        <el-select v-model="formInline.type"
+                                   clearable
+                                   placeholder="请选择">
+                            <el-option
+                                    v-for="item in musicType"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="onSearch">查询</el-button>
                     </el-form-item>
+                    <!--<el-form-item>-->
+                        <!--<el-button type="primary" @click="onReset">重置</el-button>-->
+                    <!--</el-form-item>-->
                     <el-form-item class="fr">
                         <el-button type="primary" @click="add">
                             <i class="fa fa-plus"></i>
@@ -147,7 +162,7 @@
                     <el-form-item label="类别" :label-width="formLabelWidth">
                         <el-select v-model="form.type" placeholder="请选择">
                             <el-option
-                                    v-for="item in options"
+                                    v-for="item in musicType"
                                     :key="item.value"
                                     :label="item.label"
                                     :value="item.value">
@@ -186,7 +201,7 @@
 
                 fileList: [],
 
-                options: [{
+                musicType: [{
                     value: '1',
                     label: '中文'
                 }, {
@@ -201,6 +216,7 @@
                 baseURL: baseURL,
                 formInline: {
                     user: '',
+                    type: '',
                     region: 1
                 },
                 dialogFormVisible: false,
@@ -301,10 +317,14 @@
             beforeRemove(file, fileList) {
                 return this.$confirm(`确定移除 ${file.name}？`);
             },
+            onReset() {
+
+            },
             getList() {
                 request.get(api.musicList, {
                     params: {
-                        search_music: this.formInline.name
+                        music_name: this.formInline.name,
+                        music_type: this.formInline.type,
                     }
                 }).then((response) => {
                     console.log(response);
