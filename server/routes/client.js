@@ -97,9 +97,25 @@ router.get('/marryInfo', function (req, res, next) {
 // 赴宴人员信息不对吧，赴宴人员是数组吧
 router.get('/banquetInfo', function (req, res, next) {
     res.send({
-        code: 100,
-        msg: "赴宴信息",
-        data: ""
+        "code": 200,
+        "msg": "获取成功",
+        "data": [{
+            "id": 1,
+            "open_id": "oTOGP4jICNy7YSuetV4DQxaQZgRQ",
+            "user_name": "小刘",
+            "transit_type": "小花",
+            "phone_num": "110",
+            "attend_num": 10,
+            "attend_time": "2018-10-20 20:30:00"
+        }, {
+            "id": 2,
+            "open_id": "oTOGP4jICNy7YSuetV4DQxaQZgRQ",
+            "user_name": "小二",
+            "transit_type": "xx",
+            "phone_num": "xxx",
+            "attend_num": 5,
+            "attend_time": "2018-12-16 18:25:31"
+        }]
     });
 });
 

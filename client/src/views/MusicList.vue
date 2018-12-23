@@ -49,8 +49,8 @@
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
                 <!--<el-table-column-->
-                        <!--type="selection"-->
-                        <!--width="55">-->
+                <!--type="selection"-->
+                <!--width="55">-->
                 <!--</el-table-column>-->
                 <el-table-column
                         align="center"
@@ -126,6 +126,8 @@
                                 :action="baseURL + api.musicUpload"
                                 :on-preview="handlePreview"
                                 :on-remove="handleRemove"
+                                :on-success="handleSuccess"
+                                :on-error="handleError"
                                 :accept="'.mp3'"
                                 :on-change="handleChange"
                                 :before-remove="beforeRemove"
@@ -229,7 +231,7 @@
             this.getList();
         },
         methods: {
-            onSearch(){
+            onSearch() {
                 this.getList();
 
             },
@@ -264,7 +266,6 @@
                         this.$refs.upload.submit();
                         this.dialogFormVisible = false;
                         this.loading = false;
-
                     } else {
                         console.log('error submit!!');
                         return false;
@@ -273,8 +274,17 @@
 
 
             },
+            handleSuccess(file, fileList) {
+                this.$message({
+                    message: '上传成功',
+                    type: 'success'
+                });
+                this.getList();
 
-
+            },
+            handleError(file, fileList) {
+                this.$message.error('上传失败');
+            },
             handleChange(file, fileList) {
                 console.log(file, fileList);
                 this.uploadFileList = fileList;

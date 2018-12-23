@@ -6,6 +6,8 @@
 
 <view wx:if="{{isShowMap}}">
     <map
+
+            bindtap="showInvitationInfo"
             id="myMap"
             class="myMap"
             latitude="{{invitationInfo.latitude}}"

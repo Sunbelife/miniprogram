@@ -7,6 +7,7 @@
     <block wx:if="isReady">
         <tpl1
                 pages="{{tplInfo.pages}}"
+                id="tpl1"
                 bgMusic="{{tplInfo.bgMusic}}"
                 invitationInfo="{{tplInfo.invitationInfo}}"
                 toGuestsHas="{{tplInfo.toGuestsHas}}"

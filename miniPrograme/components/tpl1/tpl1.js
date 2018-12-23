@@ -42,10 +42,13 @@ Component({
             // TODO 删除
             setTimeout(() => {
                 // this.movePage(6);
-            }, 300)
-            if (util.isDev()) {
+            }, 300);
+            if (util.isDev() || getApp().globalData.isMock) {
                 // 开发指定到页面 0 开始的
-                // this.movePage(6);
+
+                setTimeout(() => {
+                    // this.movePage(6);
+                }, 300);
             }
 
             this.needMakeHandle();
@@ -101,31 +104,26 @@ Component({
             });
 
         },
-        showBanquetInfo() {
+        hideMap() {
             console.log("showBanquetInfo trigger");
-            this.triggerEvent('showBanquetInfo');
             this.setData({
                 isShowMap: false
             })
         },
+        showMap() {
+            console.log("showBanquetInfo trigger");
+            this.setData({
+                isShowMap: true
+            })
+        },
+        showBanquetInfo() {
+            console.log("showBanquetInfo trigger");
+            this.triggerEvent('showBanquetInfo');
+            this.hideMap();
+        },
         // 调用致宾客页面
-        hideBanquetInfo2() {
-            console.log("隐藏地图", this.properties);
-            if (this.properties.toGuestsHas) {
-                // 最后一个 是make 页面
-                let id = this.properties.pages[this.properties.pages.length - 2].id;
-                console.log("隐藏地图", id);
-
-                setTimeout(() => {
-                    this.setData({
-                        isShowMap: true
-                    })
-                    // this.selectComponent("#p" + (id)) && this.selectComponent("#p" + (id)).hideBanquetInfo3();
-                }, 10)
-
-
-            }
-
+        hideBanquetInfo() {
+            this.showMap();
         },
         movePage(page) {
 
@@ -244,6 +242,9 @@ Component({
         },
         pageClick() {
             this.triggerEvent('pageClick');
+        },
+        showInvitationInfo() {
+            this.triggerEvent('showInvitationInfo');
         }
     }
 

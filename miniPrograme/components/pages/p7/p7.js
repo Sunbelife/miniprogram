@@ -23,6 +23,9 @@ Component({
 
     },
     methods: {
+        showInvitationInfo() {
+            this.triggerEvent('showInvitationInfo');
+        },
         showBanquetInfo(e) {
             console.log("showBanquetInfo trigger");
             this.triggerEvent('showBanquetInfo');

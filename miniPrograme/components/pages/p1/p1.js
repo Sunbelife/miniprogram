@@ -20,21 +20,25 @@ Component({
         animatedStep1: false,
         animatedStep2: false
     },
-    ready(){
+    ready() {
         console.log(tplConfig.pagesArrOb);
         console.log(tplConfig.pagesArrOb["1"]);
         console.log(this.properties.page);
     },
     methods: {
-        show(){
+
+        showInvitationInfo() {
+            this.triggerEvent('showInvitationInfo');
+        },
+        show() {
             console.log("show");
             util.setTimeOutFlag(this, 3, 0);
         },
-        hide(){
+        hide() {
             console.log("hide");
             util.setTimeOutFlagHide(this, 3);
         },
-        editInfo(){
+        editInfo() {
 
             const editInfo = {
                 image: [],

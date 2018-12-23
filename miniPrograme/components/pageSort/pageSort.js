@@ -19,19 +19,26 @@ Component({
             top: 0,
             left: 0
         },
+        activeIndex: 0,
         touchStartMove: false,
     },
-    onLoad(){
+    onLoad() {
     },
     methods: {
-        
-        movePageTap(e){
+
+        movePageTap(e) {
             const index = util.data(e, "index");
             this.triggerEvent('sortPageClick', {
                 index: index
             });
+
+            this.setData({
+                activeIndex: index,
+            });
+
+            console.log(index);
         },
-        init(){
+        init() {
             try {
                 const res = wx.getSystemInfoSync()
                 this.setData({
@@ -46,7 +53,7 @@ Component({
             this.fixSortContainerWidth();
             this.itemRangeFn();
         },
-        fixSortContainerWidth(){
+        fixSortContainerWidth() {
             this.setData({
                 pageSortWidth: util.rpx2px(180 + 20 + 2) * this.properties.pages.length + 'px'
             });
@@ -73,7 +80,10 @@ Component({
             this.triggerEvent('sortFinish', {
                 pages: pages,
                 // 显示删除元素的前一个
-                needShowIndex: index - 1
+                needShowIndex: index - 1,
+            });
+            this.setData({
+                activeIndex: index - 1,
             });
         },
 
@@ -101,13 +111,14 @@ Component({
             console.log(index, id);
             this.setData({
                 moveItem: item,
+                activeIndex: index,
                 touchStartMove: true
             });
             console.log(this.data.touchStartMove);
 
         },
-        setMoveItemPos(touch){
-            setTimeout(()=> {
+        setMoveItemPos(touch) {
+            setTimeout(() => {
                 this.setData({
                     touchStartMoveItem: {
                         // bottom: (this.data.windowHeight - touch.clientY - util.rpx2px(300) / 2) + "px",
@@ -162,7 +173,7 @@ Component({
 
         },
 
-        scrollViewScroll(e){
+        scrollViewScroll(e) {
             this.setData({
                 scrollViewScrollPos: e
             });
@@ -195,7 +206,7 @@ Component({
                     scrollLeft = scrollViewScrollPos.detail.scrollLeft
                 }
                 let moveIndex = -1;
-                this.data.itemRange.forEach((v, k)=> {
+                this.data.itemRange.forEach((v, k) => {
 
                     if (moveIndex !== -1) {
                         return;
@@ -222,6 +233,12 @@ Component({
                         // 显示移动后的下标（移动的当前元素）
                         needShowIndex: moveIndex
                     });
+
+                    this.setData({
+                        activeIndex: moveIndex,
+                    });
+
+
                 } else {
                     wx.showToast({
                         title: '不能与该页面交换位置',
@@ -240,7 +257,7 @@ Component({
 
         },
         // 滑动项目的区间
-        itemRangeFn(){
+        itemRangeFn() {
             const itemRangeRpx = [];
             const itemRangePx = [];
 

@@ -36,6 +36,7 @@ Page({
         // TODO 删除
         // id = "10c0e5f98d0c77216a7bd840941eaab7";
         // id = "a8702e7442c7015fcf03ff6940751c18";
+        // id = "4f755e49a7dc9b2a5db79ae25ad95698";
 
 
         this.setData({
@@ -226,8 +227,7 @@ Page({
             isBanquetInfoFill: false
         });
         setTimeout(() => {
-            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideBanquetInfo2();
-
+            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideBanquetInfo();
         }, 10)
     },
     // 显示 说些什么
@@ -235,6 +235,11 @@ Page({
         this.setData({
             isSaySomething: true
         });
+
+        setTimeout(() => {
+            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideMap();
+        }, 10)
+
     },
     // 隐藏 说些什么
     hideSaySomething() {
@@ -243,5 +248,21 @@ Page({
         this.setData({
             isSaySomething: false
         });
-    }
+
+        setTimeout(() => {
+            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").showMap();
+        }, 10)
+    },
+    onHide(){
+        console.log("hide");
+        this.selectComponent("#tpl1").playStop();
+
+    },
+    onUnload(){
+        // 返回
+        console.log("onUnload");
+        this.selectComponent("#tpl1").playStop();
+
+    },
+
 });

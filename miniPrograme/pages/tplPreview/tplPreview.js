@@ -33,6 +33,17 @@ Page({
         } catch (e) {
             // Do something when catch error
         }
-    }
+    },
+    onHide(){
+        console.log("hide");
+        this.selectComponent("#tpl1").playStop();
+
+    },
+    onUnload(){
+        // 返回
+        console.log("onUnload");
+        this.selectComponent("#tpl1").playStop();
+
+    },
 })
 ;

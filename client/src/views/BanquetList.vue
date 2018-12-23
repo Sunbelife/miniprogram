@@ -37,28 +37,28 @@
                 <el-table-column
                         align="center"
                         label="赴宴人员">
-                    <template slot-scope="scope">{{ scope.row.date }}</template>
+                    <template slot-scope="scope">{{ scope.row.user_name }}</template>
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="name"
+                        prop="phone_num"
                         label="赴宴联系电话">
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="address"
+                        prop="attend_num"
                         label="赴宴人数"
                         show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="address"
-                        label="赴宴类型"
+                        prop="transit_type"
+                        label="交通工具"
                         show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="address"
+                        prop="attend_time"
                         label="赴宴时间"
                         show-overflow-tooltip>
                 </el-table-column>

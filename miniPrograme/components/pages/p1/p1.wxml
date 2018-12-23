@@ -1,4 +1,6 @@
-<view class="title animate-toBottom {{animatedStep1 ? 'animated' : '' }} ">
+<view class="title animate-toBottom {{animatedStep1 ? 'animated' : '' }} "
+      bindtap="showInvitationInfo"
+>
     {{invitationInfo.nameGentleman}} & {{invitationInfo.nameLady}}的婚礼
 </view>
 
@@ -8,7 +10,9 @@
     {{page.textSrc[0]}}
 </view>
 
-<view class="text animate-toRight text-center  {{animatedStep2 ? 'animated' : '' }}">
+<view class="text animate-toRight text-center  {{animatedStep2 ? 'animated' : '' }}"
+      bindtap="showInvitationInfo"
+>
     {{invitationInfo.date}}  {{invitationInfo.time}}  {{invitationInfo.address}}
 </view>
 

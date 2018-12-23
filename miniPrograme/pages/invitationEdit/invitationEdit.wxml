@@ -10,6 +10,7 @@
         <tpl1 id="tpl1"
               bindpageClick="pageClick"
               bindpageMove="pageMove"
+              bindshowInvitationInfo="showInvitationInfo"
               toGuestsHas="{{toGuestsHas}}"
               pages="{{pages}}"
               bgMusic="{{bgMusic}}"
@@ -113,7 +114,7 @@
 
         <!-- 图片编辑 -->
         <view class="editEle-wrap editEle-wrap-img"
-              style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}}"
+              style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}};margin-left: {{item.marginLeft}};margin-top: {{item.marginTop}};margin-right: {{item.marginRight}};margin-bottom: {{item.marginBottom}}"
               wx:if="{{(item.type === 'image')}}"
               bindtap="showImgCut"
               data-index="{{index}}"
@@ -128,7 +129,7 @@
     <view wx:for="{{editEleText}}" wx:key="key">
         <!-- 文字编辑 -->
         <view class="editEle-wrap editEle-wrap-word"
-              style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}}"
+              style="left:{{item.left}};right:{{item.right}};top:{{item.top}};bottom:{{item.bottom}};margin-left: {{item.marginLeft}};margin-top: {{item.marginTop}};margin-right: {{item.marginRight}};margin-bottom: {{item.marginBottom}}"
               wx:if="{{(item.type === 'text')}}"
               data-index="{{index}}"
               bindtap="showWordChange"

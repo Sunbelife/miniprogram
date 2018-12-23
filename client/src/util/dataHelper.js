@@ -38,9 +38,16 @@ function banquetInfo(data) {
     const newObArr = [];
     util.each(data, function (k, v) {
         const newOb = {};
-        newOb.id = v.marry_id;
-        newOb.man = v.marry_man;
-        newOb.women = v.marry_women;
+        newOb.id = v.id;
+
+        newOb.transit_type = status.transitType[v.transit_type];
+
+        newOb.user_name = v.user_name;
+        newOb.phone_num = v.phone_num;
+        newOb.attend_num = v.attend_num;
+        newOb.attend_time = v.attend_time;
+
+
         newObArr.push(newOb);
     });
 

@@ -393,18 +393,38 @@ function isNotUndefined(val) {
 
 function posCssComplete(arr) {
     // 对象补齐
+    // each(arr, (k, v) => {
+    //     if (v.left) {
+    //         v.marginLeft = "-45rpx";
+    //     }
+    //     if (v.right) {
+    //         v.marginRight = "-45rpx";
+    //     }
+    //     if (v.top) {
+    //         v.marginTop = "-45rpx";
+    //     }
+    //     if (v.bottom) {
+    //         v.marginBottom = "-45rpx";
+    //     }
+    // });
+
+    // 对象补齐
     each(arr, (k, v) => {
         if (!v.left) {
             v.left = "auto";
+            v.marginLeft = "auto";
         }
         if (!v.right) {
             v.right = "auto";
+            v.marginRight = "auto";
         }
         if (!v.top) {
             v.top = "auto";
+            v.marginTop = "auto";
         }
         if (!v.bottom) {
             v.bottom = "auto";
+            v.marginBottom = "auto";
         }
     });
 }
