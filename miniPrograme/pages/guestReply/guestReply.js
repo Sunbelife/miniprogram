@@ -62,7 +62,7 @@ Page({
             activeType: type
         });
     },
-    deleteMsg: function (id) {
+    deleteMsg: function (id,is_reply) {
         let that = this;
         wx.showModal({
             title: '提示',
@@ -71,17 +71,18 @@ Page({
                 if (res.confirm) {
                     // console.log('用户点击确定');
 
-                    that.deleteMsgDo(id);
+                    that.deleteMsgDo(id,is_reply);
                 } else if (res.cancel) {
                     // console.log('用户点击取消')
                 }
             }
         });
     },
-    deleteMsgDo: function (id) {
+    deleteMsgDo: function (id,is_reply) {
 
         const loginReq = {
-            msg_id: id
+            msg_id: id,
+            is_reply: is_reply,
         };
 
         api.barrageDel({
@@ -110,22 +111,39 @@ Page({
         });
     },
     // 回复祝福提交
-    replayWishSubmit(){
+    replayWishSubmit() {
         this.setData({
             isShowReplayWish: false,
         });
+        this.getBlessing();
     },
     handleBlessing: function (e) {
         const id = util.data(e, "id");
         const index = util.data(e, "index");
+        const is_reply = util.data(e, "is_reply");
         let that = this;
 
+        let itemListHandle = ['回复', '删除'];
+
+        if (is_reply) {
+            itemListHandle = ['删除'];
+        }
+
+        // 下一个是回复的也不能再回复了
+        let nextBlessing = this.data.blessing[index+1];
+        if(nextBlessing){
+            if(nextBlessing.name.startsWith("回复 @")){
+                itemListHandle = ['删除'];
+            }
+        }
+
+
         wx.showActionSheet({
-            itemList: ['回复', '删除'],
+            itemList: itemListHandle,
             success(res) {
                 let handleIndex = res.tapIndex;
 
-                if (handleIndex === 0) {
+                if (itemListHandle[handleIndex] === '回复') {
                     // console.log("回复");
 
                     let blessingNeedReply = {};
@@ -136,8 +154,8 @@ Page({
                         blessingNeedReply: blessingNeedReply
                     });
                 }
-                if (handleIndex === 1) {
-                    that.deleteMsg(id);
+                if (itemListHandle[handleIndex] === '删除') {
+                    that.deleteMsg(id,is_reply);
                 }
 
             },
@@ -172,6 +190,7 @@ Page({
                     blessingItem.msg = v.message;
                     blessingItem.name = v.user_name;
                     blessingItem.time = v.time;
+                    blessingItem.is_reply = v.is_reply;
                     blessing.push(blessingItem);
 
                 });
