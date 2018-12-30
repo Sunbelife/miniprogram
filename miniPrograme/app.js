@@ -8,6 +8,11 @@ App({
         domainDev: "http://localhost:3000",
         // TODO  改回去
 
+        // imgPre:"/images",
+        imgPre:"https://xcx.lyy99.com/uploads",
+        // imgPre:"http://xcx.lyy99.com/uploads/tpl_1/",
+
+
         // isDev: 1,
         isDev: 0,
 

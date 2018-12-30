@@ -102,6 +102,29 @@ for (let i = 0; i < 10; i++) {
         ];
     });
 
+    let imgPath = getApp().globalData.imgPre;
+
+    let tpl1Map = {
+        1: 1,
+        2: 1,
+        3: 2,
+        4: 1,
+        5: 4,
+        6: 1,
+        7: 1,
+    };
+    if (i === 0) {
+        pages.forEach((v, k) => {
+            v.imgSrc = imgPath + `/tpl_1/p${k + 1}.jpg`;
+            v.imageSrc = [];
+            new Array(tpl1Map[k + 1]).fill(1).forEach((v2, k2) => {
+                console.log(v2, k2);
+                v.imageSrc.push(imgPath + `/tpl_1/p${k + 1}_preview_${k2 + 1}.jpg`);
+            });
+        });
+    }
+
+
     // 致宾客页面单独处理
     const toGuestsPage = {};
     util.extend(true, toGuestsPage, pages[pages.length - 1]);
@@ -109,6 +132,30 @@ for (let i = 0; i < 10; i++) {
     // 致宾客页面单独处理
     const pagesCommon = [];
     util.extend(true, pagesCommon, pages.slice(0, 6));
+
+    // TODO 改回去
+    let invitationInfo2 = {
+        "address": "婚礼地址",
+        "date": "2018-11-25",
+        "time": "12:00",
+        "latitude": 39.90824,
+        "longitude": 116.47783,
+        "nameLady": "新娘",
+        "nameGentleman": "新郎"
+    };
+
+
+    let invitationInfo = {
+        address: "",
+        date: util.getCurDate(),
+        time: '12:00',
+        // 默认地址是大望路
+        latitude: 0,
+        longitude: 0,
+        nameLady: "",
+        nameGentleman: ""
+    }
+
 
     tpls.push({
         id: index,
@@ -125,16 +172,7 @@ for (let i = 0; i < 10; i++) {
         // 有致宾客页面吗
         toGuestsHas: true,
         toGuestsPage: toGuestsPage,
-        invitationInfo: {
-            address: "",
-            date: util.getCurDate(),
-            time: '12:00',
-            // 默认地址是大望路
-            latitude: 0,
-            longitude: 0,
-            nameLady: "",
-            nameGentleman: ""
-        }
+        invitationInfo: invitationInfo2
     });
 }
 
@@ -143,6 +181,8 @@ const tplsOb = util.arrToObj(tpls, "id");
 const pagesArrOb = util.arrToObj(pagesArr, "id");
 const mp3Ob = util.arrToObj(mp3, "no");
 
+
+console.log(tpls[0]);
 // console.log(tplsOb,tpls,pagesArr,pagesArrOb);
 
 
@@ -212,7 +252,7 @@ const mockTpl = {
         "imgSrc": "https://dummyimage.com/200x300/19CAAD/ffffff&text=page6",
         "canRemove": 1
     }],
-    "bgMusic":  mp3[0],
+    "bgMusic": mp3[0],
     "invitationInfo": {
         "address": "婚礼地址",
         "date": "2018-11-25",

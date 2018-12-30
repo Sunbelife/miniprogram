@@ -5,91 +5,48 @@
 @import "../../../css/app.wxss";
 
 
-.title{
-    padding: 20rpx;
-    text-align: center;
-    position: absolute;
-    top: 250rpx;
-    left: 50%;
-    border-radius: 15rpx;
-    margin-left:-175rpx;
-    width: 350rpx;
-    z-index: 1;
-    background: white
 
-}
 
+/* 图 1 */
 .image1{
-    height: 100vh;
-    width: 100vw;
+    width: 569rpx;
+    height: 884rpx;
     position: absolute;
-    top:0;
-}
+    top: 56rpx;
+    left: 267rpx;
 
-.text{
-    position: absolute;
-    bottom: 250rpx;
-    left: 50%;
-    border-radius: 15rpx;
-    margin-left:-275rpx;
-    width: 550rpx;
-    font-size: 26rpx;
-}
-
-
-
-.animate-toBottom{
     transition: all .3s;
-    top: -50rpx;
     opacity: 0;
+
 }
 
-.animate-toBottom.animated{
+.image1.animated{
     opacity: 1;
-    top: 250rpx;
+    left: 67rpx;
 }
 
-
-.animate-toLeft{
-    transition: all .3s;
-    left: 5vw;
-    opacity: 0;
-}
-
-.animate-toLeft.animated{
-    opacity: 1;
-    left:0;
-}
-
-
-.animate-toRight{
-    transition: all .3s ;
-    left: -750rpx;
-    opacity: 0;
-}
-
-.animate-toRight.animated{
-    opacity: 1;
-    left:50%;
-}
-
-
-.editSpace1{
-    top: 50vh;
-    left: 375rpx;
-}
-
-.editSpace2{
-    bottom: 250rpx;
-    left: 375rpx;
-}
-
-.text1{
+.p1_1{
+    width: 140rpx;
+    height: 194rpx;
     position: absolute;
-    bottom: 450rpx;
-    left: 50%;
-    border-radius: 15rpx;
-    margin-left:-275rpx;
-    width: 550rpx;
-    font-size: 26rpx;
+    right: 75rpx;
+    bottom: 24rpx;
+}
+
+.user-info{
+    position: absolute;
+    top: 982rpx;
+    left: 75rpx;
+}
+
+.user-info-name{
+    font-size: 50rpx;
+}
+.user-info-date{
+    font-size: 30rpx;
+    margin-top: 18rpx;
+}
+.user-info-address{
+    margin-top: 12rpx;
+
 }

@@ -101,8 +101,36 @@ function each(object, callback) {
 }
 
 const rpx2px = rpx => {
-    return rpx / 750 * wx.getSystemInfoSync().windowWidth;
+    return Math.floor(rpx / 750 * wx.getSystemInfoSync().windowWidth);
 };
+const rpx2pxStr = rpx => {
+    return rpx2px(rpx) + "px";
+};
+
+function genImg(img,editInfo) {
+    let imgRet = {
+        width: rpx2px(img.width),
+        height: rpx2px(img.height),
+
+        type: "image",
+        index: editInfo.image.length,
+    };
+
+    if(img.top){
+        imgRet.top = rpx2pxStr(img.height / 2 + img.top - 45 / 2);
+    }
+    if(img.bottom){
+        imgRet.bottom = rpx2pxStr(img.height / 2 + img.bottom - 45 / 2);
+    }
+    if(img.left){
+        imgRet.left = rpx2pxStr(img.width / 2 + img.left - 45 / 2);
+    }
+    if(img.right){
+        imgRet.right = rpx2pxStr(img.width / 2 + img.right - 45);
+    }
+
+   return imgRet;
+}
 
 function getCurDate() {
 
@@ -633,12 +661,39 @@ let tplALL = {
 };
 
 
+function toDate(date, format) {
+    var normalized = date.replace(/[^a-zA-Z0-9]/g, '-');
+    var normalizedFormat = format.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+    var formatItems = normalizedFormat.split('-');
+    var dateItems = normalized.split('-');
+
+    var monthIndex = formatItems.indexOf("mm");
+    var dayIndex = formatItems.indexOf("dd");
+    var yearIndex = formatItems.indexOf("yyyy");
+    var hourIndex = formatItems.indexOf("hh");
+    var minutesIndex = formatItems.indexOf("ii");
+    var secondsIndex = formatItems.indexOf("ss");
+
+    var today = new Date();
+
+    var year = yearIndex > -1 ? dateItems[yearIndex] : today.getFullYear();
+    var month = monthIndex > -1 ? dateItems[monthIndex] - 1 : today.getMonth() - 1;
+    var day = dayIndex > -1 ? dateItems[dayIndex] : today.getDate();
+
+    var hour = hourIndex > -1 ? dateItems[hourIndex] : today.getHours();
+    var minute = minutesIndex > -1 ? dateItems[minutesIndex] : today.getMinutes();
+    var second = secondsIndex > -1 ? dateItems[secondsIndex] : today.getSeconds();
+
+    return new Date(year, month, day, hour, minute, second);
+};
+
 module.exports = {
     posCssComplete,
     isDev,
     login,
     tplALL,
     echoPage,
+    genImg,
     pageComponent,
     setTimeOutFlag,
     setTimeOutFlagHide,
@@ -652,10 +707,12 @@ module.exports = {
     getParamGen,
     getCurDate,
     dateFormat,
+    toDate,
     goPage,
     rpx2px,
     arrToObjKV,
     arrToObj,
+    rpx2pxStr,
     objToArr,
     each,
     data,

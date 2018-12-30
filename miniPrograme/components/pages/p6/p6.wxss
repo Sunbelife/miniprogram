@@ -7,55 +7,51 @@
 
 
 .image1{
+    width: 587rpx;
+    height: 912rpx;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 60vw;
-    height: 60vh;
-}
-
-.animate-toRight{
-    transition: all .3s ease-in;
-    left: -20vw;
+    top: 32rpx;
+    left: 234rpx;
+    transition: all .3s;
     opacity: 0;
 }
 
-.animate-toRight.animated{
-    opacity: 1;
-    left: 0;
 
+.image1.animated{
+    opacity: 1;
+    left: 34rpx;
 }
 
 
-.image2{
+.p6_1{
+    width: 140rpx;
+    height: 194rpx;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 60vw;
-    height: 60vh;
+    bottom: 47rpx;
+    left: 43rpx;
 }
 
-
-
-.animate-toLeft{
-    transition: all .3s ease-in;
-    right: -20vw;
-    opacity: 0;
+.tpl-text-wrap{
+    position: absolute;
+    top: 980rpx;
+    left:214rpx;
 }
 
-.animate-toLeft.animated{
-    opacity: 1;
-    right:0;
+.tpl-text-l1{
+    font-size: 32rpx;
+}
+.tpl-text-l2{
+    width: 400rpx;
+    border-bottom: 1px solid #333333;
+    margin: 17rpx 0;
+}
+.tpl-text-l3{
+    font-size: 26rpx;
+
 }
 
-
-.editSpace1{
-    top: 25vh;
-    left: 25vw;
+.tpl-text-l4{
+    font-size: 16rpx;
+    color: #727171;
+    margin-top: 28rpx;
 }
-
-.editSpace2{
-    bottom: 25vh;
-    right: 25vw;
-}
-

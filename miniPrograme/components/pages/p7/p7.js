@@ -16,10 +16,18 @@ Component({
         item: null // 简化的定义方式
     },
     data: {
+        imgPath: getApp().globalData.imgPre,
         animatedStep0: false,
         animatedStep1: false,
     },
     ready() {
+
+       let date =  util.toDate(
+            `${this.properties.invitationInfo.date} ${this.properties.invitationInfo.time}`,
+            'yyyy-MM-dd hh:mm')
+        this.setData({
+           "invitationInfo.dateFormat": util.dateFormat(date,'yyyy年MM月dd日 hh时mm分'),
+        });
 
     },
     methods: {
@@ -32,12 +40,12 @@ Component({
 
         },
         hideBanquetInfo3() {
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.setData({
                     isShowMap: true,
                 });
                 // console.log(this.data.isShowMap);
-            },10)
+            }, 10)
 
         },
         show() {
@@ -53,22 +61,13 @@ Component({
                 text: []
             };
 
-            editInfo.image.push({
-                width: util.rpx2px(225),
-                height: util.rpx2px(362),
+            editInfo.image.push(util.genImg({
+                width: 612,
+                height: 907,
+                bottom: 60,
+                right: 69,
+            }, editInfo));
 
-                type: "image",
-                index: editInfo.image.length,
-                top: "5vh",
-                left: "50vw"
-            });
-
-            // editInfo.image.push({
-            //     type: "image",
-            //     index: editInfo.image.length,
-            //     bottom: "25vh",
-            //     right: "25vw"
-            // });
 
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);

@@ -14,6 +14,7 @@ Component({
         showBanquetInfoBtn: null // 简化的定义方式
     },
     data: {
+        imgPath: getApp().globalData.imgPre,
         animatedStep0: false,
         animatedStep1: false
     },
@@ -37,25 +38,21 @@ Component({
                 text: []
             };
 
-            editInfo.image.push({
-                width: util.rpx2px(225 * 2),
-                height: util.rpx2px(362 * 2),
+            editInfo.image.push(util.genImg({
+                width: 634,
+                height: 443,
+                top: 235,
+                left: 58,
+            }, editInfo));
 
-                type: "image",
-                index: editInfo.image.length,
-                top: "25vh",
-                left: "25vw"
-            });
+            editInfo.image.push(util.genImg({
+                width: 634,
+                height: 443,
+                top: 696,
+                left: 58,
+            }, editInfo));
 
-            editInfo.image.push({
-                width: util.rpx2px(225 * 2),
-                height: util.rpx2px(362 * 2),
 
-                type: "image",
-                index: editInfo.image.length,
-                bottom: "25vh",
-                right: "25vw"
-            });
 
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);

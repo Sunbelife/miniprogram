@@ -1,61 +1,88 @@
-
-
-
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
 
 
 
+
 .image1{
+    width: 612rpx;
+    height: 907rpx;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-}
+    bottom: 60rpx;
+    right: 69rpx;
 
-.animate-toRight{
-    transition: all .3s ease-in;
-    left: -20vw;
     opacity: 0;
+    transition: all .3s ease-in;
+    transform: scale(.8);
 }
 
-.animate-toRight.animated{
+
+.image1.animated{
     opacity: 1;
-    left: 0;
-
+    transform: scale(1);
 }
 
 
-.image2{
+
+.p7_2{
+    width: 140rpx;
+    height: 194rpx;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 60vw;
-    height: 60vh;
+    top: 21rpx;
+    left: 65rpx;
 }
 
 
 
-.animate-toLeft{
-    transition: all .3s ease-in;
-    right: -20vw;
-    opacity: 0;
-}
-
-.animate-toLeft.animated{
-    opacity: 1;
-    right:0;
-}
 
 
-.editSpace1{
-    top: 25vh;
-    left: 25vw;
+.tpl-text-wrap{
+    position: absolute;
+    top: 87rpx;
+    right: 36rpx;
+    text-align: right;
 }
 
-.editSpace2{
-    bottom: 25vh;
-    right: 25vw;
+.tpl-text-l1{
+    font-size: 32rpx;
 }
+.tpl-text-l2{
+    width: 100%;
+    border-bottom: 1px solid #333333;
+    margin: 14rpx 0 22rpx 0;
+}
+.tpl-text-l3{
+    font-size: 26rpx;
+
+}
+
+
+
+.info-wrap{
+    width: 308rpx;
+    height: 233rpx;
+    position: absolute;
+    left: 50%;
+    top: 823rpx;
+
+    margin-left: -154rpx;
+    font-size: 20rpx;
+    text-align: center;
+    color: #000000;
+}
+
+.p7_1{
+    width: 308rpx;
+    height: 233rpx;
+}
+
+.info-text-wrap{
+    position: absolute;
+    width: 300rpx;
+    top: 152rpx;
+    left: 50%;
+
+    margin-left: -150rpx;
+}
+
 

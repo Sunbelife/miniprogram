@@ -1,9 +1,10 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/tplDev/tplDev",
+    "pages/invitationEdit/invitationEdit",
     "pages/guestReply/guestReply",
     "pages/tplUserLook/tplUserLook",
-    "pages/invitationEdit/invitationEdit",
     "pages/invitationSend/invitationSend",
     "pages/tplChoose/tplChoose",
     "pages/a_auth/a_auth",
@@ -15,7 +16,6 @@
     "pages/invitationInfo/invitationInfo",
     "pages/tplPreview/tplPreview",
 
-    "pages/tplDev/tplDev",
     "pages/index/index",
 
     "pages/shareSuccess/shareSuccess",

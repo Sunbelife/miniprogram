@@ -14,6 +14,7 @@ Component({
         item: null // 简化的定义方式
     },
     data: {
+        imgPath: getApp().globalData.imgPre,
         isLoading: false,
     },
     ready() {
@@ -32,29 +33,23 @@ Component({
                 text: []
             };
 
-            editInfo.image.push({
 
-                width: util.rpx2px(225 * 2),
-                height: util.rpx2px(362 * 2),
+            editInfo.image.push(util.genImg({
+                width: 635,
+                height: 875,
+                top: 60,
+                left: 57,
+            }, editInfo));
 
-
-                type: "image",
-                index: editInfo.image.length,
-                top: "25vh",
-                left: "25vw"
-            });
-
-            editInfo.image.push({
-
-                width: util.rpx2px(225 * 2),
-                height: util.rpx2px(362 * 2),
-
-
-                type: "image",
-                index: editInfo.image.length,
-                bottom: "25vh",
-                right: "25vw"
-            });
+            // editInfo.image.push({
+            //
+            //     width: util.rpx2px(225 * 2),
+            //     height: util.rpx2px(362 * 2),
+            //     type: "image",
+            //     index: editInfo.image.length,
+            //     bottom: "25vh",
+            //     right: "25vw"
+            // });
 
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);

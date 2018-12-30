@@ -13,6 +13,7 @@ Component({
         item: null // 简化的定义方式
     },
     data: {
+        imgPath: getApp().globalData.imgPre,
         animatedStep0: false,
         animatedStep1: false,
     },
@@ -33,30 +34,44 @@ Component({
                 text: []
             };
 
-            editInfo.image.push({
-                width: util.rpx2px(225 * 2),
-                height: util.rpx2px(362 * 2),
 
-                type: "image",
-                index: editInfo.image.length,
-                top: "25vh",
-                left: "25vw"
-            });
 
-            editInfo.image.push({
-                width: util.rpx2px(225 * 2),
-                height: util.rpx2px(362 * 2),
+            editInfo.image.push(util.genImg({
+                width: 381,
+                height: 631,
+                bottom: 36,
+                left: 26,
+            }, editInfo));
 
-                type: "image",
-                index: editInfo.image.length,
-                bottom: "25vh",
-                right: "25vw"
-            });
+
+            editInfo.image.push(util.genImg({
+                width: 515,
+                height: 421,
+                top: 49,
+                right: 26,
+            }, editInfo));
+
+
+            editInfo.image.push(util.genImg({
+                width: 295,
+                height: 325,
+                top: 494,
+                right: 26,
+            }, editInfo));
+
+
+            editInfo.image.push(util.genImg({
+                width: 295,
+                height: 325,
+                bottom: 36,
+                right: 26,
+            }, editInfo));
+
 
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);
 
-            // console.log(editInfo);
+            console.log(editInfo);
             return editInfo;
         }
     }

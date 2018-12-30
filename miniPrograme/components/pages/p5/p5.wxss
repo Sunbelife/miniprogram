@@ -1,61 +1,109 @@
-
-
-
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
 
 
 
+
 .image1{
+    width: 381rpx;
+    height: 631rpx;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 60vw;
-    height: 60vh;
-}
-
-.animate-toRight{
-    transition: all .3s ease-in;
-    left: -20vw;
+    bottom: 36rpx;
+    left: 26rpx;
     opacity: 0;
+    transition: all .3s ease-in;
+    transform: scale(.8);
 }
 
-.animate-toRight.animated{
+
+.image1.animated{
     opacity: 1;
-    left: 0;
-
+    transform: scale(1);
 }
+
 
 
 .image2{
+    width: 515rpx;
+    height: 421rpx;
+    position: absolute;
+    top: 49rpx;
+    right: 26rpx;
+
+    opacity: 0;
+    transition: all .3s ease-in;
+    transform: scale(.8);
+}
+
+
+.image2.animated{
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.image3{
+    width: 295rpx;
+    height: 325rpx;
+    position: absolute;
+    top: 494rpx;
+    right: 26rpx;
+    opacity: 0;
+    transition: all .3s ease-in;
+    transform: scale(.8);
+}
+
+
+.image3.animated{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.image4{
+    width: 295rpx;
+    height: 325rpx;
+    position: absolute;
+    bottom: 36rpx;
+    right: 26rpx;
+
+    opacity: 0;
+    transition: all .3s ease-in;
+    transform: scale(.8);
+}
+
+
+.image4.animated{
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+
+.p5_1{
+    width: 140rpx;
+    height: 194rpx;
+    position: absolute;
+    left: 47rpx;
+    top: 49rpx;
+}
+
+
+.tpl-text-wrap{
+    position: absolute;
+    top: 250rpx;
+    left: 65rpx;
+    /*text-align: right;*/
+    width: 70rpx;
+}
+
+.tpl-text-l1{
+    font-size: 24rpx;
+    width: 32rpx;
+}
+.tpl-text-l2{
+    font-size: 24rpx;
+    width: 32rpx;
     position: absolute;
     right: 0;
-    bottom: 0;
-    width: 60vw;
-    height: 60vh;
+    top: 0;
 }
-
-
-
-.animate-toLeft{
-    transition: all .3s ease-in;
-    right: -20vw;
-    opacity: 0;
-}
-
-.animate-toLeft.animated{
-    opacity: 1;
-    right:0;
-}
-
-
-.editSpace1{
-    top: 25vh;
-    left: 25vw;
-}
-
-.editSpace2{
-    bottom: 25vh;
-    right: 25vw;
-}
-

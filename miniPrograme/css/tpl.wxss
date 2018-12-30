@@ -30,9 +30,10 @@
     /*border: 1px solid #f73e4e;*/
     border-radius: 60rpx;
     position: absolute;
-    z-index: 5;
+    z-index: 10;
     top: 30rpx;
-    right: 50rpx;
+    right: 20rpx;
+    /*color: white;*/
 }
 
 @keyframes rotateAnimate
@@ -109,4 +110,11 @@
     background-color: #f83146;
     box-sizing: border-box;
     color: white;
+}
+
+
+.tpl-bg{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
 }

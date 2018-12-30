@@ -1,61 +1,55 @@
-
-
-
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
 
 
 
+
 .image1{
+    width: 640rpx;
+    height: 914rpx;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 60vw;
-    height: 60vh;
-}
+    top: 231rpx;
+    right: 54rpx;
 
-.animate-toRight{
-    transition: all .3s ease-in;
-    left: -20vw;
     opacity: 0;
+    transition: all .3s ease-in;
+    transform: rotate(30deg);
+    transform-origin: left bottom;
 }
 
-.animate-toRight.animated{
+
+.image1.animated{
     opacity: 1;
-    left: 0;
-
+    transform: rotate(0deg);
 }
 
 
-.image2{
+
+.p4_1{
+    width: 140rpx;
+    height: 194rpx;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 60vw;
-    height: 60vh;
+    top: 33rpx;
+    right: 61rpx;
 }
 
 
-
-.animate-toLeft{
-    transition: all .3s ease-in;
-    right: -20vw;
-    opacity: 0;
+.tpl-text-wrap{
+    position: absolute;
+    top: 60rpx;
+    left: 73rpx;
+    /*text-align: right;*/
 }
 
-.animate-toLeft.animated{
-    opacity: 1;
-    right:0;
+.tpl-text-l1{
+    font-size: 32rpx;
 }
-
-
-.editSpace1{
-    top: 25vh;
-    left: 25vw;
+.tpl-text-l2{
+    width: 100%;
+    border-bottom: 1px solid #333333;
+    margin: 14rpx 0 22rpx 0;
 }
+.tpl-text-l3{
+    font-size: 26rpx;
 
-.editSpace2{
-    bottom: 25vh;
-    right: 25vw;
 }
-

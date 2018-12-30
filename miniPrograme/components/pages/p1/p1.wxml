@@ -1,22 +1,34 @@
-<view class="title animate-toBottom {{animatedStep1 ? 'animated' : '' }} "
+<!--<view class="title animate-toBottom {{animatedStep1 ? 'animated' : '' }} "
       bindtap="showInvitationInfo"
 >
-    {{invitationInfo.nameGentleman}} & {{invitationInfo.nameLady}}的婚礼
-</view>
+</view>-->
 
 <image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep0 ? 'animated' : '' }}"></image>
 
-<view class="text1 ">
+<!--<view class="text1">
     {{page.textSrc[0]}}
-</view>
+</view>-->
 
-<view class="text animate-toRight text-center  {{animatedStep2 ? 'animated' : '' }}"
+<!--<view class="text animate-toRight text-center  {{animatedStep2 ? 'animated' : '' }}"
       bindtap="showInvitationInfo"
 >
-    {{invitationInfo.date}}  {{invitationInfo.time}}  {{invitationInfo.address}}
+
+</view>-->
+
+<!-- 背景 -->
+<image src="{{imgPath + '/tpl_1/bg.jpg'}}" class="tpl-bg"></image>
+
+<image src="{{imgPath + '/tpl_1/p1_1.png'}}" class="p1_1"></image>
+
+<view class="user-info" bindtap="showInvitationInfo">
+    <view class="user-info-name">
+        {{invitationInfo.nameGentleman}} & {{invitationInfo.nameLady}}
+    </view>
+    <view class="user-info-date">
+        {{invitationInfo.dateFormat}}
+    </view>
+    <view class="user-info-address">
+        {{invitationInfo.address}}
+    </view>
 </view>
-
-
-<!--<view class="editSpace editSpace1"></view>-->
-<!--<view class="editSpace editSpace2"></view>-->
 
