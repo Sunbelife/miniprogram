@@ -1,12 +1,14 @@
+/*
 
 @font-face {
     font-family: 'FZLTZHK';
     src: url('https://xcx.lyy99.com/uploads/fonts/fonts.ttf') format('truetype');
 }
+*/
 
 
 .container {
-    font-family: 'FZLTZHK';
+    /*font-family: 'FZLTZHK';*/
     font-size: 34rpx;
     min-height: 100vh;
     color: #333333;
