@@ -83,7 +83,7 @@ const colors = [
 
 const tpls = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 1; i++) {
     let index = i + 1;
 
     // TODO  70个模板
@@ -154,7 +154,7 @@ for (let i = 0; i < 10; i++) {
         longitude: 0,
         nameLady: "",
         nameGentleman: ""
-    }
+    };
 
 
     tpls.push({
@@ -164,7 +164,7 @@ for (let i = 0; i < 10; i++) {
         zh: "模板" + index,
         // 主色调
         mainColor: colors[i],
-        imgSrc: "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=模板" + index,
+        imgSrc: imgPath + `/tpl_${index}/cover.jpg`,
         pages: pagesCommon,
         shareImg: '',
         // 有弹幕吗
