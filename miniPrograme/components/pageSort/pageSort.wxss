@@ -39,7 +39,11 @@
 .pageSort-item{
     box-sizing: border-box;
     width: 180rpx;
-    height: 300rpx;
+    /* 894/(502/180) */
+    height: 320rpx;
+
+
+
     display: inline-block;
     margin-right: 20rpx;
     position: relative;
@@ -48,7 +52,8 @@
 
 
 .pageSort-item-img-wrap{
-    height: 250rpx;
+    width: 180rpx;
+    height: 320rpx;
 }
 
 .pageSort-item-img-wrap.active{
