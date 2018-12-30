@@ -31,9 +31,10 @@
                   wx:key="key"
                   bindtap="handleBlessing"
                   data-id="{{item.id}}"
+                  data-is_reply="{{item.is_reply}}"
                   data-index="{{index}}"
             >
-                <view class="blessing-item">
+                <view class="blessing-item {{ item.is_reply ? 'reply' : ''}}">
                     <view class="blessing-content"> {{item.name}}：{{item.msg}}</view>
                     <view class="blessing-time"> {{item.time}}</view>
                    <!--<view class="btns">-->

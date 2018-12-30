@@ -20,7 +20,16 @@
 
 .blessing-item{
     padding: 10rpx 20rpx;
-    border-bottom: 1rpx solid #ddd;
+    border-top: 1rpx solid #ddd;
+}
+
+.blessing-item.reply{
+    border-top: 0;
+
+}
+.blessing-item.reply .blessing-content{
+    font-size: 28rpx;
+    padding-left: 15rpx;
 }
 
 .blessing-content{
@@ -74,5 +83,5 @@
     margin: 5rpx;
     color: #8e8e8e;
     padding-left: 15rpx;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
 }

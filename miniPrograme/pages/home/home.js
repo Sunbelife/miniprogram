@@ -92,7 +92,7 @@ Page({
             // method: "POST",
             data: loginReq,
             success: (resLogin) => {
-                // console.log(resLogin);
+                console.log(resLogin);
                 this.setData({
                     guestReplyTipNum: resLogin.data.data.is_read_sum
                 })
