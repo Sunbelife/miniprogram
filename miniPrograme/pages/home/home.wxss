@@ -29,7 +29,8 @@
 }
 
 .tpl image{
-    width: 100%;
+    width: 325rpx;
+    height: 576rpx;
 }
 
 .tab_fixed{
