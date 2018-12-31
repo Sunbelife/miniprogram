@@ -5,9 +5,9 @@
     "pages/invitationEdit/invitationEdit",
     "pages/guestReply/guestReply",
     "pages/tplUserLook/tplUserLook",
-    "pages/invitationSend/invitationSend",
     "pages/tplChoose/tplChoose",
     "pages/a_auth/a_auth",
+    "pages/invitationSend/invitationSend",
 
 
     "pages/nav/nav",

@@ -39,7 +39,7 @@ Component({
             editInfo.image.push(util.genImg({
                 width: 381,
                 height: 631,
-                bottom: 36,
+                top: 533,
                 left: 26,
             }, editInfo));
 
@@ -63,7 +63,7 @@ Component({
             editInfo.image.push(util.genImg({
                 width: 295,
                 height: 325,
-                bottom: 36,
+                top: 839,
                 right: 26,
             }, editInfo));
 

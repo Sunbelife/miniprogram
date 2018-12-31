@@ -21,10 +21,9 @@
 </view>
 
 <view class="tpl-text-wrap" bindtap="showInvitationInfo">
-    <view class="tpl-text-l3">
-        <view>佳人佳偶逢佳期明 君至可添喜</view>
-        <view>亲友亲事话化亲情 您来能增辉</view>
-    </view>
+        <view class="tpl-text-l1">佳人佳偶逢佳期明 君至可添喜</view>
+        <view class="tpl-text-l2">亲友亲事话化亲情 您来能增辉</view>
+        <view class="tpl-text-l3">Storybook endings,fairy tales coming true</view>
 </view>
 
 

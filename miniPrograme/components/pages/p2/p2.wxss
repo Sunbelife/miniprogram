@@ -29,7 +29,7 @@
     height: 194rpx;
     position: absolute;
     left: 75rpx;
-    bottom: 44rpx;
+    top: 982rpx;
 }
 
 .tpl-text-wrap{

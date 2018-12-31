@@ -64,7 +64,7 @@ Component({
             editInfo.image.push(util.genImg({
                 width: 612,
                 height: 907,
-                bottom: 60,
+                top: 234,
                 right: 69,
             }, editInfo));
 

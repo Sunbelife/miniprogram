@@ -38,12 +38,7 @@
                 </view>
                 <view class="shareTypeName">分享到微信好友</view>
             </button>
-            <view class="shareType" bindtap="share">
-                <view class="shareTypeImgWrap">
-                    <image src="/images/moment.png" class="shareTypeImg"></image>
-                </view>
-                <view class="shareTypeName">分享到朋友圈</view>
-            </view>
+
         </view>
 
         <view class="content">

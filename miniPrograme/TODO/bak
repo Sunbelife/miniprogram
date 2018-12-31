@@ -1,0 +1,6 @@
+<!--<view class="shareType" bindtap="share">-->
+                <!--<view class="shareTypeImgWrap">-->
+                    <!--<image src="/images/moment.png" class="shareTypeImg"></image>-->
+                <!--</view>-->
+                <!--<view class="shareTypeName">分享到朋友圈</view>-->
+            <!--</view>-->

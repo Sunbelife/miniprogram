@@ -8,7 +8,7 @@
     width: 381rpx;
     height: 631rpx;
     position: absolute;
-    bottom: 36rpx;
+    top: 533rpx;
     left: 26rpx;
     opacity: 0;
     transition: all .3s ease-in;
@@ -63,7 +63,7 @@
     width: 295rpx;
     height: 325rpx;
     position: absolute;
-    bottom: 36rpx;
+    top: 839rpx;
     right: 26rpx;
 
     opacity: 0;
@@ -91,7 +91,7 @@
 .tpl-text-wrap{
     position: absolute;
     top: 250rpx;
-    left: 65rpx;
+    left: 80rpx;
     /*text-align: right;*/
     width: 70rpx;
 }

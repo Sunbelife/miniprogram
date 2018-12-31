@@ -41,7 +41,7 @@ Component({
 
             // TODO 删除
             setTimeout(() => {
-                // this.movePage(6);
+                this.movePage(6);
             }, 600);
             if (util.isDev() || getApp().globalData.isMock) {
                 // 开发指定到页面 0 开始的

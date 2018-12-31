@@ -30,7 +30,7 @@
     height: 194rpx;
     position: absolute;
     right: 75rpx;
-    bottom: 24rpx;
+    top: 1000rpx;
 }
 
 .user-info{
