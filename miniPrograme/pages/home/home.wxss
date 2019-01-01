@@ -26,6 +26,7 @@
     margin: 20rpx;
     display: inline-block;
     float: left;
+    position: relative;
 }
 
 .tpl image{
@@ -115,6 +116,9 @@
     color: white;
 
 }
+.guestReplyTipNum{
+    display: inline-block;
+}
 
 .makeBtn:after {
     display: none;
@@ -126,4 +130,43 @@
     text-align: center;
     font-size: 24rpx;
     border-bottom: 1rpx solid #ddd;
+}
+
+@keyframes shakeAnimation
+{
+    0% {transform: rotate(3deg)}
+    50% {transform: rotate(0deg)}
+    100% {transform: rotate(-3deg)}
+}
+
+.shake{
+    animation: shakeAnimation .3s linear infinite;
+}
+
+.del-mask{
+    /*background: rgba(1,1,1,.5);*/
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid #f83146;
+}
+
+.del-btn{
+    background-color: #f83146;
+    color: white;
+
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+
+    position: absolute;
+    top: -20rpx;
+    right: -20rpx;
+
+    border-radius: 100%;
+    text-align: center;
+    font-size: 24rpx;
 }

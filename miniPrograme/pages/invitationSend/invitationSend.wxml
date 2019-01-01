@@ -20,7 +20,7 @@
     <view class="shareWrap">
         <view class="shareImgWrap" bindtap="addPic">
             <block wx:if="{{shareImg}}">
-                <image src="{{shareImg}}" class="shareImg" ></image>
+                <image src="{{shareImg}}" class="shareImg"></image>
             </block>
             <block wx:if="{{!shareImg}}">
                 <view class="shareImgSpace">
@@ -38,7 +38,13 @@
                 </view>
                 <view class="shareTypeName">分享到微信好友</view>
             </button>
-
+            <view class="shareType" bindtap="share">
+                <view class="shareTypeImgWrap">
+                    <!--<image src="/images/moment.png" class="shareTypeImg"></image>-->
+                    <image src="/images/logo.jpeg" class="shareTypeImg"></image>
+                </view>
+                <view class="shareTypeName">生成请帖图片</view>
+            </view>
         </view>
 
         <view class="content">
@@ -46,7 +52,9 @@
                 第一时间收到宾客回复
             </view>
             <view>
-                请关注<view class="name">“原野映像电子请帖”</view>服务号
+                请关注
+                <view class="name">“原野映像电子请帖”</view>
+                服务号
             </view>
         </view>
 

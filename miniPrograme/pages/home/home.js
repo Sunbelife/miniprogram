@@ -31,6 +31,7 @@ Page({
         // 需要顶部固定吗？
         scrollTopPage: 0,
         isNeedFixed: false,
+        showDel: false,
         guestReplyTipNum: 0,
         // px
         tabOffsetTop: 90
@@ -38,6 +39,20 @@ Page({
 
     onLoad: function () {
 
+
+    },
+    invitationDelTrigger: function () {
+
+        // this.setData({
+        //     showDel: true
+        // })
+
+    },
+    invitationDel: function () {
+
+        this.setData({
+            showDel: false
+        })
 
     },
     onShow: function () {
@@ -261,6 +276,9 @@ Page({
         }
     },
     invitationEdit: function (e) {
+        // if(showDel){
+        //
+        // }
         const storageId = util.data(e, "storageId");
         try {
             util.tplALL.getOne(storageId, (one) => {

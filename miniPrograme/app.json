@@ -1,20 +1,20 @@
 {
   "pages":[
-    "pages/tplUserLook/tplUserLook",
     "pages/home/home",
+    "pages/tplPreview/tplPreview",
+    "pages/invitationSend/invitationSend",
+    "pages/tplUserLook/tplUserLook",
     "pages/invitationEdit/invitationEdit",
     "pages/invitationInfo/invitationInfo",
     "pages/tplDev/tplDev",
     "pages/guestReply/guestReply",
     "pages/tplChoose/tplChoose",
     "pages/a_auth/a_auth",
-    "pages/invitationSend/invitationSend",
 
 
     "pages/nav/nav",
     "pages/banquetInfoFill/banquetInfoFill",
     "pages/startMake/startMake",
-    "pages/tplPreview/tplPreview",
 
     "pages/index/index",
 

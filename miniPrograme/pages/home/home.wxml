@@ -26,7 +26,8 @@
                     <view class="iconfont icon-duihua"></view>
                 </view>
                 <view class="iconTitle">
-                    宾客({{guestReplyTipNum}})
+                    宾客
+                    <view wx:if="{{ guestReplyTipNum !== 0 }}" class="guestReplyTipNum">({{guestReplyTipNum}})</view>
                 </view>
             </view>
         </view>
@@ -36,14 +37,18 @@
             <view
                     wx:for="{{tpl}}"
                     wx:key="key"
+                    bindlongpress="invitationDelTrigger"
                     bindtap="invitationEdit"
                     data-page="invitationEdit"
                     data-id="{{item.id}}"
                     data-storage-id="{{item.storageId}}"
                     data-handle="edit"
-                  class="tpl">
+                  class="tpl ">
                 <image src="{{item.imgSrc}}"></image>
                 <view class="item-time">{{item.showTime}}</view>
+                <view class="del-mask" wx:if="{{showDel}}" bindtap="invitationDel" data-id="{{item.id}}">
+                    <view class="del-btn iconfont icon-sub"></view>
+                </view>
             </view>
         </view>
 

@@ -172,7 +172,7 @@ for (let i = 0; i < 1; i++) {
         // 有致宾客页面吗
         toGuestsHas: true,
         toGuestsPage: toGuestsPage,
-        invitationInfo: invitationInfo2
+        invitationInfo: invitationInfo
     });
 }
 

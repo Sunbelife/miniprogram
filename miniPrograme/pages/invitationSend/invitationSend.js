@@ -25,6 +25,8 @@ Page({
 
         this.loadTpl();
         this.save();
+        
+        // this.saveImgToFile('https://xcx.lyy99.com/uploads/tpl_1/cover.jpg');
     },
     // 保存图片
     saveImage(e) {
@@ -67,6 +69,13 @@ Page({
                     });
                 }
             }
+
+            // this.setData({
+            //     shareImg:this.data.tplInfo.imgSrc
+            // })
+
+
+
         } catch (e) {
             // Do something when catch error
         }
@@ -94,6 +103,7 @@ Page({
 
         console.log(this.data.tplInfo);
 
+
         api.tplSave({
             method: "POST",
             data: loginReq,
@@ -117,16 +127,53 @@ Page({
 
     },
     share: function () {
-        wx.showShareMenu({
-            withShareTicket: true,
-            success(e) {
-                // console.log(e);
-            },
-            fail(e) {
-                // console.log(e);
-            },
-            complete(e) {
-                // console.log(e);
+
+        let that = this;
+        wx.showLoading({
+            title: '正在生成',
+        });
+
+        const loginReq = {
+            sence: encodeURIComponent({
+                id: this.data.tplInfo.card_id
+            }),
+            page: "/pages/tplUserLook/tplUserLook"
+        };
+
+        console.log(loginReq);
+
+        api.userShareImgGet({
+            method: "POST",
+            data: loginReq,
+            success: (resLogin) => {
+                wx.hideLoading();
+                if (resLogin.data.data) {
+                    let pic_url = resLogin.data.data.pic_url;
+
+                    that.saveImgToFile(pic_url);
+                  
+
+                }
+            }
+        });
+
+
+    },
+    
+    saveImgToFile(pic_url){
+        wx.getImageInfo({
+            src: pic_url,
+            success(res) {
+                console.log(res);
+                wx.saveImageToPhotosAlbum({
+                    filePath:res.path,
+                    success(res) {
+                        util.toast("保存成功");
+                    },
+                    fail(res) {
+                        util.toast("保存失败");
+                    }
+                })
             }
         })
     },
