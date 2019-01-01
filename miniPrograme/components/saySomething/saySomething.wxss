@@ -9,6 +9,7 @@
     width: 750rpx;
     display: inline-block;
     /*min-height: auto;*/
+    /*min-height: auto;*/
 }
 
 .form-label{

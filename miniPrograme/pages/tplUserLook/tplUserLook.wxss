@@ -1,12 +1,27 @@
 .bottomFixed{
     position: fixed;
     /*height: 1000rpx;*/
-    bottom: 0;
     z-index: 3000;
     /*margin-bottom:600rpx;*/
     left: 0;
     width: 750rpx;
+    bottom: 0;
+
+
 }
+
+.animate{
+    bottom: -10vh;
+    transition: all .5s;
+}
+
+.animate.animated{
+    bottom: 0;
+    /*transform: scale(1);*/
+    /*opacity: 1;*/
+}
+
+
 
 .saySomething{
     box-sizing: border-box;
@@ -43,7 +58,7 @@
 }
 
 .blessing-wrap{
-    bottom: 150rpx;
+    /*bottom: 150rpx;*/
 
 }
 
@@ -61,7 +76,8 @@
     margin-left: 30rpx;
     margin-right: 30rpx;
     margin-top: 10rpx;
-    margin-bottom: 10rpx;
+    margin-bottom: 9rpx;
+    border-bottom: 1px solid #ddd;
 
     border-radius: 60rpx;
     color: white;
@@ -70,6 +86,12 @@
     font-size: 26rpx;
     padding-left:20rpx;
     padding-right:20rpx;
+
+
+}
+
+.blessing-text{
+    max-width: 620rpx;
 
     overflow:hidden;
     text-overflow:ellipsis;

@@ -27,25 +27,32 @@
             <!--</block>-->
             <!--<block wx:if="{{blessing.length  > 1}}">-->
             <block wx:for="{{blessing}}" wx:key="key">
-                <view class="blessing" wx:if="{{item.name && item.msg}}">{{item.name}}：{{item.msg}}</view>
-                <view class="blessing-space" ></view>
+                <view class="blessing" wx:if="{{item.name && item.msg}}">
+                    <view class="blessing-text">{{item.name}}：{{item.msg}}</view>
+                </view>
+                <view class="blessing-space"></view>
             </block>
             <!--</block>-->
         </view>
     </view>
     <view class="bottomFixed" style="z-index: 1000" wx:if="{{isShowBlessing}}">
-        <view class="saySomething" bindtap="showSaySomething" >
+        <view class="saySomething" bindtap="showSaySomething">
             请留下您的祝福...
         </view>
         <!--<div type="text" placeholder="说点什么" class="saySomething" bindtap="showSaySomething" readonly/>-->
     </view>
 
-    <view class="bottomFixed" wx:if="{{isBanquetInfoFill}}">
-        <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{card_id}}" open_id="{{open_id}}"></banquetInfoFill>
-    </view>
-    <view class="bottomFixed" wx:if="{{isSaySomething}}">
-        <saySomething bindhidePage="hideSaySomething" card_id="{{card_id}}"></saySomething>
-    </view>
+    <block wx:if="{{isBanquetInfoFill}}">
 
+        <view class="bottomFixed animate {{isBanquetInfoFillAnimate ? 'animated' : '' }}">
+            <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{card_id}}"
+                             open_id="{{open_id}}"></banquetInfoFill>
+        </view>
+    </block>
+    <block wx:if="{{isSaySomething}}">
+        <view class="bottomFixed animate {{isSaySomethingAnimate ? 'animated' : '' }}">
+            <saySomething bindhidePage="hideSaySomething" card_id="{{card_id}}"></saySomething>
+        </view>
+    </block>
 
 </view>

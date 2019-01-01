@@ -35,7 +35,7 @@ Page({
         let id = options.id;
 
         // TODO 删除
-        id = "d0c19e12a87b78c73b550e84fb935bb5";
+        // id = "d0c19e12a87b78c73b550e84fb935bb5";
 
 
         this.setData({
@@ -140,6 +140,7 @@ Page({
 
         // TODO 删除
         // this.showBanquetInfoFill();
+        // this.showSaySomething();
 
 
         if (util.isDev()) {
@@ -170,7 +171,9 @@ Page({
 
         if (isShowBlessing) {
             this.scrollInit();
-            this.scroll();
+            setTimeout(() => {
+                this.scroll();
+            }, 300)
         }
 
         this.setData({
@@ -246,7 +249,10 @@ Page({
                     blessingScrollTransition: this.data.blessingConfig.transition
                 });
 
-                this.scroll();
+                setTimeout(() => {
+                    this.scroll();
+                }, 20)
+
             } else {
                 this.setData({
                     blessingScrollDuration: 0,
@@ -254,8 +260,12 @@ Page({
                     blessingScrollTransition: 0,
                     blessingScrollH: 0
                 });
-                this.scroll();
+
+                setTimeout(() => {
+                    this.scroll();
+                }, 20)
             }
+
 
         }, this.data.blessingScrollDuration);
 
@@ -267,22 +277,39 @@ Page({
         this.setData({
             isBanquetInfoFill: true
         });
+
+        this.setData({
+            isBanquetInfoFillAnimate: true,
+        });
+
     },
     // 隐藏 填写宾客信息
     hideBanquetInfoFill() {
+
         this.setData({
-            isBanquetInfoFill: false
+            isBanquetInfoFillAnimate: false,
         });
+
         setTimeout(() => {
-            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideBanquetInfo();
-        }, 10)
+            this.setData({
+                isBanquetInfoFill: false
+            });
+
+
+            setTimeout(() => {
+                this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideBanquetInfo();
+            }, 10)
+        }, 300);
+
     },
     // 显示 说些什么
     showSaySomething() {
         this.setData({
             isSaySomething: true
         });
-
+        this.setData({
+            isSaySomethingAnimate: true,
+        });
         setTimeout(() => {
             this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideMap();
         }, 10)
@@ -293,12 +320,20 @@ Page({
         this.getBlessing();
 
         this.setData({
-            isSaySomething: false
+            isSaySomethingAnimate: false,
         });
 
         setTimeout(() => {
-            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").showMap();
-        }, 10)
+            this.setData({
+                isSaySomething: false
+            });
+
+            setTimeout(() => {
+                this.selectComponent("#tpl1") && this.selectComponent("#tpl1").showMap();
+            }, 10)
+        }, 300);
+
+
     },
     onHide() {
         // console.log("hide");
