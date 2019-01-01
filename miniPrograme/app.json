@@ -1,10 +1,11 @@
 {
   "pages":[
-    "pages/home/home",
-    "pages/tplDev/tplDev",
-    "pages/invitationEdit/invitationEdit",
-    "pages/guestReply/guestReply",
     "pages/tplUserLook/tplUserLook",
+    "pages/home/home",
+    "pages/invitationEdit/invitationEdit",
+    "pages/invitationInfo/invitationInfo",
+    "pages/tplDev/tplDev",
+    "pages/guestReply/guestReply",
     "pages/tplChoose/tplChoose",
     "pages/a_auth/a_auth",
     "pages/invitationSend/invitationSend",
@@ -13,7 +14,6 @@
     "pages/nav/nav",
     "pages/banquetInfoFill/banquetInfoFill",
     "pages/startMake/startMake",
-    "pages/invitationInfo/invitationInfo",
     "pages/tplPreview/tplPreview",
 
     "pages/index/index",
@@ -26,5 +26,10 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "原野映像",
     "navigationBarTextStyle":"black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于婚礼地址"
+    }
   }
 }

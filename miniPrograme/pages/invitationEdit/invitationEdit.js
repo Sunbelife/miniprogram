@@ -84,9 +84,9 @@ Page({
             // 显示排序
             // this.showSort();
             // 显示新增页面
-            // this.showPageAdd();
+            this.showPageAdd();
             // 设置页面设置
-            this.showPageSet();
+            // this.showPageSet();
             // 设置页面排序
             // this.showPageSort();
             // 显示图片裁剪
@@ -106,7 +106,6 @@ Page({
             }
 
         }
-
 
 
     },
@@ -484,6 +483,9 @@ Page({
         this.setData({
             isShowPageAdd: true
         });
+        this.setData({
+            isShowPageAddAnimate: true,
+        });
 
         this.selectComponent("#pageAdd").show();
 
@@ -512,11 +514,22 @@ Page({
     },
     // 隐藏 添加新页
     hidePageAdd() {
+
         this.setData({
-            isShowPageAdd: false
+            isShowPageAddAnimate: false,
         });
 
-        this.showMap();
+        setTimeout(() => {
+            this.setData({
+                isShowPageAdd: false
+            });
+
+            this.showMap();
+
+
+        }, 300);
+
+
     },
     // 显示 排序
     showPageSort() {
@@ -524,27 +537,59 @@ Page({
             isShowPageSort: true
         });
         this.selectComponent("#pageSort").init();
+        this.setData({
+            isShowPageSortAnimate: true,
+        });
+
+
     },
     // 隐藏 排序
     hidePageSort() {
+
+
         this.setData({
-            isShowPageSort: false
+            isShowPageSortAnimate: false,
         });
+
+        setTimeout(() => {
+            this.setData({
+                isShowPageSort: false
+            });
+        }, 300);
+
+
     },
     // 显示 页面设置
     showPageSet() {
         this.hideMap();
+
+
         this.setData({
             isShowPageSet: true
         });
-
+        this.setData({
+            isShowPageSetAnimate: false,
+        });
+        setTimeout(() => {
+            this.setData({
+                isShowPageSetAnimate: true,
+            });
+        }, 30);
 
     },
     // 隐藏 页面设置
     hidePageSet() {
         this.setData({
-            isShowPageSet: false
+            isShowPageSetAnimate: false,
         });
+
+        setTimeout(() => {
+            this.setData({
+                isShowPageSet: false
+            });
+        }, 300);
+
+
         this.selectComponent("#tpl1").changMusic();
 
         this.showMap();
@@ -553,22 +598,31 @@ Page({
     // 显示 编辑页面
     showInvitationInfo() {
         this.hideMap();
-        this.setData({
-            isShowInvitationInfo: true
-        });
-
-
         // 保存到模板里面
         this.saveTplInfo();
 
+        this.setData({
+            isShowInvitationInfo: true,
+        });
+
+        this.setData({
+            isShowInvitationInfoAnimate: true,
+        });
 
     },
 // 隐藏 编辑页面
     hideInvitationInfo() {
         this.showMap();
         this.setData({
-            isShowInvitationInfo: false
+            isShowInvitationInfoAnimate: false,
         });
+        setTimeout(() => {
+            this.setData({
+                isShowInvitationInfo: false
+            });
+        }, 300);
+
+
     },
 // 显示 音乐选择
     showMusicChoose() {
@@ -576,19 +630,30 @@ Page({
         this.selectComponent("#tpl1").playStop();
 
         this.setData({
-            isShowMusicChoose: true
+            isShowMusicChoose: true,
+        });
+        this.setData({
+            isShowMusicChooseAnimate: true,
         });
 
     },
 // 隐藏 音乐选择
     hideMusicChoose() {
         this.setData({
-            isShowMusicChoose: false
+            isShowMusicChooseAnimate: false,
         });
+        setTimeout(() => {
+            this.setData({
+                isShowMusicChoose: false
+            });
+        }, 300);
+
 
     },
 // 显示 图片选择
     showImgCut(e) {
+
+
         this.hideMap();
         const index = util.data(e, "index");
 
@@ -618,14 +683,28 @@ Page({
             });
         }
 
+
+        this.setData({
+            isShowImgCutAnimate: true,
+        });
+
+
     },
     // 隐藏 图片选择
     hideImgCut() {
+
         this.setData({
-            isShowImgCut: false
+            isShowImgCutAnimate: false,
         });
 
-        this.showMap();
+        setTimeout(() => {
+            this.setData({
+                isShowImgCut: false
+            });
+            this.showMap();
+        }, 300);
+
+
     },
     // 显示 音乐选择
     showWordChange(e) {
@@ -639,12 +718,25 @@ Page({
             isShowWordChange: true
         });
 
+
+        this.setData({
+            isShowWordChangeAnimate: true,
+        });
+
+
     },
     // 隐藏 音乐选择
     hideWordChange() {
         this.setData({
-            isShowWordChange: false
+            isShowWordChangeAnimate: false,
         });
+
+        setTimeout(() => {
+            this.setData({
+                isShowWordChange: false
+            });
+        }, 300);
+
     },
     // 在地图页操作的时候。需要隐藏地图
     // 隐藏 地图

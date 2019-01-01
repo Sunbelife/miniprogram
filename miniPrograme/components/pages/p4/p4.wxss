@@ -12,8 +12,8 @@
     right: 54rpx;
 
     opacity: 0;
+    transform: rotate(5deg);
     transition: all .3s ease-in;
-    transform: rotate(30deg);
     transform-origin: left bottom;
 }
 

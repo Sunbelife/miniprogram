@@ -19,6 +19,7 @@ Component({
         longitude: 0,
         nameLady: "",
         nameGentleman: "",
+        ready: false,
         markers: [{
             // id: 1,
             // latitude: 23.099994,
@@ -39,6 +40,13 @@ Component({
     ready() {
 
         this.init();
+        setTimeout(() => {
+            // 页面 地图 表单影响加载。先这样处理
+            this.setData({
+                ready: true
+            });
+        }, 300);
+
         this.mock();
 
     },
@@ -54,13 +62,21 @@ Component({
             }
         },
         init() {
+
+
             this.mapCtx = wx.createMapContext('myMap');
             const that = this;
             try {
                 let tplInfo = wx.getStorageSync('tplInfo');
                 var invitationInfo = tplInfo.invitationInfo;
 
-
+                // wx.getLocation({
+                //     type: 'wgs84',
+                //     success(res) {
+                //         console.log(res);
+                //         that.setLocation(res);
+                //     }
+                // })
                 // console.log(invitationInfo.address);
                 if (invitationInfo) {
                     this.setData({
@@ -79,6 +95,7 @@ Component({
                     wx.getLocation({
                         type: 'wgs84',
                         success(res) {
+                            console.log(res);
                             that.setLocation(res);
                         }
                     })
@@ -193,8 +210,13 @@ Component({
             const that = this;
             wx.chooseLocation({
                 success(e) {
-                    // console.log("success", e);
+                    console.log("success", e);
                     that.setLocation(e);
+
+                    // 选择地址获取地址，设置值
+                    that.setData({
+                        address: e.address + e.name
+                    });
                 },
                 error(e) {
                     util.toast("选择地址出错");

@@ -25,7 +25,10 @@
 
             <view class="page-item"
             >
-                <view class="iconfont icon-xiala1 icon-bottom play"></view>
+                <!-- 只在第一页才有提示 -->
+                <view class="iconfont icon-xiala1 icon-bottom play"
+                      wx:if="{{item.id === 1}}"
+                ></view>
 
 
                 <pMake id="p{{index}}" wx:if="{{item.id === 'make'}}"></pMake>

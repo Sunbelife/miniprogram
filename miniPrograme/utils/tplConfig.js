@@ -87,10 +87,10 @@ for (let i = 0; i < 1; i++) {
     let index = i + 1;
 
     // TODO  70个模板
-    // const pages = pagesArr.slice(7 * i, 7 * (i + 1));
+    const pages = pagesArr.slice(7 * i, 7 * (i + 1));
     // 把剩下的 9个模板 先替换成第一个模板的页面
-    let pages = [];
-    util.extend(true, pages, pagesArr.slice(0, 7));
+    // let pages = [];
+    // util.extend(true, pages, pagesArr.slice(0, 7));
 
 
     // // console.log("GenPages", pages);

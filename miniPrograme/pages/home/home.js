@@ -103,6 +103,7 @@ Page({
     getInitData: function (e) {
         const userOpenid = wx.getStorageSync('userOpenid');
 
+        const that = this;
         api.hadEditTpl({
             // method: "POST",
             data: {
@@ -133,6 +134,22 @@ Page({
                             tpl: tpl
                         });
                     }
+
+                    let tpl = this.data.tpl;
+                    console.log(tpl);
+                    tpl.forEach(function (v, k) {
+                        if (!v.time) {
+                            v.time = util.dateFormat(new Date(), 'yyyy-MM-dd hh:mm');
+                        }
+                        console.log(v);
+
+                        let date = util.toDate(v.time, 'yyyy-MM-dd hh:ii');
+                        v.showTime = util.dateFormat(date, 'yyyy-MM-dd hh:mm');
+                    });
+
+                    that.setData({
+                        tpl: tpl
+                    });
 
                     wx.hideLoading();
                     // console.log("模板数据", this.data.tpl);

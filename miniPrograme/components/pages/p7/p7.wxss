@@ -13,7 +13,7 @@
 
     opacity: 0;
     transition: all .3s ease-in;
-    transform: scale(.8);
+    transform: scale(.95);
 }
 
 

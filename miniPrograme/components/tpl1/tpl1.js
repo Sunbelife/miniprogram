@@ -41,7 +41,7 @@ Component({
 
             // TODO 删除
             setTimeout(() => {
-                this.movePage(6);
+                this.movePage(1);
             }, 600);
             if (util.isDev() || getApp().globalData.isMock) {
                 // 开发指定到页面 0 开始的
@@ -127,6 +127,7 @@ Component({
         },
         movePage(page) {
 
+            console.trace();
             // 隐藏
             util.each(this.properties.pages, (k, v) => {
                 // // console.log(this.properties.pages, k);
@@ -147,11 +148,13 @@ Component({
             if (curOb.editInfo) {
                 this.triggerEvent('pageMove', {
                     editInfo: curOb.editInfo(),
+                    pageInfo:this.properties.pages[page],
                     index: page
                 });
             } else {
                 this.triggerEvent('pageMove', {
                     editInfo: "",
+                    pageInfo:this.properties.pages[page],
                     index: page
                 });
             }

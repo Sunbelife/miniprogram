@@ -24,7 +24,7 @@ Component({
 
        let date =  util.toDate(
             `${this.properties.invitationInfo.date} ${this.properties.invitationInfo.time}`,
-            'yyyy-MM-dd hh:mm')
+            'yyyy-MM-dd hh:ii')
         this.setData({
            "invitationInfo.dateFormat": util.dateFormat(date,'yyyy年MM月dd日 hh时mm分'),
         });

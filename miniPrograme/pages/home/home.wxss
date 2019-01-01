@@ -61,7 +61,7 @@
     height: 200rpx;
 }
 .topContent{
-    position: fixed;
+    position: absolute;
     background-color: #f83146;
     color: white;
     top: 0;
@@ -118,4 +118,12 @@
 
 .makeBtn:after {
     display: none;
+}
+
+.item-time{
+    height: 35rpx;
+    line-height: 35rpx;
+    text-align: center;
+    font-size: 24rpx;
+    border-bottom: 1rpx solid #ddd;
 }

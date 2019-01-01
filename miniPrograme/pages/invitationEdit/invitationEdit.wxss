@@ -75,3 +75,34 @@
 
 }
 
+
+.full-page{
+    bottom: -10vh;
+
+    transition: all .5s;
+    /*opacity: .5;*/
+    /*transform: scale(.75);*/
+}
+.full-page.animated{
+    bottom: 0;
+    /*transform: scale(1);*/
+    /*opacity: 1;*/
+}
+
+.page-sort-wrap{
+    position:fixed;
+    height:500rpx;
+    z-index: 20;
+    bottom: -500rpx;
+    /*background: white;*/
+    width: 100vw;
+
+    transition: all .3s;
+    /*opacity: .5;*/
+    /*transform: scale(.75);*/
+}
+.page-sort-wrap.animated{
+    bottom: 0;
+    /*transform: scale(1);*/
+    /*opacity: 1;*/
+}

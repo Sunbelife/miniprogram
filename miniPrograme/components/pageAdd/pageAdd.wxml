@@ -5,7 +5,7 @@
       <view>图片列表 滚动加载</view>
       -->
     <scroll-view scroll-y scroll-top="{{scrollTopPage}}"
-                 style="{{'height:100vh'}}"
+                 style="{{'height:90vh'}}"
                  bindscrolltolower="loadMore"
                  bindscroll="pageScroll">
         <view class="topInfo">

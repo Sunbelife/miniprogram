@@ -79,16 +79,19 @@
                 </view>
             </view>
 
-            <map
-                    id="myMap"
-                    style="width: 100%; height: 200px;"
-                    bindtap="clickMap"
-                    latitude="{{latitude}}"
-                    longitude="{{longitude}}"
-                    markers="{{markers}}"
-                    covers="{{covers}}"
-                    show-location
-            ></map>
+            <block  wx:if="{{ready}}">
+                <map
+                        id="myMap"
+                        style="width: 100%; height: 200px;"
+                        bindtap="clickMap"
+                        latitude="{{latitude}}"
+                        longitude="{{longitude}}"
+                        markers="{{markers}}"
+                        covers="{{covers}}"
+                        show-location
+                ></map>
+            </block>
+
             <!--<view class="btn-area">-->
             <!--<button bindtap="getCenterLocation" class="page-body-button" type="primary">获取位置</button>-->
             <!--<button bindtap="moveToLocation" class="page-body-button" type="primary">移动位置</button>-->

@@ -17,8 +17,8 @@ App({
         isDev: 0,
 
         // TODO  改回去
-        // isMock: 1,
-        isMock: 0,
+        isMock: 1,
+        // isMock: 0,
         userInfo: null
     },
     systemInfo: null,

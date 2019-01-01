@@ -81,7 +81,7 @@ Component({
                 util.tplALL.addOne(tplInfo);
 
                 wx.showToast({
-                    title: '已为您备份一份',
+                    title: '已为您复制本请帖，请在小程序首页查看。',
                     icon: 'none',
                     duration: 2000
                 });

@@ -13,9 +13,9 @@
     height: 884rpx;
     position: absolute;
     top: 56rpx;
-    left: 267rpx;
+    left: 87rpx;
 
-    transition: all .3s;
+    transition: all .3s ease-in;
     opacity: 0;
 
 }

@@ -20,70 +20,86 @@
     </block>
 
     <!-- 添加新页面 -->
-    <view class="full-page" wx:if="{{isShowPageAdd}}">
-        <pageAdd
-                bindhidePage="hidePageAdd"
-                bindchoosePage="choosePage"
-                bindremovePage="removePage"
-                id="pageAdd"></pageAdd>
-    </view>
+    <ng-container wx:if="{{isShowPageAdd}}">
+        <view class="full-page {{isShowPageAddAnimate ? 'animated' : '' }}">
+            <pageAdd
+                    bindhidePage="hidePageAdd"
+                    bindchoosePage="choosePage"
+                    bindremovePage="removePage"
+                    id="pageAdd"></pageAdd>
+        </view>
+    </ng-container>
+
     <!-- 页面设置 -->
-    <view class="full-page" wx:if="{{isShowPageSet}}">
-        <pageSet id="pageSet"
-                 bgMusic="{{bgMusic}}"
-                 barrageHas="{{barrageHas}}"
-                 toGuestsHas="{{toGuestsHas}}"
-                 bindhidePage="hidePageSet"
-                 bindshowInvitationInfo="showInvitationInfo"
-                 bindbarrageHasChange="barrageHasChange"
-                 bindtoGuestsHasChange="toGuestsHasChange"
-                 bindshowMusicChoose="showMusicChoose"
-        ></pageSet>
-    </view>
+    <ng-container wx:if="{{isShowPageSet}}">
+        <view class="full-page {{isShowPageSetAnimate ? 'animated' : '' }}">
+            <pageSet id="pageSet"
+                     bgMusic="{{bgMusic}}"
+                     barrageHas="{{barrageHas}}"
+                     toGuestsHas="{{toGuestsHas}}"
+                     bindhidePage="hidePageSet"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindbarrageHasChange="barrageHasChange"
+                     bindtoGuestsHasChange="toGuestsHasChange"
+                     bindshowMusicChoose="showMusicChoose"
+            ></pageSet>
+        </view>
+    </ng-container>
     <!-- 页面排序 -->
-    <view wx:if="{{isShowPageSort}}">
-        <pageSort id="pageSort" pages="{{pages}}"
-                  bindhidePage="hidePageSort"
-                  bindsortFinish="sortFinish"
-                  bindsortPageClick="sortPageClick"
-        ></pageSort>
-    </view>
+    <!-- wx:if="{{isShowPageSort}}"  -->
+    <ng-container wx:if="{{isShowPageSort}}">
+        <view class="page-sort-wrap {{isShowPageSortAnimate ? 'animated' : '' }}">
+            <pageSort id="pageSort" pages="{{pages}}"
+                      bindhidePage="hidePageSort"
+                      bindsortFinish="sortFinish"
+                      bindsortPageClick="sortPageClick"
+            ></pageSort>
+        </view>
+    </ng-container>
 
     <!-- 请帖信息 -->
-    <view class="full-page full-page-over" wx:if="{{isShowInvitationInfo}}">
-        <invitationInfo id="invitationInfo"
-                        bindsubmit="submitInvitationInfo"
-                        bindhidePage="hideInvitationInfo"></invitationInfo>
-    </view>
+    <ng-container wx:if="{{isShowInvitationInfo}}">
+        <view class="full-page full-page-over {{isShowInvitationInfoAnimate ? 'animated' : '' }}">
+            <invitationInfo id="invitationInfo"
+                            bindsubmit="submitInvitationInfo"
+                            bindhidePage="hideInvitationInfo"></invitationInfo>
+        </view>
+    </ng-container>
 
     <!-- 音乐选择 -->
-    <view class="full-page full-page-over" wx:if="{{isShowMusicChoose}}">
-        <musicChoose id="musicChoose"
-                     bgMusic="{{bgMusic}}"
-                     bindhidePage="hideMusicChoose"
-                     bindsetMusic="setMusic"
-        ></musicChoose>
-    </view>
+    <ng-container wx:if="{{isShowMusicChoose}}">
+        <view class="full-page full-page-over {{isShowMusicChooseAnimate ? 'animated' : '' }}">
+            <musicChoose id="musicChoose"
+                         bgMusic="{{bgMusic}}"
+                         bindhidePage="hideMusicChoose"
+                         bindsetMusic="setMusic"
+            ></musicChoose>
+        </view>
+    </ng-container>
 
     <!-- 图片裁剪 -->
-    <view class="full-page full-page-over" wx:if="{{isShowImgCut}}">
-        <imgCut id="imgCut"
-                cutImageInfo="{{curCutImageInfo}}"
-                curShowPage="{{curShowPage}}"
-                bindhidePage="hideImgCut"
-                bindsaveImage="saveImage"
-        ></imgCut>
-    </view>
+    <ng-container wx:if="{{isShowImgCut}}">
+        <view class="full-page full-page-over {{isShowImgCutAnimate ? 'animated' : '' }}">
+            <imgCut id="imgCut"
+                    cutImageInfo="{{curCutImageInfo}}"
+                    curShowPage="{{curShowPage}}"
+                    bindhidePage="hideImgCut"
+                    bindsaveImage="saveImage"
+            ></imgCut>
+        </view>
+    </ng-container>
 
     <!-- 文字编辑 -->
-    <view class="" wx:if="{{isShowWordChange}}">
-        <wordChange id="wordChange"
-                    curWordChangeInfo="{{curWordChangeInfo}}"
-                    curShowPage="{{curShowPage}}"
-                    bindhidePage="hideWordChange"
-                    bindsaveWord="saveWord"
-        ></wordChange>
-    </view>
+    <ng-container wx:if="{{isShowWordChange}}">
+        <view class="{{isShowWordChangeAnimate ? 'animated' : '' }}">
+            <wordChange id="wordChange"
+                        curWordChangeInfo="{{curWordChangeInfo}}"
+                        curShowPage="{{curShowPage}}"
+                        bindhidePage="hideWordChange"
+                        bindsaveWord="saveWord"
+            ></wordChange>
+        </view>
+    </ng-container>
 
 
     <view class="handle">

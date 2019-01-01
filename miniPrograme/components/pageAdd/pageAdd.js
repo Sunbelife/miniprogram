@@ -17,18 +17,18 @@ Component({
                 name: "单图",
                 number: 1
             },
-            {
-                name: "双图",
-                number: 2
-            },
-            {
-                name: "多图",
-                number: 3
-            },
-            {
-                name: "纯文字",
-                number: 4
-            }
+            // {
+            //     name: "双图",
+            //     number: 2
+            // },
+            // {
+            //     name: "多图",
+            //     number: 3
+            // },
+            // {
+            //     name: "纯文字",
+            //     number: 4
+            // }
         ],
         tpl: tplConfig.pagesArr.slice(1,6),
         // 需要顶部固定吗？

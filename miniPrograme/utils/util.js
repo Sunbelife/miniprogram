@@ -66,7 +66,10 @@ function objToArr(obj) {
 // 通过字面量方式实现的函数each
 function each(object, callback) {
     // console.log(object);
-    // console.trace();
+
+    if (!object) {
+        return;
+    }
     var type = (function () {
         switch (object.constructor) {
             case Object:
@@ -107,7 +110,7 @@ const rpx2pxStr = rpx => {
     return rpx2px(rpx) + "px";
 };
 
-function genImg(img,editInfo) {
+function genImg(img, editInfo) {
     let imgRet = {
         width: rpx2px(img.width),
         height: rpx2px(img.height),
@@ -116,20 +119,20 @@ function genImg(img,editInfo) {
         index: editInfo.image.length,
     };
 
-    if(img.top){
+    if (img.top) {
         imgRet.top = rpx2pxStr(img.height / 2 + img.top - 45 / 2);
     }
-    if(img.bottom){
+    if (img.bottom) {
         imgRet.bottom = rpx2pxStr(img.height / 2 + img.bottom - 45 / 2);
     }
-    if(img.left){
+    if (img.left) {
         imgRet.left = rpx2pxStr(img.width / 2 + img.left - 45 / 2);
     }
-    if(img.right){
+    if (img.right) {
         imgRet.right = rpx2pxStr(img.width / 2 + img.right - 45);
     }
 
-   return imgRet;
+    return imgRet;
 }
 
 function getCurDate() {
@@ -598,6 +601,7 @@ let tplALL = {
             if (tplInfo_all) {
 
                 let tplInfo_allObj = arrToObj(tplInfo_all, 'storageId');
+                one.time = dateFormat(new Date(),'yyyy-MM-dd hh:mm');
 
                 tplInfo_allObj[one.storageId] = one;
 
@@ -620,6 +624,7 @@ let tplALL = {
             }
             // 拷贝并且重新设置ID
             one.storageId = 'storageId_' + new Date().getTime() + Math.random();
+            one.time = dateFormat(new Date(),'yyyy-MM-dd hh:mm');
             tplInfo_all.push(one);
             wx.setStorageSync('tplInfo_all', tplInfo_all);
             // console.log("模板修改:新增", tplInfo_all);

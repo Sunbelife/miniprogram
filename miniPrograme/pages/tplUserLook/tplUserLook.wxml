@@ -3,9 +3,10 @@
     用户查看
     -->
 
-    <block wx:if="isReady">
+    <block wx:if="{{isReady}}">
         <tpl1
                 showBanquetInfoBtn="{{true}}"
+                bindpageMove="pageMove"
                 needMake="{{true}}"
                 toGuestsHas="{{tplInfo.toGuestsHas}}"
                 id="tpl1"
@@ -26,14 +27,15 @@
             <!--</block>-->
             <!--<block wx:if="{{blessing.length  > 1}}">-->
             <block wx:for="{{blessing}}" wx:key="key">
-                <view class="blessing">{{item.name}}：{{item.msg}}</view>
+                <view class="blessing" wx:if="{{item.name && item.msg}}">{{item.name}}：{{item.msg}}</view>
+                <view class="blessing-space" ></view>
             </block>
             <!--</block>-->
         </view>
     </view>
     <view class="bottomFixed" style="z-index: 1000" wx:if="{{isShowBlessing}}">
         <view class="saySomething" bindtap="showSaySomething" >
-            说点什么
+            请留下您的祝福...
         </view>
         <!--<div type="text" placeholder="说点什么" class="saySomething" bindtap="showSaySomething" readonly/>-->
     </view>

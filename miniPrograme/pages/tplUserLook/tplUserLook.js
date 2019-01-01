@@ -35,7 +35,7 @@ Page({
         let id = options.id;
 
         // TODO 删除
-        // id = "2b84123fdab0ad66aaa25a2af264d518";
+        id = "d0c19e12a87b78c73b550e84fb935bb5";
 
 
         this.setData({
@@ -46,6 +46,7 @@ Page({
         this.getTplInfo();
 
     },
+    goPage: util.goPage,
     getTplInfo: function () {
         wx.showLoading({
             title: '加载中...'
@@ -59,8 +60,8 @@ Page({
             data: loginReq,
             success: (resLogin) => {
                 // console.log(resLogin);
-
-                if(resLogin.data.code === 200){
+                // resLogin.data.code = 500
+                if (resLogin.data.code === 200) {
                     this.setData({
                         open_id: resLogin.data.data.open_id,
                         card_id: resLogin.data.data.card_id
@@ -70,12 +71,19 @@ Page({
 
                     this.init(JSON.parse(resLogin.data.data.changed_log));
                     wx.hideLoading();
-                }else{
+                } else {
                     wx.showToast({
                         title: '请帖已被删除',
                         icon: 'none',
                         duration: 2000
-                    })
+                    });
+
+                    setTimeout(() => {
+
+                        wx.reLaunch({
+                            url: '../home/home'
+                        })
+                    }, 2000)
                 }
 
             }
@@ -110,7 +118,7 @@ Page({
         // this.data.tplInfo.barrageHas = false;
 
         console.log(this.data.tplInfo);
-        if(this.data.tplInfo.barrageHas){
+        if (this.data.tplInfo.barrageHas) {
 
             this.setData({
                 isShowBlessing: true
@@ -121,7 +129,7 @@ Page({
 
         // 最后提交，pages 已经合一起了
         // if (this.data.tplInfo.toGuestsHas) {
-            // this.data.tplInfo.pages.push(this.data.tplInfo.toGuestsPage);
+        // this.data.tplInfo.pages.push(this.data.tplInfo.toGuestsPage);
         // }
 
 
@@ -143,6 +151,37 @@ Page({
 
         this.setData({
             isReady: true
+        });
+    },
+
+    pageMove(e) {
+        console.log(e.detail);
+        let index = e.detail.index;
+        let pageInfo = e.detail.pageInfo;
+
+        let isShowBlessing = false;
+        // 首页 ，致宾客页面，制作页面没有 弹幕
+        if (index === 0 || pageInfo.id === "make" || pageInfo.type === "toGuests") {
+
+        } else {
+            isShowBlessing = true;
+
+        }
+
+        if (isShowBlessing) {
+            this.scrollInit();
+            this.scroll();
+        }
+
+        this.setData({
+            isShowBlessing: isShowBlessing
+        });
+    },
+    scrollInit() {
+        // 重新滚动
+        this.setData({
+            blessingScrollIndex: 0,
+            blessingScrollH: 0
         });
     },
 
@@ -168,13 +207,12 @@ Page({
                     blessing.push(blessingItem);
 
                 });
-
+                console.log(blessing);
                 this.setData({
                     blessing: blessing
                 });
 
                 this.scrollItemFill();
-                this.scroll();
             }
         });
     },
@@ -200,7 +238,7 @@ Page({
             // // console.log(blessingScrollIndex, blessing.length - 1);
             if (blessingScrollIndex < blessing.length - 1) {
                 blessingScrollIndex++;
-                blessingScrollH = blessingScrollH - util.rpx2px(60);
+                blessingScrollH = blessingScrollH - util.rpx2px(80);
                 this.setData({
                     blessingScrollH: blessingScrollH,
                     blessingScrollDuration: this.data.blessingConfig.duration,
@@ -262,15 +300,15 @@ Page({
             this.selectComponent("#tpl1") && this.selectComponent("#tpl1").showMap();
         }, 10)
     },
-    onHide(){
+    onHide() {
         // console.log("hide");
-        this.selectComponent("#tpl1").playStop();
+        this.selectComponent("#tpl1") && this.selectComponent("#tpl1").playStop();
 
     },
-    onUnload(){
+    onUnload() {
         // 返回
         // console.log("onUnload");
-        this.selectComponent("#tpl1").playStop();
+        this.selectComponent("#tpl1") && this.selectComponent("#tpl1").playStop();
 
     },
 

@@ -10,7 +10,7 @@
 .pageSort{
     box-sizing: border-box;
     padding: 30rpx;
-    position: fixed;
+    position: absolute;
     width: 100%;
     bottom: 0;
     background-color: white;
@@ -20,10 +20,14 @@
 }
 .pageSort-title{
     position: relative;
+    padding: 0 0 30rpx 0;
+    box-sizing: border-box;
+    width: 100%;
+
 }
 
 .pageSort-title-close{
-    position: absolute;
+    float: right;
     top: 0;
     right: 0;
     color: #f83146;

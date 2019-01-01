@@ -43,6 +43,7 @@
                     data-handle="edit"
                   class="tpl">
                 <image src="{{item.imgSrc}}"></image>
+                <view class="item-time">{{item.showTime}}</view>
             </view>
         </view>
 
