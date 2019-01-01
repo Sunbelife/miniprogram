@@ -20,7 +20,7 @@
     </block>
 
     <!-- 添加新页面 -->
-    <ng-container wx:if="{{isShowPageAdd}}">
+    <view hidden="{{!isShowPageAdd}}">
         <view class="full-page {{isShowPageAddAnimate ? 'animated' : '' }}">
             <pageAdd
                     bindhidePage="hidePageAdd"
@@ -28,10 +28,10 @@
                     bindremovePage="removePage"
                     id="pageAdd"></pageAdd>
         </view>
-    </ng-container>
+    </view>
 
     <!-- 页面设置 -->
-    <ng-container wx:if="{{isShowPageSet}}">
+    <view hidden="{{!isShowPageSet}}">
         <view class="full-page {{isShowPageSetAnimate ? 'animated' : '' }}">
             <pageSet id="pageSet"
                      bgMusic="{{bgMusic}}"
@@ -44,10 +44,10 @@
                      bindshowMusicChoose="showMusicChoose"
             ></pageSet>
         </view>
-    </ng-container>
+    </view>
     <!-- 页面排序 -->
     <!-- wx:if="{{isShowPageSort}}"  -->
-    <ng-container wx:if="{{isShowPageSort}}">
+    <view hidden="{{!isShowPageSort}}">
         <view class="page-sort-wrap {{isShowPageSortAnimate ? 'animated' : '' }}">
             <pageSort id="pageSort" pages="{{pages}}"
                       bindhidePage="hidePageSort"
@@ -55,19 +55,19 @@
                       bindsortPageClick="sortPageClick"
             ></pageSort>
         </view>
-    </ng-container>
+    </view>
 
     <!-- 请帖信息 -->
-    <ng-container wx:if="{{isShowInvitationInfo}}">
+    <view hidden="{{!isShowInvitationInfo}}">
         <view class="full-page full-page-over {{isShowInvitationInfoAnimate ? 'animated' : '' }}">
             <invitationInfo id="invitationInfo"
                             bindsubmit="submitInvitationInfo"
                             bindhidePage="hideInvitationInfo"></invitationInfo>
         </view>
-    </ng-container>
+    </view>
 
     <!-- 音乐选择 -->
-    <ng-container wx:if="{{isShowMusicChoose}}">
+    <view hidden="{{!isShowMusicChoose}}">
         <view class="full-page full-page-over {{isShowMusicChooseAnimate ? 'animated' : '' }}">
             <musicChoose id="musicChoose"
                          bgMusic="{{bgMusic}}"
@@ -75,10 +75,10 @@
                          bindsetMusic="setMusic"
             ></musicChoose>
         </view>
-    </ng-container>
+    </view>
 
     <!-- 图片裁剪 -->
-    <ng-container wx:if="{{isShowImgCut}}">
+    <view hidden="{{!isShowImgCut}}">
         <view class="full-page full-page-over {{isShowImgCutAnimate ? 'animated' : '' }}">
             <imgCut id="imgCut"
                     cutImageInfo="{{curCutImageInfo}}"
@@ -87,10 +87,10 @@
                     bindsaveImage="saveImage"
             ></imgCut>
         </view>
-    </ng-container>
+    </view>
 
     <!-- 文字编辑 -->
-    <ng-container wx:if="{{isShowWordChange}}">
+    <view hidden="{{!isShowWordChange}}">
         <view class="{{isShowWordChangeAnimate ? 'animated' : '' }}">
             <wordChange id="wordChange"
                         curWordChangeInfo="{{curWordChangeInfo}}"
@@ -99,7 +99,7 @@
                         bindsaveWord="saveWord"
             ></wordChange>
         </view>
-    </ng-container>
+    </view>
 
 
     <view class="handle">

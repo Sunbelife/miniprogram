@@ -181,6 +181,7 @@ Page({
         this.setData({
             isShowImgCut: true
         });
+        this.selectComponent("#imgCut") && this.selectComponent("#imgCut").init();
 
         return;
         const self = this;

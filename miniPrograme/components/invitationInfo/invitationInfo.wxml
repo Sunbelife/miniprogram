@@ -44,8 +44,7 @@
                 <view class="form-input">
                     <picker mode="date" value="{{date}}" start="{{dateStart}}"
                             bindchange="bindDateChange">
-                        <view class="picker">
-                            {{date}}
+                        <view class="picker">{{date}}
                         </view>
                     </picker>
                 </view>
@@ -57,8 +56,7 @@
                 </view>
                 <view class="form-input">
                     <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
-                        <view class="picker">
-                            {{time}}
+                        <view class="picker">{{time}}
                         </view>
                     </picker>
                 </view>
@@ -79,7 +77,7 @@
                 </view>
             </view>
 
-            <block  wx:if="{{ready}}">
+            <block  wx:if="{{ready && isMapShow}}">
                 <map
                         id="myMap"
                         style="width: 100%; height: 200px;"

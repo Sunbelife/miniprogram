@@ -37,6 +37,11 @@
     margin-top:20rpx;
     width: 200rpx;
     box-sizing: border-box;
+    height: 550rpx;
+
+}
+
+.pageSort-item-wrap-space{
     height: 350rpx;
 
 }

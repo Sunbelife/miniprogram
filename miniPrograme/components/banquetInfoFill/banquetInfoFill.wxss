@@ -49,8 +49,8 @@
     display: inline-block;
     width: 100rpx;
     text-align: center;
-    line-height:1.4rem;
-
+    height: 50rpx;
+    line-height: 40rpx;
 }
 
 .confirmBtn{

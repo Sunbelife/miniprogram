@@ -608,16 +608,21 @@ Page({
         });
 
     },
-// 隐藏 编辑页面
+    // 隐藏 编辑页面
     hideInvitationInfo() {
-        this.showMap();
         this.setData({
             isShowInvitationInfoAnimate: false,
         });
+        // 先隐藏地图
+        this.selectComponent("#invitationInfo").mapHide();
+
+
         setTimeout(() => {
             this.setData({
                 isShowInvitationInfo: false
             });
+            this.showMap();
+            this.selectComponent("#invitationInfo").mapShow();
         }, 300);
 
 
@@ -682,6 +687,7 @@ Page({
         }
 
 
+        this.selectComponent("#imgCut") && this.selectComponent("#imgCut").init();
         this.setData({
             isShowImgCutAnimate: true,
         });

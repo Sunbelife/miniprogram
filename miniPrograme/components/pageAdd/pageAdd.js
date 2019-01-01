@@ -35,15 +35,21 @@ Component({
         scrollTopPage: 0,
         isNeedFixed: false,
         isMove: false,
+        ready: false,
         changeTime: 0,
         titleHeight: 90,
         // changeTime: 300,
         // px
         tabOffsetTop: 90 + 90
     },
-    onLoad(){
+    ready(){
 
-
+        setTimeout(() => {
+            // 页面 地图 表单影响加载。先这样处理
+            this.setData({
+                ready: true
+            });
+        }, 300);
     },
     methods: {
         chooseType: function (e) {

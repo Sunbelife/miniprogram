@@ -33,7 +33,7 @@
         </view>
         <view class="topContentSpace"></view>
 
-        <view>
+        <view class="tplWrap">
             <view
                     wx:for="{{tpl}}"
                     wx:key="key"
@@ -50,6 +50,7 @@
                     <view class="del-btn iconfont icon-sub"></view>
                 </view>
             </view>
+            <view class="clearfix"></view>
         </view>
 
     </scroll-view>

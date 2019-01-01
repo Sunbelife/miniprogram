@@ -19,6 +19,7 @@ Component({
             top: 0,
             left: 0
         },
+        ready: false,
         moveItemComputed: {
             widthHalf: util.rpx2px(300) / 2,
             heightHalf: util.rpx2px(180) / 2,
@@ -28,7 +29,15 @@ Component({
         activeIndex: 0,
         touchStartMove: false,
     },
-    onLoad() {
+    ready() {
+
+        setTimeout(() => {
+            // 页面 地图 表单影响加载。先这样处理
+            this.setData({
+                ready: true
+            });
+        }, 300);
+
     },
     methods: {
 

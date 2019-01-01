@@ -6,18 +6,21 @@
 
 .icon-bottom{
     position: absolute;
-    bottom: 150rpx;
+    bottom: 40rpx;
     z-index: 100;
     font-size: 60rpx;
     left:50%;
     margin-left: -15rpx;
     text-align: center;
+    transition: all .3s;
 }
 
 @keyframes rotateAnimate2
 {
-    0%   {transform: translateY(50rpx) rotate(180deg)}
-    100% {transform:  translateY(0rpx) rotate(180deg)}
+    0%   {transform: translateY(40rpx) rotate(180deg);
+    opacity: 0.8}
+    100% {transform:  translateY(0rpx) rotate(180deg);
+        opacity: 1}
 }
 
 .icon-bottom.play{

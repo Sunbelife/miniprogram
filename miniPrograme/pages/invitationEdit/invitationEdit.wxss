@@ -90,8 +90,9 @@
 }
 
 .page-sort-wrap{
-    position:fixed;
-    height:500rpx;
+    position:absolute;
+    top: 0;
+    height:100vh;
     z-index: 20;
     bottom: -500rpx;
     /*background: white;*/

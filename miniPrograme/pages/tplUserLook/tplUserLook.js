@@ -35,7 +35,7 @@ Page({
         let id = options.id;
 
         // TODO 删除
-        // id = "d0c19e12a87b78c73b550e84fb935bb5";
+        id = "d0c19e12a87b78c73b550e84fb935bb5";
 
 
         this.setData({
@@ -120,9 +120,7 @@ Page({
         console.log(this.data.tplInfo);
         if (this.data.tplInfo.barrageHas) {
 
-            this.setData({
-                isShowBlessing: true
-            });
+
             this.getBlessing();
         }
 

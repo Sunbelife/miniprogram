@@ -20,6 +20,7 @@ Component({
         nameLady: "",
         nameGentleman: "",
         ready: false,
+        isMapShow: true,
         markers: [{
             // id: 1,
             // latitude: 23.099994,
@@ -205,6 +206,16 @@ Component({
 
         hidePage() {
             this.triggerEvent('hidePage');
+        },
+        mapHide() {
+            this.setData({
+                isMapShow: false
+            });
+        },
+        mapShow() {
+            this.setData({
+                isMapShow: true
+            });
         },
         chooseLocation() {
             const that = this;

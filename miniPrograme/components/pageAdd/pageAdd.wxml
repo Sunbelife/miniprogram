@@ -16,27 +16,29 @@
         </view>
 
         <!--<view class="type-wrap   {{isNeedFixed?'tab_fixed':''}}" style="top:{{titleHeight+'rpx'}}">-->
-        <view class="type-wrap tab_fixed" style="top:{{titleHeight+'rpx'}}">
-            <scroll-view scroll-x>
-                <view wx:for="{{type}}"
-                      wx:key="key"
-                      class="type {{item.number === activeType ? 'active' : '' }}"
-                      bindtap="chooseType"
-                      data-type="{{item.number}}"
-                >{{item.name}}
-                </view>
-            </scroll-view>
-        </view>
-
-        <view>
-            <view wx:for="{{tpl}}"
-                  wx:key="key"
-                  data-id="{{item.id}}"
-                  class="tpl" bindtap="choosePage">
-                <image src="{{item.imgSrc}}"></image>
+        <block wx:if="{{ready}}">
+            <view class="type-wrap tab_fixed" style="top:{{titleHeight+'rpx'}}">
+                <scroll-view scroll-x>
+                    <view wx:for="{{type}}"
+                          wx:key="key"
+                          class="type {{item.number === activeType ? 'active' : '' }}"
+                          bindtap="chooseType"
+                          data-type="{{item.number}}"
+                    >{{item.name}}
+                    </view>
+                </scroll-view>
             </view>
 
-        </view>
+            <view>
+                <view wx:for="{{tpl}}"
+                      wx:key="key"
+                      data-id="{{item.id}}"
+                      class="tpl" bindtap="choosePage">
+                    <image src="{{item.imgSrc}}"></image>
+                </view>
+
+            </view>
+        </block>
 
     </scroll-view>
     <!--<view class="bottomBtn" bindtap="hidePageAdd">-->
