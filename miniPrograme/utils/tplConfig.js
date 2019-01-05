@@ -82,6 +82,7 @@ const colors = [
 ];
 
 const tpls = [];
+const pageCanAdd = [];
 
 for (let i = 0; i < 4; i++) {
     let index = i + 1;
@@ -131,12 +132,18 @@ for (let i = 0; i < 4; i++) {
                 }
             }
 
-            console.log("tpl模拟", tpl, i,k);
+            console.log("tpl模拟", tpl, i, k);
             console.log(v2, k2);
             v.imageSrc.push(imgPath + `/${tpl}/p${k + 1}_preview_${k2 + 1}.jpg`);
         });
     });
     // }
+
+    let pageCanAddTmp = [];
+    // 不要第一个
+    util.extend(true, pageCanAddTmp, pages.slice(1, 6));
+
+    pageCanAdd.push(pageCanAddTmp);
 
     // 致宾客页面单独处理
     const toGuestsPage = {};
@@ -280,13 +287,15 @@ const mockTpl = {
     }
 };
 
+console.log("pageCanAdd", pageCanAdd);
+
 module.exports = {
     tplsOb,
     tpls,
     mp3,
     mockTpl,
+    pageCanAdd,
     mp3Ob,
     pagesArr,
     pagesArrOb
-
 };

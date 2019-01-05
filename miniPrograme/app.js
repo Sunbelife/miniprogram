@@ -12,7 +12,6 @@ App({
             page: 7,
         },
 
-
         // TODO 改回去
         isAutoPlayMusic: true,
         // isAutoPlayMusic: false,
@@ -40,7 +39,9 @@ App({
         const self = this;
         wx.getSystemInfo({
             success(res) {
+                console.log("getSystemInfo",res);
                 self.systemInfo = res;
+                console.log(res);
 
             }
         });

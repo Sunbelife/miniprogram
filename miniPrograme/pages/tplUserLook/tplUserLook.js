@@ -35,10 +35,10 @@ Page({
         let id = options.id;
 
         // TODO 删除
-        // id = "d0c19e12a87b78c73b550e84fb935bb5";
+        // id = "80faef93c12c63360aa9714edf3705fd";
 
         if (util.isDev()) {
-            id = "d0c19e12a87b78c73b550e84fb935bb5";
+            id = "dfce632a831a27dbf5c88980fd27985f";
         }
 
         this.setData({

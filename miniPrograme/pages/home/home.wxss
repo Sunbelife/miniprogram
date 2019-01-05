@@ -32,6 +32,7 @@
 .tpl image{
     width: 325rpx;
     height: 576rpx;
+    display: inline-block;
 }
 
 .tab_fixed{

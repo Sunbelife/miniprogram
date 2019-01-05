@@ -20,9 +20,17 @@ Component({
         isShowMap: true,
         playRef: {},
         page: 0,
+        // 是否是长屏幕
+        longScreen: false,
         pageTranslateY: 0
     },
     ready() {
+
+
+
+        this.setData({
+            longScreen :　getApp().systemInfo.screenHeight >= 800
+        });
         // console.log("ready");
 
         // 必须要延时

@@ -30,7 +30,7 @@ Component({
             //     number: 4
             // }
         ],
-        tpl: tplConfig.pagesArr.slice(1,6),
+        tpl: tplConfig.pagesArrOb,
         // 需要顶部固定吗？
         scrollTopPage: 0,
         isNeedFixed: false,
