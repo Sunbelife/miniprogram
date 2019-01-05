@@ -1,2 +1,0 @@
-<image src="{{page.imageSrc[0]}}" class="image1 animate-toRight  {{animatedStep0 ? 'animated' : '' }}"></image>
-<image src="{{page.imageSrc[1]}}" class="image2 animate-toLeft  {{animatedStep1 ? 'animated' : '' }}"></image>

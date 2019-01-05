@@ -84,7 +84,7 @@ Page({
             // 显示排序
             // this.showSort();
             // 显示新增页面
-            this.showPageAdd();
+            // this.showPageAdd();
             // 设置页面设置
             // this.showPageSet();
             // 设置页面排序
@@ -101,7 +101,7 @@ Page({
                 // 预留音乐初始化的时间
                 setTimeout(() => {
                     // 音乐选择
-                    this.showMusicChoose();
+                    // this.showMusicChoose();
                 }, 1000)
             }
 
@@ -168,7 +168,8 @@ Page({
             // console.log(JSON.stringify(tplInfo));
             // if (util.isDev() && !tplInfo) {
             if (!tplInfo) {
-                tplInfo = tplConfig.mockTpl;
+                // tplInfo = tplConfig.mockTpl;
+                tplInfo = tplConfig.tpls[2];
             }
             this.setData({
                 tplInfo: tplInfo

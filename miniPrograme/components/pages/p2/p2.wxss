@@ -1,8 +1,5 @@
-
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
-
-
 
 .image1{
     width: 635rpx;
@@ -21,30 +18,25 @@
     right: 57rpx;
 }
 
-
-.p2_1{
-    width: 140rpx;
-    height: 194rpx;
+.p1{
     position: absolute;
-    left: 75rpx;
+}
+
+.p1.tpl1{
+    width: 126rpx;
+    height: 174rpx;
     top: 982rpx;
+    left: 75rpx;
 }
-
-.tpl-text-wrap{
-    position: absolute;
-    top: 986rpx;
-    left:245rpx;
+.p1.tpl2{
+    width: 636rpx;
+    height: 103rpx;
+    top: 1024rpx;
+    left: 61rpx;
 }
-
-.tpl-text-l1{
-    font-size: 32rpx;
-}
-.tpl-text-l2{
-    width: 400rpx;
-    border-bottom: 1px solid #333333;
-    margin: 17rpx 0;
-}
-.tpl-text-l3{
-    font-size: 26rpx;
-
+.p1.tpl3{
+    width: 636rpx;
+    height: 110rpx;
+    top: 1023rpx;
+    left: 60rpx;
 }

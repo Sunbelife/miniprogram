@@ -1,24 +1,11 @@
-<!--<view class="title animate-toBottom {{animatedStep1 ? 'animated' : '' }} "
-      bindtap="showInvitationInfo"
->
-</view>-->
 
-<image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep0 ? 'animated' : '' }}"></image>
 
-<!--<view class="text1">
-    {{page.textSrc[0]}}
-</view>-->
-
-<!--<view class="text animate-toRight text-center  {{animatedStep2 ? 'animated' : '' }}"
-      bindtap="showInvitationInfo"
->
-
-</view>-->
+<image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep[0] ? 'animated' : '' }}"></image>
 
 <!-- 背景 -->
-<image src="{{imgPath + '/tpl_1/bg.jpg'}}" class="tpl-bg"></image>
+<image src="{{img_bg}}" class="tpl-bg"></image>
 
-<image src="{{imgPath + '/tpl_1/p1_1.png'}}" class="p1_1"></image>
+<image src="{{img_write_1}}" class="p1"></image>
 
 <view class="user-info" bindtap="showInvitationInfo">
     <view class="user-info-name">

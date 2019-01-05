@@ -1,37 +1,35 @@
+const tplName = "1";
+const pageName = "1";
+
 const app = getApp();
 const util = require('../../../utils/util.js');
 const tplConfig = require('../../../utils/tplConfig.js');
 
-// 写评论
-const api = require('../../../utils/api.js');
-/*
- *  self.triggerEvent('writeover');
- * */
 Component({
     behaviors: [],
     properties: {
         invitationInfo: null, // 简化的定义方式
         page: null, // 简化的定义方式
-        item: null // 简化的定义方式
     },
     data: {
+        tplName: tplName,
+        pageName: pageName,
         imgPath: getApp().globalData.imgPre,
-        text: "曾经我们在同一个学校学习，而今我们在同一个城市打拼。我们相互扶持，谱写我们美好的明天！或许你还有些许担心，",
-        animatedStep0: false,
-        animatedStep1: false,
-        animatedStep2: false
+        animatedStep: new Array(1).fill(false)
     },
     ready() {
-        // console.log(tplConfig.pagesArrOb);
-        // console.log(tplConfig.pagesArrOb["1"]);
-        // console.log(this.properties.page);
-        let date = util.toDate(
-            `${this.properties.invitationInfo.date} ${this.properties.invitationInfo.time}`,
-            'yyyy-MM-dd hh:ii')
+
         this.setData({
-            "invitationInfo.dateFormat": util.dateFormat(date, 'yyyy年MM月dd日 hh时mm分'),
+            "invitationInfo.dateFormat": util.dateChina(this.properties.invitationInfo),
+        });
+        // 后缀可能不一样，拷贝吧
+        this.setData({
+            img_bg: `${this.data.imgPath}/tpl_${this.data.tplName}/bg.jpg`,
+            // 需要写的页面
+            img_write_1: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_1.png`,
         });
 
+        console.log(this.data.img_write_1);
     },
     methods: {
 
@@ -39,12 +37,10 @@ Component({
             this.triggerEvent('showInvitationInfo');
         },
         show() {
-            // console.log("show");
-            util.setTimeOutFlag(this, 3, 0);
+            util.setTimeOutFlagNew(this);
         },
         hide() {
-            // console.log("hide");
-            util.setTimeOutFlagHide(this, 3);
+            util.setTimeOutFlagHideNew(this);
         },
         editInfo() {
 

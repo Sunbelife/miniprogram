@@ -1,12 +1,12 @@
 {
   "pages":[
-    "pages/home/home",
-    "pages/invitationEdit/invitationEdit",
+    "pages/tplDev/tplDev",
     "pages/tplUserLook/tplUserLook",
+    "pages/invitationEdit/invitationEdit",
+    "pages/home/home",
     "pages/tplPreview/tplPreview",
     "pages/invitationSend/invitationSend",
     "pages/invitationInfo/invitationInfo",
-    "pages/tplDev/tplDev",
     "pages/guestReply/guestReply",
     "pages/tplChoose/tplChoose",
     "pages/a_auth/a_auth",

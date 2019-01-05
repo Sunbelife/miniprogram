@@ -5,25 +5,6 @@
 
 
 .image1{
-    width: 381rpx;
-    height: 631rpx;
-    position: absolute;
-    top: 533rpx;
-    left: 26rpx;
-    opacity: 0;
-    transition: all .3s ease-in;
-    transform: scale(.95);
-}
-
-
-.image1.animated{
-    opacity: 1;
-    transform: scale(1);
-}
-
-
-
-.image2{
     width: 515rpx;
     height: 421rpx;
     position: absolute;
@@ -36,10 +17,30 @@
 }
 
 
+.image1.animated{
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.image2{
+    width: 381rpx;
+    height: 631rpx;
+    position: absolute;
+    top: 533rpx;
+    left: 26rpx;
+    opacity: 0;
+    transition: all .3s ease-in;
+    transform: scale(.95);
+}
+
+
 .image2.animated{
     opacity: 1;
     transform: scale(1);
 }
+
+
 
 
 .image3{
@@ -79,12 +80,34 @@
 
 
 
-.p5_1{
-    width: 140rpx;
-    height: 194rpx;
+.p1{
     position: absolute;
+}
+
+
+.p1.tpl1{
+    width: 138rpx;
+    height: 190rpx;
+    position: absolute;
+    top: 27rpx;
     left: 47rpx;
-    top: 49rpx;
+}
+
+.p1.tpl2{
+    width: 101rpx;
+    height: 295rpx;
+    position: absolute;
+    top: 52rpx;
+    left: 58rpx;
+}
+
+
+.p1.tpl3{
+    width: 63rpx;
+    height: 377rpx;
+    position: absolute;
+    top: 61rpx;
+    left: 67rpx;
 }
 
 

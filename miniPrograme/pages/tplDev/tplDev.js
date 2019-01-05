@@ -13,14 +13,18 @@ Page({
 
     },
     init() {
-        tplConfig.tpls[0].pages = tplConfig.tpls[0].pages.concat(tplConfig.tpls[0].toGuestsPage);
-        tplConfig.tpls[0].toGuestsHas = true;
+
+        let devPageIndex = getApp().globalData.devTpl - 1;
+
+
+        tplConfig.tpls[devPageIndex].pages = tplConfig.tpls[devPageIndex].pages.concat(tplConfig.tpls[devPageIndex].toGuestsPage);
+        tplConfig.tpls[devPageIndex].toGuestsHas = true;
         this.setData({
             isReady: true,
-            tplInfo: tplConfig.tpls[0]
+            tplInfo: tplConfig.tpls[devPageIndex]
         });
 
-        console.log( tplConfig.tpls[0]);
+        console.log( tplConfig.tpls[devPageIndex]);
 
         /*try {
             var tplInfo = wx.getStorageSync('tplInfo');

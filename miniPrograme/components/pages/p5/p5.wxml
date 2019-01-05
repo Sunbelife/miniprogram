@@ -1,20 +1,11 @@
-<image src="{{page.imageSrc[0]}}" class="image1 {{animatedStep0 ? 'animated' : '' }}"></image>
-<image src="{{page.imageSrc[1]}}" class="image2 {{animatedStep1 ? 'animated' : '' }}"></image>
-<image src="{{page.imageSrc[2]}}" class="image3 {{animatedStep1 ? 'animated' : '' }}"></image>
-<image src="{{page.imageSrc[3]}}" class="image4 {{animatedStep1 ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[0]}}" class="image1 {{animatedStep[0] ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[1]}}" class="image2 {{animatedStep[1] ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[2]}}" class="image3 {{animatedStep[0] ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[3]}}" class="image4 {{animatedStep[1] ? 'animated' : '' }}"></image>
 
 
 <!-- 背景 -->
-<image src="{{imgPath + '/tpl_1/bg.jpg'}}" class="tpl-bg"></image>
+<image src="{{img_bg}}" class="tpl-bg"></image>
 
-<image src="{{imgPath + '/tpl_1/p5_1.png'}}" class="p5_1"></image>
-
-<view class="tpl-text-wrap" bindtap="showInvitationInfo">
-    <view class="tpl-text-l1">
-        琴韵谱成同梦语
-    </view>
-    <view class="tpl-text-l2">
-        灯花笑对含羞人
-    </view>
-</view>
+<image src="{{img_write_1}}" class="p1 tpl{{tplName}}"></image>
 

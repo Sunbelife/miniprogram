@@ -1,33 +1,47 @@
-const app = getApp();
 const util = require('../../../utils/util.js');
-// 写评论
-const api = require('../../../utils/api.js');
-const tplConfig = require('../../../utils/tplConfig.js');
-/*
- *  self.triggerEvent('writeover');
- * */
+
 Component({
     behaviors: [],
     properties: {
+        bg: null, // 简化的定义方式
         page: null, // 简化的定义方式
-        item: null // 简化的定义方式
+        tplName: null, // 简化的定义方式
+        pageName: null, // 简化的定义方式
+        hasBg: null, // 简化的定义方式
     },
     data: {
+
         imgPath: getApp().globalData.imgPre,
-        animatedStep0: false,
-        animatedStep1: false,
+        animatedStep: new Array(1).fill(false)
     },
-    ready(){
+    ready() {
+        // 后缀可能不一样，拷贝吧
+        this.setData({
+            // 需要写的页面
+            img_write_1: `${this.data.imgPath}/tpl_${this.properties.tplName}/p${this.properties.pageName}_1.png`,
+        });
+
+        if (this.properties.hasBg) {
+            this.setData({
+                img_bg: `${this.data.imgPath}/tpl_${this.properties.tplName}/bg_p6.jpg`,
+            });
+        }
+
+        if(this.properties.bg){
+            this.setData({
+                img_bg: `${this.data.imgPath}/tpl_${this.properties.tplName}/${this.properties.bg}.jpg`,
+            });
+        }
 
     },
     methods: {
-        show(){
-            util.setTimeOutFlag(this, 2, 0);
+        show() {
+            util.setTimeOutFlagNew(this);
         },
-        hide(){
-            util.setTimeOutFlagHide(this, 2);
+        hide() {
+            util.setTimeOutFlagHideNew(this);
         },
-        editInfo(){
+        editInfo() {
 
             const editInfo = {
                 image: [],

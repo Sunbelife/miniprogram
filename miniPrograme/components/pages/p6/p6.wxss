@@ -1,6 +1,4 @@
 
-
-
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
 
@@ -23,12 +21,31 @@
 }
 
 
-.p6_1{
-    width: 140rpx;
-    height: 194rpx;
+.p1{
     position: absolute;
+}
+
+
+.p1.tpl1{
+    width: 129rpx;
+    height: 189rpx;
     top: 976rpx;
     left: 43rpx;
+}
+
+.p1.tpl2{
+    width: 649rpx;
+    height: 170rpx;
+    position: absolute;
+    top: 980rpx;
+    left: 61rpx;
+}
+.p1.tpl3{
+    width: 422rpx;
+    height: 123rpx;
+    position: absolute;
+    top: 980rpx;
+    left: 61rpx;
 }
 
 .tpl-text-wrap{

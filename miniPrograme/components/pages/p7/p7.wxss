@@ -24,7 +24,7 @@
 
 
 
-.p7_2{
+.p2{
     width: 140rpx;
     height: 194rpx;
     position: absolute;
@@ -71,7 +71,7 @@
     color: #000000;
 }
 
-.p7_1{
+.p1{
     width: 308rpx;
     height: 233rpx;
 }

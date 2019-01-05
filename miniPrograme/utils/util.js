@@ -372,8 +372,34 @@ function setTimeOutFlagHide(that, count) {
         });
         // // console.log(that.data['animatedStep' + k]);
     });
+}
 
+function setTimeOutFlagNew(that,  cur) {
+   let count = that.data.animatedStep.length;
+   if(!isNotUndefined(cur)){
+       cur = 0;
+   }
+   console.log(cur);
 
+    setTimeout(() => {
+        that.setData({
+            ['animatedStep[' + cur+']']: true
+        });
+        cur++;
+        if (cur <= count) {
+            setTimeOutFlagNew(that,  cur);
+        }
+    }, 300)
+}
+
+function setTimeOutFlagHideNew(that) {
+    let count = that.data.animatedStep.length;
+
+    each(new Array(count).fill("1"), (k, v) => {
+        that.setData({
+            ['animatedStep[' + k+']']: false
+        });
+    });
 }
 
 function echoPage() {
@@ -692,9 +718,17 @@ function toDate(date, format) {
     return new Date(year, month, day, hour, minute, second);
 };
 
+function dateChina(invitationInfo){
+    let date = toDate(
+        `${invitationInfo.date} ${invitationInfo.time}`,
+        'yyyy-MM-dd hh:ii')
+    return dateFormat(date, 'yyyy年MM月dd日 hh时mm分');
+}
+
 module.exports = {
     posCssComplete,
     isDev,
+    dateChina,
     login,
     tplALL,
     echoPage,
@@ -702,6 +736,8 @@ module.exports = {
     pageComponent,
     setTimeOutFlag,
     setTimeOutFlagHide,
+    setTimeOutFlagNew,
+    setTimeOutFlagHideNew,
     toast,
     extend,
     wxUpload,

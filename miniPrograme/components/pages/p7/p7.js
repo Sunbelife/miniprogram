@@ -1,11 +1,8 @@
-const app = getApp();
+const tplName = "1";
+const pageName = "7";
+
 const util = require('../../../utils/util.js');
-// 写评论
-const api = require('../../../utils/api.js');
-const tplConfig = require('../../../utils/tplConfig.js');
-/*
- *  self.triggerEvent('writeover');
- * */
+
 Component({
     behaviors: [],
     properties: {
@@ -13,20 +10,24 @@ Component({
         invitationInfo: null, // 简化的定义方式
         showBanquetInfoBtn: null, // 简化的定义方式
         page: null, // 简化的定义方式
-        item: null // 简化的定义方式
     },
     data: {
+        tplName: tplName,
+        pageName: pageName,
         imgPath: getApp().globalData.imgPre,
-        animatedStep0: false,
-        animatedStep1: false,
+        animatedStep: new Array(1).fill(false)
     },
     ready() {
 
-       let date =  util.toDate(
-            `${this.properties.invitationInfo.date} ${this.properties.invitationInfo.time}`,
-            'yyyy-MM-dd hh:ii')
         this.setData({
-           "invitationInfo.dateFormat": util.dateFormat(date,'yyyy年MM月dd日 hh时mm分'),
+            "invitationInfo.dateFormat": util.dateChina(this.properties.invitationInfo),
+        });
+        // 后缀可能不一样，拷贝吧
+        this.setData({
+            img_bg: `${this.data.imgPath}/tpl_${this.data.tplName}/bg.jpg`,
+            // 需要写的页面
+            img_write_1: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_1.png`,
+            img_write_2: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_2.png`,
         });
 
     },
@@ -35,24 +36,13 @@ Component({
             this.triggerEvent('showInvitationInfo');
         },
         showBanquetInfo(e) {
-            // console.log("showBanquetInfo trigger");
             this.triggerEvent('showBanquetInfo');
-
-        },
-        hideBanquetInfo3() {
-            setTimeout(() => {
-                this.setData({
-                    isShowMap: true,
-                });
-                // console.log(this.data.isShowMap);
-            }, 10)
-
         },
         show() {
-            util.setTimeOutFlag(this, 2, 0);
+            util.setTimeOutFlagNew(this);
         },
         hide() {
-            util.setTimeOutFlagHide(this, 2);
+            util.setTimeOutFlagHideNew(this);
         },
         editInfo() {
 
@@ -72,7 +62,6 @@ Component({
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);
 
-            // console.log(editInfo);
             return editInfo;
         }
     }

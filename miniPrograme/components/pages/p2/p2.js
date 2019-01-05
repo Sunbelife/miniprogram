@@ -1,38 +1,46 @@
-const pageName = "2";
 const app = getApp();
 const util = require('../../../utils/util.js');
 const tplConfig = require('../../../utils/tplConfig.js');
-// 写评论
-const api = require('../../../utils/api.js');
-/*
-*  self.triggerEvent('writeover');
-* */
 Component({
     behaviors: [],
     properties: {
+        bg: null, // 简化的定义方式
         page: null, // 简化的定义方式
-        item: null // 简化的定义方式
+        tplName: null, // 简化的定义方式
+        pageName: null, // 简化的定义方式
     },
     data: {
+
         imgPath: getApp().globalData.imgPre,
-        isLoading: false,
+        animatedStep: new Array(1).fill(false)
+
     },
     ready() {
+        // 后缀可能不一样，拷贝吧
+        this.setData({
+            // 需要写的页面
+            img_write_1: `${this.data.imgPath}/tpl_${this.properties.tplName}/p${this.properties.pageName}_1.png`,
+        });
+
+        if(this.properties.bg){
+            this.setData({
+                img_bg: `${this.data.imgPath}/tpl_${this.properties.tplName}/${this.properties.bg}.jpg`,
+            });
+        }
+
     },
     methods: {
         show() {
-            util.setTimeOutFlag(this, 2, 0);
+            util.setTimeOutFlagNew(this);
         },
         hide() {
-            util.setTimeOutFlagHide(this, 2);
+            util.setTimeOutFlagHideNew(this);
         },
         editInfo() {
-
             const editInfo = {
                 image: [],
                 text: []
             };
-
 
             editInfo.image.push(util.genImg({
                 width: 635,
@@ -41,20 +49,9 @@ Component({
                 left: 57,
             }, editInfo));
 
-            // editInfo.image.push({
-            //
-            //     width: util.rpx2px(225 * 2),
-            //     height: util.rpx2px(362 * 2),
-            //     type: "image",
-            //     index: editInfo.image.length,
-            //     bottom: "25vh",
-            //     right: "25vw"
-            // });
-
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);
 
-            // console.log(editInfo);
             return editInfo;
         }
     }

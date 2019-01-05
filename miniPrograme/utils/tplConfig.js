@@ -83,7 +83,7 @@ const colors = [
 
 const tpls = [];
 
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < 4; i++) {
     let index = i + 1;
 
     // TODO  70个模板
@@ -92,7 +92,7 @@ for (let i = 0; i < 1; i++) {
     // let pages = [];
     // util.extend(true, pages, pagesArr.slice(0, 7));
 
-
+    console.log(JSON.stringify(pages));
     // // console.log("GenPages", pages);
     pages.forEach((v, k) => {
         v.imgSrc = "https://dummyimage.com/200x300/" + colors[i] + "/ffffff&text=" + encodeURI("page" + (k + 1));
@@ -113,17 +113,30 @@ for (let i = 0; i < 1; i++) {
         6: 1,
         7: 1,
     };
-    if (i === 0) {
-        pages.forEach((v, k) => {
-            v.imgSrc = imgPath + `/tpl_1/p${k + 1}.jpg`;
-            v.imageSrc = [];
-            new Array(tpl1Map[k + 1]).fill(1).forEach((v2, k2) => {
-                console.log(v2, k2);
-                v.imageSrc.push(imgPath + `/tpl_1/p${k + 1}_preview_${k2 + 1}.jpg`);
-            });
-        });
-    }
 
+
+    // if (i === 0) {
+    pages.forEach((v, k) => {
+        v.imgSrc = imgPath + `/tpl_${i + 1}/p${k + 1}.jpg`;
+        v.imageSrc = [];
+        new Array(tpl1Map[k + 1]).fill(1).forEach((v2, k2) => {
+            let tpl = `tpl_${i + 1}`;
+
+            // TODO 改回去
+            // 大于 i  模板  大于 k 页面 使用 模板 1 的 （都要加1）
+            if (i + 1 > getApp().globalData.devPageImgProcess.tpl) {
+                tpl = "tpl_1";
+                if (k + 1 > getApp().globalData.devPageImgProcess.page) {
+                    tpl = "tpl_1";
+                }
+            }
+
+            console.log("tpl模拟", tpl, i,k);
+            console.log(v2, k2);
+            v.imageSrc.push(imgPath + `/${tpl}/p${k + 1}_preview_${k2 + 1}.jpg`);
+        });
+    });
+    // }
 
     // 致宾客页面单独处理
     const toGuestsPage = {};
@@ -132,8 +145,8 @@ for (let i = 0; i < 1; i++) {
     // 致宾客页面单独处理
     const pagesCommon = [];
     util.extend(true, pagesCommon, pages.slice(0, 6));
+    console.log(JSON.stringify(pagesCommon));
 
-    // TODO 改回去
     let invitationInfo2 = {
         "address": "婚礼地址",
         "date": "2018-11-25",
@@ -156,7 +169,6 @@ for (let i = 0; i < 1; i++) {
         nameGentleman: ""
     };
 
-
     tpls.push({
         id: index,
         bgMusic: mp3[0],
@@ -172,8 +184,12 @@ for (let i = 0; i < 1; i++) {
         // 有致宾客页面吗
         toGuestsHas: true,
         toGuestsPage: toGuestsPage,
-        invitationInfo: invitationInfo
+        // TODO 改回去
+        invitationInfo: invitationInfo2
     });
+
+    console.log(JSON.stringify(tpls));
+
 }
 
 
@@ -182,7 +198,7 @@ const pagesArrOb = util.arrToObj(pagesArr, "id");
 const mp3Ob = util.arrToObj(mp3, "no");
 
 
-console.log(tpls[0]);
+console.log(tpls);
 // console.log(tplsOb,tpls,pagesArr,pagesArrOb);
 
 

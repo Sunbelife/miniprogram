@@ -1,11 +1,5 @@
-
-
-
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
-
-
-
 
 /* 图 1 */
 .image1{
@@ -25,7 +19,7 @@
     left: 67rpx;
 }
 
-.p1_1{
+.p1{
     width: 140rpx;
     height: 194rpx;
     position: absolute;

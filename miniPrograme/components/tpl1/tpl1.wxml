@@ -38,14 +38,30 @@
                 -->
                 <p1 id="p{{index}}" page="{{item}}" invitationInfo="{{invitationInfo}}"
                     bindshowInvitationInfo="showInvitationInfo"
-
                     wx:if="{{item.id === 1}}"></p1>
-                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 2}}"></p2>
-                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 3}}"></p3>
-                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 4}}"></p4>
-                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 5}}"></p5>
-                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 6}}"></p6>
-                <p7 id="p{{index}}" page="{{item}}"
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 2}}"
+                    tplName="1"
+                    bg="bg"
+                    pageName="2"
+                ></p2>
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 3}}"
+                    tplName="1"
+                    bg="bg"
+                    pageName="3"></p3>
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 4}}"
+                    bg="bg"
+                    tplName="1"
+                    pageName="4"></p4>
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 5}}"
+                    bg="bg"
+                    tplName="1"
+                    pageName="5"></p5>
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 6}}"
+                    bg="bg"
+                    tplName="1"
+                    pageName="6"></p6>
+                <p7 id="p{{index}}"
+                    page="{{item}}"
                     isShowMap="{{isShowMap}}"
                     invitationInfo="{{invitationInfo}}"
                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
@@ -53,68 +69,140 @@
                     bindshowBanquetInfo="showBanquetInfo"
                     wx:if="{{item.id === 7 && toGuestsHas}}"
                 ></p7>
-                <p8 id="p{{index}}" wx:if="{{item.id === 8}}"></p8>
-                <p9 id="p{{index}}" wx:if="{{item.id === 9}}"></p9>
-                <p10 id="p{{index}}" wx:if="{{item.id === 10}}"></p10>
-                <p11 id="p{{index}}" wx:if="{{item.id === 11}}"></p11>
-                <p12 id="p{{index}}" wx:if="{{item.id === 12}}"></p12>
-                <p13 id="p{{index}}" wx:if="{{item.id === 13}}"></p13>
-                <p14 id="p{{index}}" wx:if="{{item.id === 14}}"></p14>
-                <p15 id="p{{index}}" wx:if="{{item.id === 15}}"></p15>
-                <p16 id="p{{index}}" wx:if="{{item.id === 16}}"></p16>
-                <p17 id="p{{index}}" wx:if="{{item.id === 17}}"></p17>
-                <p18 id="p{{index}}" wx:if="{{item.id === 18}}"></p18>
-                <p19 id="p{{index}}" wx:if="{{item.id === 19}}"></p19>
-                <p20 id="p{{index}}" wx:if="{{item.id === 20}}"></p20>
-                <p21 id="p{{index}}" wx:if="{{item.id === 21}}"></p21>
-                <p22 id="p{{index}}" wx:if="{{item.id === 22}}"></p22>
-                <p23 id="p{{index}}" wx:if="{{item.id === 23}}"></p23>
-                <p24 id="p{{index}}" wx:if="{{item.id === 24}}"></p24>
-                <p25 id="p{{index}}" wx:if="{{item.id === 25}}"></p25>
-                <p26 id="p{{index}}" wx:if="{{item.id === 26}}"></p26>
-                <p27 id="p{{index}}" wx:if="{{item.id === 27}}"></p27>
-                <p28 id="p{{index}}" wx:if="{{item.id === 28}}"></p28>
+
+                <!-- 模板二 -->
+                <p8 id="p{{index}}" wx:if="{{item.id === 8}}"
+                    page="{{item}}" invitationInfo="{{invitationInfo}}"
+                    bindshowInvitationInfo="showInvitationInfo"
+                ></p8>
+                <p2 id="p{{index}}"  page="{{item}}" wx:if="{{item.id === 9}}"
+                    tplName="2"
+                    pageName="2"
+                ></p2>
+                <p3 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 10}}"
+                    tplName="2"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 11}}"
+                    tplName="2"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 12}}"
+                    tplName="2"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 13}}"
+                    tplName="2"
+                    hasBg="{{true}}"
+                    pageName="6"
+                ></p6>
+
+                <p14 id="p{{index}}"
+                     page="{{item}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 14 && toGuestsHas}}"
+                ></p14>
+
+                <!-- 模板三 -->
+                <p15 id="p{{index}}" wx:if="{{item.id === 15}}"
+                     page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                ></p15>
+
+                <p2 id="p{{index}}"  page="{{item}}" wx:if="{{item.id === 16}}"
+                    tplName="3"
+                    pageName="2"
+                ></p2>
+                <!-- 设计稿 4 3  换了-->
+                <p3 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 17}}"
+                    tplName="3"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 18}}"
+                    tplName="3"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 19}}"
+                    tplName="3"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 20}}"
+                    tplName="3"
+                    pageName="6"
+                    hasBg="{{true}}"
+                ></p6>
+                <p21 id="p{{index}}"
+                     page="{{item}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 21 && toGuestsHas}}"
+
+                ></p21>
+
+
+                <!-- 模板四 -->
+                <p22 id="p{{index}}" wx:if="{{item.id === 22}}"
+                     page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                ></p22>
+
+                <p2 id="p{{index}}"  page="{{item}}" wx:if="{{item.id === 23}}"
+                    tplName="1"
+                    pageName="2"
+                ></p2>
+                <!-- 设计稿 4 3  换了-->
+                <p3 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 24}}"
+                    tplName="1"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 25}}"
+                    tplName="1"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 26}}"
+                    tplName="1"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 27}}"
+                    tplName="1"
+                    pageName="6"
+                ></p6>
+
+                <p28 id="p{{index}}"
+                     page="{{item}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 28 && toGuestsHas}}"
+                ></p28>
+
+
                 <p29 id="p{{index}}" wx:if="{{item.id === 29}}"></p29>
-                <p30 id="p{{index}}" wx:if="{{item.id === 30}}"></p30>
-                <p31 id="p{{index}}" wx:if="{{item.id === 31}}"></p31>
-                <p32 id="p{{index}}" wx:if="{{item.id === 32}}"></p32>
-                <p33 id="p{{index}}" wx:if="{{item.id === 33}}"></p33>
-                <p34 id="p{{index}}" wx:if="{{item.id === 34}}"></p34>
+
                 <p35 id="p{{index}}" wx:if="{{item.id === 35}}"></p35>
                 <p36 id="p{{index}}" wx:if="{{item.id === 36}}"></p36>
-                <p37 id="p{{index}}" wx:if="{{item.id === 37}}"></p37>
-                <p38 id="p{{index}}" wx:if="{{item.id === 38}}"></p38>
-                <p39 id="p{{index}}" wx:if="{{item.id === 39}}"></p39>
-                <p40 id="p{{index}}" wx:if="{{item.id === 40}}"></p40>
-                <p41 id="p{{index}}" wx:if="{{item.id === 41}}"></p41>
+
                 <p42 id="p{{index}}" wx:if="{{item.id === 42}}"></p42>
                 <p43 id="p{{index}}" wx:if="{{item.id === 43}}"></p43>
-                <p44 id="p{{index}}" wx:if="{{item.id === 44}}"></p44>
-                <p45 id="p{{index}}" wx:if="{{item.id === 45}}"></p45>
-                <p46 id="p{{index}}" wx:if="{{item.id === 46}}"></p46>
-                <p47 id="p{{index}}" wx:if="{{item.id === 47}}"></p47>
-                <p48 id="p{{index}}" wx:if="{{item.id === 48}}"></p48>
+
                 <p49 id="p{{index}}" wx:if="{{item.id === 49}}"></p49>
                 <p50 id="p{{index}}" wx:if="{{item.id === 50}}"></p50>
-                <p51 id="p{{index}}" wx:if="{{item.id === 51}}"></p51>
-                <p52 id="p{{index}}" wx:if="{{item.id === 52}}"></p52>
-                <p53 id="p{{index}}" wx:if="{{item.id === 53}}"></p53>
-                <p54 id="p{{index}}" wx:if="{{item.id === 54}}"></p54>
-                <p55 id="p{{index}}" wx:if="{{item.id === 55}}"></p55>
+
                 <p56 id="p{{index}}" wx:if="{{item.id === 56}}"></p56>
                 <p57 id="p{{index}}" wx:if="{{item.id === 57}}"></p57>
-                <p58 id="p{{index}}" wx:if="{{item.id === 58}}"></p58>
-                <p59 id="p{{index}}" wx:if="{{item.id === 59}}"></p59>
-                <p60 id="p{{index}}" wx:if="{{item.id === 60}}"></p60>
-                <p61 id="p{{index}}" wx:if="{{item.id === 61}}"></p61>
-                <p62 id="p{{index}}" wx:if="{{item.id === 62}}"></p62>
+
                 <p63 id="p{{index}}" wx:if="{{item.id === 63}}"></p63>
                 <p64 id="p{{index}}" wx:if="{{item.id === 64}}"></p64>
-                <p65 id="p{{index}}" wx:if="{{item.id === 65}}"></p65>
-                <p66 id="p{{index}}" wx:if="{{item.id === 66}}"></p66>
-                <p67 id="p{{index}}" wx:if="{{item.id === 67}}"></p67>
-                <p68 id="p{{index}}" wx:if="{{item.id === 68}}"></p68>
-                <p69 id="p{{index}}" wx:if="{{item.id === 69}}"></p69>
+
                 <p70 id="p{{index}}" wx:if="{{item.id === 70}}"></p70>
                 <pTool1 id="p{{index}}" wx:if="{{item.id === 'tool1'}}"></pTool1>
             </view>

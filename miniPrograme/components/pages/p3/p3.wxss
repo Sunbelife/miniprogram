@@ -1,9 +1,6 @@
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
 
-
-
-
 .image1{
     width: 634rpx;
     height: 443rpx;
@@ -15,7 +12,6 @@
     transition: all .3s ease-in;
     transform: scale(.95);
 }
-
 
 .image1.animated{
     opacity: 1;
@@ -42,12 +38,30 @@
 }
 
 
-.p3_1{
-    width: 140rpx;
-    height: 194rpx;
+.p1{
     position: absolute;
-    left: 77rpx;
+}
+
+
+.p1.tpl1{
+    width: 127rpx;
+    height: 174rpx;
     top: 35rpx;
+    left: 76rpx;
+}
+
+.p1.tpl2{
+    width: 628rpx;
+    height: 128rpx;
+    top: 76rpx;
+    left: 68rpx;
+}
+
+.p1.tpl3{
+    width: 652rpx;
+    height: 233rpx;
+    top: 86rpx;
+    left: 59rpx;
 }
 
 

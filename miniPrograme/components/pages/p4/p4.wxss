@@ -2,8 +2,6 @@
 @import "../../../css/app.wxss";
 
 
-
-
 .image1{
     width: 640rpx;
     height: 914rpx;
@@ -25,12 +23,29 @@
 
 
 
-.p4_1{
-    width: 140rpx;
-    height: 194rpx;
+.p1{
     position: absolute;
+}
+
+.p1.tpl1{
+    width: 127rpx;
+    height: 175rpx;
     top: 33rpx;
     right: 61rpx;
+}
+
+.p1.tpl2{
+    width: 649rpx;
+    height: 170rpx;
+    top: 39rpx;
+    right: 50rpx;
+}
+
+.p1.tpl3{
+    width: 640rpx;
+    height: 140rpx;
+    top: 51rpx;
+    left: 55rpx;
 }
 
 

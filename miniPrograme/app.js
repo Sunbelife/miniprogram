@@ -2,19 +2,31 @@
 App({
     isPublish: false,
     globalData: {
-        isAutoPlayMusic: true,
-        // isAutoPlayMusic: false,
+        // 当前开发的模板
+        devTpl: 3,
+        // 当前开发的页面
+        devPage: 7,
+        // 当前开发的图片进度
+        devPageImgProcess: {
+            tpl: 3,
+            page: 7,
+        },
+
+
+        // TODO 改回去
+        // isAutoPlayMusic: true,
+        isAutoPlayMusic: false,
         domain: "https://xcx.lyy99.com",
         domainDev: "http://localhost:3000",
         // TODO 改回去
 
-        // imgPre:"/images",
-        imgPre:"https://xcx.lyy99.com/uploads",
+        imgPre: "/images",
+        // imgPre:"https://xcx.lyy99.com/uploads",
         // imgPre:"http://xcx.lyy99.com/uploads/tpl_1/",
 
 
-        // isDev: 1,
-        isDev: 0,
+        isDev: 1,
+        // isDev: 0,
 
         // TODO 改回去
         // isMock: 1,

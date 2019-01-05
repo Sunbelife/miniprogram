@@ -39,16 +39,10 @@ Component({
                 this.playStart();
             }
 
-            // TODO 删除
-            setTimeout(() => {
-                // this.movePage(1);
-            }, 600);
-            if (util.isDev() || getApp().globalData.isMock) {
-                // 开发指定到页面 0 开始的
-
+            if (util.isDev()) {
                 setTimeout(() => {
-                    // this.movePage(6);
-                }, 300);
+                    this.movePage(getApp().globalData.devPage - 1);
+                }, 600);
             }
 
             this.needMakeHandle();
@@ -127,7 +121,7 @@ Component({
         },
         movePage(page) {
 
-            console.trace();
+            // console.trace();
             // 隐藏
             util.each(this.properties.pages, (k, v) => {
                 // // console.log(this.properties.pages, k);

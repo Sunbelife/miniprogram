@@ -35,15 +35,31 @@ Page({
         let id = options.id;
 
         // TODO 删除
-        id = "d0c19e12a87b78c73b550e84fb935bb5";
+        // id = "d0c19e12a87b78c73b550e84fb935bb5";
 
+        if (util.isDev()) {
+            id = "d0c19e12a87b78c73b550e84fb935bb5";
+        }
 
         this.setData({
             id: id
         });
 
 
-        this.getTplInfo();
+        if (util.isDev()) {
+
+            let index = 3;
+            tplConfig.tpls[index - 1].pages = tplConfig.tpls[index - 1].pages
+                .concat(tplConfig.tpls[index - 1].toGuestsPage);
+            this.setData({
+                tplInfo: tplConfig.tpls[index - 1],
+                isReady: true
+            });
+
+        } else {
+            this.getTplInfo();
+
+        }
 
     },
     goPage: util.goPage,
