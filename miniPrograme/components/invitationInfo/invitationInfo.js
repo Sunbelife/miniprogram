@@ -226,7 +226,7 @@ Component({
 
                     // 选择地址获取地址，设置值
                     that.setData({
-                        address: e.address + e.name
+                        address: e.name
                     });
                 },
                 error(e) {
