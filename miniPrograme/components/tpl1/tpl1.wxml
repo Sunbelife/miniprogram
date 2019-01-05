@@ -27,7 +27,7 @@
             >
                 <!-- 只在第一页才有提示 -->
                 <!--   长屏幕 始终显示箭头-->
-                <view class="iconfont icon-xiala1 icon-bottom play"
+                <view class="iconfont icon-xiala1 icon-bottom play {{longScreen ? 'longScreen' : ''}}"
                       wx:if="{{ longScreen || (item.id === 1 || item.id === 8 || item.id === 15 ||  item.id === 22) }}"
                 ></view>
 

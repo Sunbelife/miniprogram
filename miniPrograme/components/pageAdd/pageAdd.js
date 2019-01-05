@@ -30,7 +30,7 @@ Component({
             //     number: 4
             // }
         ],
-        tpl: tplConfig.pagesArrOb,
+        tpl: tplConfig.pageCanAdd,
         // 需要顶部固定吗？
         scrollTopPage: 0,
         isNeedFixed: false,
@@ -44,6 +44,8 @@ Component({
     },
     ready(){
 
+        console.log("pageAdd 1",tplConfig.pageCanAdd);
+        console.log("pageAdd 1",this.data.tpl);
         setTimeout(() => {
             // 页面 地图 表单影响加载。先这样处理
             this.setData({

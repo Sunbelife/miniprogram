@@ -82,7 +82,7 @@ const colors = [
 ];
 
 const tpls = [];
-const pageCanAdd = [];
+let pageCanAdd = [];
 
 for (let i = 0; i < 4; i++) {
     let index = i + 1;
@@ -143,7 +143,7 @@ for (let i = 0; i < 4; i++) {
     // 不要第一个
     util.extend(true, pageCanAddTmp, pages.slice(1, 6));
 
-    pageCanAdd.push(pageCanAddTmp);
+    pageCanAdd = pageCanAdd.concat(pageCanAddTmp);
 
     // 致宾客页面单独处理
     const toGuestsPage = {};

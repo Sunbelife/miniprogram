@@ -49,7 +49,7 @@
     box-sizing: border-box;
     width: 180rpx;
     /* 894/(502/180) */
-    height: 320rpx;
+    height: 292rpx;
 
 
 

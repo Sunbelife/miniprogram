@@ -28,10 +28,10 @@
     float: left;
     position: relative;
 }
-
+/*610 / (375/325)*/
 .tpl image{
     width: 325rpx;
-    height: 576rpx;
+    height: 528rpx;
     display: inline-block;
 }
 

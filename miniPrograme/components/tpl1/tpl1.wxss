@@ -16,6 +16,10 @@
 
 }
 
+.icon-bottom.longScreen{
+    bottom: 200rpx;
+}
+
 @keyframes rotateAnimate2
 {
     0%   {transform: translateY(40rpx) rotate(180deg);
