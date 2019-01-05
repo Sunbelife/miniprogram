@@ -27,8 +27,8 @@
 
 
 .p1.tpl1{
-    width: 129rpx;
-    height: 189rpx;
+    width: 580rpx;
+    height: 181rpx;
     top: 976rpx;
     left: 43rpx;
 }

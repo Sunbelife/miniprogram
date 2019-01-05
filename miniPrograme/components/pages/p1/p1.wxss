@@ -20,27 +20,29 @@
 }
 
 .p1{
-    width: 140rpx;
-    height: 194rpx;
+    width: 127rpx;
+    height: 175rpx;
     position: absolute;
-    right: 75rpx;
-    top: 1000rpx;
+    left: 548rpx;
+    top: 1001rpx;
 }
 
 .user-info{
     position: absolute;
     top: 982rpx;
+    color: #3E3A39;
     left: 75rpx;
 }
 
 .user-info-name{
-    font-size: 50rpx;
+    font-size: 55rpx;
 }
 .user-info-date{
-    font-size: 30rpx;
+    font-size: 26rpx;
     margin-top: 18rpx;
 }
 .user-info-address{
+    font-size: 27rpx;
     margin-top: 12rpx;
 
 }

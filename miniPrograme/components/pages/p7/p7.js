@@ -28,6 +28,7 @@ Component({
             // 需要写的页面
             img_write_1: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_1.png`,
             img_write_2: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_2.png`,
+            img_write_3: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_3.png`,
         });
 
     },

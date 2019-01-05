@@ -28,10 +28,10 @@
 }
 
 .p1.tpl1{
-    width: 127rpx;
+    width: 616rpx;
     height: 175rpx;
     top: 33rpx;
-    right: 61rpx;
+    left: 73rpx;
 }
 
 .p1.tpl2{

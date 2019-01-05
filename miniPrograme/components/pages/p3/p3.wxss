@@ -44,10 +44,10 @@
 
 
 .p1.tpl1{
-    width: 127rpx;
-    height: 174rpx;
+    width: 608rpx;
+    height: 173rpx;
     top: 35rpx;
-    left: 76rpx;
+    left: 77rpx;
 }
 
 .p1.tpl2{
