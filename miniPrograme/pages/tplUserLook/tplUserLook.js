@@ -48,11 +48,11 @@ Page({
 
         if (util.isDev()) {
 
-            let index = 3;
-            tplConfig.tpls[index - 1].pages = tplConfig.tpls[index - 1].pages
-                .concat(tplConfig.tpls[index - 1].toGuestsPage);
+            let index = getApp().globalData.devTpl - 1;
+            tplConfig.tpls[index].pages = tplConfig.tpls[index].pages
+                .concat(tplConfig.tpls[index].toGuestsPage);
             this.setData({
-                tplInfo: tplConfig.tpls[index - 1],
+                tplInfo: tplConfig.tpls[index],
                 isReady: true
             });
 

@@ -119,18 +119,19 @@ function genImg(img, editInfo) {
         index: editInfo.image.length,
     };
 
-    if (img.top) {
+    if (isNotUndefined(img.top)) {
         imgRet.top = rpx2pxStr(img.height / 2 + img.top - 45 / 2);
     }
-    if (img.bottom) {
+    if (isNotUndefined(img.bottom)) {
         imgRet.bottom = rpx2pxStr(img.height / 2 + img.bottom - 45 / 2);
     }
-    if (img.left) {
+    if (isNotUndefined(img.left)) {
         imgRet.left = rpx2pxStr(img.width / 2 + img.left - 45 / 2);
     }
-    if (img.right) {
+    if (isNotUndefined(img.right)) {
         imgRet.right = rpx2pxStr(img.width / 2 + img.right - 45);
     }
+
 
     return imgRet;
 }
@@ -374,20 +375,20 @@ function setTimeOutFlagHide(that, count) {
     });
 }
 
-function setTimeOutFlagNew(that,  cur) {
-   let count = that.data.animatedStep.length;
-   if(!isNotUndefined(cur)){
-       cur = 0;
-   }
-   console.log(cur);
+function setTimeOutFlagNew(that, cur) {
+    let count = that.data.animatedStep.length;
+    if (!isNotUndefined(cur)) {
+        cur = 0;
+    }
+    console.log(cur);
 
     setTimeout(() => {
         that.setData({
-            ['animatedStep[' + cur+']']: true
+            ['animatedStep[' + cur + ']']: true
         });
         cur++;
         if (cur <= count) {
-            setTimeOutFlagNew(that,  cur);
+            setTimeOutFlagNew(that, cur);
         }
     }, 300)
 }
@@ -397,7 +398,7 @@ function setTimeOutFlagHideNew(that) {
 
     each(new Array(count).fill("1"), (k, v) => {
         that.setData({
-            ['animatedStep[' + k+']']: false
+            ['animatedStep[' + k + ']']: false
         });
     });
 }
@@ -627,7 +628,7 @@ let tplALL = {
             if (tplInfo_all) {
 
                 let tplInfo_allObj = arrToObj(tplInfo_all, 'storageId');
-                one.time = dateFormat(new Date(),'yyyy-MM-dd hh:mm');
+                one.time = dateFormat(new Date(), 'yyyy-MM-dd hh:mm');
 
                 tplInfo_allObj[one.storageId] = one;
 
@@ -650,7 +651,7 @@ let tplALL = {
             }
             // 拷贝并且重新设置ID
             one.storageId = 'storageId_' + new Date().getTime() + Math.random();
-            one.time = dateFormat(new Date(),'yyyy-MM-dd hh:mm');
+            one.time = dateFormat(new Date(), 'yyyy-MM-dd hh:mm');
             tplInfo_all.push(one);
             wx.setStorageSync('tplInfo_all', tplInfo_all);
             // console.log("模板修改:新增", tplInfo_all);
@@ -718,7 +719,7 @@ function toDate(date, format) {
     return new Date(year, month, day, hour, minute, second);
 };
 
-function dateChina(invitationInfo){
+function dateChina(invitationInfo) {
     let date = toDate(
         `${invitationInfo.date} ${invitationInfo.time}`,
         'yyyy-MM-dd hh:ii')

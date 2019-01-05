@@ -154,24 +154,24 @@
                 ></p22>
 
                 <p2 id="p{{index}}"  page="{{item}}" wx:if="{{item.id === 23}}"
-                    tplName="1"
+                    tplName="4"
                     pageName="2"
                 ></p2>
-                <!-- 设计稿 4 3  换了-->
+                <!-- 设计稿 2 3  换了-->
                 <p3 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 24}}"
-                    tplName="1"
+                    tplName="4"
                     pageName="3"
                 ></p3>
                 <p4 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 25}}"
-                    tplName="1"
+                    tplName="4"
                     pageName="4"
                 ></p4>
                 <p5 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 26}}"
-                    tplName="1"
+                    tplName="4"
                     pageName="5"
                 ></p5>
                 <p6 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 27}}"
-                    tplName="1"
+                    tplName="4"
                     pageName="6"
                 ></p6>
 

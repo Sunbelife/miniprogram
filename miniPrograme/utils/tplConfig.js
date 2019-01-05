@@ -185,7 +185,7 @@ for (let i = 0; i < 4; i++) {
         toGuestsHas: true,
         toGuestsPage: toGuestsPage,
         // TODO 改回去
-        invitationInfo: invitationInfo2
+        invitationInfo: invitationInfo
     });
 
     console.log(JSON.stringify(tpls));

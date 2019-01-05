@@ -48,6 +48,18 @@
     left: 61rpx;
 }
 
+
+.p1.tpl4{
+    width: 531rpx;
+    height: 1106rpx;
+    position: absolute;
+    top: 37rpx;
+    left: 165rpx;
+    z-index: 3;
+}
+
+
+
 .tpl-text-wrap{
     position: absolute;
     top: 980rpx;

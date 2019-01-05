@@ -6,6 +6,7 @@ Component({
     properties: {
         bg: null, // 简化的定义方式
         page: null, // 简化的定义方式
+        hasBg: null, // 简化的定义方式
         tplName: null, // 简化的定义方式
         pageName: null, // 简化的定义方式
     },
@@ -21,6 +22,12 @@ Component({
             // 需要写的页面
             img_write_1: `${this.data.imgPath}/tpl_${this.properties.tplName}/p${this.properties.pageName}_1.png`,
         });
+
+        if (this.properties.hasBg) {
+            this.setData({
+                img_bg: `${this.data.imgPath}/tpl_${this.properties.tplName}/bg_p2.jpg`,
+            });
+        }
 
         if(this.properties.bg){
             this.setData({

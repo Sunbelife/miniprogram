@@ -1,4 +1,4 @@
-const tplName = "3";
+const tplName = "4";
 const pageName = "7";
 
 const util = require('../../../utils/util.js');
@@ -53,12 +53,12 @@ Component({
             };
 
             editInfo.image.push(util.genImg({
-                width: 606,
-                height: 705,
-                top: 230,
-                right: 72,
+                width: 750,
+                height: 1190,
+                top: 0,
+                right: 0,
             }, editInfo));
-
+            editInfo.image[0].top = '150px';
 
             util.posCssComplete(editInfo.image);
             util.posCssComplete(editInfo.text);

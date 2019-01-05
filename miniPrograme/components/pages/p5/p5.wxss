@@ -111,6 +111,15 @@
 }
 
 
+.p1.tpl4{
+    width: 54rpx;
+    height: 363rpx;
+    position: absolute;
+    top: 54rpx;
+    left: 71rpx;
+}
+
+
 .tpl-text-wrap{
     position: absolute;
     top: 250rpx;

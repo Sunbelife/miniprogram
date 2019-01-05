@@ -4,16 +4,16 @@
 .tpl_p{
     width: 100vw;
     height: 100vh;
-    background: #F0D1D6;
+    /*background: #F0D1D6;*/
 }
 
 
 .image1{
-    width: 606rpx;
-    height: 705rpx;
+    width: 750rpx;
+    height: 100vh;
     position: absolute;
-    top: 230rpx;
-    left: 72rpx;
+    top: 0;
+    left: 0;
 
     opacity: 0;
     transition: all .3s ease-in;
@@ -32,12 +32,12 @@
 
 
 .p2{
-    width: 653rpx;
-    height: 1031rpx;
+    width: 584rpx;
+    height: 368rpx;
     position: absolute;
-    z-index: 1;
-    top: 84rpx;
-    left: 48rpx;
+    z-index: 3;
+    top: 563rpx;
+    left: 84rpx;
 }
 
 
@@ -46,35 +46,37 @@
 
 .tpl-text-wrap{
     position: absolute;
-    top: 954rpx;
+    top: 727rpx;
     left: 0;
     width: 100vw;
     z-index: 3;
     color: #000000;
     text-align: center;
+    font-size: 24rpx;
+
 }
 
 .tpl-text-l1{
-    line-height: 1;
-    font-size: 51rpx;
+
 }
 .tpl-text-l2{
-    margin-top: 27rpx;
-    color: #3E3A39;
-    font-size: 25rpx;
+
 }
 .tpl-text-l3{
-    font-size: 25rpx;
-    color: #3E3A39;
+
 }
 
 
 
 .p1{
-    width: 367rpx;
-    height: 89rpx;
+    width: 309rpx;
+    height: 29rpx;
     position: absolute;
-    top: 121rpx;
-    left: 76rpx;
-    z-index: 2;
+    top: 841rpx;
+    left: 234rpx;
+    z-index: 3;
+}
+
+.showBanquetInfoBtn{
+    top: 1000rpx;
 }

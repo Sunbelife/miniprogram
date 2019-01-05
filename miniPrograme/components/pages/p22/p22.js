@@ -1,4 +1,4 @@
-const tplName = "3";
+const tplName = "4";
 const pageName = "1";
 
 const app = getApp();
@@ -49,11 +49,13 @@ Component({
             };
 
             editInfo.image.push(util.genImg({
-                width: 615,
-                height: 765,
-                top: 137,
-                left: 65,
+                width: 750,
+                height: 1190,
+                top: 0,
+                left: 0,
             }, editInfo));
+
+            editInfo.image[0].top = '250px';
 
             // editInfo.text.push({
             //     type: "text",

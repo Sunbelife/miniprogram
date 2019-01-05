@@ -169,7 +169,7 @@ Page({
             // if (util.isDev() && !tplInfo) {
             if (!tplInfo) {
                 // tplInfo = tplConfig.mockTpl;
-                tplInfo = tplConfig.tpls[2];
+                tplInfo = tplConfig.tpls[getApp().globalData.devTpl - 1];
             }
             this.setData({
                 tplInfo: tplInfo

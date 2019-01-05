@@ -4,58 +4,56 @@
 .tpl_p{
     width: 100vw;
     height: 100vh;
-    background: #F0D1D6;
 }
 
 /* 图 1 */
 .image1{
-    width: 615rpx;
-    height: 765rpx;
+    width: 750rpx;
+    height: 100vh;
     position: absolute;
-    top: 137rpx;
-    left: 65rpx;
+    top: 0;
+    left: 10rpx;
 
     transition: all .3s ease-in;
     opacity: 0;
-    z-index: 2;
+    z-index: 1;
 }
 
 .image1.animated{
     opacity: 1;
-    left: 67rpx;
+    left: 0;
 }
 
 .p1{
-    width: 654rpx;
-    height: 1031rpx;
+    width: 509rpx;
+    height: 492rpx;
     position: absolute;
-    z-index: 1;
-    top: 84rpx;
-    left: 48rpx;
+    z-index: 2;
+    top: 543rpx;
+    left: 49rpx;
 }
 
 .user-info{
     position: absolute;
     z-index: 3;
-    top: 930rpx;
-    right: 79rpx;
-    text-align: right;
+    top: 921rpx;
+    left: 57rpx;
 }
 
 .user-info-name{
-    color: #231815;
-    font-size: 47rpx;
+    color: #000000;
+    font-size: 50rpx;
     line-height: 1;
 }
 .user-info-date{
-    color: #3E3A39;
-    font-size: 24rpx;
+    color: #000000;
+    font-size: 27rpx;
     line-height: 1;
-    margin-top: 22rpx;
+    margin-top: 23rpx;
 }
+
 .user-info-address{
     color: #3E3A39;
     font-size: 26rpx;
     margin-top: 14rpx;
-
 }
