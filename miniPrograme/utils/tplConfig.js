@@ -123,7 +123,6 @@ for (let i = 0; i < 4; i++) {
         new Array(tpl1Map[k + 1]).fill(1).forEach((v2, k2) => {
             let tpl = `tpl_${i + 1}`;
 
-            // TODO 改回去
             // 大于 i  模板  大于 k 页面 使用 模板 1 的 （都要加1）
             if (i + 1 > getApp().globalData.devPageImgProcess.tpl) {
                 tpl = "tpl_1";

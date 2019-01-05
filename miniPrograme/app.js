@@ -12,29 +12,31 @@ App({
             page: 7,
         },
 
-        // TODO 改回去
         isAutoPlayMusic: true,
         // isAutoPlayMusic: false,
         domain: "https://xcx.lyy99.com",
         domainDev: "http://localhost:3000",
-        // TODO 改回去
 
+        // TODO 改回去
         // imgPre: "/images/all",
         imgPre:"https://xcx.lyy99.com/uploads/all",
-        // imgPre:"http://xcx.lyy99.com/uploads/tpl_1/",
 
 
         // TODO 改回去
         // isDev: 1,
         isDev: 0,
 
-        // TODO 改回去
         // isMock: 1,
         isMock: 0,
         userInfo: null
     },
     systemInfo: null,
     onLaunch: function () {
+
+        if(!this.globalData.isDev){
+            this.globalData.isMock = 0;
+            this.globalData.isAutoPlayMusic = true;
+        }
 
         const self = this;
         wx.getSystemInfo({
