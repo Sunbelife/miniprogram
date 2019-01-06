@@ -134,7 +134,7 @@ Page({
         });
 
         const loginReq = {
-            sence: 'scene=' + encodeURIComponent(`id=${this.data.tplInfo.card_id}`),
+            scene: 'scene=' + encodeURIComponent(`id=${this.data.tplInfo.card_id}`),
             page: "pages/tplUserLook/tplUserLook"
         };
 
