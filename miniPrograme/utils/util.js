@@ -726,8 +726,30 @@ function dateChina(invitationInfo) {
     return dateFormat(date, 'yyyy年MM月dd日 hh时mm分');
 }
 
+
+
+
+function urlArgScene(str) {
+    var args = {};
+    var query = str;
+    var pairs = query.split("&");
+    for (var i = 0; i < pairs.length; i++) {
+        var pos = pairs[i].indexOf("=");
+        if (pos == -1) {
+            continue;
+        }
+        var name = pairs[i].substring(0, pos);
+        console.log(name);
+        var value = pairs[i].substring(pos + 1);
+        args[name] = value;
+    }
+    return args;
+}
+
+
 module.exports = {
     posCssComplete,
+    urlArgScene,
     isDev,
     dateChina,
     login,

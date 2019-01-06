@@ -34,6 +34,7 @@ Page({
     onLoad: function (options) {
         let id = options.id;
 
+        console.log(options);
         // TODO 删除
         // id = "80faef93c12c63360aa9714edf3705fd";
 
@@ -41,9 +42,17 @@ Page({
             id = "dfce632a831a27dbf5c88980fd27985f";
         }
 
+        // 从二维码参数获取
+        var scene = decodeURIComponent(options.scene);
+        var sceneOb = util.urlArgScene(scene);
+        id = sceneOb.id ? sceneOb.id : id;
+
+        console.log(id);
+
         this.setData({
             id: id
         });
+
 
 
         if (util.isDev()) {
@@ -62,10 +71,10 @@ Page({
         }
 
         if (util.isDev()) {
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.showBanquetInfoFill();
                 // this.showSaySomething();
-            },300);
+            }, 300);
 
         }
 
@@ -101,7 +110,7 @@ Page({
                     this.init(JSON.parse(resLogin.data.data.changed_log));
                     wx.hideLoading();
                 } else {
-                   this.delHandle();
+                    this.delHandle();
                 }
 
             }
@@ -109,7 +118,7 @@ Page({
 
     },
 
-    delHandle(){
+    delHandle() {
         wx.showToast({
             title: '请帖已被删除',
             icon: 'none',
@@ -167,15 +176,6 @@ Page({
         this.setData({
             tplInfo: this.data.tplInfo
         });
-
-
-
-
-
-
-
-
-
 
 
         // console.log(this.data.tplInfo);

@@ -26,7 +26,7 @@ Page({
 
         this.loadTpl();
         this.save();
-        
+
         // this.saveImgToFile('https://xcx.lyy99.com/uploads/tpl_1/cover.jpg');
     },
     // 保存图片
@@ -74,7 +74,6 @@ Page({
             // this.setData({
             //     shareImg:this.data.tplInfo.imgSrc
             // })
-
 
 
         } catch (e) {
@@ -135,7 +134,7 @@ Page({
         });
 
         const loginReq = {
-            sence: encodeURIComponent(`id=${this.data.tplInfo.card_id}`),
+            sence: 'scene=' + encodeURIComponent(`id=${this.data.tplInfo.card_id}`),
             page: "pages/tplUserLook/tplUserLook"
         };
 
@@ -150,7 +149,7 @@ Page({
                     let pic_url = resLogin.data.data.pic_url;
 
                     that.saveImgToFile(pic_url);
-                  
+
 
                 }
             }
@@ -158,14 +157,14 @@ Page({
 
 
     },
-    
-    saveImgToFile(pic_url){
+
+    saveImgToFile(pic_url) {
         wx.getImageInfo({
             src: pic_url,
             success(res) {
                 console.log(res);
                 wx.saveImageToPhotosAlbum({
-                    filePath:res.path,
+                    filePath: res.path,
                     success(res) {
                         util.toast("保存成功");
                     },
