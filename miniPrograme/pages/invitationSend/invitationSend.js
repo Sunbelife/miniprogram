@@ -136,7 +136,7 @@ Page({
 
         const loginReq = {
             sence: encodeURIComponent(`id=${this.data.tplInfo.card_id}`),
-            page: "/pages/tplUserLook/tplUserLook"
+            page: "pages/tplUserLook/tplUserLook"
         };
 
         console.log(loginReq);
