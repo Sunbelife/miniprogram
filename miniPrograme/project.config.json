@@ -42,7 +42,7 @@
 					"id": 0,
 					"name": "用户分享进入",
 					"pathName": "pages/tplUserLook/tplUserLook",
-					"query": "scene=id%3D1ec2a2ca67d5c23003056102bdbbcea7"
+					"query": "id=57a44a58d8ed4cb5"
 				}
 			]
 		}

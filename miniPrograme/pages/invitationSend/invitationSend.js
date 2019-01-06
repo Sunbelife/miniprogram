@@ -146,7 +146,7 @@ Page({
             success: (resLogin) => {
                 wx.hideLoading();
                 if (resLogin.data.data) {
-                    let pic_url = resLogin.data.data.pic_url;
+                    let pic_url = resLogin.data.data;
 
                     that.saveImgToFile(pic_url);
 
