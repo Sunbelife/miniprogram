@@ -12,15 +12,16 @@ Component({
     },
     data: {
         isLoading: false,
+        name: app.globalData.name.miniProgram,
     },
-    ready(){
+    ready() {
     },
     methods: {
-        show(){
+        show() {
         },
-        hide(){
+        hide() {
         },
-        startMake(){
+        startMake() {
             util.goPage('home');
         },
     }

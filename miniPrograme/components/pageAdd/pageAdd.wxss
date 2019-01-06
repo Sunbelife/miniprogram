@@ -60,13 +60,16 @@
     padding: 0 20rpx;
     border-bottom: 1px solid #ddd;
     background: white;
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 10vh;
     left: 0;
     width: 750rpx;
     height: 90rpx;
     line-height: 90rpx;
     box-sizing: border-box;
+    z-index: 300;
+    /* 不知道为啥会漏一点边*/
+    margin-top: -1rpx;
 }
 .topInfoSpace{
     height: 190rpx;
@@ -76,6 +79,7 @@
     position: absolute;
     top: 0;
     right: 20rpx;
+    padding: 0 20rpx;
     color: #f83146;
     font-weight: bold;
 }

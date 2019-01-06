@@ -10,6 +10,13 @@
     display: inline-block;
     /*min-height: auto;*/
     /*min-height: auto;*/
+    position: relative;
+    height: 90vh;
+}
+
+.topInfo{
+    top: 10vh;
+    margin-top: -1rpx;
 }
 
 .form-label{

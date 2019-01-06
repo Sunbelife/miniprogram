@@ -10,7 +10,7 @@
 .container {
     /*font-family: 'FZLTZHK';*/
     font-size: 34rpx;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     color: #333333;
 } 
 
@@ -73,7 +73,7 @@
 
 .full-page{
     position: fixed;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     bottom: 0;
     left: 0;

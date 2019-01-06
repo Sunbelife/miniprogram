@@ -15,6 +15,7 @@ Page({
         // shareImg: 'https://dummyimage.com/200x300&text=hello',
         shareImg: '',
         shareImgOri: '备份比较',
+        name: app.globalData.name.serviceAccount,
     },
 
     onLoad: function () {

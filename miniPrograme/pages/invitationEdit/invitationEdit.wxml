@@ -20,8 +20,9 @@
     </block>
 
     <!-- 添加新页面 -->
-    <view hidden="{{!isShowPageAdd}}">
-        <view class="full-page {{isShowPageAddAnimate ? 'animated' : '' }}">
+    <view hidden="{{!isShowPageAdd}}" catchtouchmove="catchScroll" >
+        <!--<view class="full-page {{isShowPageAddAnimate ? 'animated' : '' }}">-->
+        <view class="full-page">
             <pageAdd
                     bindhidePage="hidePageAdd"
                     bindchoosePage="choosePage"
@@ -31,8 +32,8 @@
     </view>
 
     <!-- 页面设置 -->
-    <view hidden="{{!isShowPageSet}}">
-        <view class="full-page {{isShowPageSetAnimate ? 'animated' : '' }}">
+    <view hidden="{{!isShowPageSet}}" catchtouchmove="catchScroll" >
+        <view class="full-page">
             <pageSet id="pageSet"
                      bgMusic="{{bgMusic}}"
                      barrageHas="{{barrageHas}}"
@@ -44,11 +45,12 @@
                      bindshowMusicChoose="showMusicChoose"
             ></pageSet>
         </view>
+
     </view>
     <!-- 页面排序 -->
     <!-- wx:if="{{isShowPageSort}}"  -->
     <view hidden="{{!isShowPageSort}}">
-        <view class="page-sort-wrap {{isShowPageSortAnimate ? 'animated' : '' }}">
+        <view class="page-sort-wrap">
             <pageSort id="pageSort" pages="{{pages}}"
                       bindhidePage="hidePageSort"
                       bindsortFinish="sortFinish"
@@ -58,8 +60,8 @@
     </view>
 
     <!-- 请帖信息 -->
-    <view hidden="{{!isShowInvitationInfo}}">
-        <view class="full-page full-page-over {{isShowInvitationInfoAnimate ? 'animated' : '' }}">
+    <view hidden="{{!isShowInvitationInfo}}" catchtouchmove="catchScroll" >
+        <view class="full-page full-page-over ">
             <invitationInfo id="invitationInfo"
                             bindsubmit="submitInvitationInfo"
                             bindhidePage="hideInvitationInfo"></invitationInfo>
@@ -67,8 +69,8 @@
     </view>
 
     <!-- 音乐选择 -->
-    <view hidden="{{!isShowMusicChoose}}">
-        <view class="full-page full-page-over {{isShowMusicChooseAnimate ? 'animated' : '' }}">
+    <view hidden="{{!isShowMusicChoose}}" catchtouchmove="catchScroll">
+        <view class="full-page full-page-over">
             <musicChoose id="musicChoose"
                          bgMusic="{{bgMusic}}"
                          bindhidePage="hideMusicChoose"
@@ -78,8 +80,8 @@
     </view>
 
     <!-- 图片裁剪 -->
-    <view hidden="{{!isShowImgCut}}">
-        <view class="full-page full-page-over {{isShowImgCutAnimate ? 'animated' : '' }}">
+    <view hidden="{{!isShowImgCut}}" catchtouchmove="catchScroll">
+        <view class="full-page full-page-over">
             <imgCut id="imgCut"
                     cutImageInfo="{{curCutImageInfo}}"
                     curShowPage="{{curShowPage}}"
@@ -90,8 +92,8 @@
     </view>
 
     <!-- 文字编辑 -->
-    <view hidden="{{!isShowWordChange}}">
-        <view class="{{isShowWordChangeAnimate ? 'animated' : '' }}">
+    <view hidden="{{!isShowWordChange}}" catchtouchmove="catchScroll">
+        <view class="">
             <wordChange id="wordChange"
                         curWordChangeInfo="{{curWordChangeInfo}}"
                         curShowPage="{{curShowPage}}"

@@ -77,14 +77,14 @@
 
 
 .full-page{
-    bottom: -10vh;
+    /*bottom: -10vh;*/
 
     transition: all .5s;
     /*opacity: .5;*/
     /*transform: scale(.75);*/
 }
 .full-page.animated{
-    bottom: 0;
+    /*bottom: 0;*/
     /*transform: scale(1);*/
     /*opacity: 1;*/
 }

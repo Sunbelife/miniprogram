@@ -167,7 +167,7 @@ Page({
             tplInfo = wx.getStorageSync('tplInfo');
             // console.log(JSON.stringify(tplInfo));
             // if (util.isDev() && !tplInfo) {
-            if (!tplInfo) {
+            if (!tplInfo || util.isDev()) {
                 // tplInfo = tplConfig.mockTpl;
                 tplInfo = tplConfig.tpls[getApp().globalData.devTpl - 1];
             }
@@ -517,16 +517,10 @@ Page({
     hidePageAdd() {
 
         this.setData({
-            isShowPageAddAnimate: false,
+            isShowPageAdd: false
         });
 
-        setTimeout(() => {
-            this.setData({
-                isShowPageAdd: false
-            });
-
-            this.showMap();
-        }, 300);
+        this.showMap();
 
 
     },
@@ -544,17 +538,9 @@ Page({
     },
     // 隐藏 排序
     hidePageSort() {
-
-
         this.setData({
-            isShowPageSortAnimate: false,
+            isShowPageSort: false
         });
-
-        setTimeout(() => {
-            this.setData({
-                isShowPageSort: false
-            });
-        }, 300);
 
 
     },
@@ -579,14 +565,8 @@ Page({
     // 隐藏 页面设置
     hidePageSet() {
         this.setData({
-            isShowPageSetAnimate: false,
+            isShowPageSet: false
         });
-
-        setTimeout(() => {
-            this.setData({
-                isShowPageSet: false
-            });
-        }, 300);
 
 
         this.selectComponent("#tpl1").changMusic();
@@ -611,21 +591,12 @@ Page({
     },
     // 隐藏 编辑页面
     hideInvitationInfo() {
+
         this.setData({
-            isShowInvitationInfoAnimate: false,
+            isShowInvitationInfo: false
         });
-        // 先隐藏地图
-        this.selectComponent("#invitationInfo").mapHide();
 
-
-        setTimeout(() => {
-            this.setData({
-                isShowInvitationInfo: false
-            });
-            this.showMap();
-            this.selectComponent("#invitationInfo").mapShow();
-        }, 300);
-
+        this.showMap();
 
     },
 // 显示 音乐选择
@@ -644,14 +615,8 @@ Page({
 // 隐藏 音乐选择
     hideMusicChoose() {
         this.setData({
-            isShowMusicChooseAnimate: false,
+            isShowMusicChoose: false
         });
-        setTimeout(() => {
-            this.setData({
-                isShowMusicChoose: false
-            });
-        }, 300);
-
 
     },
 // 显示 图片选择
@@ -697,17 +662,10 @@ Page({
     },
     // 隐藏 图片选择
     hideImgCut() {
-
         this.setData({
-            isShowImgCutAnimate: false,
+            isShowImgCut: false
         });
-
-        setTimeout(() => {
-            this.setData({
-                isShowImgCut: false
-            });
-            this.showMap();
-        }, 300);
+        this.showMap();
 
 
     },
@@ -733,14 +691,8 @@ Page({
     // 隐藏 音乐选择
     hideWordChange() {
         this.setData({
-            isShowWordChangeAnimate: false,
+            isShowWordChange: false
         });
-
-        setTimeout(() => {
-            this.setData({
-                isShowWordChange: false
-            });
-        }, 300);
 
     },
     // 在地图页操作的时候。需要隐藏地图
@@ -759,6 +711,10 @@ Page({
     onHide() {
         // console.log("hide");
         this.selectComponent("#tpl1").playStop();
+
+    },
+    catchScroll() {
+
 
     },
     onUnload() {

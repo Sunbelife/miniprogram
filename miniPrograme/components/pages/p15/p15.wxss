@@ -15,7 +15,7 @@
     top: 137rpx;
     left: 65rpx;
 
-    transition: all .3s ease-in;
+    transition: all .5s ease-in;
     transform:  scale(.95) translateZ(0);
     opacity: 0;
     z-index: 2;

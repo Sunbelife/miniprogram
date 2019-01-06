@@ -10,7 +10,7 @@
     position: absolute;
     top: 32rpx;
     left: 54rpx;
-    transition: all .3s ease-in;
+    transition: all .5s ease-in;
     opacity: 0;
 }
 

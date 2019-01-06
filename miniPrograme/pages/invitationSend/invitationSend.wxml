@@ -53,7 +53,7 @@
             </view>
             <view>
                 请关注
-                <view class="name">“原野映像电子请帖”</view>
+                <view class="name">{{name}}</view>
                 服务号
             </view>
         </view>

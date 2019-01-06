@@ -11,7 +11,7 @@
 
     opacity: 0;
     transform: rotate(5deg) translateZ(0);
-    transition: all .3s ease-in;
+    transition: all .5s ease-in;
     transform-origin: left bottom;
 }
 

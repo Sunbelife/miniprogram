@@ -117,7 +117,11 @@ Component({
                         music: music,
                         musicOb:util.arrToObj(music,'no')
                     });
-
+                    if (util.isDev()) {
+                        this.setData({
+                            music: music.concat(music).concat(music).concat(music)
+                        });
+                    }
 
                 }
             });

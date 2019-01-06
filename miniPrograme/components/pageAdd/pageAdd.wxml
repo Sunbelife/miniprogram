@@ -4,14 +4,15 @@
       <view>单图 ，多图，双图。文字</view>
       <view>图片列表 滚动加载</view>
       -->
+    <view class="topInfo">
+        添加新页面
+        <view class="topInfo-close" bindtap="hidePageAdd">关闭</view>
+    </view>
     <scroll-view scroll-y scroll-top="{{scrollTopPage}}"
                  style="{{'height:90vh'}}"
                  bindscrolltolower="loadMore"
                  bindscroll="pageScroll">
-        <view class="topInfo">
-            添加新页面
-            <view class="topInfo-close" bindtap="hidePageAdd">关闭</view>
-        </view>
+
         <view class="topInfoSpace">
         </view>
 

@@ -9,7 +9,7 @@
     right: 58rpx;
 
     opacity: 0;
-    transition: all .3s ease-in;
+    transition: all .5s ease-in;
     transform: scale(.95) translateZ(0);
 }
 
@@ -27,7 +27,7 @@
     right: 58rpx;
 
     opacity: 0;
-    transition: all .3s ease-in;
+    transition: all .5s ease-in;
     transform: scale(.95) translateZ(0);
 }
 

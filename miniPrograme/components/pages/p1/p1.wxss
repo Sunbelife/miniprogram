@@ -9,7 +9,7 @@
     top: 56rpx;
     left: 87rpx;
 
-    transition: all .3s ease-in;
+    transition: all .5s ease-in;
     opacity: 0;
     transform:translateZ(0);
 }

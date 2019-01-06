@@ -4,16 +4,17 @@
         <view>全部，华语，日韩，欧美，纯音乐</view>
 
         <view>保存</view>-->
+    <view class="topInfo">
+        添加音乐
+        <view class="topInfo-close" bindtap="hidePage">关闭</view>
+    </view>
 
     <scroll-view scroll-y scroll-top="{{scrollTopPage}}"
                  style="{{'height:100vh'}}"
                  bindscrolltolower="loadMore"
                  bindscroll="pageScroll">
 
-        <view class="topInfo">
-            添加音乐
-            <view class="topInfo-close" bindtap="hidePage">关闭</view>
-        </view>
+
         <view class="topInfoSpace">
         </view>
 

@@ -23,12 +23,16 @@ App({
 
 
         // TODO 改回去
-        // isDev: 1,
-        isDev: 0,
+        isDev: 1,
+        // isDev: 0,
 
         // isMock: 1,
         isMock: 0,
-        userInfo: null
+        userInfo: null,
+        name:{
+            miniProgram:'「原野映像婚宴请帖」',
+            serviceAccount:'「原野映像环球旅拍」',
+        }
     },
     systemInfo: null,
     onLaunch: function () {

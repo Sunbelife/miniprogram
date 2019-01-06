@@ -17,7 +17,7 @@
 }
 
 .animate-toRight{
-    transition: all .3s ease-in;
+    transition: all .5s ease-in;
     left: -20vw;
     opacity: 0;
 }
@@ -40,7 +40,7 @@
 
 
 .animate-toLeft{
-    transition: all .3s ease-in;
+    transition: all .5s ease-in;
     right: -20vw;
     opacity: 0;
 }

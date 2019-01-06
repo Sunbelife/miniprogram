@@ -9,7 +9,7 @@
         宾客祝福
         <view class="topInfo-close" bindtap="hidePage">关闭</view>
     </view>
-    <view style="height:150rpx;"></view>
+    <view style="height:90rpx;"></view>
 
     <form bindsubmit="confirmComment">
         <view>

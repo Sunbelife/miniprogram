@@ -61,6 +61,19 @@ Page({
 
         }
 
+        if (util.isDev()) {
+            setTimeout(()=>{
+                this.showBanquetInfoFill();
+                // this.showSaySomething();
+            },300);
+
+        }
+
+
+    },
+    catchScroll() {
+
+
     },
     goPage: util.goPage,
     getTplInfo: function () {
@@ -88,23 +101,27 @@ Page({
                     this.init(JSON.parse(resLogin.data.data.changed_log));
                     wx.hideLoading();
                 } else {
-                    wx.showToast({
-                        title: '请帖已被删除',
-                        icon: 'none',
-                        duration: 2000
-                    });
-
-                    setTimeout(() => {
-
-                        wx.reLaunch({
-                            url: '../home/home'
-                        })
-                    }, 2000)
+                   this.delHandle();
                 }
 
             }
         });
 
+    },
+
+    delHandle(){
+        wx.showToast({
+            title: '请帖已被删除',
+            icon: 'none',
+            duration: 2000
+        });
+
+        setTimeout(() => {
+
+            wx.reLaunch({
+                url: '../home/home'
+            })
+        }, 2000)
     },
     init(tplInfo) {
 
@@ -152,14 +169,13 @@ Page({
         });
 
 
-        // TODO 删除
-        // this.showBanquetInfoFill();
-        // this.showSaySomething();
 
 
-        if (util.isDev()) {
 
-        }
+
+
+
+
 
 
         // console.log(this.data.tplInfo);
@@ -301,20 +317,13 @@ Page({
     hideBanquetInfoFill() {
 
         this.setData({
-            isBanquetInfoFillAnimate: false,
+            isBanquetInfoFill: false
         });
 
+
         setTimeout(() => {
-            this.setData({
-                isBanquetInfoFill: false
-            });
-
-
-            setTimeout(() => {
-                this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideBanquetInfo();
-            }, 10)
-        }, 300);
-
+            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideBanquetInfo();
+        }, 10)
     },
     // 显示 说些什么
     showSaySomething() {
@@ -327,6 +336,7 @@ Page({
         setTimeout(() => {
             this.selectComponent("#tpl1") && this.selectComponent("#tpl1").hideMap();
         }, 10)
+        console.log(this.data.isSaySomething);
 
     },
     // 隐藏 说些什么
@@ -334,18 +344,12 @@ Page({
         this.getBlessing();
 
         this.setData({
-            isSaySomethingAnimate: false,
+            isSaySomething: false
         });
 
         setTimeout(() => {
-            this.setData({
-                isSaySomething: false
-            });
-
-            setTimeout(() => {
-                this.selectComponent("#tpl1") && this.selectComponent("#tpl1").showMap();
-            }, 10)
-        }, 300);
+            this.selectComponent("#tpl1") && this.selectComponent("#tpl1").showMap();
+        }, 10)
 
 
     },

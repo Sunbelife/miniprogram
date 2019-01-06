@@ -44,13 +44,13 @@
 
     <block wx:if="{{isBanquetInfoFill}}">
 
-        <view class="bottomFixed animate {{isBanquetInfoFillAnimate ? 'animated' : '' }}">
+        <view class="bottomFixed" catchtouchmove="catchScroll">
             <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{card_id}}"
                              open_id="{{open_id}}"></banquetInfoFill>
         </view>
     </block>
     <block wx:if="{{isSaySomething}}">
-        <view class="bottomFixed animate {{isSaySomethingAnimate ? 'animated' : '' }}">
+        <view class="bottomFixed" catchtouchmove="catchScroll">
             <saySomething bindhidePage="hideSaySomething" card_id="{{card_id}}"></saySomething>
         </view>
     </block>

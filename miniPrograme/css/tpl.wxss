@@ -59,7 +59,7 @@
     padding: 0 20rpx;
     border-bottom: 1px solid #ddd;
     background: white;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 750rpx;
