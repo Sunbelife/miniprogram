@@ -11,7 +11,7 @@
 
     transition: all .3s ease-in;
     opacity: 0;
-
+    transform:translateZ(0);
 }
 
 .image1.animated{

@@ -13,7 +13,7 @@
     transition: all .3s ease-in;
     opacity: 0;
 
-    transform: rotate(-2deg) scale(.8);
+    transform: rotate(-2deg) scale(.95) translateZ(0);
 }
 
 .image1.animated{
