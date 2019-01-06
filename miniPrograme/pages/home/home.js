@@ -39,21 +39,81 @@ Page({
 
     onLoad: function () {
 
+        if (util.isDev()) {
+            this.setData({
+                guestReplyTipNum: 10
+            })
+        }
 
     },
     invitationDelTrigger: function () {
 
-        // this.setData({
-        //     showDel: true
-        // })
-
-    },
-    invitationDel: function () {
-
         this.setData({
-            showDel: false
+            showDel: !this.data.showDel
         })
 
+    },
+    invitationDel: function (e) {
+        console.log(e);
+        let index = util.data(e, 'index');
+        this.deleteTpl(index);
+        // this.setData({
+        //     showDel: false
+        // });
+
+    },
+    deleteDoFirst(indexDel) {
+        let tplInfo = this.data.tpl[indexDel];
+        let card_id = tplInfo.card_id;
+        if (card_id) {
+            // 存在cardID,才请求
+            const loginReq = {
+                card_id: card_id,
+            };
+
+            api.tplDelete({
+                // method: "POST",
+                data: loginReq,
+                success: (resLogin) => {
+                    this.deleteDo(indexDel);
+                },
+                error: (resLogin) => {
+                    console.log(resLogin);
+                    this.deleteDo(indexDel);
+                },
+                complete: (resLogin) => {
+                    console.log(resLogin);
+                    this.deleteDo(indexDel);
+                }
+            });
+        } else {
+            this.deleteDo(indexDel);
+        }
+
+
+    },
+    deleteDo(indexDel) {
+        let tplInfo = this.data.tpl[indexDel];
+        util.tplALL.deleteOne(tplInfo);
+
+        // 主动调用重新加载
+        this.onShow();
+    },
+    deleteTpl(indexDel) {
+        const that = this;
+        wx.showModal({
+            title: '提示',
+            content: '确认要删除吗？',
+            success(res) {
+                if (res.confirm) {
+                    // console.log('用户点击确定');
+                    that.deleteDoFirst(indexDel);
+
+                } else if (res.cancel) {
+                    // console.log('用户点击取消')
+                }
+            }
+        })
     },
     onShow: function () {
 
@@ -276,9 +336,10 @@ Page({
         }
     },
     invitationEdit: function (e) {
-        // if(showDel){
-        //
-        // }
+        if (this.data.showDel) {
+            this.invitationDel(e);
+            return;
+        }
         const storageId = util.data(e, "storageId");
         try {
             util.tplALL.getOne(storageId, (one) => {

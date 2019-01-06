@@ -18,6 +18,9 @@ Component({
         touchEnd: 0,
         isPlay: false,
         isShowMap: true,
+        isLoadFinish: false,
+        imgLoadCount: 0,
+        loadingProcess: 0,
         playRef: {},
         page: 0,
         // 是否是长屏幕
@@ -56,8 +59,26 @@ Component({
             this.needMakeHandle();
             // console.log(this.data.pages);
         }, 300)
+
     },
     methods: {
+        imageLoad(){
+            this.data.loadingProcess += 100/5;
+
+            this.setData({
+                loadingProcess: this.data.loadingProcess
+            });
+            
+            console.log(this.data.loadingProcess);
+
+            if(this.data.loadingProcess === 100){
+                setTimeout(()=>{
+                    this.setData({
+                        isLoadFinish: true
+                    });
+                },1000)
+            }
+        },
         needMakeHandle() {
             // 需要制作，多加一个页面
             if (this.properties.needMake) {

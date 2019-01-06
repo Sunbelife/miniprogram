@@ -1,6 +1,8 @@
 
 
-<image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep[0] ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep[0] ? 'animated' : '' }}"
+       bindload="imageLoad"
+></image>
 
 <!-- 背景 -->
 <image src="{{img_bg}}" class="tpl-bg"></image>

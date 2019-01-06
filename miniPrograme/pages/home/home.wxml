@@ -24,10 +24,11 @@
                 <!--</view>-->
                 <view class="iconWrap">
                     <view class="iconfont icon-duihua"></view>
+                    <view wx:if="{{ guestReplyTipNum !== 0 }}"
+                          class="guestReplyTipNum">{{guestReplyTipNum}}</view>
                 </view>
                 <view class="iconTitle">
                     宾客
-                    <view wx:if="{{ guestReplyTipNum !== 0 }}" class="guestReplyTipNum">({{guestReplyTipNum}})</view>
                 </view>
             </view>
         </view>
@@ -41,12 +42,15 @@
                     bindtap="invitationEdit"
                     data-page="invitationEdit"
                     data-id="{{item.id}}"
+                    data-index="{{index}}"
                     data-storage-id="{{item.storageId}}"
                     data-handle="edit"
                   class="tpl ">
                 <image src="{{item.imgSrc}}"></image>
                 <view class="item-time">{{item.showTime}}</view>
-                <view class="del-mask" wx:if="{{showDel}}" bindtap="invitationDel" data-id="{{item.id}}">
+                <view class="del-mask" wx:if="{{showDel}}"
+                      data-index="{{index}}"
+                      catchtap="invitationDel" data-id="{{item.id}}">
                     <view class="del-btn iconfont icon-sub"></view>
                 </view>
             </view>

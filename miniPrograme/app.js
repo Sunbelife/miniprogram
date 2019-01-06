@@ -3,7 +3,7 @@ App({
     isPublish: false,
     globalData: {
         // 当前开发的模板
-        devTpl: 4,
+        devTpl: 1,
         // 当前开发的页面
         devPage: 1,
         // 当前开发的图片进度
@@ -23,8 +23,8 @@ App({
 
 
         // TODO 改回去
-        isDev: 1,
-        // isDev: 0,
+        // isDev: 1,
+        isDev: 0,
 
         // isMock: 1,
         isMock: 0,

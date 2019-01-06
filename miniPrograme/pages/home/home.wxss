@@ -78,6 +78,8 @@
     height: 80rpx;
     border-radius: 80rpx;
     line-height: 80rpx;
+    margin-top: 20rpx;
+    position: relative;
 }
 /*.iconCount{*/
     /*position: absolute;*/
@@ -119,6 +121,17 @@
 }
 .guestReplyTipNum{
     display: inline-block;
+    position: absolute;
+    top: -15rpx;
+    right: -15rpx;
+    background: white;
+    border-radius: 100%;
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    color:  #f83146;
+    font-size: 26rpx;
+    text-align: center;
 }
 
 .makeBtn:after {

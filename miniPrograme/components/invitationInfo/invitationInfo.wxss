@@ -43,6 +43,7 @@ picker .picker{
     /*margin-top: 100rpx;*/
     /*width: 400rpx;*/
     /*margin-left: 175rpx;*/
+    z-index: 100;
 }
 
 .buttonSpace{

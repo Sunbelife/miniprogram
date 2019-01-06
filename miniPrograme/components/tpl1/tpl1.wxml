@@ -2,6 +2,13 @@
 
 >
 
+    <view class="loading" wx:if="{{!isLoadFinish}}">
+        <view class="loading-process" style="{{'width:'+loadingProcess+'vw'}}">
+
+        </view>
+    </view>
+
+
     <!-- 音乐logo -->
     <view class="music-icon {{ isPlay ? 'play' : '' }}" bindtap="togglePlay">
         <view class="iconfont icon-yinyue"></view>
@@ -42,23 +49,28 @@
                     wx:if="{{item.id === 1}}"></p1>
                 <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 2}}"
                     tplName="1"
+                    bindimageLoad="imageLoad"
                     bg="bg"
                     pageName="2"
                 ></p2>
                 <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 3}}"
                     tplName="1"
+                    bindimageLoad="imageLoad"
                     bg="bg"
                     pageName="3"></p3>
                 <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 4}}"
                     bg="bg"
+                    bindimageLoad="imageLoad"
                     tplName="1"
                     pageName="4"></p4>
                 <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 5}}"
                     bg="bg"
+                    bindimageLoad="imageLoad"
                     tplName="1"
                     pageName="5"></p5>
                 <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 6}}"
                     bg="bg"
+                    bindimageLoad="imageLoad"
                     tplName="1"
                     pageName="6"></p6>
                 <p7 id="p{{index}}"
@@ -76,23 +88,23 @@
                     page="{{item}}" invitationInfo="{{invitationInfo}}"
                     bindshowInvitationInfo="showInvitationInfo"
                 ></p8>
-                <p2 id="p{{index}}"  page="{{item}}" wx:if="{{item.id === 9}}"
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 9}}"
                     tplName="2"
                     pageName="2"
                 ></p2>
-                <p3 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 10}}"
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 10}}"
                     tplName="2"
                     pageName="3"
                 ></p3>
-                <p4 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 11}}"
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 11}}"
                     tplName="2"
                     pageName="4"
                 ></p4>
-                <p5 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 12}}"
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 12}}"
                     tplName="2"
                     pageName="5"
                 ></p5>
-                <p6 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 13}}"
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 13}}"
                     tplName="2"
                     hasBg="{{true}}"
                     pageName="6"
@@ -114,24 +126,24 @@
                      bindshowInvitationInfo="showInvitationInfo"
                 ></p15>
 
-                <p2 id="p{{index}}"  page="{{item}}" wx:if="{{item.id === 16}}"
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 16}}"
                     tplName="3"
                     pageName="2"
                 ></p2>
                 <!-- 设计稿 4 3  换了-->
-                <p3 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 17}}"
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 17}}"
                     tplName="3"
                     pageName="3"
                 ></p3>
-                <p4 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 18}}"
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 18}}"
                     tplName="3"
                     pageName="4"
                 ></p4>
-                <p5 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 19}}"
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 19}}"
                     tplName="3"
                     pageName="5"
                 ></p5>
-                <p6 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 20}}"
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 20}}"
                     tplName="3"
                     pageName="6"
                     hasBg="{{true}}"
@@ -154,24 +166,24 @@
                      bindshowInvitationInfo="showInvitationInfo"
                 ></p22>
 
-                <p2 id="p{{index}}"  page="{{item}}" wx:if="{{item.id === 23}}"
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 23}}"
                     tplName="4"
                     pageName="2"
                 ></p2>
                 <!-- 设计稿 2 3  换了-->
-                <p3 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 24}}"
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 24}}"
                     tplName="4"
                     pageName="3"
                 ></p3>
-                <p4 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 25}}"
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 25}}"
                     tplName="4"
                     pageName="4"
                 ></p4>
-                <p5 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 26}}"
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 26}}"
                     tplName="4"
                     pageName="5"
                 ></p5>
-                <p6 id="p{{index}}" page="{{item}}"  wx:if="{{item.id === 27}}"
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 27}}"
                     tplName="4"
                     pageName="6"
                 ></p6>
@@ -210,6 +222,8 @@
 
 
         </block>
+
+
 
 
     </view>

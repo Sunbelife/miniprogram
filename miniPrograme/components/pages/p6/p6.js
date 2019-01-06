@@ -35,6 +35,10 @@ Component({
 
     },
     methods: {
+        imageLoad() {
+            console.log("image load ");
+            this.triggerEvent('imageLoad');
+        },
         show() {
             util.setTimeOutFlagNew(this);
         },

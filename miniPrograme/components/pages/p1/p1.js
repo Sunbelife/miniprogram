@@ -42,6 +42,10 @@ Component({
         hide() {
             util.setTimeOutFlagHideNew(this);
         },
+        imageLoad() {
+            console.log("image load ");
+            this.triggerEvent('imageLoad');
+        },
         editInfo() {
 
             const editInfo = {

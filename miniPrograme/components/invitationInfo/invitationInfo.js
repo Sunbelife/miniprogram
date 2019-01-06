@@ -125,6 +125,7 @@ Component({
         },
         formSubmit(e) {
 
+            console.log("点点点");
             const self = this;
             const value = e.detail.value;
             // console.log(e.detail.value);

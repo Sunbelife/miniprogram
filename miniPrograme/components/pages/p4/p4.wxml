@@ -1,5 +1,7 @@
 <image src="{{page.imageSrc[0]}}"
-       class="image1 {{animatedStep[0] ? 'animated' : '' }}"></image>
+       class="image1 {{animatedStep[0] ? 'animated' : '' }}"
+       bindload="imageLoad"
+></image>
 
 
 <!-- 背景 -->

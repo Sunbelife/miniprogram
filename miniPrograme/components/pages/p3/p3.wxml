@@ -1,4 +1,6 @@
-<image src="{{page.imageSrc[0]}}" class="image1 animate-Bottom  {{animatedStep[0] ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[0]}}" class="image1 animate-Bottom  {{animatedStep[0] ? 'animated' : '' }}"
+       bindload="imageLoad"
+></image>
 <image src="{{page.imageSrc[1]}}" class="image2 animate-toTop  {{animatedStep[1] ? 'animated' : '' }}"></image>
 
 

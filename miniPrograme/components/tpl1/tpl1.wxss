@@ -32,3 +32,21 @@
     animation: rotateAnimate2 1.4s linear infinite;
 }
 
+.loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 5rpx;
+    z-index: 1000;
+}
+.loading-process{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 5rpx;
+    z-index: 1001;
+    background: #248028;
+    transition: all .3s;
+}

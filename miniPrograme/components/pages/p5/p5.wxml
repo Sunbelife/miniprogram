@@ -1,4 +1,6 @@
-<image src="{{page.imageSrc[0]}}" class="image1 {{animatedStep[0] ? 'animated' : '' }}"></image>
+<image src="{{page.imageSrc[0]}}" class="image1 {{animatedStep[0] ? 'animated' : '' }}"
+       bindload="imageLoad"
+></image>
 <image src="{{page.imageSrc[1]}}" class="image2 {{animatedStep[1] ? 'animated' : '' }}"></image>
 <image src="{{page.imageSrc[2]}}" class="image3 {{animatedStep[0] ? 'animated' : '' }}"></image>
 <image src="{{page.imageSrc[3]}}" class="image4 {{animatedStep[1] ? 'animated' : '' }}"></image>
