@@ -2,10 +2,10 @@
   "pages":[
     "pages/home/home",
     "pages/invitationSend/invitationSend",
+    "pages/tplDev/tplDev",
     "pages/tplUserLook/tplUserLook",
     "pages/invitationEdit/invitationEdit",
     "pages/startMake/startMake",
-    "pages/tplDev/tplDev",
     "pages/tplPreview/tplPreview",
     "pages/invitationInfo/invitationInfo",
     "pages/guestReply/guestReply",

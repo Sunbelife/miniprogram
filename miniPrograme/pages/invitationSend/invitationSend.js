@@ -19,10 +19,6 @@ Page({
     },
 
     onLoad: function () {
-        // 备份比较
-        this.setData({
-            shareImgOri: this.data.shareImg,
-        });
 
         this.loadTpl();
         this.save();
@@ -70,6 +66,12 @@ Page({
                     });
                 }
             }
+
+            // 设置默认的截图
+            this.setData({
+                shareImgOri: this.data.tplInfo.shareImg,
+            });
+
 
             // this.setData({
             //     shareImg:this.data.tplInfo.imgSrc
@@ -258,7 +260,7 @@ Page({
 
         // shareImg: 'https://dummyimage.com/200x300&text=hello',
 
-        let imageUrl = '';
+        let imageUrl = this.data.shareImgOri;
 
         if (this.data.shareImg !== this.data.shareImgOri) {
             imageUrl = this.data.shareImg;
@@ -268,10 +270,7 @@ Page({
             path: '/pages/tplUserLook/tplUserLook?id=' + this.data.tplInfo.card_id
         };
 
-
-        if (imageUrl) {
-            shareObj.imageUrl = imageUrl;
-        }
+        shareObj.imageUrl = imageUrl;
         // console.log(shareObj);
 
         return shareObj;

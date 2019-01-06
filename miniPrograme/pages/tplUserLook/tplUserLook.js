@@ -42,7 +42,10 @@ Page({
             id = "dfce632a831a27dbf5c88980fd27985f";
         }
 
-
+        // 从二维码参数获取
+        var scene = decodeURIComponent(options.scene);
+        var sceneOb = util.urlArgScene(scene);
+        id = sceneOb.id ? sceneOb.id : id;
 
         console.log(id);
 

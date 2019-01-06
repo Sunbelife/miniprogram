@@ -18,10 +18,10 @@ const mp3AudioUrl = [
 ];
 const mp3Rel = [{
     music_id: 13,
-    music_name: "追光者",
+    music_name: "XXXX",
     music_type: "1",
     music_upload_time: "2018-12-22",
-    music_url: "https://xcx.lyy99.com/uploads/music/20181222/982b554eea62638a43f143dbc48d8fde.mp3",
+    music_url: "https://xcx.lyy99.com/uploads/music/default.mp3",
 }];
 const mp3 = [];
 
@@ -184,7 +184,7 @@ for (let i = 0; i < 4; i++) {
         mainColor: colors[i],
         imgSrc: imgPath + `/tpl_${index}/cover.jpg`,
         pages: pagesCommon,
-        shareImg: '',
+        shareImg: imgPath + `/share.jpg`,
         // 有弹幕吗
         barrageHas: true,
         // 有致宾客页面吗
