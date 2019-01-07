@@ -137,6 +137,7 @@ Page({
 
         const loginReq = {
             scene: `id=${this.data.tplInfo.card_id}`,
+            card_id: this.data.tplInfo.card_id,
             page: "pages/tplUserLook/tplUserLook"
         };
 
