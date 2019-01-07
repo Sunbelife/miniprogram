@@ -92,6 +92,7 @@ Page({
 
         const loginReq = {
             open_id: userOpenid,
+            marry_info: this.data.tplInfo.invitationInfo,
             changed_log: JSON.stringify(this.data.tplInfo),
             cover_pic_url: '',
         };
@@ -137,6 +138,7 @@ Page({
 
         const loginReq = {
             scene: `id=${this.data.tplInfo.card_id}`,
+            card_id: this.data.tplInfo.card_id,
             page: "pages/tplUserLook/tplUserLook"
         };
 
