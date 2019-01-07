@@ -37,55 +37,14 @@ Component({
     },
     ready() {
 
-        // const cutImageInfo = this.properties.cutImageInfo;
-        //
-        //
-        // // console.log(cutImageInfo);
-        // // console.log(this.properties);
-        // if (!cutImageInfo.width) {
-        //     console.error("未设置编辑图片的大小");
-        // } else {
-        //     // console.log(cutImageInfo.width, getApp().systemInfo.windowWidth * 0.8);
-        //     // console.log(cutImageInfo.height, getApp().systemInfo.windowHeight * 0.8);
-        //     // console.log(cutImageInfo.width > getApp().systemInfo.windowWidth * 0.8);
-        //     // console.log(cutImageInfo.height > getApp().systemInfo.windowHeight * 0.8);
-        //
-        //     if (cutImageInfo.width > getApp().systemInfo.windowWidth * 0.7
-        //         || cutImageInfo.height > getApp().systemInfo.windowHeight * 0.7
-        //     ) {
-        //
-        //         this.setData({
-        //             scale: .7,
-        //             showImgScale: .7,
-        //         });
-        //
-        //     }
-        //
-        //     this.setData({
-        //         movableAreaRectangle: {
-        //             width: this.cssHandle(cutImageInfo.width, this.data.scale),
-        //             height: this.cssHandle(cutImageInfo.height, this.data.scale)
-        //         }
-        //     })
-        //     // console.log(this.data.movableAreaRectangle);
-        //     this.setData({
-        //         rightCover: {
-        //             left: this.data.movableAreaRectangle.width + util.rpx2px(5)
-        //         }
-        //     });
-        // }
-        //
-        // // console.log("图片设置", this.properties.curShowPage);
-        //
-        // this.scaleRecord = {
-        //     scale: 1
-        // };
-        //
-        // // TODO 开发不唤起  先去掉
-        // this.chooseImg();
+
     },
     methods: {
         init() {
+            // 先置空上次选择的
+            this.setData({
+                chooseImgPath: ""
+            });
 
             const cutImageInfo = this.properties.cutImageInfo;
 
@@ -155,6 +114,12 @@ Component({
                 // newImageSrc: "https://dummyimage.com/200x300&text=random" + Math.floor(Math.random() * 1000)
             });
 
+            // 先置空上次选择的
+            this.setData({
+                chooseImgPath: ""
+            });
+
+
             // this.hidePage();
         },
         drawImg() {
@@ -208,6 +173,8 @@ Component({
             };
         },
         chooseImg() {
+
+
             const that = this;
             // wx.showLoading({
             //     title: '选择图片',
@@ -224,9 +191,7 @@ Component({
                     // });
 
 
-                    that.setData({
-                        chooseImgPath: ""
-                    });
+
 
 
                     // console.log(tempFilePaths);

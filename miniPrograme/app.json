@@ -1,10 +1,10 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/invitationEdit/invitationEdit",
     "pages/invitationSend/invitationSend",
     "pages/tplDev/tplDev",
     "pages/tplUserLook/tplUserLook",
-    "pages/invitationEdit/invitationEdit",
     "pages/startMake/startMake",
     "pages/tplPreview/tplPreview",
     "pages/invitationInfo/invitationInfo",

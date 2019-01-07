@@ -57,6 +57,13 @@ Component({
             };
 
             editInfo.image.push(util.genImg({
+                width: 515,
+                height: 421,
+                top: 49,
+                right: 26,
+            }, editInfo));
+
+            editInfo.image.push(util.genImg({
                 width: 381,
                 height: 631,
                 top: 533,
@@ -64,12 +71,7 @@ Component({
             }, editInfo));
 
 
-            editInfo.image.push(util.genImg({
-                width: 515,
-                height: 421,
-                top: 49,
-                right: 26,
-            }, editInfo));
+
 
 
             editInfo.image.push(util.genImg({

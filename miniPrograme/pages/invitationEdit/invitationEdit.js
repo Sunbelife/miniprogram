@@ -709,19 +709,18 @@ Page({
         }, 10)
     },
     onHide() {
-        // console.log("hide");
-        this.selectComponent("#tpl1").playStop();
-
+        this.selectComponent("#tpl1") && this.selectComponent("#tpl1").playStop();
+    },
+    onShow() {
+        // 显示要播放音乐
+        this.selectComponent("#tpl1") && this.selectComponent("#tpl1").playStart();
     },
     catchScroll() {
 
 
     },
     onUnload() {
-        // 返回
-        // console.log("onUnload");
-        this.selectComponent("#tpl1").playStop();
-
+        this.selectComponent("#tpl1") &&  this.selectComponent("#tpl1").playStop();
     },
 
     goPage: util.goPage

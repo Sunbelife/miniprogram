@@ -5,7 +5,7 @@ App({
         // 当前开发的模板
         devTpl: 1,
         // 当前开发的页面
-        devPage: 1,
+        devPage: 5,
         // 当前开发的图片进度
         devPageImgProcess: {
             tpl: 4,

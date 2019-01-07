@@ -358,6 +358,10 @@ Page({
         this.selectComponent("#tpl1") && this.selectComponent("#tpl1").playStop();
 
     },
+    onShow() {
+        // 显示要播放音乐
+        this.selectComponent("#tpl1") && this.selectComponent("#tpl1").playStart();
+    },
     onUnload() {
         // 返回
         // console.log("onUnload");
