@@ -344,7 +344,14 @@ Page({
         try {
             util.tplALL.getOne(storageId, (one) => {
                 wx.setStorageSync('tplInfo', one);
-                util.goPage(e);
+
+                // 绕过填写请帖信息返回的，继续填写
+                if(!one.invitationInfo.nameLady){
+                    util.goPage("invitationInfo");
+                }else{
+                    util.goPage(e);
+                }
+
             });
         } catch (e) {
         }

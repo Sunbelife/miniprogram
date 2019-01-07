@@ -11,15 +11,9 @@
 
 <!-- 信息 -->
 <view class="tpl-text-wrap">
-    <view class="tpl-text-l1">
-        诚邀您参加婚礼
-    </view>
-    <view class="tpl-text-l2">
-        {{invitationInfo.dateFormat}}
-    </view>
-    <view class="tpl-text-l3">
-        {{invitationInfo.address}}
-    </view>
+    <view class="tpl-text-l1">诚邀您参加婚礼</view>
+    <view class="tpl-text-l2">{{invitationInfo.dateFormat}}</view>
+    <view class="tpl-text-l3">{{invitationInfo.address}}</view>
 </view>
 
 

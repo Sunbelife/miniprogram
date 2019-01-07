@@ -8,12 +8,8 @@
     <image src="{{img_write_1}}" class="p1"></image>
 
     <view class="user-info" bindtap="showInvitationInfo">
-        <view class="user-info-name">
-            {{invitationInfo.nameGentleman}}   {{invitationInfo.nameLady}}
-        </view>
-        <view class="user-info-date">
-            {{invitationInfo.dateFormat}}
-        </view>
+        <view class="user-info-name">{{invitationInfo.nameGentleman}}   {{invitationInfo.nameLady}}</view>
+        <view class="user-info-date">{{invitationInfo.dateFormat}}</view>
         <!--<view class="user-info-address">-->
             <!--{{invitationInfo.address}}-->
         <!--</view>-->

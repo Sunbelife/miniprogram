@@ -1,4 +1,3 @@
-
 <image src="{{page.imageSrc[0]}}" class="image1 animate-Bottom  {{animatedStep[0] ? 'animated' : '' }}"></image>
 
 
@@ -13,15 +12,9 @@
 
     <image src="{{img_write_1}}" class="p1"></image>
     <view class="info-text-wrap">
-        <view class="user-info-l1">
-            诚邀您参加婚礼
-        </view>
-        <view class="user-info-date">
-            {{invitationInfo.dateFormat}}
-        </view>
-        <view class="user-info-address">
-            {{invitationInfo.address}}
-        </view>
+        <view class="user-info-l1">诚邀您参加婚礼</view>
+        <view class="user-info-date">{{invitationInfo.dateFormat}}</view>
+        <view class="user-info-address">{{invitationInfo.address}}</view>
     </view>
 </view>
 
@@ -44,4 +37,5 @@
 
 <button class="showBanquetInfoBtn"
         id="showBanquetInfoBtn"
-        wx:if="{{showBanquetInfoBtn}}" bindtap="showBanquetInfo">宾客回复</button>
+        wx:if="{{showBanquetInfoBtn}}" bindtap="showBanquetInfo">宾客回复
+</button>

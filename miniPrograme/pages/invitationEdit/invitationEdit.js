@@ -182,6 +182,8 @@ Page({
             let toGuestsPage = {};
             let bgMusic = {};
 
+
+
             util.extend(true, pages, tplInfo.pages);
             util.extend(true, invitationInfo, tplInfo.invitationInfo);
             util.extend(true, toGuestsPage, tplInfo.toGuestsPage);
