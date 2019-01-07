@@ -92,6 +92,7 @@ Page({
 
         const loginReq = {
             open_id: userOpenid,
+            marry_info: this.data.tplInfo.invitationInfo,
             changed_log: JSON.stringify(this.data.tplInfo),
             cover_pic_url: '',
         };
