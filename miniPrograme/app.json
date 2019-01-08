@@ -15,10 +15,10 @@
 
     "pages/nav/nav",
     "pages/banquetInfoFill/banquetInfoFill",
+    "pages/shareSuccess/shareSuccess",
 
     "pages/index/index",
 
-    "pages/shareSuccess/shareSuccess",
     "pages/tpl/tpl"
   ],
   "window":{
