@@ -72,7 +72,7 @@
                           bindscale="onScale"
                           style="width:{{movableViewRectangle.width}}px;height:{{movableViewRectangle.height}}px;"
             >
-                <!--<image src="/images/logo.jpeg"-->
+                <!--<image src="https://xcx.lyy99.com/static/pic/icon.jpg"-->
                 <image src="{{chooseImgPath}}"
                        class="showImg"
                        style="width:{{movableViewRectangle.width}}px;height:{{movableViewRectangle.height}}px;"

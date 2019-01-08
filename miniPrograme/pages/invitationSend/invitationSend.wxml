@@ -41,7 +41,7 @@
             <view class="shareType" bindtap="share">
                 <view class="shareTypeImgWrap">
                     <!--<image src="/images/moment.png" class="shareTypeImg"></image>-->
-                    <image src="/images/logo.jpeg" class="shareTypeImg"></image>
+                    <image src="https://xcx.lyy99.com/static/pic/icon.jpg" class="shareTypeImg"></image>
                 </view>
                 <view class="shareTypeName">生成请帖图片</view>
             </view>

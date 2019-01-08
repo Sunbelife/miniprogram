@@ -8,7 +8,7 @@
     position: absolute;
     top: 50rpx;
     z-index: 2;
-    left: 67rpx;
+    left: 70rpx;
 
     transition: all .5s ease-in;
     opacity: 0;

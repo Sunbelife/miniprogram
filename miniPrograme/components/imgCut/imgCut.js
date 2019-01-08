@@ -23,7 +23,7 @@ Component({
         x: 0,
         y: 0,
         uploadSuccessImg: "",
-        imgSrc: "/images/logo.jpeg",
+        imgSrc: "https://xcx.lyy99.com/static/pic/icon.jpg",
         // 默认缩放一半
         // 需要的图片大小和用户都要缩放
         // scale: .5
