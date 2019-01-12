@@ -40,7 +40,7 @@ function banquetInfo(data) {
         const newOb = {};
         newOb.id = v.id;
 
-        newOb.transit_type = status.transitType[parseInt(v.transit_type)];
+        newOb.transit_type = status.transitType[parseInt(v.transit_type)].name;
 
         newOb.user_name = v.user_name;
         newOb.phone_num = v.phone_num;

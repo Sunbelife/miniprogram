@@ -8,6 +8,7 @@ import BanquetList from './views/BanquetList.vue'
 import H5TplList from './views/H5TplList.vue'
 import MusicList from './views/MusicList.vue'
 import Nav from './views/Nav.vue'
+import followPublicNo from './views/followPublicNo.vue'
 
 Vue.use(Router);
 
@@ -40,6 +41,14 @@ export default new Router({
                 title: '原野映像 - 请帖列表'
             },
             component: InvitationList
+        },
+        {
+            path: '/followPublicNo',
+            name: 'followPublicNo',
+            meta: {
+                title: '原野映像'
+            },
+            component: followPublicNo
         },
         {
             path: '/banquetList/:id',
