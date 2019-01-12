@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/followPublicNo/followPublicNo",
     "pages/tplUserLook/tplUserLook",
     "pages/tplPreview/tplPreview",
     "pages/invitationEdit/invitationEdit",

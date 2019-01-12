@@ -72,7 +72,7 @@ Page({
 
         if (util.isDev()) {
             setTimeout(() => {
-                this.showBanquetInfoFill();
+                // this.showBanquetInfoFill();
                 // this.showSaySomething();
             }, 300);
 

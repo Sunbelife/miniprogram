@@ -1,0 +1,21 @@
+button{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    width: 750rpx;
+    height: 300rpx;
+}
+
+button:after{
+    display: none;
+}
+button:active,button:focus{
+    background: transparent;
+}
+
+.contact.button-hover {
+    color:rgba(0, 0, 0, 0.6);
+    background: transparent;
+
+}

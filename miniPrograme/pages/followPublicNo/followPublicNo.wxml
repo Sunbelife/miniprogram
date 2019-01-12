@@ -1,0 +1,6 @@
+<!-- 指向微信公众平台首页的web-view -->
+<!--<web-view src="https://xcx.lyy99.com/client/#/followPublicNo"></web-view>-->
+
+<image src="/images/a20190112154115.jpg"></image>
+
+<button class='contact button-hover' open-type='contact' session-from="2222">    </button>
