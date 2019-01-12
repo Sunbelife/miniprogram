@@ -6,26 +6,16 @@
 检查项目所有的 todo
 
 ------------------------------------------------------------------------------
-1.   OK
-2.   OK
-3.   OK
-4..   OK
-5.   OK
-6.    OK
-7.   OK
-8.   OK
-9.   OK
-10.   OK
-11.   OK
-12.   OK
-13.   OK
-
 
 默认 音乐
 https://xcx.lyy99.com/uploads/music/default.mp3
 
 
+/home/wwwroot/xcx.lyy99.com
 
+/usr/local/nginx/conf/vhost
+
+http://xcx.lyy99.com/client/#/login
 
 
 ------------------------------------------------------------------------------
