@@ -59,12 +59,12 @@
                         prop="marr_addr"
                         label="结婚地址">
                 </el-table-column>
-                <el-table-column
-                        align="center"
-                        width="160"
-                        prop="contact_num"
-                        label="联系电话">
-                </el-table-column>
+                <!--<el-table-column-->
+                        <!--align="center"-->
+                        <!--width="160"-->
+                        <!--prop="contact_num"-->
+                        <!--label="联系电话">-->
+                <!--</el-table-column>-->
 
 
                 <el-table-column
