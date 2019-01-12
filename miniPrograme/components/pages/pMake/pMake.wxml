@@ -1,7 +1,7 @@
 <view class="container">
     <!--3.宾客看完后   开始制作页面-->
 
-    <image src="/images/logo.jpeg" class="logo"></image>
+    <image src="https://xcx.lyy99.com/static/pic/icon.jpg" class="logo"></image>
 
 
     <view class="content">

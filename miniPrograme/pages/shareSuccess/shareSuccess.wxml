@@ -2,7 +2,7 @@
     <!--发送成功后  开启通知页面  。关注服务号-->
 
 
-    <image src="/images/logo.jpeg" class="logo"></image>
+    <image src="https://xcx.lyy99.com/static/pic/icon.jpg" class="logo"></image>
 
 
     <view class="content">
