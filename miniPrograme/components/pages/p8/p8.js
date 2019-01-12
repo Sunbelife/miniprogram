@@ -8,6 +8,7 @@ const tplConfig = require('../../../utils/tplConfig.js');
 Component({
     properties: {
         invitationInfo: null,
+        type: null, // 简化的定义方式
         page: null,
     },
     data: {
@@ -32,7 +33,13 @@ Component({
     },
     methods: {
         openLocation() {
-            util.openLocation(this.properties.invitationInfo);
+            console.log("openLocation");
+            console.log(this.properties.type === 'invitationEdit');
+            if(this.properties.type === 'invitationEdit'){
+                this.showInvitationInfo();
+            }else{
+                util.openLocation(this.properties.invitationInfo);
+            }
         },
         showInvitationInfo() {
             this.triggerEvent('showInvitationInfo');

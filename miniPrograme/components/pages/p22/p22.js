@@ -9,6 +9,7 @@ Component({
     behaviors: [],
     properties: {
         invitationInfo: null, // 简化的定义方式
+        type: null, // 简化的定义方式
         page: null, // 简化的定义方式
     },
     data: {

@@ -8,6 +8,7 @@
         <tpl1
                 pages="{{tplInfo.pages}}"
                 id="tpl1"
+                type="tplPreview"
                 bgMusic="{{tplInfo.bgMusic}}"
                 invitationInfo="{{tplInfo.invitationInfo}}"
                 toGuestsHas="{{tplInfo.toGuestsHas}}"

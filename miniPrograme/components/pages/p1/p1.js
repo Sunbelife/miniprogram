@@ -10,6 +10,7 @@ Component({
     properties: {
         invitationInfo: null, // 简化的定义方式
         page: null, // 简化的定义方式
+        type: null, // 简化的定义方式
     },
     data: {
         tplName: tplName,
@@ -18,6 +19,7 @@ Component({
         animatedStep: new Array(1).fill(false)
     },
     ready() {
+        console.log(this.properties.type);
 
         this.setData({
             "invitationInfo.dateFormat": util.dateChina(this.properties.invitationInfo),
@@ -33,9 +35,16 @@ Component({
     },
     methods: {
         openLocation() {
-            util.openLocation(this.properties.invitationInfo);
+            console.log("openLocation");
+            console.log(this.properties.type === 'invitationEdit');
+            if(this.properties.type === 'invitationEdit'){
+                this.showInvitationInfo();
+            }else{
+                util.openLocation(this.properties.invitationInfo);
+            }
         },
         showInvitationInfo() {
+            console.log("showInvitationInfo");
             this.triggerEvent('showInvitationInfo');
         },
         show() {

@@ -594,9 +594,14 @@ function getUserInfo(resLogin, callLoginSuccess) {
 // TODO 存在引用改变吗？？
 let tplALL = {
     fixToGuestsHas(tplInfo) {
+
         if (tplInfo.toGuestsHas) {
-            tplInfo.pages.push(tplInfo.toGuestsPage);
+            if (tplInfo.pages[tplInfo.pages.length - 1].type !== "toGuests") {
+                tplInfo.pages.push(tplInfo.toGuestsPage);
+            }
         }
+
+
         // console.log(tplInfo);
     },
     removeFirst(call) {

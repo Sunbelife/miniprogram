@@ -131,6 +131,7 @@ Page({
     saveTplInfo(call) {
         try {
 
+            // 只有在编辑的时候 才会 把致宾客页合在pages  里面
             let tplInfo = wx.getStorageSync('tplInfo');
 
             util.extend(true, tplInfo.pages, this.data.pages);
@@ -145,7 +146,7 @@ Page({
             if (tplInfo.toGuestsHas) {
                 tplInfo.pages = tplInfo.pages.slice(0, tplInfo.pages.length - 1)
             }
-
+            console.log(tplInfo);
 
             wx.setStorageSync('tplInfo', tplInfo);
 
@@ -181,7 +182,6 @@ Page({
             let invitationInfo = {};
             let toGuestsPage = {};
             let bgMusic = {};
-
 
 
             util.extend(true, pages, tplInfo.pages);
@@ -353,8 +353,8 @@ Page({
     // 保存图片
     saveImage(e) {
 
-        // console.log(e);
-        // console.log(e.detail);
+        console.log(e);
+        console.log(e.detail);
         const curShowPage = e.detail.curShowPage;
         const cutImageInfo = e.detail.cutImageInfo;
         const newImageSrc = e.detail.newImageSrc;
@@ -365,8 +365,18 @@ Page({
         this.setData({
             pages: pages
         });
+
+        // 把最后一页保存起来
+        if (curShowPage === 6) {
+            let toGuestsPage = {};
+            util.extend(true, toGuestsPage, pages[6]);
+            this.setData({
+                toGuestsPage: toGuestsPage
+            });
+        }
+
         this.hideImgCut();
-        // console.log(pages);
+        console.log(pages);
 
 
         // 保存到模板里面
@@ -722,7 +732,7 @@ Page({
 
     },
     onUnload() {
-        this.selectComponent("#tpl1") &&  this.selectComponent("#tpl1").playStop();
+        this.selectComponent("#tpl1") && this.selectComponent("#tpl1").playStop();
     },
 
     goPage: util.goPage

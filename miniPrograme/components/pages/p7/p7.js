@@ -9,6 +9,7 @@ Component({
         isShowMap: null,
         invitationInfo: null, // 简化的定义方式
         showBanquetInfoBtn: null, // 简化的定义方式
+        type: null, // 简化的定义方式
         page: null, // 简化的定义方式
     },
     data: {
@@ -34,7 +35,13 @@ Component({
     },
     methods: {
         openLocation() {
-            util.openLocation(this.properties.invitationInfo);
+            console.log("openLocation");
+            console.log(this.properties.type === 'invitationEdit');
+            if(this.properties.type === 'invitationEdit'){
+                this.showInvitationInfo();
+            }else{
+                util.openLocation(this.properties.invitationInfo);
+            }
         },
         showInvitationInfo() {
             this.triggerEvent('showInvitationInfo');

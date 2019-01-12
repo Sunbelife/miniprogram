@@ -82,11 +82,11 @@
     </view>
 
 
-    <view class="button-fixed">
-        <view class="button" bindtap="chooseImg">选择图片</view>
+    <cover-view class="button-fixed">
+        <cover-view class="button" bindtap="chooseImg">选择图片</cover-view>
         <!--<view class="button" bindtap="saveImage">保存图片</view>-->
-        <view class="button" bindtap="uploadImg">保存图片</view>
-    </view>
+        <cover-view class="button" bindtap="uploadImg">保存图片</cover-view>
+    </cover-view>
 
 
 </view>

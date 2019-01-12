@@ -11,6 +11,7 @@
               bindpageClick="pageClick"
               bindpageMove="pageMove"
               bindshowInvitationInfo="showInvitationInfo"
+              type="invitationEdit"
               toGuestsHas="{{toGuestsHas}}"
               pages="{{pages}}"
               bgMusic="{{bgMusic}}"

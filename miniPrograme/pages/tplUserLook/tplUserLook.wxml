@@ -7,6 +7,7 @@
         <tpl1
                 showBanquetInfoBtn="{{true}}"
                 bindpageMove="pageMove"
+                type="tplUserLook"
                 needMake="{{true}}"
                 toGuestsHas="{{tplInfo.toGuestsHas}}"
                 id="tpl1"

@@ -44,7 +44,9 @@
                 <!--
                     page 要传入，否则 改变上层的 page 对象，不会变下去
                 -->
-                <p1 id="p{{index}}" page="{{item}}" invitationInfo="{{invitationInfo}}"
+                <p1 id="p{{index}}" page="{{item}}"
+                    invitationInfo="{{invitationInfo}}"
+                    type="{{type}}"
                     bindshowInvitationInfo="showInvitationInfo"
                     wx:if="{{item.id === 1}}"></p1>
                 <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 2}}"
@@ -75,6 +77,7 @@
                     pageName="6"></p6>
                 <p7 id="p{{index}}"
                     page="{{item}}"
+                    type="{{type}}"
                     isShowMap="{{isShowMap}}"
                     invitationInfo="{{invitationInfo}}"
                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
@@ -85,6 +88,7 @@
 
                 <!-- 模板二 -->
                 <p8 id="p{{index}}" wx:if="{{item.id === 8}}"
+                    type="{{type}}"
                     page="{{item}}" invitationInfo="{{invitationInfo}}"
                     bindshowInvitationInfo="showInvitationInfo"
                 ></p8>
@@ -111,6 +115,7 @@
                 ></p6>
 
                 <p14 id="p{{index}}"
+                     type="{{type}}"
                      page="{{item}}"
                      isShowMap="{{isShowMap}}"
                      invitationInfo="{{invitationInfo}}"
@@ -123,6 +128,7 @@
                 <!-- 模板三 -->
                 <p15 id="p{{index}}" wx:if="{{item.id === 15}}"
                      page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     type="{{type}}"
                      bindshowInvitationInfo="showInvitationInfo"
                 ></p15>
 
@@ -150,6 +156,7 @@
                 ></p6>
                 <p21 id="p{{index}}"
                      page="{{item}}"
+                     type="{{type}}"
                      isShowMap="{{isShowMap}}"
                      invitationInfo="{{invitationInfo}}"
                      showBanquetInfoBtn="{{showBanquetInfoBtn}}"
@@ -162,6 +169,7 @@
 
                 <!-- 模板四 -->
                 <p22 id="p{{index}}" wx:if="{{item.id === 22}}"
+                     type="{{type}}"
                      page="{{item}}" invitationInfo="{{invitationInfo}}"
                      bindshowInvitationInfo="showInvitationInfo"
                 ></p22>
@@ -190,6 +198,7 @@
 
                 <p28 id="p{{index}}"
                      page="{{item}}"
+                     type="{{type}}"
                      isShowMap="{{isShowMap}}"
                      invitationInfo="{{invitationInfo}}"
                      showBanquetInfoBtn="{{showBanquetInfoBtn}}"

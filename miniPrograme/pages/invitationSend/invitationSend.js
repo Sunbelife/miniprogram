@@ -48,7 +48,8 @@ Page({
             var tplInfo = wx.getStorageSync('tplInfo');
             // console.log(JSON.stringify(tplInfo));
             if (tplInfo) {
-                util.tplALL.fixToGuestsHas(tplInfo);
+                // 致宾客页面被合并进去了
+                // util.tplALL.fixToGuestsHas(tplInfo);
 
                 // Do something with return value
                 this.setData({

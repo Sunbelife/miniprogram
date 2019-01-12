@@ -36,7 +36,7 @@ Page({
 
         console.log(options);
         // TODO 改回去
-        // id = "6eb92f1ac432a8e1";
+        // id = "f548b328eab10395";
 
         if (util.isDev()) {
             id = "6eb92f1ac432a8e1";
@@ -157,12 +157,15 @@ Page({
             title: title
         });
 
+        // this.data.tplInfo.toGuestsHas = false;
         // this.data.tplInfo.barrageHas = false;
 
         console.log(this.data.tplInfo);
         if (this.data.tplInfo.barrageHas) {
             this.getBlessing();
         }
+
+        util.tplALL.fixToGuestsHas(this.data.tplInfo);
 
 
         // 最后提交，pages 已经合一起了

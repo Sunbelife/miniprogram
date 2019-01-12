@@ -11,6 +11,7 @@ Component({
         toGuestsHas: null,
         invitationInfo: null,
         showBanquetInfoBtn: null,
+        type: null,
         needMake: null,
     },
     data: {

@@ -8,6 +8,7 @@ Component({
     behaviors: [],
     properties: {
         isShowMap: null,
+        type: null, // 简化的定义方式
         invitationInfo: null, // 简化的定义方式
         showBanquetInfoBtn: null, // 简化的定义方式
         page: null, // 简化的定义方式
@@ -41,7 +42,13 @@ Component({
             this.triggerEvent('showBanquetInfo');
         },
         openLocation() {
-            util.openLocation(this.properties.invitationInfo);
+            console.log("openLocation");
+            console.log(this.properties.type === 'invitationEdit');
+            if(this.properties.type === 'invitationEdit'){
+                this.showInvitationInfo();
+            }else{
+                util.openLocation(this.properties.invitationInfo);
+            }
         },
         show() {
             util.setTimeOutFlagNew(this);
