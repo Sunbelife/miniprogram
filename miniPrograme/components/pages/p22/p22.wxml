@@ -1,15 +1,15 @@
 <view class="tpl_p">
 
-    <image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep[0] ? 'animated' : '' }}"></image>
+    <image src="{{page.imageSrc[0]}}" class="image1 animate-toLeft {{animatedStep[0] ? 'animated' : '' }}" ></image>
 
     <!-- 背景 -->
     <!--<image src="{{img_bg}}" class="tpl-bg"></image>-->
 
     <image src="{{img_write_1}}" class="p1"></image>
 
-    <view class="user-info" bindtap="showInvitationInfo">
-        <view class="user-info-name">{{invitationInfo.nameGentleman}}   {{invitationInfo.nameLady}}</view>
-        <view class="user-info-date">{{invitationInfo.dateFormat}}</view>
+    <view class="user-info">
+        <view class="user-info-name" bindtap="showInvitationInfo">{{invitationInfo.nameGentleman}}   {{invitationInfo.nameLady}}</view>
+        <view class="user-info-date" bindtap="showInvitationInfo">{{invitationInfo.dateFormat}}</view>
         <!--<view class="user-info-address">-->
             <!--{{invitationInfo.address}}-->
         <!--</view>-->

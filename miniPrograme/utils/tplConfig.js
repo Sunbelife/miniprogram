@@ -175,6 +175,10 @@ for (let i = 0; i < 4; i++) {
         nameGentleman: ""
     };
 
+    if(util.isDev()){
+        invitationInfo = invitationInfo2;
+    }
+
     tpls.push({
         id: index,
         bgMusic: mp3[0],
@@ -190,7 +194,6 @@ for (let i = 0; i < 4; i++) {
         // 有致宾客页面吗
         toGuestsHas: true,
         toGuestsPage: toGuestsPage,
-        // TODO 改回去
         invitationInfo: invitationInfo
     });
 

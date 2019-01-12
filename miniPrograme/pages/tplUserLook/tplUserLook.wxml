@@ -35,7 +35,8 @@
             <!--</block>-->
         </view>
     </view>
-    <view class="bottomFixed" style="z-index: 1000" wx:if="{{isShowBlessing}}">
+    <!-- 设置了显示弹幕并且是弹幕界面 -->
+    <view class="bottomFixed" style="z-index: 1000" wx:if="{{ tplInfo.barrageHas && isShowBlessing}}">
         <view class="saySomething" bindtap="showSaySomething">
             请留下您的祝福...
         </view>

@@ -32,7 +32,9 @@ Component({
         console.log(this.data.img_write_1);
     },
     methods: {
-
+        openLocation() {
+            util.openLocation(this.properties.invitationInfo);
+        },
         showInvitationInfo() {
             this.triggerEvent('showInvitationInfo');
         },

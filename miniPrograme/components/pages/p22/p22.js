@@ -48,9 +48,10 @@ Component({
                 text: []
             };
 
+            console.log(app.systemInfo);
             editInfo.image.push(util.genImg({
-                width: 750,
-                height: 1190,
+                width: app.systemInfo.windowWidth * 2,
+                height: app.systemInfo.windowHeight * 2,
                 top: 0,
                 left: 0,
             }, editInfo));

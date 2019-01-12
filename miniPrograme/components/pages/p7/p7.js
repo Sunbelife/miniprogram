@@ -33,6 +33,9 @@ Component({
 
     },
     methods: {
+        openLocation() {
+            util.openLocation(this.properties.invitationInfo);
+        },
         showInvitationInfo() {
             this.triggerEvent('showInvitationInfo');
         },

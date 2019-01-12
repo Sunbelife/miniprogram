@@ -35,11 +35,11 @@ Page({
         let id = options.id;
 
         console.log(options);
-        // TODO 删除
-        // id = "80faef93c12c63360aa9714edf3705fd";
+        // TODO 改回去
+        // id = "6eb92f1ac432a8e1";
 
         if (util.isDev()) {
-            id = "dfce632a831a27dbf5c88980fd27985f";
+            id = "6eb92f1ac432a8e1";
         }
 
         // 从二维码参数获取
@@ -161,8 +161,6 @@ Page({
 
         console.log(this.data.tplInfo);
         if (this.data.tplInfo.barrageHas) {
-
-
             this.getBlessing();
         }
 
@@ -178,7 +176,7 @@ Page({
         });
 
 
-        // console.log(this.data.tplInfo);
+        console.log(this.data.tplInfo);
 
         this.setData({
             isReady: true

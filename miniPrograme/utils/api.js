@@ -1,3 +1,4 @@
+console.log(getApp());
 let apiUrl = getApp().globalData.domain + '/wx/api';
 const apiUrlDev = getApp().globalData.domainDev + '/wx';
 const url4Mp3 = getApp().globalData.domain + '/web/manage/get_music_list';

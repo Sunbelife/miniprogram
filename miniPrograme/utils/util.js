@@ -111,6 +111,7 @@ const rpx2pxStr = rpx => {
 };
 
 function genImg(img, editInfo) {
+    console.log(img);
     let imgRet = {
         width: rpx2px(img.width),
         height: rpx2px(img.height),
@@ -727,8 +728,6 @@ function dateChina(invitationInfo) {
 }
 
 
-
-
 function urlArgScene(str) {
     var args = {};
     var query = str;
@@ -746,9 +745,28 @@ function urlArgScene(str) {
     return args;
 }
 
+function openLocation(location) {
+    console.log(location);
+    let latitude = location.latitude;
+    let longitude = location.longitude;
+    let name = location.address;
+
+    if (!latitude) {
+        return;
+    }
+
+    wx.openLocation({
+        name,
+        latitude,
+        longitude,
+        scale: 18
+    })
+}
+
 
 module.exports = {
     posCssComplete,
+    openLocation,
     urlArgScene,
     isDev,
     dateChina,

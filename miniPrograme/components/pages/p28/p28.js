@@ -1,5 +1,6 @@
 const tplName = "4";
 const pageName = "7";
+const app = getApp();
 
 const util = require('../../../utils/util.js');
 
@@ -39,6 +40,9 @@ Component({
         showBanquetInfo(e) {
             this.triggerEvent('showBanquetInfo');
         },
+        openLocation() {
+            util.openLocation(this.properties.invitationInfo);
+        },
         show() {
             util.setTimeOutFlagNew(this);
         },
@@ -53,8 +57,8 @@ Component({
             };
 
             editInfo.image.push(util.genImg({
-                width: 750,
-                height: 1190,
+                width: app.systemInfo.windowWidth * 2,
+                height: app.systemInfo.windowHeight * 2,
                 top: 0,
                 right: 0,
             }, editInfo));
