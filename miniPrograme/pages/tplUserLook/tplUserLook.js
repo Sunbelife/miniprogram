@@ -224,7 +224,7 @@ Page({
             card_id: this.data.card_id
         };
         // console.log(loginReq);
-        api.barrageList({
+        api.barrageListByCard({
             // method: "POST",
             data: loginReq,
             success: (res) => {
