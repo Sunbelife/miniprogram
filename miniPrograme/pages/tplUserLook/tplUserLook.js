@@ -221,7 +221,7 @@ Page({
 
     getBlessing() {
         const loginReq = {
-            open_id: this.data.open_id
+            card_id: this.data.card_id
         };
         // console.log(loginReq);
         api.barrageList({

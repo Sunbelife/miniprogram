@@ -47,13 +47,18 @@
     <block wx:if="{{isBanquetInfoFill}}">
 
         <view class="bottomFixed" catchtouchmove="catchScroll">
-            <banquetInfoFill bindhidePage="hideBanquetInfoFill" card_id="{{card_id}}"
-                             open_id="{{open_id}}"></banquetInfoFill>
+            <banquetInfoFill bindhidePage="hideBanquetInfoFill"
+                             card_id="{{card_id}}"
+                             open_id="{{open_id}}"
+            ></banquetInfoFill>
         </view>
     </block>
     <block wx:if="{{isSaySomething}}">
         <view class="bottomFixed" catchtouchmove="catchScroll">
-            <saySomething bindhidePage="hideSaySomething" card_id="{{card_id}}"></saySomething>
+            <saySomething bindhidePage="hideSaySomething"
+                          card_id="{{card_id}}"
+                          open_id="{{open_id}}"
+            ></saySomething>
         </view>
     </block>
 

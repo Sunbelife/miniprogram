@@ -86,6 +86,8 @@ const urlsDev = {
     userShareImgGet: "/userShareImgGet",
     // 获取弹幕列表
     barrageList: "/barrageList",
+    // 获取弹幕列表
+    barrageListByCard: "/barrageListByCard",
 
     // 宾客弹幕保存
     barrageSave: "/barrageSave",
@@ -147,6 +149,8 @@ const urlsProd = {
     userShareImgGet: "/gen_user_card_qr",
     // 获取弹幕列表
     barrageList: "/get_barrage_msg",
+    // 获取弹幕列表
+    barrageListByCard: "/get_card_barrage_msg",
 
     // 宾客弹幕保存
     barrageSave: "/send_barrage_msg",
@@ -239,6 +243,10 @@ const userShareImgGet = (params) => {
 const barrageList = (params) => {
     wxRequest(params, `${apiUrl}${urls.barrageList}`);
 };
+// 获取弹幕列表
+const barrageListByCard = (params) => {
+    wxRequest(params, `${apiUrl}${urls.barrageListByCard}`);
+};
 
 // 宾客弹幕保存
 const barrageSave = (params) => {
@@ -306,6 +314,7 @@ module.exports = {
     updateImgCut,
     userShareImgGet,
     barrageList,
+    barrageListByCard,
     barrageSave,
     barrageDel,
     barrageReply,

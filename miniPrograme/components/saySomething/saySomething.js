@@ -9,6 +9,7 @@ Component({
     behaviors: [],
     properties: {
         card_id: null, // 简化的定义方式
+        open_id: null, // 简化的定义方式
         item: null // 简化的定义方式
     },
     data: {
@@ -109,6 +110,7 @@ Component({
             const req = {
                 user_name: name,
                 card_id: this.properties.card_id,
+                open_id: this.properties.open_id,
                 // msg_id:"xxx",
                 message: msg
             };
