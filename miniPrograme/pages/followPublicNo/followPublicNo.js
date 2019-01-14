@@ -1,12 +1,13 @@
-
 const app = getApp();
 
 Page({
-  data: {
-   
-  },
+    data: {},
 
-  onLoad: function () {
+    onLoad: function () {
 
-  }
+    },
+    handleContact(e) {
+        console.log(e.path)
+        console.log(e.query)
+    }
 });

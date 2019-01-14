@@ -4,7 +4,12 @@ button{
     left: 0;
     background: transparent;
     width: 750rpx;
-    height: 300rpx;
+    height: 80rpx;
+}
+
+.adImg{
+    width: 750rpx;
+    height: 80rpx;
 }
 
 button:after{
