@@ -50,11 +50,13 @@ let apiOb = {
         marryInfo: "/marryInfo",
         banquetInfo: "/banquetInfo",
         tplList: "/tplList",
+        downloadInvitationData: "/downloadInvitationData",
         tplDel: "/tplDel",
     },
     prod: {
         login: "/verify_user",
         musicList: "/get_music_list",
+        downloadInvitationData: "/export_excel",
         musicDel: "/del_music",
         musicUpload: "/upload_music",
         marryInfo: "/get_attend_info_marry_man",
@@ -70,6 +72,8 @@ let api = {
     login: apiOb[env].login,
     // ok
     musicList: apiOb[env].musicList,
+    // ok
+    downloadInvitationData: apiOb[env].downloadInvitationData,
     // ok
     musicDel: apiOb[env].musicDel,
     musicUpload: apiOb[env].musicUpload,

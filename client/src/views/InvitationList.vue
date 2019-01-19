@@ -3,6 +3,18 @@
         <!--<h1>赴宴信息</h1>-->
         <Nav :activeIndex="2"></Nav>
 
+
+        <div class="page-form">
+            <div class="fr">
+                <el-button type="primary" @click="download">
+                    <i class="fa fa-plus"></i>
+                    下载
+                </el-button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
         <div class="page-content">
             <div class="page-form" v-if="false">
                 <el-form :inline="true" :model="formInline" class="demo-form-inline" size="small">
@@ -18,6 +30,9 @@
                 </el-form>
             </div>
 
+
+
+
             <el-table
                     ref="multipleTable"
                     :data="tableData"
@@ -25,9 +40,9 @@
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
                 <!--<el-table-column-->
-                        <!--align="center"-->
-                        <!--prop="name"-->
-                        <!--label="请帖编号">-->
+                <!--align="center"-->
+                <!--prop="name"-->
+                <!--label="请帖编号">-->
                 <!--</el-table-column>-->
                 <el-table-column
                         align="center"
@@ -60,10 +75,10 @@
                         label="结婚地址">
                 </el-table-column>
                 <!--<el-table-column-->
-                        <!--align="center"-->
-                        <!--width="160"-->
-                        <!--prop="contact_num"-->
-                        <!--label="联系电话">-->
+                <!--align="center"-->
+                <!--width="160"-->
+                <!--prop="contact_num"-->
+                <!--label="联系电话">-->
                 <!--</el-table-column>-->
 
 
@@ -103,6 +118,7 @@
     import Nav from '@/components/Nav.vue'
     import {
         request,
+        baseURL,
         api
     } from '@/util/api'
     import util from '@/util/util'
@@ -114,7 +130,7 @@
         components: {
             Nav
         },
-        data(){
+        data() {
             return {
                 tableData: [{
                     date: '2016-05-03',
@@ -220,11 +236,27 @@
             add() {
                 this.dialogFormVisible = true;
                 console.log('add');
+            },
+            download() {
+                window.open(window.location.protocol + "//" + window.location.hostname
+                    + (window.location.port ? ":" + window.location.port : '')
+                    + baseURL + api.downloadInvitationData,
+                    '_blank');
             }
         }
     }
 </script>
 
-<style>
-
+<style scoped>
+.clearfix{
+    clear: both;
+}
+    .page-form{
+        padding: 10px 0;
+        margin-bottom: 0;
+    }
+    .page-content{
+        padding-top: 0;
+        margin-top: 20px;
+    }
 </style>
