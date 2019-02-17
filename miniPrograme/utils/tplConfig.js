@@ -84,7 +84,7 @@ const colors = [
 const tpls = [];
 let pageCanAdd = [];
 
-for (let i = 0; i < 4; i++) {
+for (let i = 0; i < 10; i++) {
     let index = i + 1;
 
     // TODO  70个模板

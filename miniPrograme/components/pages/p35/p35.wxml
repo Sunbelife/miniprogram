@@ -1,2 +1,44 @@
-<image src="{{page.imageSrc[0]}}" class="image1 animate-toRight  {{animatedStep0 ? 'animated' : '' }}"></image>
-<image src="{{page.imageSrc[1]}}" class="image2 animate-toLeft  {{animatedStep1 ? 'animated' : '' }}"></image>
+<view class="tpl_p">
+
+    <image src="{{page.imageSrc[0]}}" class="image1 animate-Bottom  {{animatedStep[0] ? 'animated' : '' }}"></image>
+
+
+    <!-- 背景 -->
+    <image src="{{img_bg}}" class="tpl-bg"></image>
+
+    <!--<image src="{{img_write_2}}" class="p2"></image>-->
+
+    <image src="{{img_write_1}}" class="p1"></image>
+
+
+    <!-- 信息 -->
+    <view class="tpl-text-wrap">
+        <view class="tpl-text-l5">WELCOME</view>
+        <view class="tpl-text-l6"></view>
+        <view class="tpl-text-l1">诚邀您参加婚礼</view>
+        <view class="tpl-text-l2" bindtap="showInvitationInfo">{{invitationInfo.dateFormat}}</view>
+        <view class="tpl-text-l3" bindtap="openLocation">{{invitationInfo.address}}</view>
+    </view>
+
+
+    <!--
+
+    <view wx:if="{{isShowMap}}">
+        <map
+                bindtap="showInvitationInfo"
+                id="myMap"
+                class="myMap"
+                latitude="{{invitationInfo.latitude}}"
+                longitude="{{invitationInfo.longitude}}"
+                markers="{{[{latitude:invitationInfo.latitude,longitude:invitationInfo.longitude}]}}"
+                show-location
+        ></map>
+    </view>
+    -->
+
+
+    <button class="showBanquetInfoBtn"
+            id="showBanquetInfoBtn"
+            wx:if="{{showBanquetInfoBtn}}" bindtap="showBanquetInfo">宾客回复
+    </button>
+</view>

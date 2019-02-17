@@ -3,12 +3,12 @@ App({
     isPublish: false,
     globalData: {
         // 当前开发的模板
-        devTpl: 1,
+        devTpl: 5,
         // 当前开发的页面
-        devPage: 1,
+        devPage: 7,
         // 当前开发的图片进度
         devPageImgProcess: {
-            tpl: 4,
+            tpl: 10,
             page: 7,
         },
 
@@ -18,13 +18,13 @@ App({
         domainDev: "http://localhost:3000",
 
         // TODO 改回去
-        // imgPre: "/images/all",
-        imgPre:"https://xcx.lyy99.com/uploads/all",
+        imgPre: "/images/all",
+        // imgPre:"https://xcx.lyy99.com/uploads/all",
 
 
         // TODO 改回去
-        // isDev: 1,
-        isDev: 0,
+        isDev: 1,
+        // isDev: 0,
 
         // isMock: 1,
         isMock: 0,

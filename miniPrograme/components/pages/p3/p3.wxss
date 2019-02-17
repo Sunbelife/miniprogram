@@ -71,6 +71,19 @@
     left: 46rpx;
 }
 
+.p1.tpl5{
+    width: 681rpx;
+    height: 1160rpx;
+    top: 37rpx;
+    left: 45rpx;
+}
+.p1.tpl6{
+    width: 663rpx;
+    height: 1154rpx;
+    top: 22rpx;
+    left: 53rpx;
+}
+
 
 
 .tpl-text-wrap{

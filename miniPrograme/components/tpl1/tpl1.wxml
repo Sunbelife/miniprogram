@@ -167,7 +167,7 @@
                 ></p21>
 
 
-                <!-- 模板四 -->
+                <!-- 模板4 -->
                 <p22 id="p{{index}}" wx:if="{{item.id === 22}}"
                      type="{{type}}"
                      page="{{item}}" invitationInfo="{{invitationInfo}}"
@@ -208,24 +208,286 @@
                 ></p28>
 
 
-                <p29 id="p{{index}}" wx:if="{{item.id === 29}}"></p29>
 
-                <p35 id="p{{index}}" wx:if="{{item.id === 35}}"></p35>
-                <p36 id="p{{index}}" wx:if="{{item.id === 36}}"></p36>
 
-                <p42 id="p{{index}}" wx:if="{{item.id === 42}}"></p42>
-                <p43 id="p{{index}}" wx:if="{{item.id === 43}}"></p43>
+                <!-- 模板5 -->
+                <p29 id="p{{index}}" wx:if="{{item.id === 29}}"
+                     hasBg="{{true}}"
+                     type="{{type}}"
+                     page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                ></p29>
 
-                <p49 id="p{{index}}" wx:if="{{item.id === 49}}"></p49>
-                <p50 id="p{{index}}" wx:if="{{item.id === 50}}"></p50>
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 30}}"
+                    hasBg="{{true}}"
+                    tplName="5"
+                    pageName="2"
+                ></p2>
+                <!-- 设计稿 2 3  换了-->
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 31}}"
+                    hasBg="{{true}}"
+                    tplName="5"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 32}}"
+                    tplName="5"
+                    hasBg="{{true}}"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 33}}"
+                    tplName="5"
+                    hasBg="{{true}}"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 34}}"
+                    tplName="5"
+                    hasBg="{{true}}"
+                    pageName="6"
+                ></p6>
 
-                <p56 id="p{{index}}" wx:if="{{item.id === 56}}"></p56>
-                <p57 id="p{{index}}" wx:if="{{item.id === 57}}"></p57>
+                <p35 id="p{{index}}"
+                     page="{{item}}"
+                     type="{{type}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 35 && toGuestsHas}}"
+                ></p35>
 
-                <p63 id="p{{index}}" wx:if="{{item.id === 63}}"></p63>
-                <p64 id="p{{index}}" wx:if="{{item.id === 64}}"></p64>
+                <!-- 模板6 -->
+                <p36 id="p{{index}}" wx:if="{{item.id === 36}}"
+                     type="{{type}}"
+                     hasBg="{{true}}"
+                     page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                ></p36>
 
-                <p70 id="p{{index}}" wx:if="{{item.id === 70}}"></p70>
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 37}}"
+                    tplName="6"
+                    hasBg="{{true}}"
+                    pageName="2"
+                ></p2>
+                <!-- 设计稿 2 3  换了-->
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 38}}"
+                    tplName="6"
+                    hasBg="{{true}}"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 39}}"
+                    tplName="6"
+                    hasBg="{{true}}"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 40}}"
+                    tplName="6"
+                    hasBg="{{true}}"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 41}}"
+                    hasBg="{{true}}"
+                    tplName="6"
+                    pageName="6"
+                ></p6>
+
+                <p42 id="p{{index}}"
+                     page="{{item}}"
+                     type="{{type}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 42 && toGuestsHas}}"
+                ></p42>
+
+                <!-- 模板7 -->
+                <p43 id="p{{index}}" wx:if="{{item.id === 43}}"
+                     type="{{type}}"
+                     hasBg="{{true}}"
+                     page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                ></p43>
+
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 44}}"
+                    tplName="7"
+                    hasBg="{{true}}"
+                    pageName="2"
+                ></p2>
+                <!-- 设计稿 2 3  换了-->
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 45}}"
+                    tplName="7"
+                    hasBg="{{true}}"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 46}}"
+                    tplName="7"
+                    hasBg="{{true}}"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 47}}"
+                    tplName="7"
+                    hasBg="{{true}}"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 48}}"
+                    hasBg="{{true}}"
+                    tplName="7"
+                    pageName="6"
+                ></p6>
+
+                <p49 id="p{{index}}"
+                     page="{{item}}"
+                     type="{{type}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 49 && toGuestsHas}}"
+                ></p49>
+
+                <!-- 模板8 -->
+                <p50 id="p{{index}}" wx:if="{{item.id === 50}}"
+                     type="{{type}}"
+                     hasBg="{{true}}"
+                     page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                ></p50>
+
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 51}}"
+                    tplName="8"
+                    hasBg="{{true}}"
+                    pageName="2"
+                ></p2>
+                <!-- 设计稿 2 3  换了-->
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 52}}"
+                    tplName="8"
+                    hasBg="{{true}}"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 53}}"
+                    tplName="8"
+                    hasBg="{{true}}"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 54}}"
+                    tplName="8"
+                    hasBg="{{true}}"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 55}}"
+                    hasBg="{{true}}"
+                    tplName="8"
+                    pageName="6"
+                ></p6>
+
+                <p56 id="p{{index}}"
+                     page="{{item}}"
+                     type="{{type}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 56 && toGuestsHas}}"
+                ></p56>
+
+
+                <!-- 模板9 -->
+                <p57 id="p{{index}}" wx:if="{{item.id === 57}}"
+                     type="{{type}}"
+                     hasBg="{{true}}"
+                     page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                ></p57>
+
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 58}}"
+                    tplName="9"
+                    hasBg="{{true}}"
+                    pageName="2"
+                ></p2>
+                <!-- 设计稿 2 3  换了-->
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 59}}"
+                    tplName="9"
+                    hasBg="{{true}}"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 60}}"
+                    tplName="9"
+                    hasBg="{{true}}"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 61}}"
+                    tplName="9"
+                    hasBg="{{true}}"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 62}}"
+                    hasBg="{{true}}"
+                    tplName="9"
+                    pageName="6"
+                ></p6>
+
+                <p63 id="p{{index}}"
+                     page="{{item}}"
+                     type="{{type}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 63 && toGuestsHas}}"
+                ></p63>
+
+                <!-- 模板10 -->
+                <p64 id="p{{index}}" wx:if="{{item.id === 64}}"
+                     type="{{type}}"
+                     hasBg="{{true}}"
+                     page="{{item}}" invitationInfo="{{invitationInfo}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                ></p64>
+
+                <p2 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 65}}"
+                    tplName="10"
+                    hasBg="{{true}}"
+                    pageName="2"
+                ></p2>
+                <!-- 设计稿 2 3  换了-->
+                <p3 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 66}}"
+                    tplName="10"
+                    hasBg="{{true}}"
+                    pageName="3"
+                ></p3>
+                <p4 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 67}}"
+                    tplName="10"
+                    hasBg="{{true}}"
+                    pageName="4"
+                ></p4>
+                <p5 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 68}}"
+                    tplName="10"
+                    hasBg="{{true}}"
+                    pageName="5"
+                ></p5>
+                <p6 id="p{{index}}" page="{{item}}" wx:if="{{item.id === 69}}"
+                    hasBg="{{true}}"
+                    tplName="10"
+                    pageName="6"
+                ></p6>
+
+                <p70 id="p{{index}}"
+                     page="{{item}}"
+                     type="{{type}}"
+                     isShowMap="{{isShowMap}}"
+                     invitationInfo="{{invitationInfo}}"
+                     showBanquetInfoBtn="{{showBanquetInfoBtn}}"
+                     bindshowInvitationInfo="showInvitationInfo"
+                     bindshowBanquetInfo="showBanquetInfo"
+                     wx:if="{{item.id === 70 && toGuestsHas}}"
+                ></p70>
+
+
                 <pTool1 id="p{{index}}" wx:if="{{item.id === 'tool1'}}"></pTool1>
             </view>
 

@@ -120,6 +120,16 @@
 }
 
 
+
+.p1.tpl5{
+    width: 672rpx;
+    height: 1150rpx;
+    position: absolute;
+    top: 50rpx;
+    left: 39rpx;
+}
+
+
 .tpl-text-wrap{
     position: absolute;
     top: 250rpx;

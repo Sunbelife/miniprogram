@@ -1,46 +1,80 @@
-const  pageName = "35";
-const app = getApp();
+const tplName = "5";
+const pageName = "7";
+
 const util = require('../../../utils/util.js');
-const tplConfig = require('../../../utils/tplConfig.js');
-// 写评论
-const api = require('../../../utils/api.js');
-/*
-*  self.triggerEvent('writeover');
-* */
+
 Component({
     behaviors: [],
     properties: {
-        item: null // 简化的定义方式
+        isShowMap: null,
+        invitationInfo: null, // 简化的定义方式
+        showBanquetInfoBtn: null, // 简化的定义方式
+        type: null, // 简化的定义方式
+        page: null, // 简化的定义方式
     },
     data: {
-        page: tplConfig.pagesArrOb[pageName],
-        isLoading: false,
+        tplName: tplName,
+        pageName: pageName,
+        imgPath: getApp().globalData.imgPre,
+        animatedStep: new Array(1).fill(false)
     },
-    ready(){
+    ready() {
+
+        console.log(this.properties.page);
+
+        this.setData({
+            "invitationInfo.dateFormat": util.dateChina(this.properties.invitationInfo),
+        });
+        // 后缀可能不一样，拷贝吧
+        this.setData({
+            img_bg: `${this.data.imgPath}/tpl_${this.data.tplName}/bg_p7.jpg`,
+            // 需要写的页面
+            img_write_1: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_1.png`,
+            img_write_2: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_2.png`,
+        });
+
     },
     methods: {
-        show(){
-            util.setTimeOutFlag(this, 2, 0);
+        openLocation() {
+            console.log("openLocation");
+            console.log(this.properties.type === 'invitationEdit');
+            if(this.properties.type === 'invitationEdit'){
+                this.showInvitationInfo();
+            }else{
+                util.openLocation(this.properties.invitationInfo);
+            }
         },
-        hide(){
-            util.setTimeOutFlagHide(this, 2);
+        showInvitationInfo() {
+            this.triggerEvent('showInvitationInfo');
         },
-        editInfo(){
-            const arr = [];
+        showBanquetInfo(e) {
+            this.triggerEvent('showBanquetInfo');
+        },
+        show() {
+            util.setTimeOutFlagNew(this);
+        },
+        hide() {
+            util.setTimeOutFlagHideNew(this);
+        },
+        editInfo() {
 
-            arr.push({
-                type: "image",
-                top: "25vh",
-                left: "25vw"
-            });
-            arr.push({
-                type: "image",
-                bottom: "25vh",
-                right: "25vw"
-            });
-            util.posCssComplete(arr);
+            const editInfo = {
+                image: [],
+                text: []
+            };
 
-            return arr;
+            editInfo.image.push(util.genImg({
+                width: 606,
+                height: 705,
+                top: 230,
+                right: 72,
+            }, editInfo));
+
+
+            util.posCssComplete(editInfo.image);
+            util.posCssComplete(editInfo.text);
+
+            return editInfo;
         }
     }
 

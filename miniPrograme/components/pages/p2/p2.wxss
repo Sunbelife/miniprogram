@@ -49,3 +49,17 @@
     top: 113rpx;
     left: 116rpx;
 }
+.p1.tpl5{
+    width: 643rpx;
+    height: 1123rpx;
+    position: absolute;
+    top: 73rpx;
+    left: 63rpx;
+}
+.p1.tpl6{
+    width: 665rpx;
+    height: 881rpx;
+    position: absolute;
+    top: 290rpx;
+    left: 53rpx;
+}
