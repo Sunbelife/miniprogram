@@ -1,63 +1,101 @@
-
-
-
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
 
-
-
+.tpl_p{
+    width: 100vw;
+    height: 100vh;
+    background: #F0D1D6;
+}
 
 
 .image1{
+    width: 651rpx;
+    height: 920rpx;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 60vw;
-    height: 60vh;
-}
+    top: 208rpx;
+    left: 49rpx;
 
-.animate-toRight{
-    transition: all .5s ease-in;
-    left: -20vw;
     opacity: 0;
+    transition: all .5s ease-in;
+    transform: scale(.95) translateZ(0);
+
+    z-index: 2;
+
 }
 
-.animate-toRight.animated{
+
+.image1.animated{
     opacity: 1;
-    left: 0;
-
+    transform:  scale(1);
 }
 
 
-.image2{
+
+.p2{
+    width: 653rpx;
+    height: 1031rpx;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 60vw;
-    height: 60vh;
+    z-index: 1;
+    top: 84rpx;
+    left: 48rpx;
 }
 
 
 
-.animate-toLeft{
-    transition: all .5s ease-in;
-    right: -20vw;
-    opacity: 0;
+
+
+.tpl-text-wrap{
+    position: absolute;
+    top: 750rpx;
+    width: 423rpx;
+    height: 321rpx;
+    left: 50%;
+    margin-left: -211rpx;
+    z-index: 3;
+    color: #000000;
+    background-color: white;
+    text-align: center;
 }
 
-.animate-toLeft.animated{
-    opacity: 1;
-    right:0;
+.tpl-text-l1{
+    line-height: 1;
+    margin-top: 25rpx;
+    color: #000000;
+    font-size: 47rpx;
+}
+.tpl-text-l2{
+    margin-top: 22rpx;
+    color: #000000;
+    font-size: 20rpx;
+}
+.tpl-text-l3{
+    font-size: 20rpx;
+    color: #000000;
+
 }
 
 
-.editSpace1{
-    top: 25vh;
-    left: 25vw;
+.tpl-text-l5{
+    font-size: 30rpx;
+    margin-top: 65rpx;
+    color: #000000;
 }
 
-.editSpace2{
-    bottom: 25vh;
-    right: 25vw;
+.tpl-text-l6{
+    width: 43rpx;
+    margin: 0 auto;
+    margin-top: 30rpx;
+    border-bottom: 1rpx solid #000000;
+
 }
 
+
+
+.p1{
+    width: 97rpx;
+    height: 163rpx;
+    position: absolute;
+    top: 1050rpx;
+    left: 51rpx;
+    z-index: 2;
+}

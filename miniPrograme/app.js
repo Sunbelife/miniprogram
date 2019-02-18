@@ -1,11 +1,18 @@
 //app.js
 App({
     isPublish: false,
+
     globalData: {
+        //  5  29 - 35
+        //  6  36 - 42
+        //  7  43 - 49
+        //  8  50 - 56
+        //  9  57 - 63
+        //  10  64 - 70
         // 当前开发的模板
-        devTpl: 5,
+        devTpl: 10,
         // 当前开发的页面
-        devPage: 7,
+        devPage: 1,
         // 当前开发的图片进度
         devPageImgProcess: {
             tpl: 10,

@@ -64,10 +64,10 @@ Component({
             };
 
             editInfo.image.push(util.genImg({
-                width: 606,
-                height: 705,
-                top: 230,
-                right: 72,
+                width: 651,
+                height: 950,
+                top: 158,
+                left: 49,
             }, editInfo));
 
 

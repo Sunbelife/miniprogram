@@ -1,46 +1,77 @@
-const  pageName = "64";
+const tplName = "10";
+const pageName = "1";
+
 const app = getApp();
 const util = require('../../../utils/util.js');
 const tplConfig = require('../../../utils/tplConfig.js');
-// 写评论
-const api = require('../../../utils/api.js');
-/*
-*  self.triggerEvent('writeover');
-* */
+
 Component({
     behaviors: [],
     properties: {
-        item: null // 简化的定义方式
+        invitationInfo: null, // 简化的定义方式
+        type: null, // 简化的定义方式
+        page: null, // 简化的定义方式
     },
     data: {
-        page: tplConfig.pagesArrOb[pageName],
-        isLoading: false,
+        tplName: tplName,
+        pageName: pageName,
+        imgPath: getApp().globalData.imgPre,
+        animatedStep: new Array(1).fill(false)
     },
-    ready(){
+    ready() {
+
+        this.setData({
+            "invitationInfo.dateFormat": util.dateChina(this.properties.invitationInfo),
+        });
+        // 后缀可能不一样，拷贝吧
+        this.setData({
+            // 需要写的页面
+            img_bg: `${this.data.imgPath}/tpl_${this.data.tplName}/bg_p1.jpg`,
+            img_write_1: `${this.data.imgPath}/tpl_${this.data.tplName}/p${this.data.pageName}_1.png`,
+        });
+
+        console.log(this.data.img_write_1);
     },
     methods: {
-        show(){
-            util.setTimeOutFlag(this, 2, 0);
-        },
-        hide(){
-            util.setTimeOutFlagHide(this, 2);
-        },
-        editInfo(){
-            const arr = [];
 
-            arr.push({
-                type: "image",
-                top: "25vh",
-                left: "25vw"
-            });
-            arr.push({
-                type: "image",
-                bottom: "25vh",
-                right: "25vw"
-            });
-            util.posCssComplete(arr);
+        showInvitationInfo() {
+            this.triggerEvent('showInvitationInfo');
+        },
+        show() {
+            util.setTimeOutFlagNew(this);
+        },
+        hide() {
+            util.setTimeOutFlagHideNew(this);
+        },
+        editInfo() {
 
-            return arr;
+            const editInfo = {
+                image: [],
+                text: []
+            };
+
+            console.log(app.systemInfo);
+            editInfo.image.push(util.genImg({
+                width: 624,
+                height: 900,
+                top: 57,
+                right: 63,
+            }, editInfo));
+
+
+            // editInfo.text.push({
+            //     type: "text",
+            //     text: this.data.page.textSrc[0],
+            //     index: editInfo.text.length,
+            //     bottom: "350rpx",
+            //     left: "175rpx"
+            // });
+
+            util.posCssComplete(editInfo.image);
+            util.posCssComplete(editInfo.text);
+
+            console.log(editInfo);
+            return editInfo;
         }
     }
 

@@ -52,13 +52,12 @@ Component({
 
             console.log(app.systemInfo);
             editInfo.image.push(util.genImg({
-                width: app.systemInfo.windowWidth * 2,
-                height: app.systemInfo.windowHeight * 2,
-                top: 0,
-                left: 0,
+                width: 624,
+                height: 936,
+                top: 64,
+                left: 63,
             }, editInfo));
 
-            editInfo.image[0].top = '250px';
 
             // editInfo.text.push({
             //     type: "text",

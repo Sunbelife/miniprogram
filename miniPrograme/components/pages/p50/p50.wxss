@@ -1,63 +1,57 @@
-
-
-
 @import "../../../css/tpl.wxss";
 @import "../../../css/app.wxss";
 
+.tpl_p{
+    width: 100vw;
+    height: 100vh;
+}
 
-
-
-
+/* 图 1 */
 .image1{
+    width: 624rpx;
+    height: 900rpx;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 60vw;
-    height: 60vh;
-}
-
-.animate-toRight{
-    transition: all .5s ease-in;
-    left: -20vw;
-    opacity: 0;
-}
-
-.animate-toRight.animated{
-    opacity: 1;
+    top: 70rpx;
     left: 0;
 
-}
-
-
-.image2{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 60vw;
-    height: 60vh;
-}
-
-
-
-.animate-toLeft{
     transition: all .5s ease-in;
-    right: -20vw;
     opacity: 0;
+    z-index: 1;
 }
 
-.animate-toLeft.animated{
+.image1.animated{
     opacity: 1;
-    right:0;
+    left: 63rpx;
 }
 
-
-.editSpace1{
-    top: 25vh;
-    left: 25vw;
+.p1{
+    width: 59rpx;
+    height: 116rpx;
+    position: absolute;
+    z-index: 2;
+    top: 1076rpx;
+    left: 605rpx;
 }
 
-.editSpace2{
-    bottom: 25vh;
-    right: 25vw;
+.user-info{
+    position: absolute;
+    z-index: 3;
+    top: 1020rpx;
+    color: #020202;
+    left: 64rpx;
 }
 
+.user-info-name{
+    font-size: 55rpx;
+    line-height: 1;
+}
+.user-info-date{
+    font-size: 28rpx;
+    line-height: 1;
+    margin-top: 48rpx;
+}
+
+.user-info-address{
+    font-size: 28rpx;
+    margin-top: 4rpx;
+}
